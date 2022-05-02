@@ -6,10 +6,10 @@
         <StackLayout>
             
            
-            <Button Text="Min profil" Clicked="Button_Clicked" />
-            <Button Text="Mina lån" Clicked="Button_Clicked_1" />
-            <Button Text="Mina reservationer" Clicked="Button_Clicked_2" />
-            <Button Text="Mina favoriter" />
+            <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" />
+            <Button x:Name="MyLoan" Text="Mina lån" Clicked="Button_Clicked_1" />
+            <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" />
+            <Button x:Name="MyFavorite" Text="Mina favoriter" />
 
             <Label x:Name="Content" Text="" />
 

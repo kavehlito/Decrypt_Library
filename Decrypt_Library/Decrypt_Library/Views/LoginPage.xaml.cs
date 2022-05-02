@@ -20,7 +20,7 @@ namespace Decrypt_Library.Views
         private void LogIn_Clicked(object sender, EventArgs e)
         {
 
-            Int32.TryParse(SSN.Text.ToString(), out int ssn);
+            Int64.TryParse(SSN.Text.ToString(), out long ssn);
             var password = Password.Text.ToString(); 
 
             var sucess = UserLogin.CheckUserNameAndPassword(ssn, password);
@@ -32,6 +32,7 @@ namespace Decrypt_Library.Views
 
             if (sucess) 
             { 
+                Test.IsVisible = true;
                 Test.Text = $"{UserLogin.thisUser.UserName} är nu inloggad";
                 SSN.IsVisible = false;
                 Password.IsVisible = false;

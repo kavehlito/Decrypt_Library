@@ -5,7 +5,7 @@ namespace Decrypt_Library
     {
         public static Models.User thisUser = null;
 
-        public static bool CheckUserNameAndPassword(int SSN, string password)
+        public static bool CheckUserNameAndPassword(long SSN, string password)
         {
             using (var db = new Models.Decrypt_LibraryContext())
             {
