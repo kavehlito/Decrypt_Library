@@ -36,7 +36,7 @@ namespace Decrypt_Library
             foreach (var item in reservation)
             {
                 if (item.EndDate == null)
-                    myReservationsList.AppendLine($"{item.Title,-50}{item.Author,-20}{item.ISBN,-15}{item.StartDate}");
+                    myReservationsList.AppendLine($"{item.Title,-70}{item.Author,-25}{item.ISBN,-35}{item.StartDate.}");
             }
 
             return myReservationsList.ToString();
