@@ -4,9 +4,19 @@
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+           
+            <Button Text="Min profil" Clicked="Button_Clicked" />
+            <Button Text="Mina lån" Clicked="Button_Clicked_1" />
+            <Button Text="Mina reservationer" Clicked="Button_Clicked_2" />
+            <Button Text="Mina favoriter" />
+
+            <Label x:Name="Content" Text="" />
+
+
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
