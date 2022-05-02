@@ -16,8 +16,6 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
         }
-
-
         private void Entry_Completed(object sender, EventArgs e)
         {
             bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5,15);
