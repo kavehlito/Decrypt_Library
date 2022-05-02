@@ -11,8 +11,9 @@
         <Views:AccountPage Title="Mina Sidor"></Views:AccountPage>
         <Views:LoginPage Title="Logga in"></Views:LoginPage>
         <Views:SearchPage Title="Sök"></Views:SearchPage>
-        <Views:SearchPage Title="Admin"></Views:SearchPage>
-        <Views:SearchPage Title="Librarian"></Views:SearchPage>
+        <Views:Admin Title="Admin"></Views:Admin>
+        <Views:Librarian Title="Librarian"></Views:Librarian>
+        <Views:RegisterPage Title="Register"></Views:RegisterPage>
 
     </TabbedPage.Children>
 </TabbedPage>
