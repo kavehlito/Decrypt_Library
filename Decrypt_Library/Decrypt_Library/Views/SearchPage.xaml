@@ -4,6 +4,7 @@
              x:Class="Decrypt_Library.Views.SearchPage">
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar Placeholder="Sök..."  />
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
