@@ -38,6 +38,31 @@ namespace Decrypt_Library.Readers
 
             return true;
         }
+        
+        public static bool PassWordReader(string passwordInput)
+        {
+            if (!passwordInput.Any(char.IsLetter) || string.IsNullOrEmpty(passwordInput))
+                return false;
+
+            return true;
+        }
+        
+        public static bool StringPasswordCorrect(string passwordInput, int minNum, bool digits)
+        {
+
+            if (!PassWordReader(passwordInput))
+                return false;
+
+            if (passwordInput.Length < minNum)
+                return false;
+
+            if(digits == false)
+                return false;
+
+            return true;
+        }
+        // Reader för email
+        
         #endregion
 
         #region int reader
@@ -49,7 +74,16 @@ namespace Decrypt_Library.Readers
 
             return false;
         }
+        // reader för personnummer
+        public static bool SSNReader(string SSNInput, int minNum)
+        {
+            if (!IntReader(SSNInput, out int num))
+                return false;
 
+            if(!SSNInput < minNum)
+                    return true;
+
+        }
         public static bool IntEqualsToSelectedNumber(string userInput, int selectedNumber, out int num)
         {
             num = 0;

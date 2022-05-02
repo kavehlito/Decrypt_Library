@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,14 +14,35 @@ namespace Decrypt_Library.Views
         }
         private void Entry_Completed(object sender, EventArgs e)
         {
-            bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5,15);
+            var user = new Models.User();
 
-            if (!correctInput)
+            bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5, 15);
+            bool correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
+            bool correctEmail = false;
+            bool correctPhone = false;
+            bool correctSSN = Readers.Readers.IntReader(SSN.Text, out Ssn);
+
+            bool correctRegistration = correctInput && correctPassword && correctEmail && correctPhone && correctSSN;
+
+            if (!correctRegistration)
             {
-                wrongUsernameInput.IsVisible = true;
+
+                user.UserName = Username.Text;
+                // wrongUsernameInput.IsVisible = true;
+                user.Ssn = Convert.ToInt64(SSN.Text);
+
+                user.Password = Password.Text;
+               // wrongPasswordInput.IsVisible = true;
+
+                user.Email = Email.Text;
+
             }
             else
-                wrongUsernameInput.IsVisible = false;
+
+            wrongUsernameInput.IsVisible = false;
+            wrongPasswordInput.IsVisible = false;
+            wrongEmailInput.IsVisible = false;
+
         }
     }
 }

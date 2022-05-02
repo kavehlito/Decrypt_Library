@@ -52,19 +52,88 @@
                     </AbsoluteLayout>
 
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Personummer:"
+                        <Label Text="Lösenord:"
                                Margin="7,5,0,0"/>
 
                         <Entry WidthRequest="285"
                                Placeholder="Minst 10 siffror och utan bindestreck!"
+                               Completed="Entry_Completed"
+                               x:Name="Password"
                                />
+                    </StackLayout>
+                    
+                    <AbsoluteLayout>
+                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongPasswordInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                    </AbsoluteLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Personnummer:"
+                               Margin="7,5,0,0"/>
+
+                        <Entry WidthRequest="285"
+                               Placeholder="Minst 10 siffror och utan bindestreck!"
+                               Completed="Entry_Completed"
+                               x:Name="SSN"
+                               />
+                    </StackLayout>
+                    <AbsoluteLayout>
+                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongSSNInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                    </AbsoluteLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Email:"
+                               Margin="7,5,0,0"/>
+                        <Entry WidthRequest="285"
+                               Placeholder="abc@hotmail.com"
+                               Completed="Entry_Completed"
+                               x:Name="Email"
+                               />
+                    </StackLayout>
+                    
+                    <AbsoluteLayout>
+                            <Label Text="Ogiltigt email,måste vara minst 5 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongEmailInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                     </AbsoluteLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Telefon:"
+                               Margin="7,5,0,0"/>
+                        <Entry WidthRequest="285"
+                               Placeholder="700123456"
+                               Completed="Entry_Completed"
+                               x:Name="Phone"
+                               />
+                        <AbsoluteLayout>
+                            <Label Text="Ogiltigt emaik,måste vara minst 5 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongPhoneInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                        </AbsoluteLayout>
 
                     </StackLayout>
-
-
-
+                    
                 </StackLayout>
-
+               
             </Frame>
 
         </Grid>
