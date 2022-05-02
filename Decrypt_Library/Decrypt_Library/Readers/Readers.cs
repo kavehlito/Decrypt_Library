@@ -41,13 +41,12 @@ namespace Decrypt_Library.Readers
         #endregion
 
         #region int reader
-        public static bool IntReader(string userInput, out int num)
+        public static bool IntReaderString(string userInput)
         {
-            num = 0;
-            if (Int32.TryParse(userInput, out num))
-                return true;
+            if (userInput.Any(char.IsLetter))
+                return false;
 
-            return false;
+            return true;
         }
 
         public static bool IntEqualsToSelectedNumber(string userInput, int selectedNumber, out int num)

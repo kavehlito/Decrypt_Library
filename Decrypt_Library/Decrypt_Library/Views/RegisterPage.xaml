@@ -56,6 +56,7 @@
                                Margin="7,5,0,0"/>
 
                         <Entry WidthRequest="280"
+                               Completed="Entry_Completed"
                                Placeholder="måste vara minst 5 bokstäver lång!"
                                />
 

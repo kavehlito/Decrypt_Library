@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,26 @@ namespace Decrypt_Library.Views
 
         private void Entry_Completed(object sender, EventArgs e)
         {
-            bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5,15);
+            var user = new User();
 
-            if (!correctInput)
+            bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5,15);
+            bool correctPassword = false;
+            bool correctEmail = false;
+            bool correctPhone = false;
+            bool correctSSN = false;
+
+            bool completeRegistration = correctInput 
+                                        && correctPassword 
+                                        && correctEmail 
+                                        && correctPhone 
+                                        && correctSSN;
+
+            if (completeRegistration)
             {
-                wrongUsernameInput.IsVisible = true;
+                user.UserName = Username.Text;
             }
             else
-                wrongUsernameInput.IsVisible = false;
+                wrongUsernameInput.IsVisible = true;
         }
     }
 }
