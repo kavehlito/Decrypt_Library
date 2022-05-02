@@ -13,6 +13,7 @@
         <Views:SearchPage Title="Sök"></Views:SearchPage>
         <Views:SearchPage Title="Admin"></Views:SearchPage>
         <Views:SearchPage Title="Librarian"></Views:SearchPage>
+        <Views:RegisterPage Title="Register"></Views:RegisterPage>
 
     </TabbedPage.Children>
 </TabbedPage>
