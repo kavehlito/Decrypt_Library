@@ -50,8 +50,7 @@ namespace Decrypt_Library.Models
             {
                 entity.ToTable("Audience");
 
-                entity.HasIndex(e => e.AgeGroup, "UQ__Audience__CE82BAE13B40DA36")
-                    .IsUnique();
+                
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -95,8 +94,7 @@ namespace Decrypt_Library.Models
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasIndex(e => e.CategoriesName, "UQ__Categori__C41451B63FB24460")
-                    .IsUnique();
+                
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -135,8 +133,7 @@ namespace Decrypt_Library.Models
             {
                 entity.ToTable("MediaType");
 
-                entity.HasIndex(e => e.FormatName, "UQ__MediaTyp__CE1A17246E134D1C")
-                    .IsUnique();
+                
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -228,8 +225,7 @@ namespace Decrypt_Library.Models
             {
                 entity.ToTable("Shelf");
 
-                entity.HasIndex(e => e.Shelfname, "UQ__Shelf__E263264B2CD65827")
-                    .IsUnique();
+               
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -247,17 +243,7 @@ namespace Decrypt_Library.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.Phonenumber, "UQ__Users__9FDCA5A79D6A8A64")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Email, "UQ__Users__A9D1053460FD7517")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.UserName, "UQ__Users__C9F28456EB771F43")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Ssn, "UQ__Users__CA1E8E3C8191DCA1")
-                    .IsUnique();
+                
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -281,7 +267,7 @@ namespace Decrypt_Library.Models
 
                 entity.ToTable("User_Event");
 
-                entity.HasIndex(e => e.EventId, "Fk");
+                
 
                 entity.HasOne(d => d.Event)
                     .WithMany()
@@ -298,8 +284,7 @@ namespace Decrypt_Library.Models
             {
                 entity.ToTable("UserType");
 
-                entity.HasIndex(e => e.UserTypeName, "UQ__UserType__9262CB71C835DBBC")
-                    .IsUnique();
+                
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
