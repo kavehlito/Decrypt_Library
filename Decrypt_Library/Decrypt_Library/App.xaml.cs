@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace Decrypt_Library
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new AboutPage());
         }
 
         protected override void OnStart()

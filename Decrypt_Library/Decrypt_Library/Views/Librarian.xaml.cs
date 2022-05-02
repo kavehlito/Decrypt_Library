@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace Decrypt_Library
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Decrypt_Library.Views
 {
-    public partial class MainPage : TabbedPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Librarian : ContentPage
     {
-        public MainPage()
+        public Librarian()
         {
             InitializeComponent();
         }
