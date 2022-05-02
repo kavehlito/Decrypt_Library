@@ -56,7 +56,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         }
     }
 
-    internal class MyPagesProductList
+    public class MyPagesProductList
     {
         public string Title { get; set; }
         public string Author { get; set; }

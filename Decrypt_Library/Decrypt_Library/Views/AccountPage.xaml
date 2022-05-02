@@ -12,6 +12,11 @@
             <Button x:Name="MyFavorite" Text="Mina favoriter" />
 
             <Label x:Name="Content" Text="" />
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate></DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
 
 

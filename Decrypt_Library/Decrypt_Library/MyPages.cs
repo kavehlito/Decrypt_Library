@@ -27,18 +27,20 @@ namespace Decrypt_Library
 
         public static string MyReservationsList()
         {
+
             if (UserLogin.thisUser == null) return "Du är inte inloggad!";
 
             StringBuilder myReservationsList = new StringBuilder();
 
             var reservation = EntityframeworkBookHistory.ShowUserReservations();
-                foreach (var item in reservation)
-                {
-                    if (item.EndDate == null)
-                        myReservationsList.AppendLine($"{item.Title,-50}{item.Author,-20}{item.ISBN,-15}{item.StartDate}");
-                }
+            foreach (var item in reservation)
+            {
+                if (item.EndDate == null)
+                    myReservationsList.AppendLine($"{item.Title,-50}{item.Author,-20}{item.ISBN,-15}{item.StartDate}");
+            }
 
-                return myReservationsList.ToString();
+            return myReservationsList.ToString();
+
         }
 
         public static string MyLoanHistory()
