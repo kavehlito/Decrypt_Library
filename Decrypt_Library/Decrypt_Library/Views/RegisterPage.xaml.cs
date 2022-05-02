@@ -16,5 +16,16 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
         }
+        private void Entry_Completed(object sender, EventArgs e)
+        {
+            bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5,15);
+
+            if (!correctInput)
+            {
+                wrongUsernameInput.IsVisible = true;
+            }
+            else
+                wrongUsernameInput.IsVisible = false;
+        }
     }
 }

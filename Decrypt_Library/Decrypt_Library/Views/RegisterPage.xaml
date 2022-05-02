@@ -3,10 +3,70 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
              x:Class="Decrypt_Library.Views.RegisterPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            
+
+            <Frame BorderColor="Black"
+                   HeightRequest="400"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   Grid.Column="1"
+                   WidthRequest="400">
+
+                <StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Användarnamn:"
+                               Margin="0,5,0,0"/>
+
+                        <Entry WidthRequest="280"
+                               Placeholder="Måste vara minst 5 bokstäver lång!"
+                               Completed="Entry_Completed"
+                               x:Name="Username"
+                               />
+
+                    </StackLayout>
+
+                    <AbsoluteLayout>
+
+                        <Label Text="Ogiltigt användarnamn"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongUsernameInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+
+                    </AbsoluteLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Personummer:"
+                               Margin="7,5,0,0"/>
+
+                        <Entry WidthRequest="285"
+                               Placeholder="Minst 10 siffror och utan bindestreck!"
+                               />
+
+                    </StackLayout>
+
+
+
+                </StackLayout>
+
+            </Frame>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
