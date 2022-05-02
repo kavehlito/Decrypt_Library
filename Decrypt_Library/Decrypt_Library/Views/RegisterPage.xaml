@@ -32,7 +32,7 @@
                                Margin="0,5,0,0"/>
 
                         <Entry WidthRequest="280"
-                               Placeholder="måste vara minst 5 bokstäver lång!"
+                               Placeholder="Måste vara minst 5 bokstäver lång!"
                                Completed="Entry_Completed"
                                x:Name="Username"
                                />
@@ -55,9 +55,8 @@
                         <Label Text="Personummer:"
                                Margin="7,5,0,0"/>
 
-                        <Entry WidthRequest="280"
-                               Completed="Entry_Completed"
-                               Placeholder="måste vara minst 5 bokstäver lång!"
+                        <Entry WidthRequest="285"
+                               Placeholder="Minst 10 siffror och utan bindestreck!"
                                />
 
                     </StackLayout>

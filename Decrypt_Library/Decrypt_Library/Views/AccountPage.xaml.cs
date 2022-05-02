@@ -15,6 +15,22 @@ namespace Decrypt_Library.Views
         public AccountPage()
         {
             InitializeComponent();
+            var numberOfReservation = MyPages.MyReservationsList();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Content.Text = MyPages.UserProfile();
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            Content.Text = "Mina lån";
+        }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            Content.Text = MyPages.MyReservationsList();
         }
     }
 }

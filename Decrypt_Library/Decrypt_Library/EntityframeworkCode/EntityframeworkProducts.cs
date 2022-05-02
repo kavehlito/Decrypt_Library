@@ -19,15 +19,23 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
-        public static Product ShowSpecificProductTitle(string selectedTitle)
+        public static List<CategoryName_Product> ShowSpecificProductTitle(string selectedTitle)
         {
-            var products = ShowAllProducts();
-
             using (var db = new Decrypt_LibraryContext())
             {
-                var product = products.SingleOrDefault(p => p.Title.Contains(selectedTitle));
+                var products = (from prod in db.Products
+                                join cate in db.Categories on prod.CategoryId equals cate.Id
+                                select new CategoryName_Product
+                                {
+                                    Id = prod.Id,
+                                    Title = prod.Title,
+                                    AuthorName = prod.AuthorName,
+                                    Category = cate.CategoriesName
+                                }).ToList();
 
-                return product;
+                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) || p.Category.ToLower().Contains(selectedTitle.ToLower())).ToList();
+
+                return findProduct;
             }
         }
         public static Product ShowSpecificProductID(int selectedID)
@@ -61,6 +69,23 @@ namespace Decrypt_Library.EntityFrameworkCode
                 var product = products.Where(p => p.Id == shelfId);
 
                 return products;
+            }
+        }
+        public static void FindProduct(string productSearch)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var products = (from prod in db.Products
+                                join cate in db.Categories on prod.CategoryId equals cate.Id
+                                select new
+                                {
+                                    Id = prod.Id,
+                                    Title = prod.Title,
+                                    AuthorName = prod.AuthorName,
+                                    Category = cate.CategoriesName
+                                }).ToList();
+                var findProduct = products.Where(p => p.Title.ToLower().Contains(productSearch.ToLower()) || p.Category.ToLower().Contains(productSearch.ToLower()));
+
             }
         }
     }

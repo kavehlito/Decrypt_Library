@@ -17,8 +17,6 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
         }
-
-
         private void Entry_Completed(object sender, EventArgs e)
         {
             var user = new User();

@@ -1,11 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.SearchPage">
     <ContentPage.Content>
         <StackLayout>
-            
-            
+            <StackLayout>
+                <SearchBar Placeholder="Sök..." TextChanged="SearchBar_TextChanged"/>
+            </StackLayout>
+            <ListView x:Name="ProductList" ItemTapped="ProductList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20" TextColor="Aqua"/>
+                                <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15" TextColor="Crimson"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
