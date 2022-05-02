@@ -10,7 +10,7 @@ namespace Decrypt_Library.EntityFrameworkCode
     internal class EntityframeworkBookHistory
     {
 
-        public static List<MyPagesProductList> ShowUserReservations()
+        /*public static List<MyPagesProductList> ShowUserReservations()
         {
             using (var db = new Decrypt_LibraryContext())
             {
@@ -53,7 +53,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                   };
                 return loanHistory.ToList();
             }
-        }
+        }*/
     }
 
     internal class MyPagesProductList

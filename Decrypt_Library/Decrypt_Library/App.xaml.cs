@@ -11,7 +11,7 @@ namespace Decrypt_Library
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new AboutPage());
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
