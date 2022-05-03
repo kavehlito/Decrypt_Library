@@ -1,12 +1,176 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:decrypt_library="clr-namespace:Decrypt_Library" 
+             x:DataType="decrypt_library:MainPage"
+             BackgroundColor="MidnightBlue"
              x:Class="Decrypt_Library.Views.Admin">
     <ContentPage.Content>
+
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame BackgroundColor="White"
+                   BorderColor="Black"
+                   HeightRequest="50"
+                   CornerRadius="0">
+
+                <Label Text="Admin page"
+                       HorizontalOptions="CenterAndExpand"
+                       
+                       VerticalOptions="CenterAndExpand"/>
+
+            </Frame>
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Column="0"
+                   WidthRequest="150"
+                   BorderColor="Black">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="0"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                        <Label Text="Lägga till produkt"
+                               FontAttributes="bold"
+                               />
+                    </Frame>
+
+                    <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="1"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                        <Label Text="Statistik"
+                               FontAttributes="bold"
+                               />
+                    </Frame>
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="2"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Lägga till anställda"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="3"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Låna"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="4"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Skapa event"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="5"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Lämna tillbaka"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="6"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Byta hylla"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="7"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Gömma användare"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="7"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="Gömma användare"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="8"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="lägga till kategori/ta bort kategori"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                           HeightRequest="20"
+                           Padding="0"
+                           Grid.Row="9"
+                           WidthRequest="50"
+                           IsClippedToBounds="True">
+                            <Label Text="lägga till/ta bort språk"
+                               FontAttributes="bold"
+                               />
+                        </Frame>
+
+
+
+
+                    </Grid>
+            </Frame>
+
+        </Grid>
+
         </StackLayout>
+
+
+
     </ContentPage.Content>
 </ContentPage>
