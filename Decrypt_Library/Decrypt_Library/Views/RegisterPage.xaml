@@ -83,7 +83,7 @@
                                />
                     </StackLayout>
                     <AbsoluteLayout>
-                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer långt"
+                        <Label Text="Ogiltigt personnummer, måste innehålla 10 siffror"
                                FontSize="10"
                                Padding="0"
                                IsVisible="False"
@@ -103,7 +103,7 @@
                     </StackLayout>
                     
                     <AbsoluteLayout>
-                            <Label Text="Ogiltigt email,måste vara minst 5 karaktärer långt"
+                            <Label Text="Ogiltig email"
                                FontSize="10"
                                Padding="0"
                                IsVisible="False"
