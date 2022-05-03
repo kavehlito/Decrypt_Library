@@ -29,10 +29,12 @@ namespace Decrypt_Library
             StringBuilder myReservationsList = new StringBuilder();
 
             var reservation = EntityframeworkBookHistory.ShowUserReservations();
+            myReservationsList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM"}");
+
             foreach (var item in reservation)
             {
                 if (item.EndDate == null)
-                    myReservationsList.AppendLine($"{item.Title,-70}{item.Author,-25}{item.ISBN,-35}{item.StartDate}");
+                    myReservationsList.AppendLine($"{item.Title,-70}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString()}");
             }
 
             return myReservationsList.ToString();
@@ -46,12 +48,12 @@ namespace Decrypt_Library
             StringBuilder myLoanHistoryList = new StringBuilder();
 
             var loanHistory = EntityframeworkBookHistory.ShowUserLoanHistory();
-
+            myLoanHistoryList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM", -40}{"ÅTERLÄMNAD"}");
             foreach (var item in loanHistory)
-            {
-                if (item.EndDate != null)
-                    myLoanHistoryList.AppendLine($"{item.Title,-50}{item.Author,-20}{item.ISBN,-15}{item.StartDate,15},{item.EndDate,-15}");
-            }
+                {
+                    if (item.EndDate != null)
+                        myLoanHistoryList.AppendLine($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString(),-40}{item.EndDate.Value.ToShortDateString()}");
+                }
 
             return myLoanHistoryList.ToString();
         }
@@ -77,6 +79,8 @@ namespace Decrypt_Library
             }
             return LateBooksList.ToString();
         }
+
+        
 
         public static void TestMyPages()
         {

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Decrypt_Library.Views.Loan">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="User" Text="" />
+            <Entry x:Name="CheckUserId" Placeholder="Lånetagar-Id" />
+            <Button x:Name="checkUserButton" Text="Check" Clicked="checkUserButton_Clicked"/>
+            <Label x:Name="UserIdError" Text="Lånatagaren finns inte i systemet." TextColor="Red" IsVisible="false" />
+            <Label x:Name="ProductIdError" Text="Produkten finns inte i systemet" TextColor="red" IsVisible="false"/>
+            <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false" />
+            <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" />
+            <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" />
+            <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" />
+            <Label x:Name="Receipt" Text="" IsVisible="false"/>
+            <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

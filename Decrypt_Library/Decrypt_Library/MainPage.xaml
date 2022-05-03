@@ -14,6 +14,7 @@
         <Views:Admin Title="Admin"></Views:Admin>
         <Views:Librarian Title="Librarian"></Views:Librarian>
         <Views:RegisterPage Title="Register"></Views:RegisterPage>
+        <Views:Loan Title="Låna"></Views:Loan>
 
     </TabbedPage.Children>
 </TabbedPage>
