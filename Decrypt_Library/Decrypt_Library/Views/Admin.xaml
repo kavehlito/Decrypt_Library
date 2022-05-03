@@ -36,14 +36,30 @@
             
                 <Frame Grid.Column="2"
                        IsClippedToBounds="True"
+                       HeightRequest="200"
+                       WidthRequest="300"
                        BackgroundColor="Gray">
 
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
 
                         <ListView  
                         x:Name="ProductList" 
                         ItemTapped="ProductList_ItemTapped" 
-                        Grid.Row="0"
+                            
+                        Grid.Row="1"
+                            Grid.Column="1"
                                >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -80,7 +96,7 @@
                                                HorizontalOptions="StartAndExpand" 
                                                FontSize="10" 
                                                TextColor="Aqua"/>
-                                            <Label Text="{Binding Country}" 
+                                            <Label Text="{Binding Languages}" 
                                                HorizontalOptions="StartAndExpand" 
                                                FontSize="10" 
                                                TextColor="Aqua"/>
@@ -101,334 +117,287 @@
                         <Frame IsVisible="False" 
                                BorderColor="Black"
                                BackgroundColor="Gray"
+                               Grid.Column="1"
+                               Grid.Row="1"
                                x:Name="AddProduct">
 
                             <ScrollView>
-                                <Frame BorderColor="Black">
+                                <StackLayout>
 
-                                    <AbsoluteLayout>
-
-                                        <Label Text="Title: "
+                                    <Label Text="Book Title: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,-10,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,-40,380,80"
-                                   >
-                                            <Entry
+
+                                    <Entry AbsoluteLayout.LayoutBounds="120,-40,380,70"
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
-                                                Completed="Entry_ProductInputCompleted"
+                                           TextChanged="entryTitle_TextChanged"
                                                 x:Name="entryTitle"
                                     Placeholder="Produktnamn"
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
-                                            </Entry>
-                                        </Frame>
                                         
-                                        <Label Text="ISBN: "
+                                    </Entry>
+
+                                    <Label Text="ISBN: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,30,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,0,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryISBN_TextChanged"
                                                x:Name="entryISBN"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
-                                        </Frame>
 
-        
-                                        <Label Text="Description: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,110,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,80,380,80"
-                                   >
-                                            <Entry
-                                    PlaceholderColor="Gray"
-                                    BackgroundColor="White"
-                                               x:Name="entryDescription"
-                                                Completed="Entry_ProductInputCompleted"
-                                    FontSize="12"
-                                    FontAttributes="Bold"
-                                    TextColor="BLack">
-                                            </Entry>
-
-                                        </Frame>
-                                        
-                                        <Label Text="Pages: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,150,90,50"/>
-
-                                        <Frame AbsoluteLayout.LayoutBounds="100,120,380,80"
-                                   >
-                                            <Entry
-                                    PlaceholderColor="Gray"
-                                    BackgroundColor="White"
-                                    FontSize="12"
-                                               x:Name="entryPages"
-                                                Completed="Entry_ProductInputCompleted"
-                                    FontAttributes="Bold"
-                                    TextColor="BLack">
-
-                                            </Entry>
-                                        </Frame>
-
-                                        <Label Text="Playtime: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,190,90,50"/>
-
-                                        <Frame AbsoluteLayout.LayoutBounds="100,160,380,80"
-                                   >
-                                            <Entry
-                                    PlaceholderColor="Gray"
-                                    BackgroundColor="White"
-                                    FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
-                                               x:Name="entryPlaytime"
-                                    FontAttributes="Bold"
-                                    TextColor="BLack">
-
-                                            </Entry>
-
-                                        </Frame>
-
-                                        <Label Text="Publisher: "
+                                    <Label Text="Publisher: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,230,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,200,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                                x:Name="entryPublisher"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryPublisher_TextChanged"
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
-                                        </Frame>
 
-                                        <Label Text="Language ID: "
+                                    <Label Text="Language ID: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,270,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,240,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryLanguage_TextChanged"
                                                x:Name="entryLanguage"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
-                                        </Frame>
 
-                                        <Label Text="Author name: "
+                                    <Label Text="Author name: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,310,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,280,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryAuthor_TextChanged"
                                                x:Name="entryAuthor"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
-                                            
+                                        </Entry>
 
-                                        </Frame>
 
-                                        <Label Text="PublishDate: "
+                                    <Label Text="PublishDate: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,350,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,320,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryDate_TextChanged"
                                                x:Name="entryDate"
-                                                Placeholder="dd/mm/yyyy"
+                                                Placeholder="yyyy/mm/dd"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
 
-                                        </Frame>
-
-                                        <Label Text="Category ID: "
+                                    <Label Text="Category ID: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,390,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,360,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryCategoryId_TextChanged"
                                                x:Name="entryCategoryId"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
-                                        </Frame>
-
-                                        <Label Text="Shelf ID: "
+                                    <Label Text="Shelf ID: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,430,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,400,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryShelfId_TextChanged"
                                                x:Name="entryShelfId"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
-                                        </Frame>
+                                        </Entry>
 
-                                        <Label Text="Narrator: "
+                                    <Label Text="Narrator: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,470,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,440,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryNarrator_TextChanged"
                                                x:Name="entryNarrator"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
-
-                                        </Frame>
-
-                      
+                                        </Entry>
 
 
-                                        <Label Text="Audience Id: "
+                                    <Label Text="Audience Id: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,510,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,480,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryAudienceId_TextChanged"
                                                x:Name="entryAudienceId"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
-                                        </Frame>
-
-
-
-                                        <Label Text="Media Id: "
+                                    <Label Text="Media Id: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,70,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,40,380,80"
-                                   >
-                                            <Entry
+                                        <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
-                                                Completed="Entry_ProductInputCompleted"
+                                            TextChanged="entryMediaId_TextChanged"
                                                x:Name="entryMediaId"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                            </Entry>
+                                        </Entry>
 
-                                        </Frame>
+                                    <Label Text="Description: "
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0,110,90,50"/>
 
-                                        <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"  
+                                        <Entry
+                                    PlaceholderColor="Gray"
+                                    BackgroundColor="White"
+                                               x:Name="entryDescription"
+                                            TextChanged="entryDescription_TextChanged"
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    TextColor="BLack">
+                                        </Entry>
+
+                                    <Label Text="Pages:"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0,150,90,50"/>
+
+                                        <Entry
+                                    PlaceholderColor="Gray"
+                                    BackgroundColor="White"
+                                    FontSize="12"
+                                               x:Name="entryPages"
+                                            TextChanged="entryPages_TextChanged"
+                                    FontAttributes="Bold"
+                                    TextColor="BLack">
+
+                                        </Entry>
+
+                                    <Label Text="Playtime: "
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0,190,90,50"/>
+
+                                        <Entry
+                                    PlaceholderColor="Gray"
+                                    BackgroundColor="White"
+                                    FontSize="12"
+                                            TextChanged="entryPlaytime_TextChanged"
+                                               x:Name="entryPlaytime"
+                                    FontAttributes="Bold"
+                                    TextColor="BLack">
+
+                                        </Entry>
+
+
+                                    <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"  
                                                 x:Name="inStock"/>
 
-                                        <Label Text="In Stock: "
+                                    <Label Text="In Stock: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,550,90,50"/>
 
-                                        <Switch AbsoluteLayout.LayoutBounds="120,540,380,80"
+                                    <Switch AbsoluteLayout.LayoutBounds="120,540,380,80"
                                                 x:Name="newProduct"
                                                />
 
-                                        <Label Text="New Product: "
+                                    <Label Text="New Product: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,590,90,50"/>
 
-                                        <Switch AbsoluteLayout.LayoutBounds="120,580,380,80"
+                                    <Switch AbsoluteLayout.LayoutBounds="120,580,380,80"
                                                 x:Name="hiddenProduct"/>
 
-                                        <Label Text="Hidden product: "
+                                    <Label Text="Hidden product: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,630,90,50"/>
 
-                                        <Button 
+                                    <Button 
                                                 AbsoluteLayout.LayoutBounds="120,670,220,50"
                                                 CornerRadius="10"
                                                 Grid.Column="1"
+                                        Clicked="Button_Clicked_2"
                                                 BackgroundColor="Black"
                                                 TextColor="White"
                                                 Text="Insert product"/>
 
-                                    </AbsoluteLayout>
-                                </Frame>
+                                    <Button Text="hej" IsVisible="false" x:Name="Registerworked"/>
+
+                                </StackLayout>
+
                             </ScrollView>
+                            
                         </Frame>
                     </Grid>
                 </Frame>

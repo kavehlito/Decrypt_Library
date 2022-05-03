@@ -101,5 +101,16 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
+
+        public static void CreateProduct(Product product)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var productList = db.Products;
+
+                productList.Add(product);
+                db.SaveChanges();
+            }
+        }
     }
 }

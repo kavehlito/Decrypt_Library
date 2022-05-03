@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace Decrypt_Library.Readers
@@ -84,7 +85,6 @@ namespace Decrypt_Library.Readers
                     return true;
         }*/
 
-        */
 
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
@@ -131,7 +131,7 @@ namespace Decrypt_Library.Readers
             if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
                 return false;
 
-            if (convertedUserIdInput != languageList.Count)
+            if (convertedUserIdInput > languageList.Count || convertedUserIdInput < 1)
                 return false;
 
             return true;
@@ -144,7 +144,7 @@ namespace Decrypt_Library.Readers
             if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
                 return false;
 
-            if (convertedUserIdInput != categoryList.Count)
+            if (convertedUserIdInput > categoryList.Count || convertedUserIdInput < 1)
                 return false;
 
             return true;
@@ -157,7 +157,7 @@ namespace Decrypt_Library.Readers
             if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
                 return false;
 
-            if (convertedUserIdInput != shelfList.Count)
+            if (convertedUserIdInput > shelfList.Count || convertedUserIdInput < 1)
                 return false;
 
             return true;
@@ -170,7 +170,7 @@ namespace Decrypt_Library.Readers
             if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
                 return false;
 
-            if (convertedUserIdInput != audienceId.Count)
+            if (convertedUserIdInput > audienceId.Count || convertedUserIdInput < 1)
                 return false;
 
             return true;
@@ -178,12 +178,12 @@ namespace Decrypt_Library.Readers
 
         public static bool LegalIDRangeMediaId(string userInput, out int convertedUserIdInput)
         {
-            var audienceId = EntityFrameworkCode.EntityframeworkMediaTypes.ShowAllMediaTypes();
+            var MediaId = EntityFrameworkCode.EntityframeworkMediaTypes.ShowAllMediaTypes();
 
             if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
                 return false;
 
-            if (convertedUserIdInput != audienceId.Count)
+            if (convertedUserIdInput > MediaId.Count || convertedUserIdInput < 1)
                 return false;
 
             return true;
@@ -213,8 +213,25 @@ namespace Decrypt_Library.Readers
 
         }
 
-        
+        public static bool LongReaderLengthEqualsTo(string userInput, int selectedNumber, out long num)
+        {
+            if (!LongReaderOutLong(userInput, out num))
+                return false;
+
+            if (num != selectedNumber)
+                return false;
+
+            return true;
+        }
+
         #endregion
+        public static bool ReadDateTime(string userInput, out DateTime date)
+        {
+            if (!DateTime.TryParseExact(userInput, "yyyy/MM/dd", null, DateTimeStyles.None, out date))
+                return false;
+            
+            return true;
+        }
 
     }
 }
