@@ -16,5 +16,10 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
         }
+
+        private void Frame_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
