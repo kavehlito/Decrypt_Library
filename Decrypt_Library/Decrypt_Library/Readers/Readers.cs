@@ -37,20 +37,18 @@ namespace Decrypt_Library.Readers
                 return false;
 
             return true;
-        }
-        
-        public static bool PassWordReader(string passwordInput)
+        } 
+        public static bool IsStringAndIsInt(string userInput)
         {
-            if (!passwordInput.Any(char.IsLetter) || string.IsNullOrEmpty(passwordInput))
-                return false;
+            if (userInput.Any(char.IsDigit) && userInput.Any(char.IsLetter))
+                return true;
 
-            return true;
+            return false;
         }
-        
         public static bool StringPasswordCorrect(string passwordInput, int minNum, bool digits)
         {
 
-            if (!PassWordReader(passwordInput))
+            if (!IsStringAndIsInt(passwordInput))
                 return false;
 
             if (passwordInput.Length < minNum)
@@ -73,7 +71,9 @@ namespace Decrypt_Library.Readers
 
             return true;
         }
+        
         // reader för personnummer
+        /*
         public static bool SSNReader(string SSNInput, int minNum)
         {
             if (!IntReader(SSNInput, out int num))
@@ -83,6 +83,8 @@ namespace Decrypt_Library.Readers
                     return true;
 
         }
+        */
+        
         public static bool IntEqualsToSelectedNumber(string userInput, int selectedNumber, out int num)
         {
             num = 0;
