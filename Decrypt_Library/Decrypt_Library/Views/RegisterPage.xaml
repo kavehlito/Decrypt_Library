@@ -19,7 +19,7 @@
             
 
             <Frame BorderColor="Black"
-                   HeightRequest="400"
+                   HeightRequest="250"
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
@@ -32,7 +32,7 @@
                                Margin="0,5,0,0"/>
 
                         <Entry WidthRequest="280"
-                               Placeholder="Måste vara minst 5 bokstäver lång!"
+                               Placeholder="Måste vara minst 3 bokstäver lång!"
                                Completed="Entry_Completed"
                                x:Name="Username"
                                />
@@ -52,19 +52,89 @@
                     </AbsoluteLayout>
 
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Personummer:"
-                               Margin="7,5,0,0"/>
+                        <Label Text="Lösenord:"
+                               Margin="0,5,0,0"/>
+
+                        <Entry WidthRequest="300"
+                               Placeholder="Minst 1 siffra och 8 karaktärer långt!"
+                               Completed="Entry_Completed"
+                               x:Name="Password"
+                               />
+                    </StackLayout>
+                    
+                    <AbsoluteLayout>
+                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongPasswordInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                    </AbsoluteLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Personnummer:"
+                               Margin="0,5,0,0"/>
 
                         <Entry WidthRequest="285"
                                Placeholder="Minst 10 siffror och utan bindestreck!"
+                               Completed="Entry_Completed"
+                               x:Name="SSN"
                                />
+                    </StackLayout>
+                    <AbsoluteLayout>
+                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongSSNInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                    </AbsoluteLayout>
 
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Email:"
+                               Margin="0,5,0,0"/>
+                        <Entry WidthRequest="285"
+                               Placeholder="abc@hotmail.com"
+                               Completed="Entry_Completed"
+                               x:Name="Email"
+                               />
+                    </StackLayout>
+                    
+                    <AbsoluteLayout>
+                            <Label Text="Ogiltigt email,måste vara minst 5 karaktärer långt"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongEmailInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                     </AbsoluteLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Telefon:"
+                               Margin="0,5,0,0"/>
+                        <Entry WidthRequest="285"
+                               Placeholder="702123456"
+                               Completed="Entry_Completed"
+                               x:Name="Phone"
+                               />
                     </StackLayout>
 
+                    <AbsoluteLayout>
+                        <Label Text="Ogiltigt nummer, ska vara 10 siffror"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongPhoneInput"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
+                    </AbsoluteLayout>
 
 
                 </StackLayout>
-
+               
             </Frame>
 
         </Grid>

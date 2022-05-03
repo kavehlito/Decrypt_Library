@@ -19,7 +19,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
-        public static List<CategoryName_Product> ShowSpecificProductTitle(string selectedTitle)
+        public static List<CategoryName_Product> ShowSearchedProduct(string selectedTitle)
         {
             using (var db = new Decrypt_LibraryContext())
             {
@@ -71,21 +71,37 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
-        public static void FindProduct(string productSearch)
+        public static SelectedProduct ShowProductInformation(int productId)
         {
             using (var db = new Decrypt_LibraryContext())
             {
                 var products = (from prod in db.Products
-                                join cate in db.Categories on prod.CategoryId equals cate.Id
-                                select new
-                                {
-                                    Id = prod.Id,
-                                    Title = prod.Title,
-                                    AuthorName = prod.AuthorName,
-                                    Category = cate.CategoriesName
-                                }).ToList();
-                var findProduct = products.Where(p => p.Title.ToLower().Contains(productSearch.ToLower()) || p.Category.ToLower().Contains(productSearch.ToLower()));
+                             join age in db.Audiences on prod.AudienceId equals age.Id
+                             join lang in db.Languages on prod.LanguageId equals lang.Id
+                             join cate in db.Categories on prod.CategoryId equals cate.Id
+                             join shelf in db.Shelves on prod.ShelfId equals shelf.Id
+                             select new SelectedProduct
+                             {
+                                 Id = prod.Id,
+                                 Audience = age.AgeGroup,
+                                 
+                                 Category = cate.CategoriesName,
+                                 Shelf = shelf.Shelfname,
+                                 Title = prod.Title,
+                                 AuthorName = prod.AuthorName,
+                                 Description = prod.Description,
+                                 Narrator = prod.Narrator,
+                                 Isbn = prod.Isbn,
+                                 Publisher = prod.Publisher,
+                                 Pages = prod.Pages,
+                                 Playtime = prod.Playtime,
+                                 PublishDate = prod.PublishDate,
+                                 Status = prod.Status
+                             }).ToList();                
 
+                var selectProduct = products.FirstOrDefault(sp => sp.Id == productId);
+
+                return selectProduct;
             }
         }
 

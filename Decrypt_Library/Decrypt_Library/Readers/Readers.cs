@@ -38,7 +38,30 @@ namespace Decrypt_Library.Readers
                 return false;
 
             return true;
+        } 
+        public static bool IsStringAndIsInt(string userInput)
+        {
+            if (userInput.Any(char.IsDigit) && userInput.Any(char.IsLetter))
+                return true;
+
+            return false;
         }
+        public static bool StringPasswordCorrect(string passwordInput, int minNum, bool digits)
+        {
+
+            if (!IsStringAndIsInt(passwordInput))
+                return false;
+
+            if (passwordInput.Length < minNum)
+                return false;
+
+            if(digits == false)
+                return false;
+
+            return true;
+        }
+        // Reader för email
+        
         #endregion
 
         #region int reader
@@ -48,6 +71,18 @@ namespace Decrypt_Library.Readers
                 return false;
 
             return true;
+        }
+        
+        // reader för personnummer
+        /*
+        public static bool SSNReader(string SSNInput, int minNum)
+        {
+            if (!IntReader(SSNInput, out int num))
+                return false;
+
+            if(!SSNInput < minNum)
+                    return true;
+
         }
 
         public static bool IntReaderConvertStringToInt(string userInput, out int num)

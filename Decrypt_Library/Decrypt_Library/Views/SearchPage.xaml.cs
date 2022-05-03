@@ -25,12 +25,15 @@ namespace Decrypt_Library.Views
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ProductList.ItemsSource = EntityframeworkProducts.ShowSpecificProductTitle(e.NewTextValue);
+            ProductList.ItemsSource = EntityframeworkProducts.ShowSearchedProduct(e.NewTextValue);
         }
 
-        private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            var selectedItem = (Product)e.Item;
+            
+            await Navigation.PushAsync(new SelectedProductView(selectedItem.Id));
+            ((ListView)sender).SelectedItem = null;
         }
 
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)

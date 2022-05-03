@@ -1,12 +1,9 @@
 ﻿using Decrypt_Library.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Decrypt_Library.EntityFrameworkCode;
 
 namespace Decrypt_Library.Views
 {
@@ -21,47 +18,48 @@ namespace Decrypt_Library.Views
         {
             var user = new User();
 
-            bool correctInput = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 5,15);
-            bool correctPassword = false;
+            bool correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
+            bool correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
             bool correctEmail = false;
             bool correctPhone = false;
             bool correctSSN = false;
 
-            if (!correctInput)
+            if (!correctUserName)
                 wrongUsernameInput.IsVisible = true;
             else
                 wrongUsernameInput.IsVisible = false;
-
 
             if (!correctPassword)
-                wrongUsernameInput.IsVisible = true;
+                wrongPasswordInput.IsVisible = true;
             else
-                wrongUsernameInput.IsVisible = false;
+                wrongPasswordInput.IsVisible = false;
 
-            if (!correctEmail)
-                wrongUsernameInput.IsVisible = true;
+            if(!correctEmail)
+                wrongEmailInput.IsVisible = true;
             else
-                wrongUsernameInput.IsVisible = false;
+                wrongEmailInput.IsVisible = false;
 
-            if (!correctPhone)
-                wrongUsernameInput.IsVisible = true;
+            if(!correctPhone)
+                wrongPhoneInput.IsVisible = true;
             else
-                wrongUsernameInput.IsVisible = false;
-
+                wrongPhoneInput.IsVisible = false;
 
             if (!correctSSN)
-                wrongUsernameInput.IsVisible = true;
+                wrongSSNInput.IsVisible = true;
             else
-                wrongUsernameInput.IsVisible = false;
+                wrongSSNInput.IsVisible = false;
 
 
-            bool completeRegistration = correctInput 
-                                        && correctPassword 
-                                        && correctEmail 
-                                        && correctPhone 
-                                        && correctSSN;
+            bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
 
-
+            if (completeRegistration)
+            {
+                user.UserName = Username.Text;
+                user.Password = Password.Text;
+                user.Email = Email.Text;
+                user.Phonenumber = long.Parse(Phone.Text);
+                user.Ssn = long.Parse(SSN.Text);
+            }
         }
     }
 }
