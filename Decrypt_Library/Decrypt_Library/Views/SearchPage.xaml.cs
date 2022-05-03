@@ -39,7 +39,7 @@ namespace Decrypt_Library.Views
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             var userInput = sender as SearchBar;
-
+            
         }
     }
 }

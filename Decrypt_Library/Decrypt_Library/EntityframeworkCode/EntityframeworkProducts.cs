@@ -1,9 +1,6 @@
 ﻿using Decrypt_Library.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
@@ -38,6 +35,38 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return findProduct;
             }
         }
+        public static SelectedProduct ShowProductInformation(int productId)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var products = (from prod in db.Products
+                                join age in db.Audiences on prod.AudienceId equals age.Id
+                                join lang in db.Languages on prod.LanguageId equals lang.Id
+                                join cate in db.Categories on prod.CategoryId equals cate.Id
+                                join shelf in db.Shelves on prod.ShelfId equals shelf.Id
+                                select new SelectedProduct
+                                {
+                                    Id = prod.Id,
+                                    Audience = age.AgeGroup,
+                                    Category = cate.CategoriesName,
+                                    Shelf = shelf.Shelfname,
+                                    Title = prod.Title,
+                                    AuthorName = prod.AuthorName,
+                                    Description = prod.Description,
+                                    Narrator = prod.Narrator,
+                                    Isbn = prod.Isbn,
+                                    Publisher = prod.Publisher,
+                                    Pages = prod.Pages,
+                                    Playtime = prod.Playtime,
+                                    PublishDate = prod.PublishDate,
+                                    Status = prod.Status
+                                }).ToList();
+
+                var selectProduct = products.FirstOrDefault(sp => sp.Id == productId);
+
+                return selectProduct;
+            }
+        }
         public static Product ShowSpecificProductID(int selectedID)
         {
             var products = ShowAllProducts();
@@ -69,39 +98,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                 var product = products.Where(p => p.Id == shelfId);
 
                 return products;
-            }
-        }
-        public static SelectedProduct ShowProductInformation(int productId)
-        {
-            using (var db = new Decrypt_LibraryContext())
-            {
-                var products = (from prod in db.Products
-                             join age in db.Audiences on prod.AudienceId equals age.Id
-                             join lang in db.Languages on prod.LanguageId equals lang.Id
-                             join cate in db.Categories on prod.CategoryId equals cate.Id
-                             join shelf in db.Shelves on prod.ShelfId equals shelf.Id
-                             select new SelectedProduct
-                             {
-                                 Id = prod.Id,
-                                 Audience = age.AgeGroup,
-                                 
-                                 Category = cate.CategoriesName,
-                                 Shelf = shelf.Shelfname,
-                                 Title = prod.Title,
-                                 AuthorName = prod.AuthorName,
-                                 Description = prod.Description,
-                                 Narrator = prod.Narrator,
-                                 Isbn = prod.Isbn,
-                                 Publisher = prod.Publisher,
-                                 Pages = prod.Pages,
-                                 Playtime = prod.Playtime,
-                                 PublishDate = prod.PublishDate,
-                                 Status = prod.Status
-                             }).ToList();                
-
-                var selectProduct = products.FirstOrDefault(sp => sp.Id == productId);
-
-                return selectProduct;
             }
         }
     }
