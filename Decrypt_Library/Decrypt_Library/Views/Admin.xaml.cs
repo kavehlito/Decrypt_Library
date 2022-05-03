@@ -92,22 +92,36 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
         }
 
-        private void Button_InsertProduct(object sender, EventArgs e)
-        {
-
-        }
 
         private void Entry_ProductInputCompleted(object sender, EventArgs e)
         {
+
             BookTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
             DescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
             AuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
             PublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
+            NarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
 
-            PagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out int pagesinput);
+            PagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out int pagesInput);
+            PlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out double playTime);
+
             LanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out int convertedUserIdInput);
+            ShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(entryShelfId.Text, out int shelfId);
+            ShelfIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out int categoryId);
+            AudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out int audienceId);
+            AudienceIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out int mediaId);
+            IsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out long Isbn);
 
-            
+            StatusCorrect = inStock.IsToggled;
+            NewProductCorrect = newProduct.IsToggled;
+            HiddenProductCorrect = hiddenProduct.IsToggled;
+
+            if (!BookTitleCorrect)
+                entryTitle.BackgroundColor = Color.MediumVioletRed;
+            else
+                entryTitle.BackgroundColor = Color.White;
+
+
 
             CorrectProductInput = MediaIdCorrect
                                   && StatusCorrect

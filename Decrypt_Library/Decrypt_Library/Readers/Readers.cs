@@ -74,6 +74,8 @@ namespace Decrypt_Library.Readers
         }
         
         // reader för personnummer
+
+
         /*
         public static bool SSNReader(string SSNInput, int minNum)
         {
@@ -84,6 +86,8 @@ namespace Decrypt_Library.Readers
                     return true;
 
         }
+
+        */
 
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
@@ -136,7 +140,7 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
-        public static bool LegalIDRangeCategory(string userInput, out int convertedUserIdInput)
+        public static bool LegalIDRangeCategoryId(string userInput, out int convertedUserIdInput)
         {
             var categoryList = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
 
@@ -149,10 +153,49 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
+        public static bool LegalIDRangeShelfId(string userInput, out int convertedUserIdInput)
+        {
+            var shelfList = EntityFrameworkCode.EntityframeworkShelf.ShowAllShelves();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput != shelfList.Count)
+                return false;
+
+            return true;
+        }
+
+        public static bool LegalIDRangeAudienceId(string userInput, out int convertedUserIdInput)
+        {
+            var audienceId = EntityFrameworkCode.EntityframeworkAudience.ShowAllAudiences();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput != audienceId.Count)
+                return false;
+
+            return true;
+        }
+
+        public static bool LegalIDRangeMediaId(string userInput, out int convertedUserIdInput)
+        {
+            var audienceId = EntityFrameworkCode.EntityframeworkMediaTypes.ShowAllMediaTypes();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput != audienceId.Count)
+                return false;
+
+            return true;
+        }
+
         #endregion
 
         #region Double readers
-        public static bool DoubleReader(string userInput, out double num)
+        public static bool DoubleReaderOutDouble(string userInput, out double num)
         {
             if (Double.TryParse(userInput, out num))
                 return true;
@@ -162,10 +205,18 @@ namespace Decrypt_Library.Readers
 
         #endregion
 
-        #region Default readers
+        #region Long Readers
 
+        public static bool LongReaderOutLong(string userInput, out long num)
+        {
+            if(long.TryParse(userInput, out num))
+                return true;
 
+            return false;
+
+        }
 
         #endregion
+
     }
 }

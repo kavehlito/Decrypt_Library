@@ -147,16 +147,7 @@
 
                                         </Frame>
 
-                                        <Label Text="In Stock: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,70,90,50"/>
-
-                                        <Frame AbsoluteLayout.LayoutBounds="100,40,380,80"
-                                   >
-                                            <Switch />
-                                        </Frame>
-
+        
                                         <Label Text="Description: "
                                        FontSize="12"
                                        FontAttributes="Bold"
@@ -357,22 +348,15 @@
 
                                         </Frame>
 
-                                        <Label Text="NewProduct: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,510,90,50"/>
-
-                                        <Frame AbsoluteLayout.LayoutBounds="100,480,380,80">
-                                            <Switch/>
-                                        </Frame>
+                      
 
 
                                         <Label Text="Audience Id: "
                                        FontSize="12"
                                        FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,550,90,50"/>
+                                       AbsoluteLayout.LayoutBounds="0,510,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,520,380,80"
+                                        <Frame AbsoluteLayout.LayoutBounds="100,480,380,80"
                                    >
                                             <Entry
                                     PlaceholderColor="Gray"
@@ -387,21 +371,14 @@
 
                                         </Frame>
 
-                                        <Label Text="NewProduct: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,590,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,560,380,80">
-                                            <Switch/>
-                                        </Frame>
 
                                         <Label Text="Media Id: "
                                        FontSize="12"
                                        FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,630,90,50"/>
+                                       AbsoluteLayout.LayoutBounds="0,70,90,50"/>
 
-                                        <Frame AbsoluteLayout.LayoutBounds="100,600,380,80"
+                                        <Frame AbsoluteLayout.LayoutBounds="100,40,380,80"
                                    >
                                             <Entry
                                     PlaceholderColor="Gray"
@@ -416,11 +393,35 @@
 
                                         </Frame>
 
+                                        <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"  
+                                                x:Name="inStock"/>
+
+                                        <Label Text="In Stock: "
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0,550,90,50"/>
+
+                                        <Switch AbsoluteLayout.LayoutBounds="120,540,380,80"
+                                                x:Name="newProduct"
+                                               />
+
+                                        <Label Text="New Product: "
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0,590,90,50"/>
+
+                                        <Switch AbsoluteLayout.LayoutBounds="120,580,380,80"
+                                                x:Name="hiddenProduct"/>
+
+                                        <Label Text="Hidden product: "
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0,630,90,50"/>
+
                                         <Button 
                                                 AbsoluteLayout.LayoutBounds="120,670,220,50"
                                                 CornerRadius="10"
                                                 Grid.Column="1"
-                                                Clicked="Button_InsertProduct"
                                                 BackgroundColor="Black"
                                                 TextColor="White"
                                                 Text="Insert product"/>
@@ -429,9 +430,7 @@
                                 </Frame>
                             </ScrollView>
                         </Frame>
-
                     </Grid>
-
                 </Frame>
             
             <Frame Grid.Column="1"
