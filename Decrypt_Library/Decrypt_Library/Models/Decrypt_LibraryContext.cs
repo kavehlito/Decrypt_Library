@@ -124,7 +124,7 @@ namespace Decrypt_Library.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Country)
+                entity.Property(e => e.Languages)
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });

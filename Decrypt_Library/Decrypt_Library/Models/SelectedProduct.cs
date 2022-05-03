@@ -8,7 +8,7 @@ namespace Decrypt_Library.Models
     {
         public int Id { get; set; }
         public string Audience { get; set; }
-        //public string Language { get; set; }
+        public string Language { get; set; }
         public string Category { get; set; }
         public string Shelf { get; set; }
         public string Title { get; set; }

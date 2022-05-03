@@ -48,6 +48,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                 {
                                     Id = prod.Id,
                                     Audience = age.AgeGroup,
+                                    Language = lang.Languages,
                                     Category = cate.CategoriesName,
                                     Shelf = shelf.Shelfname,
                                     Title = prod.Title,

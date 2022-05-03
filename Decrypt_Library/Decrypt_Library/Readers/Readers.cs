@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Decrypt_Library.Readers
 {
@@ -38,7 +36,7 @@ namespace Decrypt_Library.Readers
                 return false;
 
             return true;
-        } 
+        }
         public static bool IsStringAndIsInt(string userInput)
         {
             if (userInput.Any(char.IsDigit) && userInput.Any(char.IsLetter))
@@ -55,13 +53,13 @@ namespace Decrypt_Library.Readers
             if (passwordInput.Length < minNum)
                 return false;
 
-            if(digits == false)
+            if (digits == false)
                 return false;
 
             return true;
         }
         // Reader för email
-        
+
         #endregion
 
         #region int reader
@@ -72,7 +70,7 @@ namespace Decrypt_Library.Readers
 
             return true;
         }
-        
+
         // reader för personnummer
 
 
@@ -84,8 +82,7 @@ namespace Decrypt_Library.Readers
 
             if(!SSNInput < minNum)
                     return true;
-
-        }
+        }*/
 
         */
 
@@ -216,6 +213,7 @@ namespace Decrypt_Library.Readers
 
         }
 
+        
         #endregion
 
     }
