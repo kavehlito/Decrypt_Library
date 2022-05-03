@@ -7,6 +7,7 @@
             <Label Text="hello"/>
             <Label Text="{Binding Title}"/>
             <Label Text="{Binding .}"/>
+            <Label Text="end"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
