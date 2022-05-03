@@ -44,9 +44,18 @@
     <EmbeddedResource Update="Views\SearchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\SelectedProductView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="General\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\SelectedProductView.xaml.cs">
+      <DependentUpon>SelectedProductView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
