@@ -18,6 +18,23 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
+        public static bool EmailReader(string emailInput)
+        {
+            if (StringReader(emailInput))
+                return true;
+
+            if (IsStringAndIsInt(emailInput))
+                return true;
+
+            if (!emailInput.Contains("@"))
+                return false;
+
+            if (emailInput.Any(char.IsPunctuation))
+                return true;
+
+            return true;
+
+        }
 
         public static bool StringReader(string userInput)
         {
@@ -71,21 +88,33 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
-        // reader för personnummer
-
-
-        /*
-        public static bool SSNReader(string SSNInput, int minNum)
+        public static bool PhoneNrReader(string phoneNrInput, int minNum)
         {
-            if (!IntReader(SSNInput, out int num))
+            if (IntReaderConvertStringToInt(phoneNrInput, out int num))
+                return true;
+
+            if (IntReaderString(phoneNrInput))
+                return true;
+
+            if (num == minNum)
                 return false;
 
-            if(!SSNInput < minNum)
-                    return true;
-        }*/
+            return true;
+        }
 
-        */
+        public static bool SSNReader(string SSNInput, int minNum)
+        {
+            if (IntReaderConvertStringToInt(SSNInput, out int num))
+                return true;
 
+            if (IntReaderString(SSNInput))
+                return true;
+
+            if (num != minNum)
+                return false;
+
+            return true;
+        
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
             if (!int.TryParse(userInput, out num))
@@ -119,7 +148,7 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
- 
+
         #endregion
 
         #region default readers
@@ -218,3 +247,5 @@ namespace Decrypt_Library.Readers
 
     }
 }
+
+

@@ -25,7 +25,7 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            //Content.Text = MyPages.LateReturn();
+            Content.Text = MyPages.LateReturn();
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)

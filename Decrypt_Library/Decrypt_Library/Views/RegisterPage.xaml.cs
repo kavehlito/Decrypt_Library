@@ -20,9 +20,9 @@ namespace Decrypt_Library.Views
 
             bool correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
             bool correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
-            bool correctEmail = false;
-            bool correctPhone = false;
-            bool correctSSN = false;
+            bool correctEmail = Readers.Readers.EmailReader(Email.Text);
+            bool correctPhone = Readers.Readers.PhoneNrReader(Phone.Text, 10);
+            bool correctSSN = Readers.Readers.SSNReader(SSN.Text, 10);
 
             if (!correctUserName)
                 wrongUsernameInput.IsVisible = true;
@@ -59,6 +59,8 @@ namespace Decrypt_Library.Views
                 user.Email = Email.Text;
                 user.Phonenumber = long.Parse(Phone.Text);
                 user.Ssn = long.Parse(SSN.Text);
+                user.UserTypeId = 3;
+                EntityframeworkUsers.CreateUser(user);
             }
         }
     }

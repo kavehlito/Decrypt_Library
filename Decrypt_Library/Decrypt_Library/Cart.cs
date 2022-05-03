@@ -58,9 +58,23 @@ namespace Decrypt_Library
                 {
                     return false;
                 }
+                UpdateBookStatus(productId);
                 return true;
             }
-        } 
+        }
+
+        public static void UpdateBookStatus(int productId)
+        {
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var productList = db.Products;
+                var product = productList.SingleOrDefault(p => p.Id == productId);
+                product.Status = false;
+                db.SaveChanges();
+            }
+
+        }
+
 
         public static bool CheckoutCart(int userId)
         {

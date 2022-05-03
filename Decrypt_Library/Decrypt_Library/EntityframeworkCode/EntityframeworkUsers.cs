@@ -6,7 +6,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 {
     public class EntityframeworkUsers
     {
-        public static List<Models.User> ShowAllUsers()
+        public static List<User> ShowAllUsers()
         {
             using (var db = new Decrypt_LibraryContext())
             {
