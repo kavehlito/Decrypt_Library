@@ -1,13 +1,9 @@
 ﻿using Decrypt_Library.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
-    internal class EntityframeworkUsers
+    public class EntityframeworkUsers
     {
         public static List<Models.User> ShowAllUsers()
         {

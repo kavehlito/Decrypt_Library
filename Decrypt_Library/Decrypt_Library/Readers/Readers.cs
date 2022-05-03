@@ -37,19 +37,54 @@ namespace Decrypt_Library.Readers
                 return false;
 
             return true;
-        }
-        #endregion
-
-        #region int reader
-        public static bool IntReader(string userInput, out int num)
+        } 
+        public static bool IsStringAndIsInt(string userInput)
         {
-            num = 0;
-            if (Int32.TryParse(userInput, out num))
+            if (userInput.Any(char.IsDigit) && userInput.Any(char.IsLetter))
                 return true;
 
             return false;
         }
+        public static bool StringPasswordCorrect(string passwordInput, int minNum, bool digits)
+        {
 
+            if (!IsStringAndIsInt(passwordInput))
+                return false;
+
+            if (passwordInput.Length < minNum)
+                return false;
+
+            if(digits == false)
+                return false;
+
+            return true;
+        }
+        // Reader för email
+        
+        #endregion
+
+        #region int reader
+        public static bool IntReaderString(string userInput)
+        {
+            if (userInput.Any(char.IsLetter))
+                return false;
+
+            return true;
+        }
+        
+        // reader för personnummer
+        /*
+        public static bool SSNReader(string SSNInput, int minNum)
+        {
+            if (!IntReader(SSNInput, out int num))
+                return false;
+
+            if(!SSNInput < minNum)
+                    return true;
+
+        }
+        */
+        
         public static bool IntEqualsToSelectedNumber(string userInput, int selectedNumber, out int num)
         {
             num = 0;

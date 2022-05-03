@@ -35,5 +35,11 @@ namespace Decrypt_Library.Views
             await Navigation.PushAsync(new SelectedProductView(selectedItem.Id));
             ((ListView)sender).SelectedItem = null;
         }
+
+        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var userInput = sender as SearchBar;
+
+        }
     }
 }
