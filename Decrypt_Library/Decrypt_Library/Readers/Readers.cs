@@ -84,8 +84,7 @@ namespace Decrypt_Library.Readers
                     return true;
         }*/
 
-        */
-
+        
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
             if (!int.TryParse(userInput, out num))

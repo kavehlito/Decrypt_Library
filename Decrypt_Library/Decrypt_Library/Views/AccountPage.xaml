@@ -12,15 +12,6 @@
             <Button x:Name="MyLoanHistory" Text="" Clicked="MyLoanHistory_Clicked"/>
 
             <Label x:Name="Content" Text="" />
-            <ListView>
-                <ListView.ItemTemplate>
-                    <DataTemplate></DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-
-
-
 
         </StackLayout>
     </ContentPage.Content>
