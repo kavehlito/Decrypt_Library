@@ -114,8 +114,9 @@ namespace Decrypt_Library.Readers
                 return false;
 
             return true;
-        
-        public static bool IntReaderConvertStringToInt(string userInput, out int num)
+        }
+
+        static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
             if (!int.TryParse(userInput, out num))
                 return false;
@@ -235,14 +236,14 @@ namespace Decrypt_Library.Readers
 
         public static bool LongReaderOutLong(string userInput, out long num)
         {
-            if(long.TryParse(userInput, out num))
+            if (long.TryParse(userInput, out num))
                 return true;
 
             return false;
 
         }
 
-        
+
         #endregion
 
     }
