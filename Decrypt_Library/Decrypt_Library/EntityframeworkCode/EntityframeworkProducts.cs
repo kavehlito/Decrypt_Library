@@ -88,5 +88,31 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             }
         }
+
+        public static void RemoveSpecificProductID(int selectedID)
+        {
+            var products = ShowAllProducts();
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var product = products.Where(p => p.Id == selectedID).SingleOrDefault();
+
+                var productList = db.Products;
+
+                productList.Remove(product);
+                db.SaveChanges();
+            }
+        }
+
+        public static void AddAProduct(Product product)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var productList = db.Products;
+
+                productList.Add(product);
+                db.SaveChanges();
+            }
+        }
     }
 }

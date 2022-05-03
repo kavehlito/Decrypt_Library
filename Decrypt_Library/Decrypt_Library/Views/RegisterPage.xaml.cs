@@ -27,18 +27,41 @@ namespace Decrypt_Library.Views
             bool correctPhone = false;
             bool correctSSN = false;
 
+            if (!correctInput)
+                wrongUsernameInput.IsVisible = true;
+            else
+                wrongUsernameInput.IsVisible = false;
+
+
+            if (!correctPassword)
+                wrongUsernameInput.IsVisible = true;
+            else
+                wrongUsernameInput.IsVisible = false;
+
+            if (!correctEmail)
+                wrongUsernameInput.IsVisible = true;
+            else
+                wrongUsernameInput.IsVisible = false;
+
+            if (!correctPhone)
+                wrongUsernameInput.IsVisible = true;
+            else
+                wrongUsernameInput.IsVisible = false;
+
+
+            if (!correctSSN)
+                wrongUsernameInput.IsVisible = true;
+            else
+                wrongUsernameInput.IsVisible = false;
+
+
             bool completeRegistration = correctInput 
                                         && correctPassword 
                                         && correctEmail 
                                         && correctPhone 
                                         && correctSSN;
 
-            if (completeRegistration)
-            {
-                user.UserName = Username.Text;
-            }
-            else
-                wrongUsernameInput.IsVisible = true;
+
         }
     }
 }
