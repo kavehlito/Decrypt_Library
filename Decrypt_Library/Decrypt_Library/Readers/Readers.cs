@@ -20,6 +20,7 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
+
         public static bool StringReader(string userInput)
         {
             if (!userInput.Any(char.IsLetter) || string.IsNullOrEmpty(userInput))
@@ -83,8 +84,15 @@ namespace Decrypt_Library.Readers
                     return true;
 
         }
-        */
-        
+
+        public static bool IntReaderConvertStringToInt(string userInput, out int num)
+        {
+            if (!int.TryParse(userInput, out num))
+                return false;
+
+            return true;
+        }
+
         public static bool IntEqualsToSelectedNumber(string userInput, int selectedNumber, out int num)
         {
             num = 0;
@@ -109,6 +117,55 @@ namespace Decrypt_Library.Readers
             }
             return true;
         }
+
+ 
+        #endregion
+
+        #region default readers
+
+        public static bool LegalIDRangeLanguage(string userInput, out int convertedUserIdInput)
+        {
+            var languageList = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput != languageList.Count)
+                return false;
+
+            return true;
+        }
+
+        public static bool LegalIDRangeCategory(string userInput, out int convertedUserIdInput)
+        {
+            var categoryList = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput != categoryList.Count)
+                return false;
+
+            return true;
+        }
+
+        #endregion
+
+        #region Double readers
+        public static bool DoubleReader(string userInput, out double num)
+        {
+            if (Double.TryParse(userInput, out num))
+                return true;
+
+            return false;
+        }
+
+        #endregion
+
+        #region Default readers
+
+
+
         #endregion
     }
 }

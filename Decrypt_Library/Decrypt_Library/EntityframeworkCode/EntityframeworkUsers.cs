@@ -7,11 +7,9 @@ namespace Decrypt_Library.EntityFrameworkCode
     {
         public static List<Models.User> ShowAllUsers()
         {
-            var users = new List<User>();
-
             using (var db = new Decrypt_LibraryContext())
             {
-                var user = db.Users;
+                var users = db.Users.ToList();
                 return users;
             }
         }

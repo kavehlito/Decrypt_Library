@@ -10,11 +10,9 @@ namespace Decrypt_Library.EntityFrameworkCode
     {
         public static List<Models.Language> ShowAllLanguages()
         {
-            var languages = new List<Models.Language>();
-
             using (var db = new Models.Decrypt_LibraryContext())
             {
-                languages = db.Languages.ToList();
+                var languages = db.Languages.ToList();
                 return languages;
             }
         }
