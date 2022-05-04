@@ -15,14 +15,13 @@ namespace Decrypt_Library.Views
     {
         public SelectedProductView()
         {
-            InitializeComponent();
-            this.BindingContext = this;
+            InitializeComponent();           
         }
         public SelectedProductView(int selectedId)
         {
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
-            BindingContext = this;
+            //BindingContext = EntityframeworkProducts.ShowSpecificProductID(selectedId);
         }
     }
 }

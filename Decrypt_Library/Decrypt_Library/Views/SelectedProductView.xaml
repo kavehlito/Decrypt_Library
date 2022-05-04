@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.SelectedProductView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="hello"/>
-            <Label Text="{Binding Title}"/>
-            <Label Text="{Binding .}"/>
-            <Label Text="end"/>
+        <StackLayout >
+            <Label Text="{Binding Title, StringFormat='Titel: {0}'}"/>
+            <Label Text="{Binding AuthorName, StringFormat='Författare: {0}'}"/>
+            <Label Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}"/>
+            <Label Text="{Binding Language, StringFormat='Språk: {0}'}"/>
+            <Label Text="{Binding Category, StringFormat='Kategori: {0}'}"/>
+            <Label Text="{Binding Description, StringFormat='Beskrivning: {0}'}"/>
+            <Label Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}"/>
+            <Label Text="{Binding Isbn, StringFormat='ISBN: {0}'}"/>
+            <Label Text="{Binding Publisher, StringFormat='Förlag: {0}'}"/>
+            <Label Text="{Binding Pages, StringFormat='Antal Sidor: {0}'}"/>
+            <Label Text="{Binding Playtime, StringFormat='Speltid: {0}'}"/>
+            <Label Text="{Binding PublishDate, StringFormat='Utgiven: {0}'}"/>
+            <Label Text="{Binding Status, StringFormat='Är boken inne?: {0}'}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
