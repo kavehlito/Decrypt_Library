@@ -867,9 +867,109 @@
 
     <ContentPage Title="Events">
 
-        <StackLayout>
-            <Label Text="3"/>
-        </StackLayout>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame BackgroundColor="Black" 
+                   Grid.Column="1"
+                   HeightRequest="400"
+                   CornerRadius="10"
+                   WidthRequest="500"
+                   Grid.Row="1">
+
+                <StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+
+                        <Label TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                               HorizontalOptions="CenterAndExpand"
+                           Text="Lägg till ett event"/>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Lägg till ett event"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Visa event"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                                    Clicked="ShowAllEvents_Pressed"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+
+                    <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Eventnamn"/>
+                    <Entry x:Name="entryEventstab2"
+                           TextChanged="entryEventstab2_TextChanged">
+
+                    </Entry>
+
+                    <ListView x:Name="eventList"
+                              >
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <Frame>
+                                        <StackLayout Orientation="Horizontal">
+
+                                            <Label Text="{Binding Id}"
+                                            TextColor="White"/>
+                                            <Label Text="{Binding EventName}"
+                                            TextColor="White"/>
+
+                                            <Label Text="{Binding Description}"
+                                            TextColor="White"/>
+
+                                            <Label Text="{Binding Time}"
+                                            TextColor="White"/>
+                                            
+                                            
+
+                                        </StackLayout>
+                                    </Frame>
+
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+
+                </StackLayout>
+
+            </Frame>
+
+        </Grid>
+
+
 
     </ContentPage>
 
@@ -882,7 +982,6 @@
     <ContentPage Title="Språk">
 
         <Label Text="5"/>
-
 
     </ContentPage>
 

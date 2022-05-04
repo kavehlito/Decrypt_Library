@@ -183,7 +183,6 @@ namespace Decrypt_Library.Views
             long isbn = 0;
             DateTime date = DateTime.Now;
 
-
             try
             {
                 ProductTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
@@ -206,13 +205,11 @@ namespace Decrypt_Library.Views
                 ProductStatusCorrect = inStock.IsToggled;
                 ProductNewProductCorrect = newProduct.IsToggled;
                 ProductHiddenProductCorrect = hiddenProduct.IsToggled;
-
             }
             catch (Exception errormessage)
             {
                 DisplayActionSheet("Error", $"{errormessage.Message}", "OK");
             }
-
 
             if (!ProductTitleCorrect)
                 entryTitle.BackgroundColor = Color.MediumVioletRed;
@@ -279,6 +276,11 @@ namespace Decrypt_Library.Views
             else
                 entryISBN.BackgroundColor = Color.White;
 
+            if (!ProductPublishDateCorrect)
+                entryISBN.BackgroundColor = Color.MediumVioletRed;
+            else
+                entryISBN.BackgroundColor = Color.White;
+
             ProductCorrectProductInput = ProductMediaIdCorrect
                                   && ProductStatusCorrect
                                   && ProductIsbnCorrect
@@ -323,7 +325,6 @@ namespace Decrypt_Library.Views
 
                 product = null;
             }
-
         }
 
         #endregion
@@ -343,29 +344,29 @@ namespace Decrypt_Library.Views
             }
             catch (Exception)
             {
-                DisplayAlert("WRONG INPUT", "not allowed to have duplicate categories", "ok");
+                DisplayAlert("Error", "not allowed input", "ok");
             }
-
 
             if (CateogryCorrectCategoryName)
             {
-
-                foreach (var item in categoryList)
-                {
-                    if (item.CategoriesName == entryCategorytab2.Text)
-                        DisplayAlert("WRONG INPUT", "not allowed to have duplicate categories", "ok");
-                    return;
-                }
-
                 category.CategoriesName = entryCategorytab2.Text;
                 EntityFrameworkCode.EntityframeworkCategories.CreateCategory(category);
-
             }
         }
 
         private void entryCategorytab2_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryCategorytab2.Text = e.NewTextValue;
+        }
+
+        private void ShowAllEvents_Pressed(object sender, EventArgs e)
+        {
+            eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
+        }
+
+        private void entryEventstab2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
