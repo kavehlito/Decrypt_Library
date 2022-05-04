@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,17 @@ namespace Decrypt_Library.EntityFrameworkCode
         public static List<Models.Category> ShowAllProdutsInCateogry()
         {
             return null;
+        }
+
+        public static void CreateCategory(Category category)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var categoryList = db.Categories;
+
+                categoryList.Add(category);
+                db.SaveChanges();
+            }
         }
     }
 }

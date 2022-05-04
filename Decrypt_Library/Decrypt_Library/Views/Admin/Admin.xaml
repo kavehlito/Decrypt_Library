@@ -396,7 +396,7 @@
                                                 AbsoluteLayout.LayoutBounds="120,670,220,50"
                                                 CornerRadius="10"
                                                 Grid.Column="1"
-                                        Clicked="Button_Clicked_2"
+                                        Clicked="CompleteProduct_Pressed"
                                                 BackgroundColor="Black"
                                                 TextColor="White"
                                                 Text="Insert product"/>
@@ -766,32 +766,135 @@
     </ContentPage>
 
     <ContentPage Title="Kategorier">
-        
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame BackgroundColor="Black" 
+                   Grid.Column="1"
+                   HeightRequest="400"
+                   CornerRadius="10"
+                   WidthRequest="500"
+                   Grid.Row="1">
+
+                <StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+
+                        <Label TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                               HorizontalOptions="CenterAndExpand"
+                           Text="Lägg till en kategori"/>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Lägg till kategori"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="50"
+                                Clicked="AddCategoryButton_Pressed"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Visa kategorier"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                            Clicked="ShowCategories"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+
+                    <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Kategorinamn"/>
+                    <Entry x:Name="entryCategorytab2"
+                           TextChanged="entryCategorytab2_TextChanged">
+                        
+                    </Entry>
+
+                    <ListView x:Name="categoryList"
+                              >
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <Frame>
+                                        <StackLayout Orientation="Horizontal">
+
+                                            <Label Text="{Binding Id}"
+                                            TextColor="White"/>
+                                            <Label Text="{Binding CategoriesName}"
+                                            TextColor="White"/>
+
+                                        </StackLayout>
+                                    </Frame>
+
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        
+                    </ListView>
+                    
+
+                </StackLayout>
+                
+            </Frame>
+
+        </Grid>
         
     </ContentPage>
 
     <ContentPage Title="Events">
 
+        <StackLayout>
+            <Label Text="3"/>
+        </StackLayout>
 
     </ContentPage>
 
     <ContentPage Title="Anställda">
 
+        <Label Text="4"/>
 
     </ContentPage>
 
     <ContentPage Title="Språk">
+
+        <Label Text="5"/>
 
 
     </ContentPage>
 
     <ContentPage Title="Statistik">
 
+        <Label Text="6"/>
 
     </ContentPage>
 
     <ContentPage Title="Låna">
 
+        <Label Text="7"/>
 
     </ContentPage>
 </TabbedPage>

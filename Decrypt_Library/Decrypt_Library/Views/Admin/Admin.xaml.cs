@@ -19,34 +19,39 @@ namespace Decrypt_Library.Views
         }
 
         Product product = new Product();
+        Category category = new Category();
+
+        //product bools
 
         #region CorrectInputBools
-        bool MediaIdCorrect { get; set; }    
-        bool StatusCorrect { get; set; } 
-        bool IsbnCorrect { get; set; } 
-        bool BookTitleCorrect { get; set; } 
-        bool DescriptionCorrect { get; set; } 
-        bool PagesCorrect { get; set; } 
-        bool PlaytimeCorrect { get; set; } 
-        bool PublisherCorrect { get; set; } 
-        bool LanguageIdCorrect { get; set; } 
-        bool AuthorNameCorrect { get; set; } 
-        bool PublishDateCorrect { get; set; } 
-        bool CategoryIdCorrect { get; set; } 
-        bool ShelfIdCorrect { get; set; } 
-        bool NarratorCorrect { get; set; } 
-        bool NewProductCorrect { get; set; } 
-        bool AudienceIdCorrect { get; set; } 
-        bool HiddenProductCorrect { get; set; }
+        bool ProductMediaIdCorrect { get; set; }    
+        bool ProductStatusCorrect { get; set; } 
+        bool ProductIsbnCorrect { get; set; } 
+        bool ProductTitleCorrect { get; set; } 
+        bool ProductDescriptionCorrect { get; set; } 
+        bool ProductPagesCorrect { get; set; } 
+        bool ProductPlaytimeCorrect { get; set; } 
+        bool ProductPublisherCorrect { get; set; } 
+        bool ProductLanguageIdCorrect { get; set; } 
+        bool ProductAuthorNameCorrect { get; set; } 
+        bool ProductPublishDateCorrect { get; set; } 
+        bool ProductCategoryIdCorrect { get; set; } 
+        bool ProductShelfIdCorrect { get; set; } 
+        bool ProductNarratorCorrect { get; set; } 
+        bool ProductNewProductCorrect { get; set; } 
+        bool ProductAudienceIdCorrect { get; set; } 
+        bool ProductHiddenProductCorrect { get; set; }
 
-        bool CorrectProductInput = false;
+        bool ProductCorrectProductInput = false;
+
+        //category bools
+
+        bool CateogryCorrectCategoryName { get; set; }
+
+
         #endregion
 
-        private void CompleteProductInput()
-        {
-            CorrectProductInput = true;
-        }
-
+        #region Buttons tab1 products
         private void ShowNoWindows()
         {
             AddProduct.IsVisible = false;
@@ -162,8 +167,11 @@ namespace Decrypt_Library.Views
             entryPlaytime.Text = e.NewTextValue;
         }
 
+        #endregion
 
-        private void Button_Clicked_2(object sender, EventArgs e)
+        #region Complete product add
+
+        private void CompleteProduct_Pressed(object sender, EventArgs e)
         {
             int pagesInput = 0;
             double playTime = 0;
@@ -178,26 +186,26 @@ namespace Decrypt_Library.Views
 
             try
             {
-                BookTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
-                DescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
-                AuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
-                PublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
-                NarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
+                ProductTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
+                ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
+                ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
+                ProductPublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
+                ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
 
-                PagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
-                PlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
+                ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
+                ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
 
-                LanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
-                ShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(entryShelfId.Text, out shelfId);
-                CategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
-                AudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
-                MediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
-                IsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
-                PublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
+                ProductLanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
+                ProductShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(entryShelfId.Text, out shelfId);
+                ProductCategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
+                ProductAudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
+                ProductMediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
+                ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
+                ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
 
-                StatusCorrect = inStock.IsToggled;
-                NewProductCorrect = newProduct.IsToggled;
-                HiddenProductCorrect = hiddenProduct.IsToggled;
+                ProductStatusCorrect = inStock.IsToggled;
+                ProductNewProductCorrect = newProduct.IsToggled;
+                ProductHiddenProductCorrect = hiddenProduct.IsToggled;
 
             }
             catch (Exception errormessage)
@@ -206,90 +214,90 @@ namespace Decrypt_Library.Views
             }
 
 
-            if (!BookTitleCorrect)
+            if (!ProductTitleCorrect)
                 entryTitle.BackgroundColor = Color.MediumVioletRed;
             else
                 entryTitle.BackgroundColor = Color.White;
 
-            if (!DescriptionCorrect)
+            if (!ProductDescriptionCorrect)
                 entryDescription.BackgroundColor = Color.MediumVioletRed;
             else
                 entryDescription.BackgroundColor = Color.White;
 
-            if (!AuthorNameCorrect)
+            if (!ProductAuthorNameCorrect)
                 entryAuthor.BackgroundColor = Color.MediumVioletRed;
             else
                 entryAuthor.BackgroundColor = Color.White;
 
-            if (!PublisherCorrect)
+            if (!ProductPublisherCorrect)
                 entryPublisher.BackgroundColor = Color.MediumVioletRed;
             else
                 entryPublisher.BackgroundColor = Color.White;
 
-            if (!NarratorCorrect)
+            if (!ProductNarratorCorrect)
                 entryNarrator.BackgroundColor = Color.MediumVioletRed;
             else
                 entryNarrator.BackgroundColor = Color.White;
 
-            if (!PagesCorrect)
+            if (!ProductPagesCorrect)
                 entryPages.BackgroundColor = Color.MediumVioletRed;
             else
                 entryPages.BackgroundColor = Color.White;
 
-            if (!PlaytimeCorrect)
+            if (!ProductPlaytimeCorrect)
                 entryPlaytime.BackgroundColor = Color.MediumVioletRed;
             else
                 entryPlaytime.BackgroundColor = Color.White;
 
-            if (!LanguageIdCorrect)
+            if (!ProductLanguageIdCorrect)
                 entryLanguage.BackgroundColor = Color.MediumVioletRed;
             else
                 entryLanguage.BackgroundColor = Color.White;
 
-            if (!ShelfIdCorrect)
+            if (!ProductShelfIdCorrect)
                 entryShelfId.BackgroundColor = Color.MediumVioletRed;
             else
                 entryShelfId.BackgroundColor = Color.White;
 
-            if (!CategoryIdCorrect)
+            if (!ProductCategoryIdCorrect)
                 entryCategoryId.BackgroundColor = Color.MediumVioletRed;
             else
                 entryCategoryId.BackgroundColor = Color.White;
 
-            if (!AudienceIdCorrect)
+            if (!ProductAudienceIdCorrect)
                 entryAudienceId.BackgroundColor = Color.MediumVioletRed;
             else
                 entryAudienceId.BackgroundColor = Color.White;
 
-            if (!MediaIdCorrect)
+            if (!ProductMediaIdCorrect)
                 entryMediaId.BackgroundColor = Color.MediumVioletRed;
             else
                 entryMediaId.BackgroundColor = Color.White;
 
-            if (!IsbnCorrect)
+            if (!ProductIsbnCorrect)
                 entryISBN.BackgroundColor = Color.MediumVioletRed;
             else
                 entryISBN.BackgroundColor = Color.White;
 
-            CorrectProductInput = MediaIdCorrect
-                                  && StatusCorrect
-                                  && IsbnCorrect
-                                  && BookTitleCorrect
-                                  && DescriptionCorrect
-                                  && PagesCorrect
-                                  && PlaytimeCorrect
-                                  && PublisherCorrect
-                                  && LanguageIdCorrect
-                                  && AuthorNameCorrect
-                                  && PublishDateCorrect
-                                  && CategoryIdCorrect
-                                  && ShelfIdCorrect
-                                  && NarratorCorrect
-                                  && NewProductCorrect
-                                  && AudienceIdCorrect
-                                  && HiddenProductCorrect;
+            ProductCorrectProductInput = ProductMediaIdCorrect
+                                  && ProductStatusCorrect
+                                  && ProductIsbnCorrect
+                                  && ProductTitleCorrect
+                                  && ProductDescriptionCorrect
+                                  && ProductPagesCorrect
+                                  && ProductPlaytimeCorrect
+                                  && ProductPublisherCorrect
+                                  && ProductLanguageIdCorrect
+                                  && ProductAuthorNameCorrect
+                                  && ProductPublishDateCorrect
+                                  && ProductCategoryIdCorrect
+                                  && ProductShelfIdCorrect
+                                  && ProductNarratorCorrect
+                                  && ProductNewProductCorrect
+                                  && ProductAudienceIdCorrect
+                                  && ProductHiddenProductCorrect;
 
-            if (CorrectProductInput)
+            if (ProductCorrectProductInput)
             {
                 product.Title = entryTitle.Text;
                 product.Description = entryDescription.Text;
@@ -316,6 +324,48 @@ namespace Decrypt_Library.Views
                 product = null;
             }
 
+        }
+
+        #endregion
+
+        private void ShowCategories(object sender, EventArgs e)
+        {
+            categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+        }
+
+        private void AddCategoryButton_Pressed(object sender, EventArgs e)
+        {
+            var categoryList = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+
+            try
+            {
+                CateogryCorrectCategoryName = Readers.Readers.StringReader(entryCategorytab2.Text);
+            }
+            catch (Exception)
+            {
+                DisplayAlert("WRONG INPUT", "not allowed to have duplicate categories", "ok");
+            }
+
+
+            if (CateogryCorrectCategoryName)
+            {
+
+                foreach (var item in categoryList)
+                {
+                    if (item.CategoriesName == entryCategorytab2.Text)
+                        DisplayAlert("WRONG INPUT", "not allowed to have duplicate categories", "ok");
+                    return;
+                }
+
+                category.CategoriesName = entryCategorytab2.Text;
+                EntityFrameworkCode.EntityframeworkCategories.CreateCategory(category);
+
+            }
+        }
+
+        private void entryCategorytab2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entryCategorytab2.Text = e.NewTextValue;
         }
     }
 }
