@@ -30,7 +30,8 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Category = cate.CategoriesName
                                 }).ToList();
 
-                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) || p.Category.ToLower().Contains(selectedTitle.ToLower())).ToList();
+                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) || p.Category.ToLower().Contains(selectedTitle.ToLower()) ||
+                p.AuthorName.ToLower().Contains(selectedTitle.ToLower())).ToList();
 
                 return findProduct;
             }

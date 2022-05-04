@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.SelectedProductView">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout >
             <Label Text="{Binding Title, StringFormat='Titel: {0}'}"/>
             <Label Text="{Binding AuthorName, StringFormat='Författare: {0}'}"/>
             <Label Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}"/>
