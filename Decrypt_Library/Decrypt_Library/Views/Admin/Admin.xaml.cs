@@ -22,7 +22,9 @@ namespace Decrypt_Library.Views
         Category category = new Category();
         Event createdEvent = new Event();
 
-        //Product bools
+        /// <summary>
+        /// Product Bools
+        /// </summary>
         #region Product bools
         bool ProductMediaIdCorrect { get; set; }    
         bool ProductStatusCorrect { get; set; } 
@@ -45,12 +47,16 @@ namespace Decrypt_Library.Views
         bool ProductCorrectProductInput = false;
         #endregion
 
-        //Category bools
+        /// <summary>
+        /// Category Bools
+        /// </summary>
         #region Category bools
         bool CateogryCorrectCategoryName { get; set; }
         #endregion
 
-        //Event bools
+        /// <summary>
+        /// Event Bools
+        /// </summary>
         #region Event bools
         bool EventEventNameCorrect { get; set; }
         bool EventEventTimeCorrect { get; set; }
@@ -60,7 +66,9 @@ namespace Decrypt_Library.Views
 
         #endregion
 
-        //Buttons for tab1 products
+        /// <summary>
+        /// Buttons for Products
+        /// </summary>
         #region Buttons tab1 products
         private void ShowNoWindows()
         {
@@ -189,7 +197,11 @@ namespace Decrypt_Library.Views
 
         #endregion
 
-        //Completed product vertification
+        /// <summary>
+        /// Completetion button of Products
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region Complete product add
 
         private void CompleteProduct_Pressed(object sender, EventArgs e)
@@ -359,7 +371,11 @@ namespace Decrypt_Library.Views
 
         #endregion
 
-        //Buttons for tab2 categories and category completion
+        /// <summary>
+        /// Buttons for Category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region Buttons tab2 categories
 
         private void entryCategoryNametab2_TextChanged(object sender, TextChangedEventArgs e)
@@ -442,7 +458,11 @@ namespace Decrypt_Library.Views
 
         #endregion
 
-        //Buttons for tab3 Events
+        /// <summary>
+        /// Buttons for Events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region Buttons tab3 events
         private void ShowAllEvents_Pressed(object sender, EventArgs e)
         {
@@ -467,7 +487,11 @@ namespace Decrypt_Library.Views
         }
         #endregion
 
-        //Event buttons and event completion
+        /// <summary>
+        /// Buttons for Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region Event buttons
         private void AddEventButton_Pressed(object sender, EventArgs e)
         {
