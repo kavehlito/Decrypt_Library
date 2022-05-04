@@ -20,10 +20,10 @@ namespace Decrypt_Library.Views
 
         Product product = new Product();
         Category category = new Category();
+        Event createdEvent = new Event();
 
-        //product bools
-
-        #region CorrectInputBools
+        //Product bools
+        #region Product bools
         bool ProductMediaIdCorrect { get; set; }    
         bool ProductStatusCorrect { get; set; } 
         bool ProductIsbnCorrect { get; set; } 
@@ -43,58 +43,45 @@ namespace Decrypt_Library.Views
         bool ProductHiddenProductCorrect { get; set; }
 
         bool ProductCorrectProductInput = false;
+        #endregion
 
-        //category bools
-
+        //Category bools
+        #region Category bools
         bool CateogryCorrectCategoryName { get; set; }
+        #endregion
 
+        //Event bools
+        #region Event bools
+        bool EventEventNameCorrect { get; set; }
+        bool EventEventTimeCorrect { get; set; }
+        bool EventEventDescrptionCorrect { get; set; }
+
+        bool EventEventInputsCorrect = false;
 
         #endregion
 
+        //Buttons for tab1 products
         #region Buttons tab1 products
         private void ShowNoWindows()
         {
-            AddProduct.IsVisible = false;
+            createProductTab.IsVisible = false;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void ShowProductsButton_Pressed(object sender, EventArgs e)
         {
+            ProductList.IsVisible = true;
             ShowNoWindows();
             ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
         }
 
         private void Button_AddProductClicked(object sender, EventArgs e)
         {
-            AddProduct.IsVisible = true;
+            createProductTab.IsVisible = true;
         }
 
         private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
-        }
-
-        private void Button_ShowAllCategories(object sender, EventArgs e)
-        {
-            ShowNoWindows();
-            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
-        }
-
-        private void Button_ShowAllUsers(object sender, EventArgs e)
-        {
-            ShowNoWindows();
-            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkUsers.ShowAllUsers();
-        }
-
-        private void Button_ShowAllLanguages(object sender, EventArgs e)
-        {
-            ShowNoWindows();
-            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
-        }
-
-        private void Button_ShowAllEvents(object sender, EventArgs e)
-        {
-            ShowNoWindows();
-            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
         }
 
         private void entryTitle_TextChanged(object sender, TextChangedEventArgs e)
@@ -167,12 +154,53 @@ namespace Decrypt_Library.Views
             entryPlaytime.Text = e.NewTextValue;
         }
 
+        private void entryProductRemove_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entryProductRemove.Text = e.NewTextValue;
+        }
+
+        private void RemoveProductButton_Pressed(object sender, EventArgs e)
+        {
+            ProductList.IsVisible = false;
+            createProductTab.IsVisible = false;
+
+            if (!entryProductRemove.IsVisible)
+            {
+                entryProductRemove.IsVisible = true;
+                return;
+            }
+            try
+            {
+                if (Readers.Readers.IntReaderConvertStringToInt(entryProductRemove.Text, out int productId))
+                {
+                    product.Id = productId;
+                    EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(product);
+                    removeCategoryTab.IsVisible = false;
+                    ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+                    entryProductRemove.Text = "";
+                    product = null;
+                }
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", $"{exception.Message}", "ok");
+            }
+        }
+
         #endregion
 
+        //Completed product vertification
         #region Complete product add
 
         private void CompleteProduct_Pressed(object sender, EventArgs e)
         {
+            ProductList.IsVisible = false;
+            if (!createProductTab.IsVisible)
+            {
+                createProductTab.IsVisible = true;
+                return;
+            }
+
             int pagesInput = 0;
             double playTime = 0;
             int languageId = 0;
@@ -314,6 +342,7 @@ namespace Decrypt_Library.Views
                 product.AudienceId = audienceId;
                 product.MediaId = mediaId;
                 product.Isbn = isbn;
+                product.Playtime = playTime;
                 product.PublishDate = date;
                 product.NewProduct = newProduct.IsToggled;
                 product.HiddenProduct = hiddenProduct.IsToggled;
@@ -321,52 +350,207 @@ namespace Decrypt_Library.Views
 
                 EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
 
-                DisplayActionSheet("New product added", $"{product.Title}", "ok");
-
                 product = null;
+                ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+                createProductTab.IsVisible = false;
+                ProductList.IsVisible = true;
             }
         }
 
         #endregion
 
-        private void ShowCategories(object sender, EventArgs e)
+        //Buttons for tab2 categories and category completion
+        #region Buttons tab2 categories
+
+        private void entryCategoryNametab2_TextChanged(object sender, TextChangedEventArgs e)
         {
+            entryCategoryNametab2.Text = e.NewTextValue;
+        }
+
+        private void entryCategoryIdRemovetab2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entryCategoryIdtab2.Text = e.NewTextValue;
+        }
+        private void ShowCategories_Pressed(object sender, EventArgs e)
+        {
+            removeCategoryTab.IsVisible = false;
+            createCategoryBar.IsVisible = false;
             categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
         }
 
         private void AddCategoryButton_Pressed(object sender, EventArgs e)
         {
-            var categoryList = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+            removeCategoryTab.IsVisible = false;
+            if (!createCategoryBar.IsVisible)
+            {
+                createCategoryBar.IsVisible = true;
+                return;
+            }
 
             try
             {
-                CateogryCorrectCategoryName = Readers.Readers.StringReader(entryCategorytab2.Text);
+                if (Readers.Readers.StringReader(entryCategoryNametab2.Text))
+                {
+                    category.CategoriesName = entryCategoryNametab2.Text;
+                    EntityFrameworkCode.EntityframeworkCategories.CreateCategory(category);
+                    createCategoryBar.IsVisible = false;
+                    categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+                    entryCategoryNametab2.Text = "";
+                    category = null;
+                }
             }
+
             catch (Exception)
             {
                 DisplayAlert("Error", "not allowed input", "ok");
             }
+        }
 
-            if (CateogryCorrectCategoryName)
+        private void RemoveCategoryButton_Pressed(object sender, EventArgs e)
+        {
+            createCategoryBar.IsVisible = false;
+            if (!removeCategoryTab.IsVisible)
             {
-                category.CategoriesName = entryCategorytab2.Text;
-                EntityFrameworkCode.EntityframeworkCategories.CreateCategory(category);
+                removeCategoryTab.IsVisible = true;
+                return;
+            }
+            try
+            {
+                if (Readers.Readers.IntReaderConvertStringToInt(entryCategoryIdtab2.Text, out int categoryId))
+                {
+                    foreach (var product in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+                    {
+                        if (product.CategoryId == categoryId)
+                        {
+                            DisplayActionSheet("Error", "You're not allowed to remove a category with existing products", "OK");
+                            return;
+                        }
+                    }
+                    category.Id = categoryId;
+                    EntityFrameworkCode.EntityframeworkCategories.RemoveCategory(category);
+                    removeCategoryTab.IsVisible = false;
+                    categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+                    entryCategoryIdtab2.Text = "";
+                    category = null;
+                }
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", $"{exception.Message}", "ok");
             }
         }
 
-        private void entryCategorytab2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            entryCategorytab2.Text = e.NewTextValue;
-        }
+        #endregion
 
+        //Buttons for tab3 Events
+        #region Buttons tab3 events
         private void ShowAllEvents_Pressed(object sender, EventArgs e)
         {
+            removeEventTab.IsVisible = false;
+            createEventBar.IsVisible = false;
             eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
         }
 
-        private void entryEventstab2_TextChanged(object sender, TextChangedEventArgs e)
+        private void entryEventNametab2_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            entryEventNametab2.Text = e.NewTextValue;
         }
+
+        private void entryEventDescriptiontab2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entryEventDescriptiontab2.Text = e.NewTextValue;
+        }
+
+        private void entryEventTimetab2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entryEventTimetab2.Text = e.NewTextValue;
+        }
+        #endregion
+
+        //Event buttons and event completion
+        #region Event buttons
+        private void AddEventButton_Pressed(object sender, EventArgs e)
+        {
+            DateTime date = DateTime.Now;
+            removeEventTab.IsVisible = false;
+
+            if (!createEventBar.IsVisible) 
+            {
+                createEventBar.IsVisible = true;
+                return;
+            }
+
+            try
+            {
+                EventEventNameCorrect = Readers.Readers.StringReader(entryEventNametab2.Text);
+                EventEventTimeCorrect = Readers.Readers.ReadDateTime(entryEventTimetab2.Text, out date);
+                if (!string.IsNullOrEmpty(entryEventDescriptiontab2.Text))
+                    EventEventDescrptionCorrect = true;
+            }
+            catch
+            {
+                DisplayAlert("Error wrong input", "one of tha values were wrong", "ok");
+            }
+
+            EventEventInputsCorrect = EventEventNameCorrect 
+                                           && EventEventTimeCorrect 
+                                           && EventEventDescrptionCorrect;
+
+            if (EventEventInputsCorrect)
+            {
+                try
+                {
+                    createdEvent.EventName = entryEventNametab2.Text;
+                    createdEvent.Description = entryEventDescriptiontab2.Text;
+                    createdEvent.Time = date;
+                    EntityFrameworkCode.EntityframeworkEvents.CreateEvent(createdEvent);
+                    eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
+                    createEventBar.IsVisible = false;
+                    createdEvent = null;
+                }
+                catch (Exception)
+                {
+                    DisplayAlert("Error", "not valid inputs", "OK");
+                }
+            }
+        }
+
+        private void RemoveEventButton_Pressed(object sender, EventArgs e)
+        {
+            int convertedSelectedId = 0;
+            createEventBar.IsVisible = false;
+            if (!removeEventTab.IsVisible)
+            {
+                removeEventTab.IsVisible = true;
+                return;
+            }
+
+            try
+            {
+                if(Readers.Readers.LegalIDRangeEvent(entryEventRemovetab2.Text, out convertedSelectedId));
+                {
+                    createdEvent.Id = convertedSelectedId;
+                    EntityFrameworkCode.EntityframeworkEvents.RemoveEvent(createdEvent);
+                    createdEvent = null;
+                    eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
+                    removeEventTab.IsVisible = false; 
+                }
+            }
+            catch (Exception)
+            {
+                DisplayAlert("Error", "not a valid input", "OK");
+            }
+        }
+
+        private void entryEventRemovetab2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entryEventRemovetab2.Text = e.NewTextValue;
+        }
+
+
+
+        #endregion
+
+
     }
 }

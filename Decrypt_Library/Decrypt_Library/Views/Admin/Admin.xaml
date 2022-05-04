@@ -8,133 +8,84 @@
     
     <ContentPage Title="Produkter">
 
-        <Grid BackgroundColor="MidnightBlue">
+
+        <Grid>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame BackgroundColor="White"
-                   BorderColor="Black"
-                   HeightRequest="30"
-                   Grid.Row="0"
-                   CornerRadius="0">
-
-                <Label Text="Admin page"
-                       HorizontalOptions="CenterAndExpand"
-                       
-                       VerticalOptions="CenterAndExpand"/>
-            </Frame>
-
-        <Grid Grid.Row="1">
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <Frame BackgroundColor="Black" 
+                   Grid.Column="1"
+                   HeightRequest="400"
+                   CornerRadius="10"
+                   WidthRequest="500"
+                   Grid.Row="1">
 
-           
+                <StackLayout>
 
-                <Frame Grid.Column="1"
-                       WidthRequest="300"
-                       IsClippedToBounds="True"
-                       BackgroundColor="Gray">
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
+                    <StackLayout Orientation="Vertical">
 
-                        </Grid.RowDefinitions>
-
-                        <ListView  
-                        x:Name="ProductList" 
-                        ItemTapped="ProductList_ItemTapped" 
-                        Grid.Row="1"
-                            Grid.Column="1"
-                               >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Id}" HorizontalOptions="Start" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding Title}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding CategoriesName}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding UserName}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding Ssn}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding PhoneNumber}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding Email}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding UserTypeId}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding Languages}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding EventName}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                            <Label Text="{Binding Time}" 
-                                               HorizontalOptions="StartAndExpand" 
-                                               FontSize="10" 
-                                               TextColor="Aqua"/>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        
-                        <Frame IsVisible="False" 
-                               BorderColor="Black"
-                               BackgroundColor="Gray"
-                               Grid.Column="1"
-                               WidthRequest="130"
-                               Grid.Row="1"
-                               x:Name="AddProduct">
-
-                            <ScrollView>
-                                <StackLayout>
-
-                                    <Label Text="Lägg till en produkt"
+                        <Label Text="Produkct Options"
                                            FontSize="20"
+                                           TextColor="White"
                                            FontAttributes="Bold"
                                            HorizontalOptions="CenterAndExpand"/>
 
-                                    <Label Text="Book Title: "
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Add Product"
+                            BackgroundColor="White"
+                                    Clicked="CompleteProduct_Pressed"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Show Product"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                                    Clicked="ShowProductsButton_Pressed"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Remove Product"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                                    Clicked="RemoveProductButton_Pressed"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                        </StackLayout>
+                        <StackLayout x:Name="createProductTab" IsVisible="false">
+              
+                        <ScrollView>
+                            <StackLayout>
+
+
+
+                                <Label Text="Book Title: "
                                        FontSize="12"
+                                           TextColor="White"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,-10,90,50"/>
 
 
-                                    <Entry AbsoluteLayout.LayoutBounds="120,-40,380,70"
+                                <Entry AbsoluteLayout.LayoutBounds="120,-40,380,70"
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                            TextChanged="entryTitle_TextChanged"
@@ -143,15 +94,17 @@
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
-                                        
-                                    </Entry>
 
-                                    <Label Text="ISBN: "
+                                </Entry>
+
+                                <Label Text="ISBN: "
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,30,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -160,16 +113,18 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
 
-                                    <Label Text="Publisher: "
+                                <Label Text="Publisher: "
                                        FontSize="12"
                                        FontAttributes="Bold"
+                                           TextColor="White"
+                                           
                                        AbsoluteLayout.LayoutBounds="0,230,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                                x:Name="entryPublisher"
@@ -178,15 +133,17 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
-                                    <Label Text="Language ID: "
+                                <Label Text="Language ID: "
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,270,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -195,15 +152,17 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
-                                    <Label Text="Author name: "
+                                <Label Text="Author name: "
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,310,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -212,15 +171,17 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
-                                    <Label Text="PublishDate: "
+                                <Label Text="PublishDate: "
                                        FontSize="12"
                                        FontAttributes="Bold"
+                                           TextColor="White"
+                                           
                                        AbsoluteLayout.LayoutBounds="0,350,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -230,15 +191,17 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
-                                    <Label Text="Category ID: "
+                                <Label Text="Category ID: "
                                        FontSize="12"
                                        FontAttributes="Bold"
+                                           TextColor="White"
+                                           
                                        AbsoluteLayout.LayoutBounds="0,390,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -247,14 +210,16 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
-                                    <Label Text="Shelf ID: "
+                                <Label Text="Shelf ID: "
                                        FontSize="12"
+                                           TextColor="White"
+
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,430,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -263,14 +228,16 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
-                                    <Label Text="Narrator: "
+                                <Label Text="Narrator: "
                                        FontSize="12"
                                        FontAttributes="Bold"
+                                           TextColor="White"
+                                           
                                        AbsoluteLayout.LayoutBounds="0,470,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -279,15 +246,17 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
-                                    <Label Text="Audience Id: "
+                                <Label Text="Audience Id: "
                                        FontSize="12"
                                        FontAttributes="Bold"
+                                           TextColor="White"
+                                           
                                        AbsoluteLayout.LayoutBounds="0,510,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -296,14 +265,16 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
-                                    <Label Text="Media Id: "
+                                <Label Text="Media Id: "
                                        FontSize="12"
                                        FontAttributes="Bold"
+                                           TextColor="White"
+                                           
                                        AbsoluteLayout.LayoutBounds="0,70,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -312,14 +283,16 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
-                                    <Label Text="Description: "
+                                <Label Text="Description: "
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,110,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                             HeightRequest="100"
@@ -329,14 +302,16 @@
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     TextColor="BLack">
-                                        </Entry>
+                                </Entry>
 
-                                    <Label Text="Pages:"
+                                <Label Text="Pages:"
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,150,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -345,14 +320,16 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
-                                    <Label Text="Playtime: "
+                                <Label Text="Playtime: "
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,190,90,50"/>
 
-                                        <Entry
+                                <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
                                     FontSize="12"
@@ -361,405 +338,119 @@
                                     FontAttributes="Bold"
                                     TextColor="BLack">
 
-                                        </Entry>
+                                </Entry>
 
 
-                                    <Label Text="In Stock: "
+                                <Label Text="In Stock: "
                                        FontSize="12"
+                                           TextColor="White"
+                                           
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,550,90,50"/>
 
 
-                                    <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"  
+                                <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"
+                                        BackgroundColor="White"
                                                 x:Name="inStock"/>
-    
-                                    <Label Text="New Product: "
-                                       FontSize="12"
-                                       FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,590,90,50"/>
 
-                                    <Switch AbsoluteLayout.LayoutBounds="120,540,380,80"
+                                <Label Text="New Product: "
+                                       FontSize="12"
+                                           TextColor="White"
+                                           
+                                       FontAttributes="Bold"
+                                       />
+
+                                <Switch 
+                                        BackgroundColor="White"
+                                        
                                                 x:Name="newProduct"
                                                />
 
-                                    <Label Text="Hidden product: "
+                                <Label Text="Hidden product: "
                                        FontSize="12"
                                        FontAttributes="Bold"
-                                       AbsoluteLayout.LayoutBounds="0,630,90,50"/>
+                                           TextColor="White"
+                                           
+                                    />
 
-                                    <Switch AbsoluteLayout.LayoutBounds="120,580,380,80"
+                                <Switch 
+                                        BackgroundColor="White"
+                                        
                                                 x:Name="hiddenProduct"/>
 
 
 
-                                    <Button 
-                                                AbsoluteLayout.LayoutBounds="120,670,220,50"
+                                <Button 
                                                 CornerRadius="10"
                                                 Grid.Column="1"
                                         Clicked="CompleteProduct_Pressed"
-                                                BackgroundColor="Black"
-                                                TextColor="White"
+                                                BackgroundColor="White"
+                                                TextColor="Black"
+                                    FontAttributes="Bold"
                                                 Text="Insert product"/>
 
-                                    <Button Text="hej" IsVisible="false" x:Name="Registerworked"/>
+                                <Button Text="hej" IsVisible="false" x:Name="Registerworked"/>
 
-                                </StackLayout>
-
-                            </ScrollView>
-                            
-                        </Frame>
-                    </Grid>
-                </Frame>
-            
-            <Frame Grid.Column="0"
-                   WidthRequest="220"
-                   BorderColor="Black">
-
-
-                    <ScrollView HorizontalScrollBarVisibility="Always"
-                                BackgroundColor="MidnightBlue"
-                                >
-
-                <StackLayout>
-
-                    
-                    <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           Grid.Row="0"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                            <StackLayout>
-
-                                <Label Text="Produkt"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                            </StackLayout>
-                        
-                    </Frame>
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Visa"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                    Clicked="Button_Clicked"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                />
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Lägga till"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                    Clicked="Button_AddProductClicked"
-                                CornerRadius="10"
-                                />
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                    Clicked="Button_AddProductClicked"
-                                CornerRadius="10"
-                                />
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                                <StackLayout>
-
-                                    <Label Text="Kategori"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                                </StackLayout>
-
-                            </Frame>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Visa"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    Clicked="Button_ShowAllCategories"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                />
-
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Lägga till"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                    />
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                    />
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                            <StackLayout>
-
-                                <Label Text="Statistik"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
                             </StackLayout>
 
-                        </Frame>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                    />
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                            <StackLayout>
-
-                                <Label Text="Anställda"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                            </StackLayout>
-
-                        </Frame>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Visa"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                    Clicked="Button_ShowAllUsers"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                />
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Lägga till"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                    />
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="7"/>
-
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           Grid.Row="5"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                                <StackLayout>
-
-                                    <Label Text="Språk"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                                </StackLayout>
-
-                            </Frame>
-
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Visa"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                    Clicked="Button_ShowAllLanguages"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                />
-
-
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Lägga till"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="6"/>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="7"/>
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           Grid.Row="5"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                                <StackLayout>
-
-                                    <Label Text="Låna"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                                </StackLayout>
-
-                            </Frame>
-
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Lägga till"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="6"/>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="7"/>
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           Grid.Row="5"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                                <StackLayout>
-
-                                    <Label Text="Event"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                                </StackLayout>
-
-                            </Frame>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Visa"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                    Clicked="Button_ShowAllEvents"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                />
-
-
-
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Lägga till"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="6"/>
-
-                            <Button BackgroundColor="DarkOrange"
-                                HeightRequest="20"
-                                Text="Ta Bort"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Padding="10,0,0,0"
-                                    FontSize="10"
-                                CornerRadius="10"
-                                Grid.Row="7"/>
-
-                            <Frame BackgroundColor="White"
-                           HeightRequest="30"
-                           Padding="0"
-                           Grid.Row="5"
-                           WidthRequest="50"
-                           IsClippedToBounds="True">
-                                <StackLayout>
-
-                                    <Label Text="Byta hylla"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="bold"/>
-                                </StackLayout>
-
-                            </Frame>
-
-
-                            <Button BackgroundColor="DarkOrange"
-                                    HeightRequest="20"
-                                    Text="Lägga till"
-                                    FontAttributes="Bold"
-                                    TextColor="White"
-                                    Padding="10,0,0,0"
-                                    FontSize="10"
-                                    CornerRadius="10"
-                                    />
-                    
+                        </ScrollView>
                         </StackLayout>
-                    </ScrollView>
-                </Frame>
+
+                    </StackLayout>
+
+                    <ListView x:Name="ProductList"
+                              IsVisible="false"
+                              >
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <Frame>
+                                        <StackLayout Orientation="Horizontal">
+
+                                            <Label Text="{Binding Id}"
+                                            TextColor="White"/>
+                                            <Label Text="{Binding Title}"
+                                            TextColor="White"/>
+                                            <Label Text="{Binding Description}"
+                                            TextColor="White"/>
+
+                                        </StackLayout>
+                                    </Frame>
+
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                    <StackLayout x:Name="removeProductTab"
+                                 IsVisible="false">
+
+                        <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Id på den produkt du vill ta bort"/>
+
+                        <Entry x:Name="entryProductRemove"
+                               TextChanged="entryProductRemove_TextChanged"
+                           >
+
+                        </Entry>
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </Frame>
+
+
 
         </Grid>
 
-        </Grid>
 
 
 
@@ -795,41 +486,71 @@
                            FontSize="20"
                            FontAttributes="Bold"
                                HorizontalOptions="CenterAndExpand"
-                           Text="Lägg till en kategori"/>
+                           Text="Category Options"/>
 
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Lägg till kategori"
+                            <Button Text="Add Category"
                             BackgroundColor="White"
                             HorizontalOptions="CenterAndExpand"
-                            HeightRequest="50"
                                 Clicked="AddCategoryButton_Pressed"
                             CornerRadius="10"
                             FontAttributes="Bold"
                             >
                             </Button>
 
-                            <Button Text="Visa kategorier"
+                            <Button Text="Show Category"
                             BackgroundColor="White"
                             HorizontalOptions="CenterAndExpand"
                             CornerRadius="10"
-                            Clicked="ShowCategories"
+                                    x:Name="showCategoriestab2"
+                            Clicked="ShowCategories_Pressed"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Remove Category"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                                    Clicked="RemoveCategoryButton_Pressed"
                             FontAttributes="Bold"
                             >
                             </Button>
 
                         </StackLayout>
 
-                    </StackLayout>
+                        <StackLayout x:Name="createCategoryBar"
+                                 IsVisible="false">
 
-
-                    <Label TextColor="White"
+                            <Label TextColor="White"
                            FontSize="12"
                            FontAttributes="Bold"
-                           Text="Kategorinamn"/>
-                    <Entry x:Name="entryCategorytab2"
-                           TextChanged="entryCategorytab2_TextChanged">
-                        
-                    </Entry>
+                           Text="Namn på nya kategorin tack!"/>
+                            <Entry x:Name="entryCategoryNametab2"
+                                   TextChanged="entryCategoryNametab2_TextChanged"
+                           >
+
+                            </Entry>
+
+                        </StackLayout>
+
+                        <StackLayout x:Name="removeCategoryTab"
+                                 IsVisible="false">
+
+                            <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Id på den kategori du vill ta bort"/>
+
+                            <Entry x:Name="entryCategoryIdtab2"
+                                   TextChanged="entryCategoryIdRemovetab2_TextChanged"
+                           >
+
+                            </Entry>
+                        </StackLayout>
+
+                    </StackLayout>
+
 
                     <ListView x:Name="categoryList"
                               >
@@ -895,18 +616,29 @@
                            FontSize="20"
                            FontAttributes="Bold"
                                HorizontalOptions="CenterAndExpand"
-                           Text="Lägg till ett event"/>
+                           Text="Event Options"/>
 
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Lägg till ett event"
+                            <Button Text="Add Event"
                             BackgroundColor="White"
+                                     Clicked="AddEventButton_Pressed"
                             HorizontalOptions="CenterAndExpand"
                             CornerRadius="10"
                             FontAttributes="Bold"
                             >
                             </Button>
 
-                            <Button Text="Visa event"
+                            <Button Text="Remove Event"
+                            BackgroundColor="White"
+                                    Clicked="RemoveEventButton_Pressed"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+
+                            <Button Text="Show Event"
                             BackgroundColor="White"
                             HorizontalOptions="CenterAndExpand"
                                     Clicked="ShowAllEvents_Pressed"
@@ -916,18 +648,60 @@
                             </Button>
 
                         </StackLayout>
-
                     </StackLayout>
 
+                    <StackLayout x:Name="createEventBar"
+                                 IsVisible="false">
 
                     <Label TextColor="White"
                            FontSize="12"
                            FontAttributes="Bold"
                            Text="Eventnamn"/>
-                    <Entry x:Name="entryEventstab2"
-                           TextChanged="entryEventstab2_TextChanged">
+                    <Entry x:Name="entryEventNametab2"
+                           TextChanged="entryEventNametab2_TextChanged"
+                           >
 
                     </Entry>
+
+                    <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Beskrivning"/>
+
+                    <Entry x:Name="entryEventDescriptiontab2"
+                           TextChanged="entryEventDescriptiontab2_TextChanged"
+                           >
+
+                    </Entry>
+
+                    <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Tid och datum år/månad/dag"/>
+
+                    <Entry x:Name="entryEventTimetab2"
+                           Placeholder="yyyy/mm/dd"
+                           TextChanged="entryEventTimetab2_TextChanged"
+                           >
+
+                    </Entry>
+
+                    </StackLayout>
+
+                    <StackLayout x:Name="removeEventTab"
+                                 IsVisible="false">
+
+                        <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Id på det event du vill ta bort"/>
+
+                        <Entry x:Name="entryEventRemovetab2"
+                               TextChanged="entryEventRemovetab2_TextChanged"
+                           >
+
+                        </Entry>
+                    </StackLayout>
 
                     <ListView x:Name="eventList"
                               >
@@ -949,8 +723,6 @@
 
                                             <Label Text="{Binding Time}"
                                             TextColor="White"/>
-                                            
-                                            
 
                                         </StackLayout>
                                     </Frame>
@@ -994,6 +766,7 @@
     <ContentPage Title="Låna">
 
         <Label Text="7"/>
+
 
     </ContentPage>
 </TabbedPage>

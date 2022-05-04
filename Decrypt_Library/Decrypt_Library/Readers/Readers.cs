@@ -34,7 +34,6 @@ namespace Decrypt_Library.Readers
                 return true;
 
             return true;
-
         }
 
         public static bool StringReader(string userInput)
@@ -62,6 +61,7 @@ namespace Decrypt_Library.Readers
 
             return false;
         }
+
         public static bool StringPasswordCorrect(string passwordInput, int minNum, bool digits)
         {
 
@@ -117,7 +117,7 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
-        static bool IntReaderConvertStringToInt(string userInput, out int num)
+        public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
             if (!int.TryParse(userInput, out num))
                 return false;
@@ -220,6 +220,19 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
+        public static bool LegalIDRangeEvent(string userInput, out int convertedUserIdInput)
+        {
+            var eventsList = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput > eventsList.Count || convertedUserIdInput < 1)
+                return false;
+
+            return true;
+        }
+
         #endregion
 
         #region Double readers
@@ -263,7 +276,7 @@ namespace Decrypt_Library.Readers
             
             return true;
         }
-
+        
     }
 }
 

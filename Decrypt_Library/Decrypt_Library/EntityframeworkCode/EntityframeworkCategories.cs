@@ -35,5 +35,17 @@ namespace Decrypt_Library.EntityFrameworkCode
                 db.SaveChanges();
             }
         }
+
+        public static void RemoveCategory(Category category)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var categoryList = db.Categories;
+                category = db.Categories.Where(x => x.Id == category.Id).SingleOrDefault();
+
+                categoryList.Remove(category);
+                db.SaveChanges();
+            }
+        }
     }
 }

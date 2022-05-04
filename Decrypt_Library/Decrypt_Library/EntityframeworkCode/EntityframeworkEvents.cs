@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,26 @@ namespace Decrypt_Library.EntityFrameworkCode
             {
                 events = db.Events.ToList();
                 return events;
+            }
+        }
+
+        public static void RemoveEvent(Event selectedEvent)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                selectedEvent = db.Events.Where(x => x.Id == selectedEvent.Id).SingleOrDefault();
+
+                db.Remove(selectedEvent);
+                db.SaveChanges();
+            }
+        }
+
+        public static void CreateEvent(Event selectedEvent)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                db.Add(selectedEvent);
+                db.SaveChanges();
             }
         }
     }
