@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Decrypt_Library.Views.Admin.AdminContent">
+    <ContentPage.Content>
+        <Grid Margin="0,25,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame BorderColor="Transparent"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   IsClippedToBounds="True"
+                   Grid.Column="1"
+                   Scale="1.3"
+                   Margin="0,30,0,0"
+                   HeightRequest="450"
+                   WidthRequest="350"
+                   Padding="0"
+                    >
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

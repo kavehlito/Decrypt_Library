@@ -26,7 +26,7 @@ namespace Decrypt_Library.Readers
 
         private void BindAbleOnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var admin = new Admin();
+            var admin = new AdminPage();
             var userInput = e.NewTextValue;
             var emailPattern = "^[0-9]{1}";
             var userEntry = sender as Entry;

@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace Decrypt_Library.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Admin : ContentPage
+    public partial class AdminPage : TabbedPage
     {
-        public Admin()
+        public AdminPage()
         {
             InitializeComponent();
         }

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             BackgroundColor="MidnightBlue"
-             x:Class="Decrypt_Library.Views.Admin">
-    <ContentPage.Content>
-
+             Title="Admin Options"
+            BarTextColor="White"
+            BarBackground="Black"
+             x:Class="Decrypt_Library.Views.AdminPage">
+    
+    <ContentPage Title="Produkter">
 
         <Grid BackgroundColor="MidnightBlue">
 
@@ -22,7 +24,6 @@
                        HorizontalOptions="CenterAndExpand"
                        
                        VerticalOptions="CenterAndExpand"/>
-
             </Frame>
 
         <Grid Grid.Row="1">
@@ -30,21 +31,19 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            
-                <Frame Grid.Column="2"
-                       IsClippedToBounds="True"
-                       HeightRequest="200"
+
+
+           
+
+                <Frame Grid.Column="1"
                        WidthRequest="300"
+                       IsClippedToBounds="True"
                        BackgroundColor="Gray">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
@@ -57,7 +56,6 @@
                         <ListView  
                         x:Name="ProductList" 
                         ItemTapped="ProductList_ItemTapped" 
-                            
                         Grid.Row="1"
                             Grid.Column="1"
                                >
@@ -118,11 +116,17 @@
                                BorderColor="Black"
                                BackgroundColor="Gray"
                                Grid.Column="1"
+                               WidthRequest="130"
                                Grid.Row="1"
                                x:Name="AddProduct">
 
                             <ScrollView>
                                 <StackLayout>
+
+                                    <Label Text="Lägg till en produkt"
+                                           FontSize="20"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="CenterAndExpand"/>
 
                                     <Label Text="Book Title: "
                                        FontSize="12"
@@ -318,6 +322,8 @@
                                         <Entry
                                     PlaceholderColor="Gray"
                                     BackgroundColor="White"
+                                            HeightRequest="100"
+                                            VerticalTextAlignment="Start"
                                                x:Name="entryDescription"
                                             TextChanged="entryDescription_TextChanged"
                                     FontSize="12"
@@ -358,30 +364,33 @@
                                         </Entry>
 
 
-                                    <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"  
-                                                x:Name="inStock"/>
-
                                     <Label Text="In Stock: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,550,90,50"/>
 
-                                    <Switch AbsoluteLayout.LayoutBounds="120,540,380,80"
-                                                x:Name="newProduct"
-                                               />
 
+                                    <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"  
+                                                x:Name="inStock"/>
+    
                                     <Label Text="New Product: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,590,90,50"/>
 
-                                    <Switch AbsoluteLayout.LayoutBounds="120,580,380,80"
-                                                x:Name="hiddenProduct"/>
+                                    <Switch AbsoluteLayout.LayoutBounds="120,540,380,80"
+                                                x:Name="newProduct"
+                                               />
 
                                     <Label Text="Hidden product: "
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,630,90,50"/>
+
+                                    <Switch AbsoluteLayout.LayoutBounds="120,580,380,80"
+                                                x:Name="hiddenProduct"/>
+
+
 
                                     <Button 
                                                 AbsoluteLayout.LayoutBounds="120,670,220,50"
@@ -402,7 +411,8 @@
                     </Grid>
                 </Frame>
             
-            <Frame Grid.Column="1"
+            <Frame Grid.Column="0"
+                   WidthRequest="220"
                    BorderColor="Black">
 
 
@@ -753,5 +763,35 @@
 
 
 
-    </ContentPage.Content>
-</ContentPage>
+    </ContentPage>
+
+    <ContentPage Title="Kategorier">
+        
+        
+    </ContentPage>
+
+    <ContentPage Title="Events">
+
+
+    </ContentPage>
+
+    <ContentPage Title="Anställda">
+
+
+    </ContentPage>
+
+    <ContentPage Title="Språk">
+
+
+    </ContentPage>
+
+    <ContentPage Title="Statistik">
+
+
+    </ContentPage>
+
+    <ContentPage Title="Låna">
+
+
+    </ContentPage>
+</TabbedPage>
