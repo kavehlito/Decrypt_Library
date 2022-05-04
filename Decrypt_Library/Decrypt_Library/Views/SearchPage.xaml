@@ -12,8 +12,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20" TextColor="Aqua"/>
-                                <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15" TextColor="Crimson"/>
+                                <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20"/>
+                                <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

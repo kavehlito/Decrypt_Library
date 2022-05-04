@@ -1,6 +1,5 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,12 +26,6 @@ namespace Decrypt_Library.Views
             var selectedItemFromList = (CategoryName_Product)e.Item;
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
-        }
-
-        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-            var userInput = sender as SearchBar;
-
         }
     }
 }

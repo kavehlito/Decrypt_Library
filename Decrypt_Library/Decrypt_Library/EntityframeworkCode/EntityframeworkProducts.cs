@@ -43,14 +43,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                                 join age in db.Audiences on prod.AudienceId equals age.Id
                                 join lang in db.Languages on prod.LanguageId equals lang.Id
                                 join cate in db.Categories on prod.CategoryId equals cate.Id
-                                join shelf in db.Shelves on prod.ShelfId equals shelf.Id
+                                //join shelf in db.Shelves on prod.ShelfId equals shelf.Id
+                                where prod.Id == productId
                                 select new SelectedProduct
                                 {
                                     Id = prod.Id,
                                     Audience = age.AgeGroup,
                                     Language = lang.Languages,
                                     Category = cate.CategoriesName,
-                                    Shelf = shelf.Shelfname,
+                                    //Shelf = shelf.Shelfname,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
                                     Description = prod.Description,
@@ -61,9 +62,9 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Playtime = prod.Playtime,
                                     PublishDate = prod.PublishDate,
                                     Status = prod.Status
-                                }).ToList();
+                                });
 
-                var selectProduct = products.FirstOrDefault(sp => sp.Id == productId);
+                var selectProduct = products.SingleOrDefault(sp => sp.Id == productId);
 
                 return selectProduct;
             }
