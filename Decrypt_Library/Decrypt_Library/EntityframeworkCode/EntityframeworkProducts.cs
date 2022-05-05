@@ -44,6 +44,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                 join age in db.Audiences on prod.AudienceId equals age.Id
                                 join lang in db.Languages on prod.LanguageId equals lang.Id
                                 join cate in db.Categories on prod.CategoryId equals cate.Id
+                                join media in db.MediaTypes on prod.MediaId equals media.Id
                                 //join shelf in db.Shelves on prod.ShelfId equals shelf.Id
                                 where prod.Id == productId
                                 select new SelectedProduct
@@ -53,6 +54,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Language = lang.Languages,
                                     Category = cate.CategoriesName,
                                     //Shelf = shelf.Shelfname,
+                                    MediaType = media.FormatName,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
                                     Description = prod.Description,

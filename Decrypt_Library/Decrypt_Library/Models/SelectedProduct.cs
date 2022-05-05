@@ -11,6 +11,7 @@ namespace Decrypt_Library.Models
         public string Language { get; set; }
         public string Category { get; set; }
         //public string Shelf { get; set; }
+        public string MediaType { get; set; }
         public string Title { get; set; }
         public string AuthorName { get; set; }
         public string Description { get; set; }

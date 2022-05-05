@@ -9,6 +9,7 @@
             <Label Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}"/>
             <Label Text="{Binding Language, StringFormat='Språk: {0}'}"/>
             <Label Text="{Binding Category, StringFormat='Kategori: {0}'}"/>
+            <Label Text="{Binding MediaType, StringFormat='Format: {0}'}"/>
             <Label Text="{Binding Description, StringFormat='Beskrivning: {0}'}"/>
             <Label Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}"/>
             <Label Text="{Binding Isbn, StringFormat='ISBN: {0}'}"/>
