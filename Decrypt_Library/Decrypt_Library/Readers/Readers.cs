@@ -181,6 +181,19 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
+        public static bool LegalIDRangeProductId(string userInput, out int convertedUserIdInput)
+        {
+            var productList = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+
+            if (!IntReaderConvertStringToInt(userInput, out convertedUserIdInput))
+                return false;
+
+            if (convertedUserIdInput > productList.Count || convertedUserIdInput < 1)
+                return false;
+
+            return true;
+        }
+
         public static bool LegalIDRangeShelfId(string userInput, out int convertedUserIdInput)
         {
             var shelfList = EntityFrameworkCode.EntityframeworkShelf.ShowAllShelves();

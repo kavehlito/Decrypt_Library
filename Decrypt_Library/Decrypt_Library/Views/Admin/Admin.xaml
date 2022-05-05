@@ -379,19 +379,14 @@
                                                 x:Name="hiddenProduct"/>
 
 
-
-                                <Button 
-                                                CornerRadius="10"
+                                    <Button      CornerRadius="10"
                                                 Grid.Column="1"
-                                        Clicked="CompleteProduct_Pressed"
+                                                 Clicked="CompleteProduct_Pressed"
                                                 BackgroundColor="White"
                                                 TextColor="Black"
                                     FontAttributes="Bold"
                                                 Text="Insert product"/>
-
-                                <Button Text="hej" IsVisible="false" x:Name="Registerworked"/>
-
-                            </StackLayout>
+                                </StackLayout>
 
                         </ScrollView>
                         </StackLayout>
