@@ -114,6 +114,16 @@ namespace Decrypt_Library.Readers
             if (num != minNum)
                 return false;
 
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var exixtingUser = db.Users;
+                var exist = exixtingUser.Where(s => s.Ssn == num);
+                if (exist.Any())
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 
 namespace Decrypt_Library.Views
 {
@@ -21,7 +22,11 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
-            //BindingContext = EntityframeworkProducts.ShowSpecificProductID(selectedId);
+        }
+
+        private void LoanOrReserveButton_Clicked(object sender, EventArgs e)
+        {
+            
         }
     }
 }
