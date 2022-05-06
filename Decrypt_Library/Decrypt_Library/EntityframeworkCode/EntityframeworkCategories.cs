@@ -15,7 +15,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             using (var db = new Models.Decrypt_LibraryContext())
             {
-                categories = db.Categories.ToList();
+                categories = db.Categories.OrderBy(x=>x.Id).ToList();
                 return categories;
             }
         }
