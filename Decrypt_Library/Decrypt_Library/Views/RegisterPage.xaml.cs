@@ -49,6 +49,11 @@ namespace Decrypt_Library.Views
             else
                 wrongSSNInput.IsVisible = false;
 
+            if (!correctSSN)
+                wrongSSNInput2.IsVisible = true;
+            else
+                wrongSSNInput2.IsVisible = false;
+
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
 

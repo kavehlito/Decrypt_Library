@@ -37,7 +37,7 @@
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
-                   WidthRequest="400">
+                   WidthRequest="500">
 
                 <StackLayout>
 
@@ -46,7 +46,7 @@
                                TextColor="White" FontAttributes="Bold"
                                Margin="0,5,0,0"/>
 
-                        <Entry WidthRequest="280"
+                        <Entry WidthRequest="300"
                                Placeholder="Måste vara minst 3 bokstäver lång!"
                                Completed="Entry_Completed"
                                x:Name="Username"
@@ -61,7 +61,7 @@
                                Padding="0"
                                IsVisible="False"
                                x:Name="wrongUsernameInput"
-                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               AbsoluteLayout.LayoutBounds="110,-5,200,14"
                                TextColor="Red"/>
 
                     </AbsoluteLayout>
@@ -79,12 +79,12 @@
                     </StackLayout>
 
                     <AbsoluteLayout>
-                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer långt"
+                        <Label Text="Ogiltigt lösenord, måste innehålla minst 1 siffra och 8 karaktärer"
                                FontSize="10"
                                Padding="0"
                                IsVisible="False"
                                x:Name="wrongPasswordInput"
-                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               AbsoluteLayout.LayoutBounds="70,-5,300,14"
                                TextColor="Red"/>
                     </AbsoluteLayout>
 
@@ -93,7 +93,7 @@
                                TextColor="White" FontAttributes="Bold"
                                Margin="0,5,0,0"/>
 
-                        <Entry WidthRequest="285"
+                        <Entry WidthRequest="300"
                                Placeholder="Minst 10 siffror och utan bindestreck!"
                                Completed="Entry_Completed"
                                x:Name="SSN"
@@ -107,13 +107,20 @@
                                x:Name="wrongSSNInput"
                                AbsoluteLayout.LayoutBounds="105,-5,200,14"
                                TextColor="Red"/>
+                        <Label Text="Personnumret finns redan"
+                               FontSize="10"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="wrongSSNInput2"
+                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               TextColor="Red"/>
                     </AbsoluteLayout>
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Email:"
                                TextColor="White" FontAttributes="Bold"
                                Margin="0,5,0,0"/>
-                        <Entry WidthRequest="285"
+                        <Entry WidthRequest="300"
                                Placeholder="abc@hotmail.com"
                                Completed="Entry_Completed"
                                x:Name="Email"
@@ -126,7 +133,7 @@
                                Padding="0"
                                IsVisible="False"
                                x:Name="wrongEmailInput"
-                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               AbsoluteLayout.LayoutBounds="46,-5,200,14"
                                TextColor="Red"/>
                     </AbsoluteLayout>
 
@@ -134,7 +141,7 @@
                         <Label Text="Telefon:"
                                TextColor="White" FontAttributes="Bold"
                                Margin="0,5,0,0"/>
-                        <Entry WidthRequest="285"
+                        <Entry WidthRequest="300"
                                Placeholder="702123456"
                                Completed="Entry_Completed"
                                x:Name="Phone"

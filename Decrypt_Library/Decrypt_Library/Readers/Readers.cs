@@ -114,8 +114,31 @@ namespace Decrypt_Library.Readers
             if (num != minNum)
                 return false;
 
+            var users = EntityFrameworkCode.EntityframeworkUsers.ShowAllUsers();
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                if (users.Where(u => u.Ssn == num).ToList().Count() > 0)
+                {
+                    return false;
+                }
+            }
+
+          /*  using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var existingUsers = db.Users;
+                var exist = existingUsers.Where(s => s.Ssn == num);
+                if (exist.Any())
+                    return false;
+            }
+          */
             return true;
+          
         }
+
+     /*   public static bool SSNReader2()
+        {
+
+        } */
 
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
@@ -286,10 +309,10 @@ namespace Decrypt_Library.Readers
         {
             if (!DateTime.TryParseExact(userInput, "yyyy/MM/dd", null, DateTimeStyles.None, out date))
                 return false;
-            
+
             return true;
         }
-        
+
     }
 }
 
