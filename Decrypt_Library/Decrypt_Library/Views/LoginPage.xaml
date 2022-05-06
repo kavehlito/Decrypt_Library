@@ -7,11 +7,11 @@
             <Label x:Name="Headline" Text="Logga in" />
             
             <Entry x:Name="SSN" Placeholder="Personnummer" />
-            <Entry x:Name="Password" Placeholder="Lösenord" />
-            <Button x:Name="LogIn" Text="Logga in" Clicked="LogIn_Clicked" />
-            <Label x:Name="Error" Text="Felaktigt användarnamn eller lösenord. Försök igen!" TextColor="Red" HorizontalOptions="Center" IsVisible="false" />
+            <Entry x:Name="Password" Placeholder="Lösenord" IsPassword="True" />
+            <Button x:Name="LogIn" Text="Logga in" Clicked="LogIn_Clicked" BackgroundColor="Black" TextColor="White"/>
+            <Label x:Name="Error" Text="Felaktigt personnummer eller lösenord. Försök igen!" TextColor="Red" HorizontalOptions="Center" IsVisible="false" />
             <Label x:Name="Test" Text="" />
-            <Button x:Name="LogOut" Text="Logga ut" Clicked="LogOut_Clicked" IsVisible="false" />
+            <Button x:Name="LogOut" Text="Logga ut" Clicked="LogOut_Clicked" IsVisible="false" BackgroundColor="Black" TextColor="White" />
 
         </StackLayout>
     </ContentPage.Content>

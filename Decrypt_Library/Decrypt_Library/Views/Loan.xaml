@@ -4,17 +4,18 @@
              x:Class="Decrypt_Library.Views.Loan">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="ProductIdError" Text="Produkten finns inte i systemet" TextColor="red" IsVisible="false" />
             <Label x:Name="User" Text="" />
             <Entry x:Name="CheckUserId" Placeholder="Lånetagar-Id" />
-            <Button x:Name="checkUserButton" Text="Check" Clicked="checkUserButton_Clicked"/>
+            <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="Black" TextColor="White"/>
             <Label x:Name="UserIdError" Text="Lånatagaren finns inte i systemet." TextColor="Red" IsVisible="false" />
-            <Label x:Name="ProductIdError" Text="Produkten finns inte i systemet" TextColor="red" IsVisible="false"/>
             <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false" />
-            <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" />
-            <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" />
-            <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" />
+            <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="Black" TextColor="White" />
+            <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="Black" TextColor="White" />
+            <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="Black" TextColor="White" />
+            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false"/>
             <Label x:Name="Receipt" Text="" IsVisible="false"/>
-            <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked"/>
+            <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="Black" TextColor="White"/>
             
         </StackLayout>
     </ContentPage.Content>

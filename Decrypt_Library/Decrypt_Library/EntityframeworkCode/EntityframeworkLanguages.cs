@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,29 @@ namespace Decrypt_Library.EntityFrameworkCode
                 var languages = db.Languages.ToList();
                 return languages;
             }
+
         }
+
+        public static void CreateLanguage(Language language)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var userList = db.Languages;
+
+                userList.Add(language);
+                db.SaveChanges();
+            }
+        }
+
+        public static void RemoveLanguage(Language language)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                language = db.Languages.Where(x => x.Id == language.Id).SingleOrDefault();
+                db.Remove(language);
+                db.SaveChanges();
+            }
+        }
+
     }
 }

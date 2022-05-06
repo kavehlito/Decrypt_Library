@@ -340,14 +340,12 @@
 
                                 </Entry>
 
-
                                 <Label Text="In Stock: "
                                        FontSize="12"
                                            TextColor="White"
                                            
                                        FontAttributes="Bold"
                                        AbsoluteLayout.LayoutBounds="0,550,90,50"/>
-
 
                                 <Switch AbsoluteLayout.LayoutBounds="120,620,380,80"
                                         BackgroundColor="White"
@@ -370,14 +368,11 @@
                                        FontSize="12"
                                        FontAttributes="Bold"
                                            TextColor="White"
-                                           
                                     />
 
                                 <Switch 
                                         BackgroundColor="White"
-                                        
                                                 x:Name="hiddenProduct"/>
-
 
                                     <Button      CornerRadius="10"
                                                 Grid.Column="1"
@@ -391,6 +386,19 @@
                         </ScrollView>
                         </StackLayout>
 
+                        <StackLayout x:Name="removeProductTab"
+                                 IsVisible="false">
+
+                            <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Id på den produkt du vill ta bort"/>
+
+                            <Entry x:Name="entryProductRemove"
+                               TextChanged="entryProductRemove_TextChanged"
+                           >
+                            </Entry>
+                        </StackLayout>
                     </StackLayout>
 
                     <ListView x:Name="ProductList"
@@ -413,48 +421,19 @@
 
                                         </StackLayout>
                                     </Frame>
-
-
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
 
                     </ListView>
 
-                    <StackLayout x:Name="removeProductTab"
-                                 IsVisible="false">
-
-                        <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Id på den produkt du vill ta bort"/>
-
-                        <Entry x:Name="entryProductRemove"
-                               TextChanged="entryProductRemove_TextChanged"
-                           >
-
-                        </Entry>
-
-                    </StackLayout>
-
 
                 </StackLayout>
-
             </Frame>
-
-
-
         </Grid>
-
-
-
-
     </ContentPage>
-
     <ContentPage Title="Kategorier">
-
         <Grid>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -474,6 +453,8 @@
                    Grid.Row="1">
 
                 <StackLayout>
+
+     
 
                     <StackLayout Orientation="Vertical">
 
@@ -497,7 +478,6 @@
                             BackgroundColor="White"
                             HorizontalOptions="CenterAndExpand"
                             CornerRadius="10"
-                                    x:Name="showCategoriestab2"
                             Clicked="ShowCategories_Pressed"
                             FontAttributes="Bold"
                             >
@@ -524,7 +504,6 @@
                             <Entry x:Name="entryCategoryNametab2"
                                    TextChanged="entryCategoryNametab2_TextChanged"
                            >
-
                             </Entry>
 
                         </StackLayout>
@@ -542,49 +521,40 @@
                            >
 
                             </Entry>
+
                         </StackLayout>
 
+                        <StackLayout x:Name="categoryTab"
+                                 IsVisible="false">
+                            <ListView x:Name="categoryList"
+                              IsVisible="true"
+                              >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Id}"
+                                            TextColor="White"/>
+                                                    <Label Text="{Binding CategoriesName}"
+                                            TextColor="White"/>
+
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
                     </StackLayout>
 
-
-                    <ListView x:Name="categoryList"
-                              >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate>
-                                <ViewCell>
-
-                                    <Frame>
-                                        <StackLayout Orientation="Horizontal">
-
-                                            <Label Text="{Binding Id}"
-                                            TextColor="White"/>
-                                            <Label Text="{Binding CategoriesName}"
-                                            TextColor="White"/>
-
-                                        </StackLayout>
-                                    </Frame>
-
-
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        
-                    </ListView>
-                    
-
+      
                 </StackLayout>
-                
             </Frame>
-
         </Grid>
-        
     </ContentPage>
-
     <ContentPage Title="Events">
-
         <Grid>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -595,18 +565,14 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
                    WidthRequest="500"
                    Grid.Row="1">
-
                 <StackLayout>
-
                     <StackLayout Orientation="Vertical">
-
                         <Label TextColor="White"
                            FontSize="20"
                            FontAttributes="Bold"
@@ -632,7 +598,6 @@
                             >
                             </Button>
 
-
                             <Button Text="Show Event"
                             BackgroundColor="White"
                             HorizontalOptions="CenterAndExpand"
@@ -644,7 +609,6 @@
 
                         </StackLayout>
                     </StackLayout>
-
                     <StackLayout x:Name="createEventBar"
                                  IsVisible="false">
 
@@ -655,7 +619,6 @@
                     <Entry x:Name="entryEventNametab2"
                            TextChanged="entryEventNametab2_TextChanged"
                            >
-
                     </Entry>
 
                     <Label TextColor="White"
@@ -666,23 +629,18 @@
                     <Entry x:Name="entryEventDescriptiontab2"
                            TextChanged="entryEventDescriptiontab2_TextChanged"
                            >
-
                     </Entry>
 
                     <Label TextColor="White"
                            FontSize="12"
                            FontAttributes="Bold"
                            Text="Tid och datum år/månad/dag"/>
-
                     <Entry x:Name="entryEventTimetab2"
                            Placeholder="yyyy/mm/dd"
                            TextChanged="entryEventTimetab2_TextChanged"
                            >
-
                     </Entry>
-
                     </StackLayout>
-
                     <StackLayout x:Name="removeEventTab"
                                  IsVisible="false">
 
@@ -694,17 +652,13 @@
                         <Entry x:Name="entryEventRemovetab2"
                                TextChanged="entryEventRemovetab2_TextChanged"
                            >
-
                         </Entry>
                     </StackLayout>
-
                     <ListView x:Name="eventList"
                               >
                         <ListView.ItemTemplate>
-
                             <DataTemplate>
                                 <ViewCell>
-
                                     <Frame>
                                         <StackLayout Orientation="Horizontal">
 
@@ -718,25 +672,15 @@
 
                                             <Label Text="{Binding Time}"
                                             TextColor="White"/>
-
                                         </StackLayout>
                                     </Frame>
-
-
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-
                     </ListView>
-
-
                 </StackLayout>
-
             </Frame>
-
         </Grid>
-
-
 
     </ContentPage>
 
@@ -748,7 +692,108 @@
 
     <ContentPage Title="Språk">
 
-        <Label Text="5"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="Black" 
+                   Grid.Column="1"
+                   HeightRequest="400"
+                   CornerRadius="10"
+                   WidthRequest="500"
+                   Grid.Row="1">
+                <StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Label TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                               HorizontalOptions="CenterAndExpand"
+                           Text="Language Options"/>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Add Language"
+                            BackgroundColor="White"
+                                    Clicked="AddLanguageButton_Pressed"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Remove Language"
+                            BackgroundColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                                    Clicked="RemoveLanguageButton_Pressed"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                            <Button Text="Show Languages"
+                            BackgroundColor="White"
+                                    Clicked="ShowLanguagesButton_Pressed"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                            </Button>
+
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout x:Name="createLanguageBar"
+                                 IsVisible="false">
+
+                        <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Eventnamn"/>
+                        <Entry x:Name="entryLanguageCreatetab3"
+                               TextChanged="entryLanguageCreatetab3_TextChanged"
+                           >
+                        </Entry>
+
+                    </StackLayout>
+                    <StackLayout x:Name="removeLanguageBar"
+                                 IsVisible="false">
+
+                        <Label TextColor="White"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Text="Id på det språk du vill ta bort"/>
+
+                        <Entry x:Name="entryLanguageRemovetab3"
+                               TextChanged="entryLanguageRemovetab3_TextChanged"
+                           >
+                        </Entry>
+                    </StackLayout>
+                    <ListView x:Name="languageList"
+                              >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame>
+                                        <StackLayout Orientation="Horizontal">
+
+                                            <Label Text="{Binding Id}"
+                                            TextColor="White"/>
+                                            <Label Text="{Binding Languages}"
+                                            TextColor="White"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+        </Grid>
 
     </ContentPage>
 
