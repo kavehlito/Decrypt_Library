@@ -49,6 +49,9 @@ namespace Decrypt_Library.Views
             else
                 wrongSSNInput.IsVisible = false;
 
+            var userCompare = new User();
+
+
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
 
@@ -61,6 +64,7 @@ namespace Decrypt_Library.Views
                 user.Ssn = long.Parse(SSN.Text);
                 user.UserTypeId = 3;
                 EntityframeworkUsers.CreateUser(user);
+
             }
         }
     }

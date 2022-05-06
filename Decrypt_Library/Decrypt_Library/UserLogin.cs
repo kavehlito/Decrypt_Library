@@ -17,7 +17,6 @@ namespace Decrypt_Library
                 return true;
             }
         }
-
         public static void LogOutUsers()
         {
             thisUser = null;
