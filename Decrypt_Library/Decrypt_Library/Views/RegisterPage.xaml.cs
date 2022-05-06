@@ -14,15 +14,28 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
         }
+
+        bool correctUserName = false;
+        bool correctPassword = false;
+        bool correctEmail = false;
+        bool correctPhone = false;
+        bool correctSSN = false;
         private void Entry_Completed(object sender, EventArgs e)
         {
             var user = new User();
 
-            bool correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
-            bool correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
-            bool correctEmail = Readers.Readers.EmailReader(Email.Text);
-            bool correctPhone = Readers.Readers.PhoneNrReader(Phone.Text, 10);
-            bool correctSSN = Readers.Readers.SSNReader(SSN.Text, 10);
+            try
+            {
+                correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
+                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
+                correctEmail = Readers.Readers.EmailReader(Email.Text);
+                correctPhone = Readers.Readers.PhoneNrReader(Phone.Text, 10);
+                correctSSN = Readers.Readers.SSNReader(SSN.Text, 10);
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", $"{exception.Message}", "Try again!");
+            }
 
             if (!correctUserName)
                 wrongUsernameInput.IsVisible = true;
@@ -45,14 +58,12 @@ namespace Decrypt_Library.Views
                 wrongPhoneInput.IsVisible = false;
 
             if (!correctSSN)
+            {
                 wrongSSNInput.IsVisible = true;
+                return;
+            }
             else
                 wrongSSNInput.IsVisible = false;
-
-            if (!correctSSN)
-                wrongSSNInput2.IsVisible = true;
-            else
-                wrongSSNInput2.IsVisible = false;
 
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
@@ -65,10 +76,18 @@ namespace Decrypt_Library.Views
                 user.Phonenumber = long.Parse(Phone.Text);
                 user.Ssn = long.Parse(SSN.Text);
                 user.UserTypeId = 3;
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if(item.Ssn == user.Ssn)
+                    {
+                        DisplayAlert("Error!", "Det finns redan en användare med samma SSN", "Gå vidare");
+                        wrongSSNInput.IsVisible = true;
+                        return;
+                    }
+                }
                 EntityframeworkUsers.CreateUser(user);
-
                 DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
-
             }
             else
             {
@@ -80,7 +99,6 @@ namespace Decrypt_Library.Views
         private void Terms_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             Terms.IsChecked = true;
-
         }
 
         private void Button_Clicked(object sender, EventArgs e)
