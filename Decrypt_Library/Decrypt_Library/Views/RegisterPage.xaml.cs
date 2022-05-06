@@ -49,13 +49,15 @@ namespace Decrypt_Library.Views
             else
                 wrongSSNInput.IsVisible = false;
 
-            var userCompare = new User();
-
+            if (!correctSSN)
+                wrongSSNInput2.IsVisible = true;
+            else
+                wrongSSNInput2.IsVisible = false;
 
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
 
-            if (completeRegistration)
+            if (completeRegistration && Terms.IsChecked)
             {
                 user.UserName = Username.Text;
                 user.Password = Password.Text;
@@ -65,7 +67,26 @@ namespace Decrypt_Library.Views
                 user.UserTypeId = 3;
                 EntityframeworkUsers.CreateUser(user);
 
+                DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
+
             }
+            else
+            {
+                DisplayAlert("Ooops", "Du måste klicka i användarvillkor", "OK");
+            }
+            
+        }
+
+        private void Terms_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            Terms.IsChecked = true;
+
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Entry_Completed(sender, e);
+           
         }
     }
 }

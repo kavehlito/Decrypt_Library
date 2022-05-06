@@ -36,7 +36,7 @@
 
                     <StackLayout Orientation="Vertical">
 
-                        <Label Text="Produkct Options"
+                        <Label Text="Product Options"
                                            FontSize="20"
                                            TextColor="White"
                                            FontAttributes="Bold"

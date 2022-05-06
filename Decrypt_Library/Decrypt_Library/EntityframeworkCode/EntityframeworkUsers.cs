@@ -17,13 +17,22 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         public static void CreateUser(User newCustomer)
         {
-            using (var db = new Decrypt_LibraryContext())
+            try
             {
-                var userList = db.Users;
+                using (var db = new Decrypt_LibraryContext())
+                {
+                    var userList = db.Users;
 
-                userList.Add(newCustomer);
-                db.SaveChanges();
+                    userList.Add(newCustomer);
+                    db.SaveChanges();
+                }
+
             }
+            catch (System.Exception)
+            {
+                
+            }
+           
         }
     }
 }

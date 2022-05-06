@@ -34,7 +34,7 @@ namespace Decrypt_Library
                 var productList = db.Products;
                 var product = productList.SingleOrDefault(p => p.Id == productId);
 
-                if (product == null) return false;
+                if (product == null || product.Status == false ) return false;
 
                 ProductName = product.Title;
 

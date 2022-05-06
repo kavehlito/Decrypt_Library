@@ -12,7 +12,7 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Loan : ContentPage
     {
-        StringBuilder receipt = new StringBuilder("UTLÅNINGSKVITTO:");
+        StringBuilder receipt = new StringBuilder($"{"STRECKKOD",-20}{"TITEL", -70}{"ÅTERLÄMNINGSDATUM",-40}");
         
 
         public Loan()
@@ -22,6 +22,7 @@ namespace Decrypt_Library.Views
 
         private void checkUserButton_Clicked(object sender, EventArgs e)
         {
+            if (CheckUserId.Text == null) CheckUserId.Text = "0";
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
             var sucess = Cart.CheckUserId(userId, out string UserName);
             if (!sucess) {UserIdError.IsVisible = true; CheckUserId.Text = null; }
@@ -32,14 +33,14 @@ namespace Decrypt_Library.Views
                 UserIdError.IsVisible = false;
                 Product.IsVisible = true;
                 Add.IsVisible = true;
-                User.Text = $"Lånetagare {CheckUserId.Text}, {UserName}";
+                User.Text = $"Lånekortsnummer: {CheckUserId.Text}, Namn: {UserName}";
             }
 
         }
 
         private void Add_Clicked(object sender, EventArgs e)
         {
-            
+            if (Product.Text == null) Product.Text = "0";
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
             int.TryParse(Product.Text.ToString(), out int produktId);
             var productSuccess = Cart.CheckProductId(produktId, out string ProduktName);
@@ -50,7 +51,7 @@ namespace Decrypt_Library.Views
 
                 Cart.AddABookToCart(userId, produktId);
 
-                receipt.AppendLine($"\n BokId: {produktId}, Titel: {ProduktName} Återlämningsdatum: {DateTime.Now.AddDays(30).ToShortDateString()}");
+                receipt.AppendLine($"\n{produktId, -27}{ProduktName, -64}{DateTime.Now.AddDays(30).ToShortDateString(), -40}");
                 Receipt.Text = receipt.ToString();
                 Product.Text = null;
                 Product.IsVisible = false;
@@ -75,6 +76,7 @@ namespace Decrypt_Library.Views
             var sucess = Cart.CheckoutCart(userId);
             AddNewProduct.IsVisible = false;
             CheckOut.IsVisible = false;
+            Headline.IsVisible = true;
             Receipt.IsVisible = true;
             StartAgain.IsVisible = true;
         }
@@ -89,6 +91,7 @@ namespace Decrypt_Library.Views
             User.Text = null;
             User.IsVisible = true;
             CheckUserId.Text = null;
+            Headline.IsVisible = false;
         }
     }
 }

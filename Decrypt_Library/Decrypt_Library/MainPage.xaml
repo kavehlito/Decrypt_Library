@@ -15,7 +15,6 @@
         <Views:AccountPage Title="Mina Sidor"></Views:AccountPage>
         <Views:LoginPage Title="Logga in"></Views:LoginPage>
         <Views:SearchPage Title="Sök"></Views:SearchPage>
-        <Views:AdminPage Title="Admin Options"></Views:AdminPage>
         <Views:Librarian Title="Librarian"></Views:Librarian>
         <Views:RegisterPage Title="Register"></Views:RegisterPage>
         <Views:Loan Title="Låna"></Views:Loan>
