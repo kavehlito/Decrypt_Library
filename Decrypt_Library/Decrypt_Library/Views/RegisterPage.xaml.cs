@@ -4,6 +4,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Decrypt_Library.EntityFrameworkCode;
+using System.Linq;
 
 namespace Decrypt_Library.Views
 {
@@ -31,6 +32,10 @@ namespace Decrypt_Library.Views
                 correctEmail = Readers.Readers.EmailReader(Email.Text);
                 correctPhone = Readers.Readers.PhoneNrReader(Phone.Text, 10);
                 correctSSN = Readers.Readers.SSNReader(SSN.Text, 10);
+
+                var userList = EntityframeworkUsers.ShowAllUsers();
+
+       
             }
             catch (Exception exception)
             {

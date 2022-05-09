@@ -16,7 +16,8 @@
         <Views:LoginPage Title="Logga in"></Views:LoginPage>
         <Views:SearchPage Title="Sök"></Views:SearchPage>
         <Views:Librarian Title="Librarian"></Views:Librarian>
-        <Views:RegisterPage Title="Register"></Views:RegisterPage>
+        <Views:AdminPage Title="Admin Options"></Views:AdminPage>
+            <Views:RegisterPage Title="Register"></Views:RegisterPage>
         <Views:Loan Title="Låna"></Views:Loan>
 
     </TabbedPage.Children>

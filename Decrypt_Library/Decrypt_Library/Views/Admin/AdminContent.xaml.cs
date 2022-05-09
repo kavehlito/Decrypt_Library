@@ -16,5 +16,15 @@ namespace Decrypt_Library.Views.Admin
         {
             InitializeComponent();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            groupedList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+        }
+
+        private void groupedList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }
