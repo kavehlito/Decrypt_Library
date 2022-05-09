@@ -277,9 +277,9 @@ namespace Decrypt_Library.Views
                 ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
                 ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
 
-                ProductStatusCorrect = inStock.IsToggled;
-                ProductNewProductCorrect = newProduct.IsToggled;
-                ProductHiddenProductCorrect = hiddenProduct.IsToggled;
+               // ProductStatusCorrect = inStock.IsToggled;
+                //ProductNewProductCorrect = newProduct.IsToggled;
+                //ProductHiddenProductCorrect = hiddenProduct.IsToggled;
 
 
 
@@ -388,9 +388,9 @@ namespace Decrypt_Library.Views
                     product.Isbn = isbn;
                     product.Playtime = playTime;
                     product.PublishDate = date;
-                    product.NewProduct = newProduct.IsToggled;
-                    product.HiddenProduct = hiddenProduct.IsToggled;
-                    product.Status = inStock.IsToggled;
+                   // product.NewProduct = newProduct.IsToggled;
+                   // product.HiddenProduct = hiddenProduct.IsToggled;
+                   // product.Status = inStock.IsToggled;
 
                     EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
 

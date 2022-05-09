@@ -156,12 +156,12 @@ namespace Decrypt_Library.Readers
             num = 0;
             if (Int32.TryParse(userInput, out num))
             {
-                if (num == selectedNumber)
+                if (userInput.Length != selectedNumber)
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
         public static bool IntReaderSpecifyIntRange(string userInput, int minNum, int maxNum, out int num)
@@ -301,7 +301,7 @@ namespace Decrypt_Library.Readers
             if (!LongReaderOutLong(userInput, out num))
                 return false;
 
-            if (num != selectedNumber)
+            if (userInput.Length != selectedNumber)
                 return false;
 
             return true;
