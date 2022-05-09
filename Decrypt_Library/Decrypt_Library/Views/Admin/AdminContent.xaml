@@ -1,33 +1,227 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black"
              x:Class="Decrypt_Library.Views.Admin.AdminContent">
     <ContentPage.Content>
-        <Grid Margin="0,25,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Grid
+                    Margin="0,30,0,0"
+                    Grid.Column="1">
 
-            <Frame BorderColor="Transparent"
-                   Grid.Row="1"
-                   CornerRadius="10"
-                   IsClippedToBounds="True"
-                   Grid.Column="1"
-                   Scale="1.3"
-                   Margin="0,30,0,0"
-                   HeightRequest="450"
-                   WidthRequest="350"
-                   Padding="0"
-                    >
-            </Frame>
-        </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <Frame BackgroundColor="Transparent"
+                           HeightRequest="180"
+                           Grid.Column="0"
+                           IsClippedToBounds="True"
+                           Margin="25,0,0,0"
+                           WidthRequest="210">
+
+                        <Image Source="gradient1.png"
+                               Scale="1.5"
+                               >
+                            
+                            
+                            
+                        </Image>
+
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           HeightRequest="180"
+                           Grid.Column="0"
+                           Margin="25,0,0,0"
+                           WidthRequest="210">
+
+                        <AbsoluteLayout>
+                            <Label Text="55"
+                                   FontAttributes="Bold"
+                                   FontSize="30"
+                                   TextColor="White"/>
+
+                            <Label Text="In Stock"
+                                   AbsoluteLayout.LayoutBounds="0,80,50,30"
+                                   FontAttributes="Bold"
+                                   FontSize="12"
+                                   TextColor="White"/>
+
+                        </AbsoluteLayout>
+                        
+
+                    </Frame>
+
+
+                    <Frame BackgroundColor="Transparent"
+                           HeightRequest="180"
+                           Grid.Column="2"
+                           Margin="0,0,25,0"
+                           IsClippedToBounds="True"
+                           WidthRequest="210">
+
+                        <Image Source="bluegradient.png"
+                               Scale="2">
+                            
+                            
+                        </Image>
+
+                    </Frame>
+
+
+                    <Frame BackgroundColor="Transparent"
+                           HeightRequest="180"
+                           Grid.Column="2"
+                           Margin="0,0,25,0"
+                           WidthRequest="210">
+
+                        <AbsoluteLayout>
+                            <Label Text="13"
+                                   FontAttributes="Bold"
+                                   FontSize="30"
+                                   TextColor="White"/>
+
+                            <Label Text="Rented"
+                                   AbsoluteLayout.LayoutBounds="0,80,50,30"
+                                   FontAttributes="Bold"
+                                   FontSize="12"
+                                   TextColor="White"/>
+
+
+                        </AbsoluteLayout>
+                    </Frame>
+                </Grid>
+                <Frame BorderColor="Transparent" 
+                       Background="Black"
+                       CornerRadius="20"
+                       WidthRequest="500" HeightRequest="450" Grid.Row="1" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Frame
+                              BackgroundColor="Black"
+                                CornerRadius="10"
+                                Grid.Row="0"
+                            HeightRequest="40"
+                            Padding="0"
+                            IsClippedToBounds="True"
+                                Grid.Column="1">
+                            <Image Source="purplegradient.jpg"
+                                   Scale="7.5"/>
+
+                        </Frame>
+
+                        <Frame
+                              BackgroundColor="Transparent"
+                                CornerRadius="10"
+                                Grid.Row="0"
+                            HeightRequest="40"
+                            Padding="0"
+                            IsClippedToBounds="True"
+                                Grid.Column="1">
+                            <Button Text="Add Product"
+                                TextColor="White"
+                                    BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                Clicked="Button_Clicked"
+                              />
+
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1" BorderColor="Transparent" WidthRequest="500" HeightRequest="250"
+                               BackgroundColor="Black"
+                               >
+                            <ListView x:Name="groupedList"
+                                      VerticalScrollBarVisibility="Never"
+                                      HasUnevenRows="False"
+                                      RefreshControlColor="Black"
+                                      SeparatorVisibility="None"
+                                      ItemTapped="groupedList_ItemTapped"
+                                       HeightRequest="30">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Grid>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <Label Text="{Binding Id}"
+                                                   TextColor="MediumPurple"
+                                                           Grid.Column="0"
+                                                   FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Title}"
+                                                   TextColor="CornflowerBlue"
+                                                           Grid.Column="1"
+                                                   FontAttributes="Bold"/>
+
+
+                    
+                                                    <Frame Grid.Column="3"
+                                                           CornerRadius="10"
+                                                           HeightRequest="20">
+
+                                                            <ImageButton Source="delete.png"
+                                                            CornerRadius="10"
+                                                            HeightRequest="30"
+                                                                         Scale="1.5"
+                                                                VerticalOptions="Start"
+                                                            BackgroundColor="White"/>
+
+                             
+                                                    </Frame>
+
+                                             
+
+                                                    <Frame BorderColor="Transparent" HeightRequest="50">
+                                                        
+                                                        
+                                                    </Frame>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>    
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Frame>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

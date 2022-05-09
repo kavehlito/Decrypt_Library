@@ -480,7 +480,7 @@ namespace Decrypt_Library.Views
                     {
                         if (products.CategoryId == categoryId)
                         {
-                            DisplayActionSheet("Error", "You're not allowed to remove a category with existing products", "OK");
+                            DisplayActionSheet("Error", "You're not allowed to remove a category with existing products in it", "OK");
                             return;
                         }
                     }

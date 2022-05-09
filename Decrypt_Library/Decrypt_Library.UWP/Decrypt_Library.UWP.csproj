@@ -131,7 +131,11 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="bluegradient.png" />
+    <Content Include="delete.png" />
+    <Content Include="gradient1.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="purplegradient.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

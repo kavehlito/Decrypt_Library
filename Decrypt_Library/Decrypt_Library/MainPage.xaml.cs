@@ -14,5 +14,9 @@ namespace Decrypt_Library
         {
             InitializeComponent();
         }
+
+        private void AdminPage_Focused(object sender, FocusEventArgs e)
+        {
+        }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Decrypt_Library.EntityFrameworkCode;
+using System.Linq;
 
 namespace Decrypt_Library.Views
 {
