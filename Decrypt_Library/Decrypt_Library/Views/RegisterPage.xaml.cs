@@ -24,6 +24,8 @@ namespace Decrypt_Library.Views
         private void Entry_Completed(object sender, EventArgs e)
         {
             var user = new User();
+            long convertedPhoneNr = 0;
+            long convertedSSN = 0;
 
             long convertedSSN = 0;
             long convertedPhoneNumber = 0;
@@ -51,11 +53,13 @@ namespace Decrypt_Library.Views
                 else
                     wrongEmailInput.IsVisible = false;
 
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
                 if (!correctPhone)
                     wrongPhoneInput.IsVisible = true;
                 else
                     wrongPhoneInput.IsVisible = false;
 
+                correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
                 if (!correctSSN)
                 {
                     wrongSSNInput.IsVisible = true;
@@ -68,6 +72,11 @@ namespace Decrypt_Library.Views
                             
                         }
                     }
+                }
+                if (!correctSSN)
+                {
+                    wrongSSNInput.IsVisible = true;
+                    //return;
                 }
                 else
                     wrongSSNInput.IsVisible = false;
@@ -84,7 +93,7 @@ namespace Decrypt_Library.Views
                 user.UserName = Username.Text;
                 user.Password = Password.Text;
                 user.Email = Email.Text;
-                user.Phonenumber = convertedPhoneNumber;
+                user.Phonenumber = convertedPhoneNr;
                 user.Ssn = convertedSSN;
                 user.UserTypeId = 3;
 
@@ -107,6 +116,16 @@ namespace Decrypt_Library.Views
         private void Button_Clicked(object sender, EventArgs e)
         {
             Entry_Completed(sender, e);
+           
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await DisplayAlert("Du tryckte på avbryt", "Går nu tillbaka till förstasidan", "OK");
+
+
+            //await Navigation.PopAsync();
+            await Navigation.PushAsync(new MainPage());
            
         }
     }

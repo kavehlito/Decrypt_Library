@@ -174,7 +174,8 @@
                                 AbsoluteLayout.LayoutBounds="20,0,150,50"
                                 CornerRadius="10"
                                 BackgroundColor="Red"
-                                TextColor="Black">
+                                TextColor="Black"
+                                Clicked="Button_Clicked_1">
                             
                         </Button>
                     </AbsoluteLayout>
