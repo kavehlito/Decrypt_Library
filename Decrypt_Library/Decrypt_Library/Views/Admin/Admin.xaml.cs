@@ -16,7 +16,13 @@ namespace Decrypt_Library.Views
         public AdminPage()
         {
             InitializeComponent();
+            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+            categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+            eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
+            languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
         }
+
+
 
         Product product = new Product();
         Category category = new Category();
@@ -277,11 +283,9 @@ namespace Decrypt_Library.Views
                 ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
                 ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
 
-                ProductStatusCorrect = inStock.IsToggled;
-                ProductNewProductCorrect = newProduct.IsToggled;
-                ProductHiddenProductCorrect = hiddenProduct.IsToggled;
-
-
+                //ProductStatusCorrect = inStock.IsToggled;
+                //ProductNewProductCorrect = newProduct.IsToggled;
+                //ProductHiddenProductCorrect = hiddenProduct.IsToggled;
 
                 if (!ProductTitleCorrect)
                     entryTitle.BackgroundColor = Color.MediumVioletRed;
@@ -388,9 +392,9 @@ namespace Decrypt_Library.Views
                     product.Isbn = isbn;
                     product.Playtime = playTime;
                     product.PublishDate = date;
-                    product.NewProduct = newProduct.IsToggled;
-                    product.HiddenProduct = hiddenProduct.IsToggled;
-                    product.Status = inStock.IsToggled;
+                    //product.NewProduct = newProduct.IsToggled;
+                    //product.HiddenProduct = hiddenProduct.IsToggled;
+                    //product.Status = inStock.IsToggled;
 
                     EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
 

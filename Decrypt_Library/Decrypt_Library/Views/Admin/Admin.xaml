@@ -8,13 +8,14 @@
             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
             windows:Page.ToolbarPlacement="Bottom"
             BarBackground="Black"
+            BackgroundColor="Green"
              x:Class="Decrypt_Library.Views.AdminPage">
     
     <ContentPage Title="Produkter">
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -25,16 +26,58 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+
+            <StackLayout Grid.Column="1">
+                
+
             <Label Text="Product Options"
-                   FontSize="20"
-                   TextColor="Black"
-                   Grid.Column="1"
+                   FontSize="35"
+                   TextColor="White"
+                   Grid.Row="0"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
 
-            <Frame BackgroundColor="Black" 
+                <Frame BorderColor="White"
+                               Padding="0"
+                               Grid.Column="1"
+                               WidthRequest="350"
+                               BackgroundColor="Orange"
+                               IsClippedToBounds="True"
+                               HeightRequest="40">
+
+                    <AbsoluteLayout>
+
+                        <Button Text="Add Product"
+                                    BackgroundColor="Blue"
+                                    Grid.Column="0"
+                                    TextColor="Green"
+                                    Clicked="CompleteProduct_Pressed"
+                                    AbsoluteLayout.LayoutBounds="0,-10,175,40"
+                                    CornerRadius="10"
+                                    FontAttributes="Bold"/>
+
+
+                        <Button Text="Show Product"
+                                    BackgroundColor="Red"
+                                    TextColor="Green"
+                                    AbsoluteLayout.LayoutBounds="175,-10,175,40"
+                                    Clicked="ShowProductsButton_Pressed"
+                                    CornerRadius="10"
+                                    Grid.Column="2"
+                                    FontAttributes="Bold"/>
+
+                    </AbsoluteLayout>
+
+                </Frame>
+
+
+            </StackLayout>
+
+
+            <Frame BackgroundColor="Green" 
                    Grid.Column="1"
                    HeightRequest="500"
+                   Padding="0"
                    CornerRadius="10"
                    WidthRequest="500"
                    Grid.Row="1">
@@ -43,46 +86,34 @@
 
                     <StackLayout Orientation="Vertical">
 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
+    
+                        </Grid>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Add Product"
-                            BackgroundColor="White"
-                                    Clicked="CompleteProduct_Pressed"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Show Product"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                                    Clicked="ShowProductsButton_Pressed"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Remove Product"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                                    Clicked="RemoveProductButton_Pressed"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                        </StackLayout>
                         <StackLayout x:Name="createProductTab" 
                                      IsVisible="false"
-                                     Margin="25,40,25,0">
-              
+                                    >
                         <ScrollView VerticalScrollBarVisibility="Never">
                             <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Produktnamn"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
 
+                                        <Label Text="ISBN"
+                                               FontAttributes="Bold"
+                                               Margin="140,0,0,0"
+                                               TextColor="White"/>
 
-                                    <Frame BorderColor="White" HeightRequest="800">
+                                    </StackLayout>
+
+                                    <Frame BorderColor="Green" HeightRequest="550">
                                         <AbsoluteLayout>
 
                                             <Entry AbsoluteLayout.LayoutBounds="-20,-20,225,40"
@@ -90,7 +121,6 @@
                                                    BackgroundColor="White"
                                                    TextChanged="entryTitle_TextChanged"
                                                    x:Name="entryTitle"
-                                                   Placeholder="Produktnamn"
                                                    FontSize="12"
                                                    FontAttributes="Bold"
                                                    TextColor="BLack"/>
@@ -100,7 +130,6 @@
                                                    PlaceholderColor="Gray"
                                                    BackgroundColor="White"
                                                    FontSize="12"
-                                                   Placeholder="ISBN"
                                                    AbsoluteLayout.LayoutBounds="210,-20,225,40"
                                                    TextChanged="entryISBN_TextChanged"
                                                    x:Name="entryISBN"
@@ -110,7 +139,6 @@
                                             <Entry
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
-                                                    Placeholder="Publisher"
                                                     x:Name="entryPublisher"
                                                     TextChanged="entryPublisher_TextChanged"
                                                     FontSize="12"
@@ -124,7 +152,6 @@
                                                     FontSize="12"
                                                     TextChanged="entryLanguage_TextChanged"
                                                     x:Name="entryLanguage"
-                                                    Placeholder="Language"
                                                     AbsoluteLayout.LayoutBounds="-20,50,225,40"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack"/>
@@ -135,11 +162,9 @@
                                                     FontSize="12"
                                                     TextChanged="entryAuthor_TextChanged"
                                                     x:Name="entryAuthor"
-                                                    Placeholder="Author"
                                                     AbsoluteLayout.LayoutBounds="-20,120,225,40"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack"/>
-
 
                                             <Entry
                                                     PlaceholderColor="Gray"
@@ -148,16 +173,14 @@
                                                     TextChanged="entryDate_TextChanged"
                                                     AbsoluteLayout.LayoutBounds="210,120,225,40"
                                                     x:Name="entryDate"
-                                                    Placeholder="yyyy/mm/dd"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack"/>
 
                                             <Entry
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
-                                                    AbsoluteLayout.LayoutBounds="210,190,225,40"
+                                                    AbsoluteLayout.LayoutBounds="95,190,110,40"
                                                     FontSize="12"
-                                                    Placeholder="Category ID"
                                                     TextChanged="entryCategoryId_TextChanged"
                                                     x:Name="entryCategoryId"
                                                     FontAttributes="Bold"
@@ -167,8 +190,7 @@
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
                                                     FontSize="12"
-                                                    Placeholder="ShelfId"
-                                                    AbsoluteLayout.LayoutBounds="-20,190,225,40"
+                                                    AbsoluteLayout.LayoutBounds="-20,190,110,40"
                                                     TextChanged="entryShelfId_TextChanged"
                                                     x:Name="entryShelfId"
                                                     FontAttributes="Bold"
@@ -178,18 +200,17 @@
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
                                                     FontSize="12"
-                                                    Placeholder="Narrator"
-                                                    AbsoluteLayout.LayoutBounds="-20,260,225,40"
+                                                    AbsoluteLayout.LayoutBounds="-20,260,140,40"
                                                     TextChanged="entryNarrator_TextChanged"
                                                     x:Name="entryNarrator"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack"/>
+                                            
                                             <Entry
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
                                                     FontSize="12"
-                                                    Placeholder="Audience Id"
-                                                    AbsoluteLayout.LayoutBounds="210,260,225,40"
+                                                    AbsoluteLayout.LayoutBounds="210,190,110,40"
                                                     TextChanged="entryAudienceId_TextChanged"
                                                     x:Name="entryAudienceId"
                                                     FontAttributes="Bold"
@@ -202,9 +223,8 @@
                                                     FontSize="12"
                                                     TextChanged="entryMediaId_TextChanged"
                                                     x:Name="entryMediaId"
-                                                    Placeholder="Media Id"
                                                     FontAttributes="Bold"
-                                                    AbsoluteLayout.LayoutBounds="210,330,225,40"
+                                                    AbsoluteLayout.LayoutBounds="325,190,110,40"
                                                     TextColor="BLack"/>
 
                                             <Entry
@@ -212,10 +232,9 @@
                                                     BackgroundColor="White"
                                                     FontSize="12"
                                                     x:Name="entryPages"
-                                                    Placeholder="Pages"
                                                     TextChanged="entryPages_TextChanged"
                                                     FontAttributes="Bold"
-                                                    AbsoluteLayout.LayoutBounds="-20,330,225,40"
+                                                    AbsoluteLayout.LayoutBounds="290,260,140,40"
                                                     TextColor="BLack"/>
 
 
@@ -226,8 +245,7 @@
                                                     x:Name="entryDescription"
                                                     TextChanged="entryDescription_TextChanged"
                                                     FontSize="12"
-                                                    Placeholder="Description"
-                                                    AbsoluteLayout.LayoutBounds="-20,399,450,100"
+                                                    AbsoluteLayout.LayoutBounds="-20,329,450,100"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack"/>
 
@@ -238,37 +256,165 @@
                                                     TextChanged="entryPlaytime_TextChanged"
                                                     x:Name="entryPlaytime"
                                                     FontAttributes="Bold"
+                                                    AbsoluteLayout.LayoutBounds="135,260,140,40"
                                                     TextColor="BLack"/>
 
-                                            <BoxView BackgroundColor="Orange"
+
+                                            <Switch AbsoluteLayout.LayoutBounds="-10,460,80,30"
+                                                    OnColor="Orange"
+                                                    BackgroundColor="Green"
+                                                    x:Name="inStock"/>
+
+                                            <Switch AbsoluteLayout.LayoutBounds="170,460,80,30"
+                                                    BackgroundColor="Green"
+                                                    OnColor="Orange"
+                                                    x:Name="newProduct"
+                                                    />
+
+                                            <Switch AbsoluteLayout.LayoutBounds="350,460,80,30"
+                                                    BackgroundColor="Green"
+                                                    OnColor="Orange"
+                                                    x:Name="hiddenProduct"/>
+
+                                            <Button CornerRadius="10"
+                                                    Clicked="CompleteProduct_Pressed"
+                                                    BackgroundColor="White"
+                                                    TextColor="Green"
+                                                    FontAttributes="Bold"
+                                                    AbsoluteLayout.LayoutBounds="-20,520,450,50"
+                                                    Text="Insert product"/>
+
+                                            <BoxView BackgroundColor="Green"
                                                      AbsoluteLayout.LayoutBounds="-20,19,450,32"
                                                      />
 
-                                            <BoxView BackgroundColor="Orange"
-                                                     AbsoluteLayout.LayoutBounds="204,-20,7,400"
+                                            <BoxView BackgroundColor="Green"
+                                                     AbsoluteLayout.LayoutBounds="204,-20,7,280"
                                                      />
 
-                                            <BoxView BackgroundColor="Orange"
+                                            <BoxView BackgroundColor="Green"
+                                                     AbsoluteLayout.LayoutBounds="89,190,7,40"
+                                                     />
+
+                                            <BoxView BackgroundColor="Green"
+                                                     AbsoluteLayout.LayoutBounds="319,190,7,40"
+                                                     />
+
+                                            <BoxView BackgroundColor="Green"
+                                                     AbsoluteLayout.LayoutBounds="274,260,17,40"
+                                                     />
+                                            <BoxView BackgroundColor="Green"
+                                                     AbsoluteLayout.LayoutBounds="119,260,17,40"
+                                                     />
+
+                                            <BoxView BackgroundColor="Green"
                                                      AbsoluteLayout.LayoutBounds="-20,89,450,32"
                                                      />
-                                            <BoxView BackgroundColor="Orange"
+                                            <BoxView BackgroundColor="Green"
                                                      AbsoluteLayout.LayoutBounds="-20,159,450,32"
                                                      />
-                                            <BoxView BackgroundColor="Orange"
+                                            <BoxView BackgroundColor="Green"
                                                      AbsoluteLayout.LayoutBounds="-20,229,450,32"
                                                      />
 
-                                            <BoxView BackgroundColor="Orange"
+                                            <BoxView BackgroundColor="Green"
                                                      AbsoluteLayout.LayoutBounds="-20,299,450,32"
                                                      />
-
-                                            <BoxView BackgroundColor="Orange"
-                                                     AbsoluteLayout.LayoutBounds="-20,369,450,32"
+                                            <BoxView BackgroundColor="Green"
+                                                     AbsoluteLayout.LayoutBounds="-20,428,450,32"
                                                      />
 
-                                            <BoxView BackgroundColor="Orange"
-                                                     AbsoluteLayout.LayoutBounds="-20,498,450,32"
-                                                     />
+                                            <Label Text="Språk"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="-10,25,100,20"/>
+
+                                            <Label Text="Publisher"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="220,25,100,20"/>
+
+                                            <Label Text="Författare"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="-10,95,100,20"/>
+
+                                            <Label Text="Utgiviningsdatum yyyy/mm/dd"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="220,95,230,20"/>
+
+                                            <Label Text="Hylla A-Z"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="-10,165,80,20"/>
+
+                                            <Label Text="Kategori ID"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="100,165,80,20"/>
+
+                                            <Label Text="Publik ID"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="215,165,80,20"/>
+
+                                            <Label Text="Media ID"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="330,165,80,20"/>
+
+                                            <Label Text="Narrator"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="-10,235,80,20"/>
+
+                                            <Label Text="Playtime"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="140,235,80,20"/>
+
+
+                                            <Label Text="Sidor"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="300,235,80,20"/>
+
+                                            <Label Text="Description"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="-10,305,80,20"/>
+
+                                            <Label Text="Finns i lager"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="-10,430,80,20"/>
+
+                                            <Label Text="Ny produkt"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="165,430,80,20"/>
+
+                                            <Label Text="Gömd produkt"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   AbsoluteLayout.LayoutBounds="355,430,80,20"/>
+
                                         </AbsoluteLayout>
                                     </Frame>
                                 </StackLayout>
@@ -292,7 +438,7 @@
                     </StackLayout>
 
                     <ListView x:Name="ProductList"
-                              IsVisible="false"
+                              IsVisible="true"
                               >
                         <ListView.ItemTemplate>
 
@@ -305,8 +451,6 @@
                                             <Label Text="{Binding Id}"
                                             TextColor="White"/>
                                             <Label Text="{Binding Title}"
-                                            TextColor="White"/>
-                                            <Label Text="{Binding Description}"
                                             TextColor="White"/>
 
                                         </StackLayout>

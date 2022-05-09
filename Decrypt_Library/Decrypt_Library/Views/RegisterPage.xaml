@@ -39,7 +39,12 @@
                    Grid.Column="1"
                    WidthRequest="500">
 
+
                 <StackLayout>
+                    
+       
+
+                <StackLayout IsVisible="True">
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Användarnamn:"
@@ -188,6 +193,7 @@
                       
                     </AbsoluteLayout>
    
+                </StackLayout>
                 </StackLayout>
 
             </Frame>

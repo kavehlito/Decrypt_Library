@@ -25,35 +25,41 @@ namespace Decrypt_Library.Views
         {
             var user = new User();
 
+            long convertedSSN = 0;
+            long convertedPhoneNumber = 0;
+
             try
             {
                 correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
+                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
+                correctEmail = Readers.Readers.EmailReader(Email.Text);
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNumber);
+                correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
+
                 if (!correctUserName)
                     wrongUsernameInput.IsVisible = true;
                 else
                     wrongUsernameInput.IsVisible = false;
 
-                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
                 if (!correctPassword)
                     wrongPasswordInput.IsVisible = true;
                 else
                     wrongPasswordInput.IsVisible = false;
 
-                correctEmail = Readers.Readers.EmailReader(Email.Text);
                 if (!correctEmail)
                     wrongEmailInput.IsVisible = true;
                 else
                     wrongEmailInput.IsVisible = false;
 
-                correctPhone = Readers.Readers.IntEqualsToSelectedNumber(Phone.Text, 10, out int convertedPhoneNr);
                 if (!correctPhone)
                     wrongPhoneInput.IsVisible = true;
                 else
                     wrongPhoneInput.IsVisible = false;
 
-                correctSSN = Readers.Readers.IntEqualsToSelectedNumber(SSN.Text, 10, out int convertedSSN);
                 if (!correctSSN)
                 {
+                    wrongSSNInput.IsVisible = true;
+
                     foreach (var item in EntityframeworkUsers.ShowAllUsers())
                     {
                         if (item.Ssn == user.Ssn)
@@ -63,20 +69,13 @@ namespace Decrypt_Library.Views
                         }
                     }
                 }
-                if (!correctSSN)
-                {
-                    wrongSSNInput.IsVisible = true;
-                    return;
-                }
                 else
                     wrongSSNInput.IsVisible = false;
-
             }
             catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "Try again!");
             }
-
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
 
@@ -85,8 +84,8 @@ namespace Decrypt_Library.Views
                 user.UserName = Username.Text;
                 user.Password = Password.Text;
                 user.Email = Email.Text;
-                user.Phonenumber = long.Parse(Phone.Text);
-                user.Ssn = long.Parse(SSN.Text);
+                user.Phonenumber = convertedPhoneNumber;
+                user.Ssn = convertedSSN;
                 user.UserTypeId = 3;
 
                
