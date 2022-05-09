@@ -27,43 +27,54 @@ namespace Decrypt_Library.Views
             try
             {
                 correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
+                if (!correctUserName)
+                    wrongUsernameInput.IsVisible = true;
+                else
+                    wrongUsernameInput.IsVisible = false;
+
                 correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
+                if (!correctPassword)
+                    wrongPasswordInput.IsVisible = true;
+                else
+                    wrongPasswordInput.IsVisible = false;
+
                 correctEmail = Readers.Readers.EmailReader(Email.Text);
-                correctPhone = Readers.Readers.PhoneNrReader(Phone.Text, 10);
-                correctSSN = Readers.Readers.SSNReader(SSN.Text, 10);
+                if (!correctEmail)
+                    wrongEmailInput.IsVisible = true;
+                else
+                    wrongEmailInput.IsVisible = false;
+
+                correctPhone = Readers.Readers.IntEqualsToSelectedNumber(Phone.Text, 10, out int convertedPhoneNr);
+                if (!correctPhone)
+                    wrongPhoneInput.IsVisible = true;
+                else
+                    wrongPhoneInput.IsVisible = false;
+
+                correctSSN = Readers.Readers.IntEqualsToSelectedNumber(SSN.Text, 10, out int convertedSSN);
+                if (!correctSSN)
+                {
+                    foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                    {
+                        if (item.Ssn == user.Ssn)
+                        {
+                            DisplayAlert("Error!", "Det finns redan en användare med samma personnummer", "Gå vidare");
+                            
+                        }
+                    }
+                }
+                if (!correctSSN)
+                {
+                    wrongSSNInput.IsVisible = true;
+                    return;
+                }
+                else
+                    wrongSSNInput.IsVisible = false;
+
             }
             catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "Try again!");
             }
-
-            if (!correctUserName)
-                wrongUsernameInput.IsVisible = true;
-            else
-                wrongUsernameInput.IsVisible = false;
-
-            if (!correctPassword)
-                wrongPasswordInput.IsVisible = true;
-            else
-                wrongPasswordInput.IsVisible = false;
-
-            if(!correctEmail)
-                wrongEmailInput.IsVisible = true;
-            else
-                wrongEmailInput.IsVisible = false;
-
-            if(!correctPhone)
-                wrongPhoneInput.IsVisible = true;
-            else
-                wrongPhoneInput.IsVisible = false;
-
-            if (!correctSSN)
-            {
-                wrongSSNInput.IsVisible = true;
-                return;
-            }
-            else
-                wrongSSNInput.IsVisible = false;
 
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
@@ -77,23 +88,15 @@ namespace Decrypt_Library.Views
                 user.Ssn = long.Parse(SSN.Text);
                 user.UserTypeId = 3;
 
-                foreach (var item in EntityframeworkUsers.ShowAllUsers())
-                {
-                    if(item.Ssn == user.Ssn)
-                    {
-                        DisplayAlert("Error!", "Det finns redan en användare med samma SSN", "Gå vidare");
-                        wrongSSNInput.IsVisible = true;
-                        return;
-                    }
-                }
+               
                 EntityframeworkUsers.CreateUser(user);
                 DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
             }
             else
             {
-                DisplayAlert("Ooops", "Du måste klicka i användarvillkor", "OK");
+                DisplayAlert("Ooops", "Dubbelkolla alla fält och klicka i användarvillkor", "OK");
             }
-            
+
         }
 
         private void Terms_CheckedChanged(object sender, CheckedChangedEventArgs e)

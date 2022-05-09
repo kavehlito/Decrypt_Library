@@ -21,20 +21,22 @@ namespace Decrypt_Library.Readers
 
         public static bool EmailReader(string emailInput)
         {
-            if (StringReader(emailInput))
-                return true;
-
-            if (IsStringAndIsInt(emailInput))
-                return true;
-
-            if (!emailInput.Contains("@"))
-                return false;
-
-            if (emailInput.Any(char.IsPunctuation))
-                return true;
+            if (emailInput.Length < 6) return false;
+            if (emailInput.Length > 15) return false;
+            if (!Contains(emailInput, '.')) return false;
+            if (!Contains(emailInput, '@')) return false;
 
             return true;
         }
+
+        private static bool Contains(string accountdetails, char letter)
+        {
+            foreach (char character in accountdetails)
+                if (character == letter) return true;
+
+            return false;
+        }
+
 
         public static bool StringReader(string userInput)
         {
@@ -123,22 +125,22 @@ namespace Decrypt_Library.Readers
                 }
             }
 
-          /*  using (var db = new Models.Decrypt_LibraryContext())
-            {
-                var existingUsers = db.Users;
-                var exist = existingUsers.Where(s => s.Ssn == num);
-                if (exist.Any())
-                    return false;
-            }
-          */
+
             return true;
-          
+
+
+            /*  using (var db = new Models.Decrypt_LibraryContext())
+              {
+                  var existingUsers = db.Users;
+                  var exist = existingUsers.Where(s => s.Ssn == num);
+                  if (exist.Any())
+                      return false;
+              }
+            */
+
         }
 
-     /*   public static bool SSNReader2()
-        {
-
-        } */
+      
 
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {
