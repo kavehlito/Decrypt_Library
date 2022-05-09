@@ -21,8 +21,10 @@
             <Label Text="{Binding Description, StringFormat='Beskrivning: {0}'}"/>
             </StackLayout>
             <AbsoluteLayout>
+                <Label x:Name="PlsLoginlbl" Text="Du måste vara inloggad för att låna/reservera en bok" TextColor="Red" IsVisible="false"
+                       AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.8,0.5" FontAttributes="Bold"/>
                 <Button x:Name="LoanOrReserveButton" WidthRequest="150" HorizontalOptions="End" Clicked="LoanOrReserveButton_Clicked"
-                        Text="Låna" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.8,0.5,150,50"
+                        Text="{Binding Status}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.8,0.5,150,50"
                         />
             </AbsoluteLayout>
         </StackLayout>

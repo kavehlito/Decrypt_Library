@@ -22,6 +22,24 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
+            if (UserLogin.thisUser == null)
+            {
+                LoanOrReserveButton.IsVisible = false;
+                PlsLoginlbl.IsVisible = true;
+            }
+            else
+            {
+                LoanOrReserveButton.IsVisible = true;
+                PlsLoginlbl.IsVisible = false;
+            }
+            if (LoanOrReserveButton.Text == "True")
+            {
+                LoanOrReserveButton.Text = "Låna";
+            }
+            else
+            {
+                LoanOrReserveButton.Text = "Reservera";
+            }
         }
 
         private void LoanOrReserveButton_Clicked(object sender, EventArgs e)
