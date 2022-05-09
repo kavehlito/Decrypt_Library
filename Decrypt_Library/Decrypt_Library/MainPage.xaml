@@ -18,6 +18,8 @@
         <Views:Librarian Title="Librarian"></Views:Librarian>
         <Views:RegisterPage Title="Register"></Views:RegisterPage>
         <Views:Loan Title="Låna"></Views:Loan>
+        <Views:ReturnProduct Title="Lämna tillbaka"></Views:ReturnProduct>
+        
 
     </TabbedPage.Children>
 </TabbedPage>
