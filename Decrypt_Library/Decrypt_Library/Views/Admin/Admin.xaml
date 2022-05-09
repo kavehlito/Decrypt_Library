@@ -240,7 +240,6 @@
                                                     FontAttributes="Bold"
                                                     TextColor="BLack"/>
 
-
                                             <BoxView BackgroundColor="Orange"
                                                      AbsoluteLayout.LayoutBounds="-20,19,450,32"
                                                      />
