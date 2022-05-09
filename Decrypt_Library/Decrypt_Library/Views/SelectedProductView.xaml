@@ -1,24 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Decrypt_Library.Views.SelectedProductView">
+             x:Class="Decrypt_Library.Views.SelectedProductView"
+             Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-            <Label x:Name="Titlelbl" Text="{Binding Title, StringFormat='Titel: {0}'}"/>
-            <Label Text="{Binding AuthorName, StringFormat='Författare: {0}'}"/>
-            <Label Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}"/>
-            <Label Text="{Binding Language, StringFormat='Språk: {0}'}"/>
-            <Label Text="{Binding Category, StringFormat='Kategori: {0}'}"/>
-            <Label Text="{Binding MediaType, StringFormat='Format: {0}'}"/>
-            <Label Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}"/>
-            <Label Text="{Binding Isbn, StringFormat='ISBN: {0}'}"/>
-            <Label Text="{Binding Publisher, StringFormat='Förlag: {0}'}"/>
-            <Label Text="{Binding Pages, StringFormat='Antal Sidor: {0}'}"/>
-            <Label Text="{Binding Playtime, StringFormat='Speltid: {0}'}"/>
-            <Label Text="{Binding PublishDate, StringFormat='Utgiven: {0}'}"/>
-            <Label x:Name="ProdStatuslbl" Text="{Binding Status, StringFormat='Är boken inne?: {0}'}"/>
-            <Label Text="{Binding Description, StringFormat='Beskrivning: {0}'}"/>
+                <Label x:Name="Titlelbl" Text="{Binding Title, StringFormat='Titel: {0}'}"/>
+                <Label Text="{Binding AuthorName, StringFormat='Författare: {0}'}"/>
+                <Label Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}"/>
+                <Label Text="{Binding Language, StringFormat='Språk: {0}'}"/>
+                <Label Text="{Binding Category, StringFormat='Kategori: {0}'}"/>
+                <Label Text="{Binding MediaType, StringFormat='Format: {0}'}"/>
+                <Label Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}"/>
+                <Label Text="{Binding Isbn, StringFormat='ISBN: {0}'}"/>
+                <Label Text="{Binding Publisher, StringFormat='Förlag: {0}'}"/>
+                <Label Text="{Binding Pages, StringFormat='Antal Sidor: {0}'}"/>
+                <Label Text="{Binding Playtime, StringFormat='Speltid: {0}'}"/>
+                <Label Text="{Binding PublishDate, StringFormat='Utgiven: {0}'}"/>
+                <Label Text="{Binding Status, StringFormat='Är boken inne?: {0}'}"/>
+                <Label Text="{Binding Description, StringFormat='Beskrivning: {0}'}"/>
             </StackLayout>
             <AbsoluteLayout>
                 <Label x:Name="PlsLoginlbl" Text="Du måste vara inloggad för att låna/reservera en bok" TextColor="Red" IsVisible="false"

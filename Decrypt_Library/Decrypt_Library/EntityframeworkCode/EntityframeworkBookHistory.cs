@@ -1,9 +1,7 @@
-﻿using System;
-using Decrypt_Library.Models;
+﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
@@ -52,6 +50,22 @@ namespace Decrypt_Library.EntityFrameworkCode
 
                                   };
                 return loanHistory.ToList();
+            }
+        }
+        public static void ReserveProduct(string productTitle)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                Product choosenProduct = db.Products.Where(ch => ch.Title == productTitle).FirstOrDefault();
+                BookHistory bookHistory = new BookHistory();
+                
+                bookHistory.ProductId = choosenProduct.Id;
+                bookHistory.EventId = 3;
+                bookHistory.UserId = UserLogin.thisUser.Id;
+                bookHistory.StartDate = DateTime.UtcNow;
+
+                db.BookHistories.Update(bookHistory);
+                db.SaveChanges();
             }
         }
     }
