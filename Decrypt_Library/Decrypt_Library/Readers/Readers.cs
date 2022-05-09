@@ -38,6 +38,7 @@ namespace Decrypt_Library.Readers
             return false;
         }
 
+
         public static bool StringReader(string userInput)
         {
             if (!userInput.Any(char.IsLetter) || string.IsNullOrEmpty(userInput))
@@ -125,22 +126,22 @@ namespace Decrypt_Library.Readers
                 }
             }
 
-          /*  using (var db = new Models.Decrypt_LibraryContext())
-            {
-                var existingUsers = db.Users;
-                var exist = existingUsers.Where(s => s.Ssn == num);
-                if (exist.Any())
-                    return false;
-            }
-          */
+
             return true;
-          
+
+
+            /*  using (var db = new Models.Decrypt_LibraryContext())
+              {
+                  var existingUsers = db.Users;
+                  var exist = existingUsers.Where(s => s.Ssn == num);
+                  if (exist.Any())
+                      return false;
+              }
+            */
+
         }
 
-     /*   public static bool SSNReader2()
-        {
-
-        } */
+      
 
         public static bool IntReaderConvertStringToInt(string userInput, out int num)
         {

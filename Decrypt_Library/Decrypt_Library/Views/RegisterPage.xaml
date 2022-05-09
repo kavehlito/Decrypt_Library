@@ -105,15 +105,9 @@
                                Padding="0"
                                IsVisible="False"
                                x:Name="wrongSSNInput"
-                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               AbsoluteLayout.LayoutBounds="112,-5,300,14"
                                TextColor="Red"/>
-                        <Label Text="Personnumret finns redan"
-                               FontSize="10"
-                               Padding="0"
-                               IsVisible="False"
-                               x:Name="wrongSSNInput2"
-                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
-                               TextColor="Red"/>
+                   
                     </AbsoluteLayout>
 
                     <StackLayout Orientation="Horizontal">
@@ -154,7 +148,7 @@
                                Padding="0"
                                IsVisible="False"
                                x:Name="wrongPhoneInput"
-                               AbsoluteLayout.LayoutBounds="105,-5,200,14"
+                               AbsoluteLayout.LayoutBounds="65,-5,200,14"
                                TextColor="Red"/>
                     </AbsoluteLayout>
 
