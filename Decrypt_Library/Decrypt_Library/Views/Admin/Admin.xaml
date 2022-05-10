@@ -747,18 +747,35 @@
 
             </Grid.ColumnDefinitions>
 
-            <Frame HeightRequest="200"
-                   WidthRequest="500"
-                   Grid.Row="0"
-                   Grid.Column="1">
-                <StackLayout>
-                    <Label Text="INFORMATION OM ANSTÄLLDA"
+            <Label x:Name="startLabel" Text="INFORMATION OM ANSTÄLLDA" IsVisible="true"
                            FontSize="26"
-                           TextColor="Black"
-                           FontAttributes="Bold">
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           Padding="10,10,10,10">
 
-                    </Label>
-                    <Frame BackgroundColor="Black">
+            </Label>
+
+            <Label x:Name="endLabel" Text="REGISTRERING AV NYA ANSTÄLLDA" IsVisible="false"
+                           FontSize="26"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           Padding="10,10,10,10">
+
+            </Label>
+
+            <Frame  BackgroundColor="Black" 
+                   Grid.Column="1"
+                   HeightRequest="400"
+                   CornerRadius="10"
+                   BorderColor="White"
+                   WidthRequest="500"
+                   Grid.Row="1">
+                <StackLayout>
+                  
                         <ListView x:Name="userList"
                               IsVisible="True">
                             <ListView.ItemTemplate>
@@ -787,10 +804,8 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                    </Frame>
-
-                    <StackLayout IsVisible="True">
-                        <StackLayout >
+                    <StackLayout IsVisible="False" x:Name="register">
+                        <StackLayout>
 
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Användarnamn:"
