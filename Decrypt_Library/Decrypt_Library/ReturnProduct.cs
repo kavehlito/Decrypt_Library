@@ -9,8 +9,9 @@ namespace Decrypt_Library
     public class ReturnProduct
     {
 
-        public static bool UpdateProductHistory(int productId)
+        public static bool UpdateProductHistory(int productId, out string productName)
         {
+            productName = null;
             using (var db = new Models.Decrypt_LibraryContext())
             {
                 var produkcHistory = db.BookHistories;
@@ -23,12 +24,13 @@ namespace Decrypt_Library
                 db.SaveChanges();
                 
             }
-            UpdateProductStatus(productId);
+            UpdateProductStatus(productId, out productName);
             return true;
         }
 
-        public static bool UpdateProductStatus(int productId)
+        public static bool UpdateProductStatus(int productId, out string productName)
         {
+            productName = null;
             using (var db = new Models.Decrypt_LibraryContext())
             {
                 var productList = db.Products;
@@ -36,7 +38,7 @@ namespace Decrypt_Library
                
 
                 if (product == null) return false;
-
+                productName = product.Title;
                 product.Status = true;
                 db.SaveChanges();
                 return true;
