@@ -13,20 +13,6 @@
                     <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" />
                     <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked"/>
 
-                    <AbsoluteLayout x:Name="Cancel">
-                        <Button IsVisible="true"
-                                Text="Avbryt registrering"
-                                FontSize="15"
-                                CornerRadius="10"
-                                AbsoluteLayout.LayoutBounds="100,20,100,20"
-                                BackgroundColor="Black"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                Clicked="Button_Clicked_3">
-
-                        </Button>
-
-                    </AbsoluteLayout>
 
                 </StackLayout>
             <Label x:Name="Content" Text="">

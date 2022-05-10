@@ -31,7 +31,6 @@ namespace Decrypt_Library.Views
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             Content.Text = MyPages.MyReservationsList();
-            Button_Clicked_3(sender, e);
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
@@ -39,15 +38,6 @@ namespace Decrypt_Library.Views
             Content.Text = MyPages.MyLoanHistory();
         }
 
-        private void Button_Clicked_3(object sender, EventArgs e)
-        {
-            Cancel.IsVisible = true;
-
-           /* await DisplayAlert("Du tryckte på avbryt", "Går nu tillbaka till förstasidan", "OK");
-
-            await Navigation.PushAsync(new MainPage()); */
-
-
-        }
+    
     }
 }
