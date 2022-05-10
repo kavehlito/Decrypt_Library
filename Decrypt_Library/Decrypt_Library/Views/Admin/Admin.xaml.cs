@@ -219,7 +219,6 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
 
-
         #endregion
 
         /// <summary>
