@@ -1,11 +1,12 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
+using Decrypt_Library.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,14 +15,14 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminPage : TabbedPage
     {
-
         public AdminPage()
         {
             InitializeComponent();
             var employees = EntityframeworkUsers.ShowAllUsers();
             var employeeList = employees.Where(el => el.UserTypeId == 2).ToList();
 
-            userList.ItemsSource = employeeList; 
+            userList.ItemsSource = employeeList;
+            BindingContext = new AdminProductViewModel();
         }
 
 
@@ -134,11 +135,6 @@ namespace Decrypt_Library.Views
             createProductTab.IsVisible = true;
         }
 
-        private void RemoveButton_CLicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void entryTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryTitle.Text = e.NewTextValue;
@@ -218,32 +214,11 @@ namespace Decrypt_Library.Views
         {
             if (sender is ListView lv) lv.SelectedItem = null;
         }
-
-        private void RemoveProductButton_Pressed(object sender, EventArgs e)
-        {
-            createProductTab.IsVisible = false;
-
-            if (!removeProductTab.IsVisible)
-            {
-                removeProductTab.IsVisible = true;
-                return;
-            }
-            try
-            {
-                if (Readers.Readers.IntReaderConvertStringToInt(entryProductRemove.Text, out int productId))
-                {
-                    product.Id = productId;
-                    EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(product);
-                    removeProductTab.IsVisible = false;
-                    ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
-                    entryProductRemove.Text = "";
-                }
-            }
-            catch (Exception exception)
-            {
-                DisplayAlert("Error", $"{exception.Message}", "ok");
-            }
+        public void UpdateNewProductList() 
+        { 
+            ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
+
 
         #endregion
 
@@ -253,6 +228,10 @@ namespace Decrypt_Library.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region Complete product add
+        private async void ProductTextReset()
+        {
+            await Navigation.PushAsync(new AdminPage());
+        }
 
         private void CompleteProduct_Pressed(object sender, EventArgs e)
         {
@@ -276,98 +255,94 @@ namespace Decrypt_Library.Views
             try
             {
                 ProductTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
-                ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
-                ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
-                ProductPublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
-                ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
-
-                ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
-                ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
-
-                ProductLanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
-                ProductShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(entryShelfId.Text, out shelfId);
-                ProductCategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
-                ProductAudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
-                ProductMediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
-                ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
-                ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
-
-                //ProductStatusCorrect = inStock.IsToggled;
-                //ProductNewProductCorrect = newProduct.IsToggled;
-                //ProductHiddenProductCorrect = hiddenProduct.IsToggled;
-
                 if (!ProductTitleCorrect)
                     entryTitle.BackgroundColor = Color.MediumVioletRed;
                 else
                     entryTitle.BackgroundColor = Color.White;
 
-                if (!ProductDescriptionCorrect)
-                    entryDescription.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryDescription.BackgroundColor = Color.White;
-
-                if (!ProductAuthorNameCorrect)
-                    entryAuthor.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryAuthor.BackgroundColor = Color.White;
-
-                if (!ProductPublisherCorrect)
-                    entryPublisher.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryPublisher.BackgroundColor = Color.White;
-
-                if (!ProductNarratorCorrect)
-                    entryNarrator.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryNarrator.BackgroundColor = Color.White;
-
-                if (!ProductPagesCorrect)
-                    entryPages.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryPages.BackgroundColor = Color.White;
-
-                if (!ProductPlaytimeCorrect)
-                    entryPlaytime.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryPlaytime.BackgroundColor = Color.White;
-
-                if (!ProductLanguageIdCorrect)
-                    entryLanguage.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryLanguage.BackgroundColor = Color.White;
-
-                if (!ProductShelfIdCorrect)
-                    entryShelfId.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryShelfId.BackgroundColor = Color.White;
-
-                if (!ProductCategoryIdCorrect)
-                    entryCategoryId.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryCategoryId.BackgroundColor = Color.White;
-
-                if (!ProductAudienceIdCorrect)
-                    entryAudienceId.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryAudienceId.BackgroundColor = Color.White;
-
-                if (!ProductMediaIdCorrect)
-                    entryMediaId.BackgroundColor = Color.MediumVioletRed;
-                else
-                    entryMediaId.BackgroundColor = Color.White;
-
+                ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
                 if (!ProductIsbnCorrect)
                     entryISBN.BackgroundColor = Color.MediumVioletRed;
                 else
                     entryISBN.BackgroundColor = Color.White;
 
-                if (!ProductPublishDateCorrect)
-                    entryISBN.BackgroundColor = Color.MediumVioletRed;
+                ProductLanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
+                if (!ProductLanguageIdCorrect)
+                    entryLanguage.BackgroundColor = Color.MediumVioletRed;
                 else
-                    entryISBN.BackgroundColor = Color.White;
+                    entryLanguage.BackgroundColor = Color.White;
+
+                ProductPublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
+                if (!ProductPublisherCorrect)
+                    entryPublisher.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryPublisher.BackgroundColor = Color.White;
+
+                ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
+                if (!ProductAuthorNameCorrect)
+                    entryAuthor.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryAuthor.BackgroundColor = Color.White;
+
+                ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
+                if (!ProductPublishDateCorrect)
+                    entryDate.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryDate.BackgroundColor = Color.White;
+
+                ProductShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(entryShelfId.Text, out shelfId);
+                if (!ProductShelfIdCorrect)
+                    entryShelfId.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryShelfId.BackgroundColor = Color.White;
+
+                ProductCategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
+                if (!ProductCategoryIdCorrect)
+                    entryCategoryId.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryCategoryId.BackgroundColor = Color.White;
+
+                ProductAudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
+                if (!ProductAudienceIdCorrect)
+                    entryAudienceId.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryAudienceId.BackgroundColor = Color.White;
+
+                ProductMediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
+                if (!ProductMediaIdCorrect)
+                    entryMediaId.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryMediaId.BackgroundColor = Color.White;
+
+                ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
+                if (!ProductNarratorCorrect)
+                    entryNarrator.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryNarrator.BackgroundColor = Color.White;
+
+                ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
+                if (!ProductPlaytimeCorrect)
+                    entryPlaytime.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryPlaytime.BackgroundColor = Color.White;
+
+                ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
+                if (!ProductPlaytimeCorrect)
+                    entryPages.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryPages.BackgroundColor = Color.White;
+
+                ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
+                if (!ProductDescriptionCorrect)
+                    entryDescription.BackgroundColor = Color.MediumVioletRed;
+                else
+                    entryDescription.BackgroundColor = Color.White;
+
+                ProductStatusCorrect = inStock.IsToggled;
+                ProductNewProductCorrect = newProduct.IsToggled;
+                ProductHiddenProductCorrect = hiddenProduct.IsToggled;
 
                 ProductCorrectProductInput = ProductMediaIdCorrect
-                                      && ProductStatusCorrect
                                       && ProductIsbnCorrect
                                       && ProductTitleCorrect
                                       && ProductDescriptionCorrect
@@ -380,9 +355,7 @@ namespace Decrypt_Library.Views
                                       && ProductCategoryIdCorrect
                                       && ProductShelfIdCorrect
                                       && ProductNarratorCorrect
-                                      && ProductNewProductCorrect
-                                      && ProductAudienceIdCorrect
-                                      && ProductHiddenProductCorrect;
+                                      && ProductAudienceIdCorrect;
 
                 if (ProductCorrectProductInput)
                 {
@@ -401,16 +374,18 @@ namespace Decrypt_Library.Views
                     product.Isbn = isbn;
                     product.Playtime = playTime;
                     product.PublishDate = date;
-                    //product.NewProduct = newProduct.IsToggled;
-                    //product.HiddenProduct = hiddenProduct.IsToggled;
-                    //product.Status = inStock.IsToggled;
+                    product.NewProduct = newProduct.IsToggled;
+                    product.HiddenProduct = hiddenProduct.IsToggled;
+                    product.Status = inStock.IsToggled;
 
                     EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
 
                     ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
+                    product = null;
                     BoolReset();
+                    ProductTextReset();
                 }
                 else
                     DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
