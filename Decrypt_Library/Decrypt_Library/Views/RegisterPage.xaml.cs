@@ -27,21 +27,27 @@ namespace Decrypt_Library.Views
             long convertedPhoneNr = 0;
             long convertedSSN = 0;
 
+            long convertedSSN = 0;
+            long convertedPhoneNumber = 0;
+
             try
             {
                 correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
+                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
+                correctEmail = Readers.Readers.EmailReader(Email.Text);
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNumber);
+                correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
+
                 if (!correctUserName)
                     wrongUsernameInput.IsVisible = true;
                 else
                     wrongUsernameInput.IsVisible = false;
 
-                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
                 if (!correctPassword)
                     wrongPasswordInput.IsVisible = true;
                 else
                     wrongPasswordInput.IsVisible = false;
 
-                correctEmail = Readers.Readers.EmailReader(Email.Text);
                 if (!correctEmail)
                     wrongEmailInput.IsVisible = true;
                 else
@@ -56,6 +62,8 @@ namespace Decrypt_Library.Views
                 correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
                 if (!correctSSN)
                 {
+                    wrongSSNInput.IsVisible = true;
+
                     foreach (var item in EntityframeworkUsers.ShowAllUsers())
                     {
                         if (item.Ssn == user.Ssn)
@@ -72,13 +80,11 @@ namespace Decrypt_Library.Views
                 }
                 else
                     wrongSSNInput.IsVisible = false;
-
             }
             catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "Try again!");
             }
-
 
             bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
 
