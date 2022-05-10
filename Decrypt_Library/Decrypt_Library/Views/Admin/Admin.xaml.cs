@@ -705,9 +705,13 @@ namespace Decrypt_Library.Views
 
         #region Employee Options
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
             userList.IsVisible = false;
+            register.IsVisible = true;
+            startLabel.IsVisible = false;
+            endLabel.IsVisible = true;
+
             //await Navigation.PushAsync(new RegisterPage());
 
         }
@@ -789,7 +793,7 @@ namespace Decrypt_Library.Views
                 user.Email = Email.Text;
                 user.Phonenumber = convertedPhoneNr;
                 user.Ssn = convertedSSN;
-                user.UserTypeId = 3;
+                user.UserTypeId = 2;
 
 
                 EntityframeworkUsers.CreateUser(user);
