@@ -31,13 +31,15 @@ namespace Decrypt_Library.Views
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             Content.Text = MyPages.MyReservationsList();
+            
+            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
         {
             Content.Text = MyPages.MyLoanHistory();
-        }
 
-    
+            loanList.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserLoanHistory();
+        }
     }
 }

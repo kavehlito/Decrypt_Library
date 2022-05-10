@@ -612,6 +612,7 @@ namespace Decrypt_Library.Views
             register.IsVisible = true;
             startLabel.IsVisible = false;
             endLabel.IsVisible = true;
+            pressedButton.IsVisible = false;    
 
             //await Navigation.PushAsync(new RegisterPage());
 
@@ -705,9 +706,19 @@ namespace Decrypt_Library.Views
                 DisplayAlert("Ooops", "Dubbelkolla alla fält och försök igen", "OK");
             }
 
+        }
 
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
 
         }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            Entry_Completed(sender, e);
+        }
+
 
 
 

@@ -36,11 +36,19 @@ namespace Decrypt_Library.Views
             }
         }
 
-        private void LoanOrReserveButton_Clicked(object sender, EventArgs e)
+        private async void LoanOrReserveButton_Clicked(object sender, EventArgs e)
         {
             if (LoanOrReserveButton.Text == "Reservera")
             {
-                EntityframeworkBookHistory.ReserveProduct(Title);
+                var reservationCheck = EntityframeworkBookHistory.ReserveProduct(Title);
+                if (reservationCheck == false)
+                {
+                    await DisplayAlert("Error!", "Du har redan reserverat denna produkt!", "Alrighty Then..");
+                }
+                else
+                {
+                    await DisplayAlert("Hurra!", "Produkten är nu reserverad", "Fortsätt bläddra");
+                }
             }
         }
     }

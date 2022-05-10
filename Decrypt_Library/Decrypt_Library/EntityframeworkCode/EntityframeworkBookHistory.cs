@@ -52,20 +52,33 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return loanHistory.ToList();
             }
         }
-        public static void ReserveProduct(string productTitle)
+        public static bool ReserveProduct(string productTitle)
         {
             using (var db = new Decrypt_LibraryContext())
             {
                 Product choosenProduct = db.Products.Where(ch => ch.Title == productTitle).FirstOrDefault();
                 BookHistory bookHistory = new BookHistory();
-                
+
+                var reservationExists = db.BookHistories;
+
+                foreach (var reserv in reservationExists)
+                {
+                    if (reserv.ProductId == choosenProduct.Id && reserv.UserId == UserLogin.thisUser.Id)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
                 bookHistory.ProductId = choosenProduct.Id;
                 bookHistory.EventId = 3;
                 bookHistory.UserId = UserLogin.thisUser.Id;
                 bookHistory.StartDate = DateTime.UtcNow;
-
                 db.BookHistories.Update(bookHistory);
                 db.SaveChanges();
+                return true;
             }
         }
     }
