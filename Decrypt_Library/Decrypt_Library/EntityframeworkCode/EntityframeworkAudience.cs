@@ -19,5 +19,17 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return carts;
             }
         }
+        public static List<Product> SpecificAudience(List<int> audienceList)
+        {
+            var products = new List<Product>();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                foreach (var audience in audienceList)
+                {
+                    products.AddRange(db.Products.Where(x => x.AudienceId == audience).ToList());
+                }
+                return products;
+            }
+        }
     }
 }
