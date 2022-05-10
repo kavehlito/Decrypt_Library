@@ -15,9 +15,42 @@
 
 
                 </StackLayout>
+
             <Label x:Name="Content" Text="">
 
             </Label>
+            <StackLayout>
+                
+                <ListView x:Name="reservations" IsVisible="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="removeButton" Text="Radera" IsVisible="true"
+                                        BackgroundColor="White" TextColor="Black" FontAttributes="Bold"
+                                        CornerRadius="10" Grid.Column="1">
+
+                                    </Button>
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>
