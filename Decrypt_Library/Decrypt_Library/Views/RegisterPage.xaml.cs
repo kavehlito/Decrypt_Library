@@ -120,7 +120,6 @@ namespace Decrypt_Library.Views
         {
             await DisplayAlert("Du tryckte på avbryt", "Går nu tillbaka till förstasidan", "OK");
 
-
             //await Navigation.PopAsync();
             await Navigation.PushAsync(new MainPage());
            

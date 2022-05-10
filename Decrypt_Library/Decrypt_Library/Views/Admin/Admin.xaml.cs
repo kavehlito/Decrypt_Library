@@ -27,6 +27,8 @@ namespace Decrypt_Library.Views
 
 
 
+
+
         Product product = new Product();
         Category category = new Category();
         Event createdEvent = new Event();
@@ -683,16 +685,104 @@ namespace Decrypt_Library.Views
             userList.IsVisible = false;
             //await Navigation.PushAsync(new RegisterPage());
 
+        }
+
+        bool correctUserName = false;
+        bool correctPassword = false;
+        bool correctEmail = false;
+        bool correctPhone = false;
+        bool correctSSN = false;
+
+        private void Entry_Completed(object sender, EventArgs e)
+        {
+            var user = new User();
+            long convertedPhoneNr = 0;
+            long convertedSSN = 0;
+
+            try
+            {
+                correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
+                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
+                correctEmail = Readers.Readers.EmailReader(Email.Text);
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
+                correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
+
+                if (!correctUserName)
+                    wrongUsernameInput.IsVisible = true;
+                else
+                    wrongUsernameInput.IsVisible = false;
+
+                if (!correctPassword)
+                    wrongPasswordInput.IsVisible = true;
+                else
+                    wrongPasswordInput.IsVisible = false;
+
+                if (!correctEmail)
+                    wrongEmailInput.IsVisible = true;
+                else
+                    wrongEmailInput.IsVisible = false;
+
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
+                if (!correctPhone)
+                    wrongPhoneInput.IsVisible = true;
+                else
+                    wrongPhoneInput.IsVisible = false;
+
+                correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
+                if (!correctSSN)
+                {
+                    wrongSSNInput.IsVisible = true;
+
+                    foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                    {
+                        if (item.Ssn == user.Ssn)
+                        {
+                            DisplayAlert("Error!", "Det finns redan en användare med samma personnummer", "Gå vidare");
+
+                        }
+                    }
+                }
+                if (!correctSSN)
+                {
+                    wrongSSNInput.IsVisible = true;
+                    //return;
+                }
+                else
+                    wrongSSNInput.IsVisible = false;
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", $"{exception.Message}", "Try again!");
+            }
+
+            bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
+
+            if (completeRegistration)
+            {
+                user.UserName = Username.Text;
+                user.Password = Password.Text;
+                user.Email = Email.Text;
+                user.Phonenumber = convertedPhoneNr;
+                user.Ssn = convertedSSN;
+                user.UserTypeId = 3;
+
+
+                EntityframeworkUsers.CreateUser(user);
+                DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
+            }
+            else
+            {
+                DisplayAlert("Ooops", "Dubbelkolla alla fält och försök igen", "OK");
+            }
 
 
 
         }
 
 
+
         #endregion
 
 
-
-    
     }
 }

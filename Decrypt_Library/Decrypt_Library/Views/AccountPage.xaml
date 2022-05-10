@@ -3,16 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
+       
 
-                <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" />
-            <Button x:Name="MyLoan" Text="Mina lån" Clicked="Button_Clicked_1" />
-            <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" />
-            <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked"/>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" >
+
+                    <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" />
+                    <Button x:Name="MyLoan" Text="Mina lån" Clicked="Button_Clicked_1" />
+                    <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" />
+                    <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked"/>
+
 
                 </StackLayout>
-            <Label x:Name="Content" Text="" />
+            <Label x:Name="Content" Text="">
+
+            </Label>
 
         </StackLayout>
     </ContentPage.Content>

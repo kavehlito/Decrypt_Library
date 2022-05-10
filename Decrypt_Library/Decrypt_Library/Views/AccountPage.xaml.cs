@@ -37,5 +37,7 @@ namespace Decrypt_Library.Views
         {
             Content.Text = MyPages.MyLoanHistory();
         }
+
+    
     }
 }

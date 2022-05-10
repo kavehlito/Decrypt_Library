@@ -12,6 +12,8 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReturnProduct : ContentPage
     {
+
+        StringBuilder receipt = new StringBuilder($"{"STRECKKOD",-20}{"TITEL",-70}{"ÅTERLÄMNINGSDATUM",-40}");
         public ReturnProduct()
         {
             InitializeComponent();
@@ -19,8 +21,9 @@ namespace Decrypt_Library.Views
 
         private void ReturnProduct_Clicked(object sender, EventArgs e)
         {
+            if (Product.Text == null) Product.Text = "0";
             int.TryParse(Product.Text.ToString(), out int productId);
-            var success = Decrypt_Library.ReturnProduct.UpdateProductHistory(productId);
+            var success = Decrypt_Library.ReturnProduct.UpdateProductHistory(productId, out string title);
             if (!success) { Product.Text = null; Error.IsVisible = true; }
             else
             {
@@ -30,6 +33,7 @@ namespace Decrypt_Library.Views
                 ReturnProductId.IsVisible = false;
                 ReturnNewProduct.IsVisible = true;
                 CheckOut.IsVisible = true;
+                receipt.AppendLine($"\n{productId,-27}{title,-64}");
             }
         }
 
@@ -43,7 +47,12 @@ namespace Decrypt_Library.Views
 
         private void CheckOut_Clicked(object sender, EventArgs e)
         {
-
+            Product.IsVisible = false;
+            ReturnProductId.IsVisible = false;
+            ReturnNewProduct.IsVisible = false;
+            CheckOut.IsVisible = false;
+            Headline.IsVisible = true;
+            Receipt.IsVisible = true;
         }
     }
 }
