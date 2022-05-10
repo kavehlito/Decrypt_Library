@@ -20,9 +20,7 @@ namespace Decrypt_Library.Views.Admin
                 OnPropertyChanged();
             }
         }
-
         public ICommand DeleteCommand { get; }
-
 
         public AdminProductViewModel()
         {
@@ -37,8 +35,5 @@ namespace Decrypt_Library.Views.Admin
             EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(content);
             CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
         }
-
-
-
     }
 }
