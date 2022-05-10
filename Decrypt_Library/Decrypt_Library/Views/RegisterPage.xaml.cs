@@ -27,15 +27,12 @@ namespace Decrypt_Library.Views
             long convertedPhoneNr = 0;
             long convertedSSN = 0;
 
-            long convertedSSN = 0;
-            long convertedPhoneNumber = 0;
-
             try
             {
                 correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
                 correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
                 correctEmail = Readers.Readers.EmailReader(Email.Text);
-                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNumber);
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
                 correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
 
                 if (!correctUserName)

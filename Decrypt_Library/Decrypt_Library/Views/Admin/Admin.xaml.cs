@@ -130,7 +130,7 @@ namespace Decrypt_Library.Views
             createProductTab.IsVisible = true;
         }
 
-        private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void RemoveButton_CLicked(object sender, EventArgs e)
         {
 
         }
@@ -208,6 +208,11 @@ namespace Decrypt_Library.Views
         private void entryProductRemove_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryProductRemove.Text = e.NewTextValue;
+        }
+
+        private void ProductListItem_Tapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
         }
 
         private void RemoveProductButton_Pressed(object sender, EventArgs e)
@@ -693,5 +698,7 @@ namespace Decrypt_Library.Views
         {
             languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
         }
+
+    
     }
 }
