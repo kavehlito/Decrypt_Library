@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Decrypt_Library.EntityFrameworkCode;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Decrypt_Library.EntityFrameworkCode;
-using Decrypt_Library.Models;
 
 namespace Decrypt_Library.Views
 {
@@ -16,7 +10,7 @@ namespace Decrypt_Library.Views
     {
         public SelectedProductView()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
         public SelectedProductView(int selectedId)
         {
@@ -44,7 +38,10 @@ namespace Decrypt_Library.Views
 
         private void LoanOrReserveButton_Clicked(object sender, EventArgs e)
         {
-            
+            if (LoanOrReserveButton.Text == "Reservera")
+            {
+                EntityframeworkBookHistory.ReserveProduct(Title);
+            }
         }
     }
 }
