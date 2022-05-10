@@ -20,13 +20,5 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return carts;
             }
         }
-
-        public static void AddProductToCart()
-        {
-            using (var db = new Decrypt_LibraryContext())
-            {
-
-            }
-        }
     }
 }
