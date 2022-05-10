@@ -728,6 +728,70 @@
 
     <ContentPage Title="Anställda">
 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Frame HeightRequest="200"
+                   WidthRequest="500"
+                   Grid.Row="0"
+                   Grid.Column="1">
+                <StackLayout>
+                    <Label Text="INFORMATION OM ANSTÄLLDA"
+                           FontSize="26"
+                           TextColor="Black"
+                           FontAttributes="Bold">
+
+                    </Label>
+                    <Frame BackgroundColor="Black">
+                        <ListView x:Name="userList"
+                              IsVisible="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical">
+
+                                            <Label Text="{Binding UserName, StringFormat= 'Användarnamn: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Ssn, StringFormat= 'Personnummer: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Password, StringFormat= 'Lösenord: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Phonenumber, StringFormat= 'Telefonnr: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Email, StringFormat= 'Email: {0}'}" TextColor="White" FontAttributes="Bold"/>
+
+                                            <StackLayout>
+                                                    <Button Text="Lägg till ny anställd"
+                                                            BorderColor="White"
+                                                            FontAttributes="Bold"
+                                                            TextColor="HotPink"
+                                                            Clicked="Button_Clicked"
+                                                            BackgroundColor="Black"
+                                                            CornerRadius="10"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                      
+                    </Frame>
+                    
+                </StackLayout>
+
+
+            </Frame>
+
+
+        </Grid>
+
     </ContentPage>
 
     <ContentPage Title="Språk">

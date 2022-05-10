@@ -1,4 +1,5 @@
-﻿using Decrypt_Library.Models;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,14 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminPage : TabbedPage
     {
+
         public AdminPage()
         {
             InitializeComponent();
-            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
-            categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
-            eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
-            languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
+            var employees = EntityframeworkUsers.ShowAllUsers();
+            var employeeList = employees.Where(el => el.UserTypeId == 2).ToList();
+
+            userList.ItemsSource = employeeList; 
         }
 
 
@@ -696,8 +698,25 @@ namespace Decrypt_Library.Views
 
         private void ShowLanguagesButton_Pressed(object sender, EventArgs e)
         {
-            languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
+            languageList.ItemsSource = EntityframeworkLanguages.ShowAllLanguages();
         }
+
+        #region Employee Options
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            userList.IsVisible = false;
+            //await Navigation.PushAsync(new RegisterPage());
+
+
+
+
+        }
+
+
+        #endregion
+
+
 
     
     }
