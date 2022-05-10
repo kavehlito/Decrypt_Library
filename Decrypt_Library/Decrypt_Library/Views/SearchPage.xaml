@@ -7,6 +7,57 @@
             <StackLayout>
                 <SearchBar Placeholder="Sök..." TextChanged="SearchBar_TextChanged"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <!--<ListView x:Name="groupedList" IsGroupingEnabled="true" HasUnevenRows="true" ItemTapped="ListViewItemTapped">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="40">
+                                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="40"  
+                                     Padding="5" Orientation="Horizontal">
+                                    <Label FontSize="16" TextColor="Blue" VerticalOptions="Center" Text="{Binding Key}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Category, StringFormat='Av {0}'}" Detail="{Binding .}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+                <CheckBox x:Name="checkbox1" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
+                <Label Text="Deckare" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                </Label>
+                <CheckBox x:Name="checkbox2" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="False"  BindingContext="{Binding .}"/>
+                <Label Text="Drama" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                </Label>
+                <CheckBox x:Name="checkbox3" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="False"  BindingContext="{Binding .}"/>
+                <Label Text="Novell" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60">
+                </Label>
+                <CheckBox x:Name="checkbox4" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
+                <Label Text="Roman" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                </Label>
+                <CheckBox x:Name="checkbox5" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
+                <Label Text="Saga" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" >
+                </Label>
+                <CheckBox x:Name="checkbox6" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
+                <Label Text="Självbiografi" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="90" >
+                </Label>
+                <CheckBox x:Name="checkbox7" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
+                <Label Text="Äventyr" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                </Label>
+
+
+
+
+            </StackLayout>
             <ListView x:Name="ProductList" ItemTapped="ProductList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
