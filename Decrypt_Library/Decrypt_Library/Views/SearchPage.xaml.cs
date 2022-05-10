@@ -26,12 +26,28 @@ namespace Decrypt_Library.Views
 
         private async void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedItemFromList = (CategoryName_Product)e.Item;
+            var selectedItemFromList = (Product)e.Item;
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
         }
+         private void OnCheckBoxCheckedChangedA(object sender, CheckedChangedEventArgs e)
+        {
+            List<int> audiences = new List<int>();
 
-        private void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+            if (checkbox8.IsChecked)
+                audiences.Add(3);
+            if (checkbox9.IsChecked)
+                audiences.Add(4);
+            if (checkbox10.IsChecked)
+                audiences.Add(5);
+            if (checkbox11.IsChecked)
+                audiences.Add(2);
+            if (checkbox12.IsChecked)
+                audiences.Add(1);
+           
+            ProductList.ItemsSource = EntityframeworkAudience.SpecificAudience(audiences);
+        }
+        private void OnCheckBoxCheckedChangedC(object sender, CheckedChangedEventArgs e)
         {
             List<int> categorys = new List<int>();
 
@@ -52,5 +68,7 @@ namespace Decrypt_Library.Views
 
             ProductList.ItemsSource = EntityframeworkCategories.SpecificCategory(categorys);
         }
+
+       
     }
 }

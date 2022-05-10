@@ -32,34 +32,34 @@
 
             <Label Text="Product Options"
                    FontSize="35"
-                   TextColor="White"
+                   TextColor="Black"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
 
             </StackLayout>
 
-            <Frame BorderColor="Green"
+            <Frame BorderColor="Black"
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
                    Margin="10,0,10,0"
-                       BackgroundColor="Orange"
+                       BackgroundColor="Black"
                        IsClippedToBounds="True"
                        HeightRequest="30">
 
                 <AbsoluteLayout>
 
                     <Button Text="Add Product"
-                                    BackgroundColor="Orange"
-                                    TextColor="Green"
+                                    BackgroundColor="Black"
+                                    TextColor="White"
                                     Clicked="CompleteProduct_Pressed"
                                     AbsoluteLayout.LayoutBounds="0,0,210,35"
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>
 
                     <Button Text="Show Product"
-                                    BackgroundColor="Orange"
-                                    TextColor="Green"
+                                    BackgroundColor="Black"
+                                    TextColor="White"
                                     AbsoluteLayout.LayoutBounds="220,0,190,35"
                                     Clicked="ShowProductsButton_Pressed"
                                     CornerRadius="0"
@@ -67,7 +67,7 @@
                 </AbsoluteLayout>
                 
             </Frame>
-            <Frame BackgroundColor="Green" 
+            <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="500"
                    Padding="0"
@@ -106,7 +106,7 @@
 
                                     </StackLayout>
 
-                                    <Frame BorderColor="Green" HeightRequest="550">
+                                    <Frame BorderColor="Black" HeightRequest="550">
                                         <AbsoluteLayout>
 
                                             <Entry AbsoluteLayout.LayoutBounds="-20,-20,225,40"
@@ -272,48 +272,48 @@
                                             <Button CornerRadius="10"
                                                     Clicked="CompleteProduct_Pressed"
                                                     BackgroundColor="White"
-                                                    TextColor="Orange"
+                                                    TextColor="Black"
                                                     FontAttributes="Bold"
                                                     AbsoluteLayout.LayoutBounds="-20,520,450,50"
                                                     Text="Insert product"/>
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="-20,19,450,32"
                                                      />
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="204,-20,7,280"
                                                      />
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="89,190,7,40"
                                                      />
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="319,190,7,40"
                                                      />
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="274,260,17,40"
                                                      />
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="119,260,17,40"
                                                      />
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="-20,89,450,32"
                                                      />
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="-20,159,450,32"
                                                      />
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="-20,229,450,32"
                                                      />
 
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="-20,299,450,32"
                                                      />
-                                            <BoxView BackgroundColor="Green"
+                                            <BoxView BackgroundColor="Black"
                                                      AbsoluteLayout.LayoutBounds="-20,428,450,32"
                                                      />
 
@@ -454,9 +454,9 @@
                                                    TextColor="White"/>
 
                                             <Button Grid.Column="3"
-                                                    TextColor="Green"
+                                                    TextColor="Black"
                                                     CornerRadius="10"
-                                                    BackgroundColor="Orange"
+                                                    BackgroundColor="White"
                                                     FontAttributes="Bold"
                                                     Clicked="RemoveButton_CLicked"
                                                     Text="Remove"/>
