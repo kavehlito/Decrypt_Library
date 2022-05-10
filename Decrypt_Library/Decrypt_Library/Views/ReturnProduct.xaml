@@ -7,8 +7,10 @@
             <Label x:Name="Error" Text="Boken gick inte att lämna tillbaka. Försök igen!" IsVisible="false" TextColor="red" />
             <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="true" />
             <Button x:Name="ReturnProductId" Text="Lämna tillbaka" IsVisible="true" Clicked="ReturnProduct_Clicked"  BackgroundColor="Black" TextColor="White" />
-            <Button x:Name="ReturnNewProduct" Text="Återlämna till produkt" IsVisible="false" Clicked="ReturnNewProduct_Clicked"  BackgroundColor="Black" TextColor="White" />
+            <Button x:Name="ReturnNewProduct" Text="Återlämna en till produkt" IsVisible="false" Clicked="ReturnNewProduct_Clicked"  BackgroundColor="Black" TextColor="White" />
             <Button x:Name="CheckOut" Text="Klar" IsVisible="false" Clicked="CheckOut_Clicked"  BackgroundColor="Black" TextColor="White" />
+            <Label x:Name="Headline" Text="ÅTERLÄMNINGSKVITTO" FontSize="Large" IsVisible="false"/>
+            <Label x:Name="Receipt" Text="" IsVisible="false"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
