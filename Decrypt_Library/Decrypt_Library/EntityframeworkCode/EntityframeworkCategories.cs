@@ -1,26 +1,24 @@
 ﻿using Decrypt_Library.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
     internal class EntityframeworkCategories
     {
-        public static List<Models.Category> ShowAllCategories()
+        public static List<Category> ShowAllCategories()
         {
-            var categories = new List<Models.Category>();
+            var categories = new List<Category>();
 
-            using (var db = new Models.Decrypt_LibraryContext())
+            using (var db = new Decrypt_LibraryContext())
             {
-                categories = db.Categories.OrderBy(x=>x.Id).ToList();
+                categories = db.Categories.OrderBy(x => x.Id).ToList();
                 return categories;
             }
         }
 
-        public static List<Models.Category> ShowAllProdutsInCateogry()
+        public static List<Category> ShowAllProdutsInCateogry()
         {
             return null;
         }
@@ -47,5 +45,19 @@ namespace Decrypt_Library.EntityFrameworkCode
                 db.SaveChanges();
             }
         }
+
+        public static List<Product> SpecificCategory(List<int> categoryList)
+        {
+            var products = new List<Product>();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                foreach (var category in categoryList)
+                {
+                    products.AddRange(db.Products.Where(x => x.CategoryId == category).ToList());
+                }
+                return products;
+            }
+        }
     }
 }
+

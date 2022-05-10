@@ -1,5 +1,8 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +29,28 @@ namespace Decrypt_Library.Views
             var selectedItemFromList = (CategoryName_Product)e.Item;
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            List<int> categorys = new List<int>();
+
+            if (checkbox1.IsChecked)
+                categorys.Add(1);
+            if (checkbox2.IsChecked)
+                categorys.Add(2);
+            if (checkbox3.IsChecked)
+                categorys.Add(3);
+            if (checkbox4.IsChecked)
+                categorys.Add(4);
+            if (checkbox5.IsChecked)
+                categorys.Add(5);
+            if (checkbox6.IsChecked)
+                categorys.Add(6);
+            if (checkbox7.IsChecked)
+                categorys.Add(7);
+
+            ProductList.ItemsSource = EntityframeworkCategories.SpecificCategory(categorys);
         }
     }
 }
