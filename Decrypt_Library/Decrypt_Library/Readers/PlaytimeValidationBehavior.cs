@@ -1,11 +1,13 @@
 ﻿using Decrypt_Library.Views;
+using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace Decrypt_Library.Readers
 {
-    internal class MediaValidationBehavior : Behavior<Entry>
+    internal class PlaytimeValidationBehavior : Behavior<Entry>
     {
 
         protected override void OnAttachedTo(Entry bindable)
@@ -24,19 +26,18 @@ namespace Decrypt_Library.Readers
 
         private void BindAbleOnTextChanged(object sender, TextChangedEventArgs e)
         {
-            int legalMediaLength = 0;
-            var IdPattern = $"^[1-{EntityFrameworkCode.EntityframeworkMediaTypes.ShowAllMediaTypes().Count}]";
+            var IdPattern = "^[1-9]{1,2000}$";
             var userEntry = sender as Entry;
 
-            if (Regex.IsMatch(e.NewTextValue, IdPattern) && int.TryParse(e.NewTextValue, out legalMediaLength) && legalMediaLength <= EntityFrameworkCode.EntityframeworkMediaTypes.ShowAllMediaTypes().Count)
+            if (Regex.IsMatch(e.NewTextValue, IdPattern) && int.TryParse(e.NewTextValue, out _))
             {
                 userEntry.BackgroundColor = Color.YellowGreen;
-                AdminPage.ProductMediaIdCorrect = true;
+                AdminPage.ProductPlaytimeCorrect = true;
             }
             else
             {
                 userEntry.BackgroundColor = Color.MediumVioletRed;
-                AdminPage.ProductMediaIdCorrect = false;
+                AdminPage.ProductPlaytimeCorrect = false;
             }
         }
     }
