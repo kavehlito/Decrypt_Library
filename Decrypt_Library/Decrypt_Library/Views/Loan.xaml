@@ -13,9 +13,53 @@
             <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="Black" TextColor="White" />
             <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="Black" TextColor="White" />
             <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="Black" TextColor="White" />
-            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false"/>
-            <Label x:Name="Receipt" Text="" IsVisible="false"/>
+            
+            
             <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="Black" TextColor="White"/>
+            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false"/>
+            <Label x:Name="NumberOfItem" Text="" />
+            
+            <ListView x:Name="ProductList"
+                              VerticalScrollBarVisibility="Never"
+                              ItemTapped="ProductList_ItemTapped"
+                              IsVisible="true"
+                              
+                              >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Id}"
+                                                   Grid.Column="0"
+                                                   TextColor="Black"/>
+                                    <Label Text="{Binding Title}"
+                                                   Grid.Column="1"
+                                                   TextColor="Black"/>
+                                    <Label Text="{Binding ReturnDate}"
+                                                   Grid.Column="2"
+                                                   TextColor="Black"/>
+
+                                    <Button Grid.Column="3"
+                                                    TextColor="Black"
+                                                    CornerRadius="10"
+                                                    BackgroundColor="White"
+                                                    FontAttributes="Bold"
+                                                    Clicked="Button_Clicked"
+                                                    Text="Ta bort"/>
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             
         </StackLayout>
     </ContentPage.Content>
