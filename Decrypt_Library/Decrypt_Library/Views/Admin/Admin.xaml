@@ -749,7 +749,7 @@
 
             <Label x:Name="startLabel" Text="INFORMATION OM ANSTÄLLDA" IsVisible="true"
                            FontSize="26"
-                           TextColor="Black"
+                           TextColor="White"
                            FontAttributes="Bold"
                            Grid.Column="1"
                            Grid.Row="0"
@@ -759,7 +759,7 @@
 
             <Label x:Name="endLabel" Text="REGISTRERING AV NYA ANSTÄLLDA" IsVisible="false"
                            FontSize="26"
-                           TextColor="Black"
+                           TextColor="White"
                            FontAttributes="Bold"
                            Grid.Column="1"
                            Grid.Row="0"
@@ -771,6 +771,7 @@
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
+                   BorderColor="White"
                    WidthRequest="500"
                    Grid.Row="1">
                 <StackLayout>
