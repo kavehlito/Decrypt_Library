@@ -784,25 +784,37 @@
                                         <StackLayout Orientation="Vertical">
 
                                             <Label Text="{Binding UserName, StringFormat= 'Användarnamn: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Ssn, StringFormat= 'Personnummer: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Password, StringFormat= 'Lösenord: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                             <Label Text="{Binding Phonenumber, StringFormat= 'Telefonnr: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                             <Label Text="{Binding Email, StringFormat= 'Email: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Password, StringFormat= 'Lösenord: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Ssn, StringFormat= 'Personnummer: {0}'}" TextColor="White" FontAttributes="Bold"/>
 
-                                            <StackLayout>
-                                                    <Button Text="Lägg till ny anställd"
-                                                            BorderColor="White"
-                                                            FontAttributes="Bold"
-                                                            TextColor="HotPink"
-                                                            Clicked="Button_Clicked"
-                                                            BackgroundColor="Black"
-                                                            CornerRadius="10"/>
-                                            </StackLayout>
+                                        <BoxView BackgroundColor="White"
+                                                 HeightRequest="3"
+                                                 >
+                                            
+                                        </BoxView>
+                                  
+                                            
                                         </StackLayout>
+                                
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+
+                    <Button IsVisible="true"
+                            x:Name="pressedButton"
+                            Text="Lägg till ny anställd"
+                            BorderColor="White"
+                            BorderWidth="3"
+                            FontAttributes="Bold"
+                            TextColor="HotPink"
+                            Clicked="Button_Clicked"
+                            BackgroundColor="Black"
+                            CornerRadius="10"
+                            Grid.Column="1"
+                            Grid.Row="4"/>
 
                     <StackLayout IsVisible="False" x:Name="register">
                         <StackLayout>
@@ -926,6 +938,7 @@
                                 BackgroundColor="ForestGreen"
                                 FontAttributes="Bold"
                                 TextColor="Black"
+                                Clicked="Button_Clicked_2"
                                 >
 
                                 </Button>
@@ -936,6 +949,7 @@
                                 CornerRadius="10"
                                 BackgroundColor="Red"
                                 TextColor="Black"
+                                Clicked="Button_Clicked_1"
                                 >
 
                                 </Button>
