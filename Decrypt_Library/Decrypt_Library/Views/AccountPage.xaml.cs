@@ -38,10 +38,8 @@ namespace Decrypt_Library.Views
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
         {
             Content.Text = MyPages.MyLoanHistory();
-            EntityFrameworkCode.EntityframeworkBookHistory.ShowUserLoanHistory();
 
+            loanList.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserLoanHistory();
         }
-
-    
     }
 }

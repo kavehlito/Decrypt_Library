@@ -3,9 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
-       
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
 
             <StackLayout>
+       
                 <StackLayout Orientation="Horizontal" >
 
                     <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" />
@@ -13,45 +26,81 @@
                     <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" />
                     <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked"/>
 
-
                 </StackLayout>
 
-            <Label x:Name="Content" Text="">
+                <Label x:Name="Content" Text="">
 
-            </Label>
-            <StackLayout>
-                
-                <ListView x:Name="reservations" IsVisible="true">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                </Label>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
+                <Frame BackgroundColor="Black" 
+                   Grid.Column="1"
+                   HeightRequest="400"
+                   CornerRadius="10"
+                   BorderColor="White"
+                   WidthRequest="500"
+                   Grid.Row="1">
 
-                                    </Grid.ColumnDefinitions>
-                                    <Button x:Name="removeButton" Text="Radera" IsVisible="true"
-                                        BackgroundColor="White" TextColor="Black" FontAttributes="Bold"
-                                        CornerRadius="10" Grid.Column="1">
+                    <StackLayout>
 
-                                    </Button>
-                                </Grid>
+                        <ListView x:Name="reservations" IsVisible="true">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
 
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+
+                                            </Grid.ColumnDefinitions>
+                                            <Button x:Name="removeButton" Text="Radera" IsVisible="true"
+                                                    BackgroundColor="White" TextColor="Black" FontAttributes="Bold"
+                                                    CornerRadius="10" Grid.Column="1">
+
+                                            </Button>
+                                        </Grid>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <StackLayout>
+                            <StackLayout>
+
+                                <ListView x:Name="loanList" IsVisible="true">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+
+                                                    </Grid.ColumnDefinitions>
+                                                </Grid>
+
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
-
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

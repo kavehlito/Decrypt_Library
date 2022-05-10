@@ -767,7 +767,7 @@
 
             </Label>
 
-            <Frame  BackgroundColor="Black" 
+            <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
