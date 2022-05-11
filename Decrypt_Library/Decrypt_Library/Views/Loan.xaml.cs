@@ -63,7 +63,7 @@ namespace Decrypt_Library.Views
                 CheckOut.IsVisible = true;
                 ProductIdError.IsVisible = false;
                 Headline.IsVisible = true;
-                NumberOfItem.Text = $"Antal valda produkter: {Cart.cartList.Count()}";
+                NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
             }
         }
 
@@ -94,6 +94,8 @@ namespace Decrypt_Library.Views
             User.IsVisible = true;
             CheckUserId.Text = null;
             Headline.IsVisible = false;
+            Cart.cartList.Clear();
+            
         }
 
         private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -103,7 +105,7 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-             
+                      
         }
     }
 }
