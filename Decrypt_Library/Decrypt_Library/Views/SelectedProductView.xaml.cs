@@ -16,6 +16,8 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
+
+            
             if (UserLogin.thisUser == null)
             {
                 LoanOrReserveButton.IsVisible = false;
@@ -26,13 +28,29 @@ namespace Decrypt_Library.Views
                 LoanOrReserveButton.IsVisible = true;
                 PlsLoginlbl.IsVisible = false;
             }
+
             if (LoanOrReserveButton.Text == "True")
             {
                 LoanOrReserveButton.Text = "Låna";
+                statuslbl.Text = "Produkten finns att låna";
             }
             else
             {
                 LoanOrReserveButton.Text = "Reservera";
+                statuslbl.Text = "Produkten är utlånad, försök igen senare eller reservera produkten!";
+            }
+
+            if (mediaTypelbl.Text == "Format: Bok" || mediaTypelbl.Text == "Format: E-Bok")
+            {
+                pageslbl.IsVisible = true;
+                narratorlbl.IsVisible = false;
+                playtimelbl.IsVisible = false;
+            }
+            else if (mediaTypelbl.Text == "Format: Ljudbok")
+            {
+                pageslbl.IsVisible = false;
+                narratorlbl.IsVisible = true;
+                playtimelbl.IsVisible = true;
             }
         }
 
