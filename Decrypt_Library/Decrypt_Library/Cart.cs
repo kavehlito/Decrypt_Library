@@ -10,6 +10,7 @@ namespace Decrypt_Library
 {
     public class Cart
     {
+        public static List<CartList> cartList = new List<CartList>();
         public static bool CheckUserId(int userId, out string UserName)
         {
             UserName = null;
@@ -26,18 +27,17 @@ namespace Decrypt_Library
             }
         }
 
-        public static bool CheckProductId(int productId, out string ProductName)
+        public static bool CheckProductId(int productId)
         {
-            ProductName = null;
+
             using (var db = new Models.Decrypt_LibraryContext())
             {
                 var productList = db.Products;
                 var product = productList.SingleOrDefault(p => p.Id == productId);
 
-                if (product == null || product.Status == false ) return false;
+                if (product == null || product.Status == false) return false;
 
-                ProductName = product.Title;
-
+                cartList.Add(new CartList { Id = product.Id, Title = product.Title, ReturnDate = $"Återlämningsdatum: {DateTime.Now.AddDays(30):d}" });
                 return true;
             }
         }
@@ -62,6 +62,8 @@ namespace Decrypt_Library
                 return true;
             }
         }
+
+        
 
         public static void UpdateBookStatus(int productId)
         {
@@ -136,5 +138,12 @@ namespace Decrypt_Library
         //    CheckoutCart(userId);
         //}
 
+    }
+
+    public class CartList
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ReturnDate { get; set; }
     }
 }

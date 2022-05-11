@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
         <Grid>
@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout>
-       
+
                 <StackLayout Orientation="Horizontal" >
 
                     <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" />
@@ -27,11 +27,7 @@
                     <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked"/>
 
                 </StackLayout>
-
-                <Label x:Name="Content" Text="">
-
-                </Label>
-
+                
                 <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="400"
@@ -46,26 +42,22 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="Start">
 
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-
-                                            </Grid.ColumnDefinitions>
-                                            <Button x:Name="removeButton" Text="Radera" IsVisible="true"
-                                                    BackgroundColor="White" TextColor="Black" FontAttributes="Bold"
-                                                    CornerRadius="10" Grid.Column="1">
-
-                                            </Button>
-                                        </Grid>
-
+                                                <Label Text="{Binding Title}" TextColor="White"/>
+                                                <Label Text="{Binding Author}" TextColor="White"/>
+                                                <Label Text="{Binding ISBN}" TextColor="White"/>
+                                                <Label Text="{Binding StartDate}" TextColor="White"/>
+                                                <Label Text="{Binding EndDate}" TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                                <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="removeButton_Clicked"
+                                                    BackgroundColor="Black" TextColor="White" FontAttributes="Bold"
+                                                    CornerRadius="10" BorderColor="White" HorizontalOptions="End">
+                                                </Button>
+                                            </StackLayout>
+                                        </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -77,21 +69,16 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="*"/>
-                                                    </Grid.RowDefinitions>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
 
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-
-                                                    </Grid.ColumnDefinitions>
-                                                </Grid>
-
+                                                        <Label Text="{Binding Title}" TextColor="White"/>
+                                                        <Label Text="{Binding Author}" TextColor="White"/>
+                                                        <Label Text="{Binding ISBN}" TextColor="White"/>
+                                                        <Label Text="{Binding StartDate}" TextColor="White"/>
+                                                        <Label Text="{Binding EndDate}" TextColor="White"/>
+                                                    </StackLayout>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>

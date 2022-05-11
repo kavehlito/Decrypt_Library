@@ -20,26 +20,32 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Content.Text = MyPages.UserProfile();
+          //  MyReservation.Text = MyPages.UserProfile();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            Content.Text = MyPages.LateReturn();
+           // Content.Text = MyPages.LateReturn();
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            Content.Text = MyPages.MyReservationsList();
+          //  Text.= MyPages.MyReservationsList();
             
             reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
+
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
         {
-            Content.Text = MyPages.MyLoanHistory();
+         //   Content.Text = MyPages.MyLoanHistory();
 
             loanList.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserLoanHistory();
+        }
+
+        private void removeButton_Clicked(object sender, EventArgs e)
+        {
+            // function for removing from list not the product
         }
     }
 }
