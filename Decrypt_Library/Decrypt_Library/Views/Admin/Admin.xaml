@@ -18,7 +18,7 @@
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -30,27 +30,35 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="1"
+            <Grid Grid.Column="1"
                          Grid.Row="0">
 
-            <Label Text="Produkt Inställningar"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+       
+
+                <Label Text="Produkt Inställningar"
                    FontSize="35"
+                       Padding="0"
+                       Grid.Column="1"
+                       Margin="0,10,0,0"
                    TextColor="White"
-                   Margin="70,0,0,0"
                    FontAttributes="Bold"
                    />
 
-            </StackLayout>
+            </Grid>
 
             <Frame BorderColor="White"
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
-                   Margin="40,0,0,20"
-                   HorizontalOptions="CenterAndExpand"
                        BackgroundColor="White"
+                   HorizontalOptions="Center"
                        IsClippedToBounds="True"
-                       HeightRequest="30">
+                       HeightRequest="35">
 
                 <AbsoluteLayout>
 
@@ -76,9 +84,7 @@
                    Grid.Column="1"
                    HeightRequest="500"
                    Padding="0"
-                   Margin="0,20,0,0"
                    CornerRadius="10"
-                   WidthRequest="100"
                    Grid.Row="3">
 
                 <StackLayout>
@@ -546,7 +552,7 @@
     <ContentPage Title="Kategorier">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -560,7 +566,11 @@
             <Label TextColor="White"
                            FontSize="35"
                            FontAttributes="Bold"
+                   Grid.Row="0"
+                   Padding="0"
                    Grid.Column="1"
+                       Margin="0,10,0,0"
+                   
                                HorizontalOptions="CenterAndExpand"
                            Text="Kategori Inställningar"/>
 
@@ -570,26 +580,23 @@
                          Grid.Row="1"
                          >
 
-
-
-
                 <Frame BorderColor="White"
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
-                   Margin="30,0,40,0"
                        HorizontalOptions="CenterAndExpand"
                        BackgroundColor="White"
+                       WidthRequest="400"
                        IsClippedToBounds="True"
-                       HeightRequest="30">
+                       HeightRequest="50">
 
 
-                    <AbsoluteLayout>
+                    <Grid>
 
                     <Button Text="Lägg till kategori"
                             BackgroundColor="White"
+                            Grid.Column="0"
                                 Clicked="AddCategoryButton_Pressed"
-                            AbsoluteLayout.LayoutBounds="0,-3,190,35"
                             CornerRadius="10"
                             FontAttributes="Bold"
                             >
@@ -597,14 +604,14 @@
 
                     <Button Text="Visa Kategorier"
                             BackgroundColor="White"
+                            Grid.Column="1"
                             CornerRadius="10"
-                            AbsoluteLayout.LayoutBounds="150,-3,190,35"
                             Clicked="ShowCategories_Pressed"
                             FontAttributes="Bold"
                             >
                     </Button>
 
-                </AbsoluteLayout>
+                </Grid>
 
             </Frame>
             </StackLayout>
@@ -654,19 +661,38 @@
                                  IsVisible="false">
                             <ListView x:Name="categoryList"
                               IsVisible="true"
+                              ItemsSource="{Binding CategoryCollectionList}"
                                       VerticalScrollBarVisibility="Never"
                               >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <Frame>
-                                                <StackLayout Orientation="Horizontal">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
                                                     <Label Text="{Binding Id}"
-                                            TextColor="White"/>
+                                                           Grid.Column="0"
+                                                            TextColor="White"/>
+                                                    
                                                     <Label Text="{Binding CategoriesName}"
-                                            TextColor="White"/>
+                                                           Grid.Column="1"
+                                                           TextColor="White"/>
 
-                                                </StackLayout>
+                                                    <Button Grid.Column="3"
+                                                    TextColor="Black"
+                                                    CornerRadius="10"
+                                                    BackgroundColor="White"
+                                                    FontAttributes="Bold"
+                                                    Command="{Binding Path=BindingContext.CategoryDeleteCommand, Source={x:Reference categoryList}}" 
+                                                    CommandParameter="{Binding .}"
+                                                    Text="Ta bort"/>
+
+                                                </Grid>
                                             </Frame>
                                         </ViewCell>
                                     </DataTemplate>
@@ -683,7 +709,7 @@
     <ContentPage Title="Events">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -698,8 +724,9 @@
                            FontAttributes="Bold"
                    Grid.Row="0"
                    Grid.Column="1"
+                       Margin="0,10,0,0"
                                HorizontalOptions="CenterAndExpand"
-                           Text="Event Options"/>
+                           Text="Event Inställningar"/>
 
 
             <StackLayout Grid.Column="1"
@@ -708,30 +735,34 @@
 
                 <Frame Padding="0"
                        BorderColor="White"
+                       BackgroundColor="White"
                        Grid.Row="1"
+                       HorizontalOptions="Center"
                        Grid.Column="1"
-                       HeightRequest="30">
+                       WidthRequest="400"
+                       HeightRequest="50">
 
-                    <AbsoluteLayout>
+                    <Grid>
 
-                        <Button Text="Add Event"
+                        <Button Text="Lägg till Event"
                             BackgroundColor="White"
                                      Clicked="AddEventButton_Pressed"
-                            CornerRadius="10"
+                                Grid.Column="0"
+                            CornerRadius="0"
                             FontAttributes="Bold"
                             >
                         </Button>
 
-                        <Button Text="Show Event"
+                        <Button Text="Visa Event"
                             BackgroundColor="White"
-                                AbsoluteLayout.LayoutBounds="100,0,200,30"
+                                Grid.Column="1"
                                     Clicked="ShowAllEvents_Pressed"
-                            CornerRadius="10"
+                            CornerRadius="0"
                             FontAttributes="Bold"
                             >
                         </Button>
 
-                    </AbsoluteLayout>
+                    </Grid>
 
                 </Frame>
             </StackLayout>
@@ -789,24 +820,46 @@
                         </Entry>
                     </StackLayout>
                     <ListView x:Name="eventList"
+                              HasUnevenRows="False"
+                              ItemsSource="{Binding EventCollectionList}"
+                              VerticalScrollBarVisibility="Never"
+                              
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <Frame>
-                                        <StackLayout Orientation="Horizontal">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+
+                                            </Grid.ColumnDefinitions>
 
                                             <Label Text="{Binding Id}"
-                                            TextColor="White"/>
+                                                   Grid.Column="0"
+                                                   TextColor="White"/>
                                             <Label Text="{Binding EventName}"
-                                            TextColor="White"/>
-
-                                            <Label Text="{Binding Description}"
+                                                   Grid.Column="1"
                                             TextColor="White"/>
 
                                             <Label Text="{Binding Time}"
+                                                   Grid.Column="2"
                                             TextColor="White"/>
-                                        </StackLayout>
+
+
+                                            <Button Grid.Column="4"
+                                                    TextColor="Black"
+                                                    CornerRadius="10"
+                                                    BackgroundColor="White"
+                                                    FontAttributes="Bold"
+                                                    Command="{Binding Path=BindingContext.EventDeleteCommand, Source={x:Reference ProductList}}" 
+                                                    CommandParameter="{Binding .}"
+                                                    Text="Ta bort"/>
+                                        </Grid>
                                     </Frame>
                                 </ViewCell>
                             </DataTemplate>
@@ -1062,59 +1115,67 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <Label TextColor="White"
+                           FontSize="35"
+                           FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                       Margin="0,10,0,0"
+                               HorizontalOptions="CenterAndExpand"
+                           Text="Språk Inställningar"/>
+
+
+
+            <Frame BorderColor="White"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   BackgroundColor="White"
+                   HeightRequest="45"
+                   WidthRequest="400"
+                   HorizontalOptions="Center"
+                               Padding="0">
+                <Grid>
+
+                    <Button Text="Lägg till Språk"
+                            BackgroundColor="White"
+                                    Clicked="AddLanguageButton_Pressed"
+                            Grid.Column="0"
+                            CornerRadius="0"
+                            FontAttributes="Bold"
+                            >
+                    </Button>
+
+                    <Button Text="Visa Språk"
+                            BackgroundColor="White"
+                                    Clicked="ShowLanguagesButton_Pressed"
+                            Grid.Column="1"
+                            CornerRadius="0"
+                            FontAttributes="Bold"
+                            >
+                    </Button>
+                </Grid>
+
+            </Frame>
             <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
                    WidthRequest="500"
-                   Grid.Row="1">
+                   Grid.Row="2">
                 <StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <Label TextColor="White"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                               HorizontalOptions="CenterAndExpand"
-                           Text="Language Options"/>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Add Language"
-                            BackgroundColor="White"
-                                    Clicked="AddLanguageButton_Pressed"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
 
-                            <Button Text="Remove Language"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                                    Clicked="RemoveLanguageButton_Pressed"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Show Languages"
-                            BackgroundColor="White"
-                                    Clicked="ShowLanguagesButton_Pressed"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                        </StackLayout>
-                    </StackLayout>
+    
                     <StackLayout x:Name="createLanguageBar"
                                  IsVisible="false">
 
@@ -1167,7 +1228,19 @@
 
     <ContentPage Title="Statistik">
 
-        <Label Text="6"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal">
+                <Frame BackgroundColor="White">
+                    
+                </Frame>
+                
+            </StackLayout>
+            
+        </Grid>
 
     </ContentPage>
 

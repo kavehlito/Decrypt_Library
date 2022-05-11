@@ -28,7 +28,7 @@
 
                 </StackLayout>
 
-                <StackLayout>
+                 <StackLayout>
 
                     <Frame BackgroundColor="Black"
                    BorderColor="Black"

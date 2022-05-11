@@ -209,6 +209,16 @@ namespace Decrypt_Library.Views
         public void UpdateNewProductList() 
         { 
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+            categoryList.ItemsSource = EntityframeworkCategories.ShowAllCategories();
+            eventList.ItemsSource = EntityframeworkEvents.ShowAllEvents();
+            RefreshPage();
+
+        }
+
+        public async void RefreshPage()
+        {
+            BoolReset();
+            await Navigation.PushAsync(new AdminPage());
         }
 
         #endregion
@@ -298,10 +308,9 @@ namespace Decrypt_Library.Views
 
                     EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
                     ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
-                    await Navigation.PushAsync(new AdminPage());
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
-                    BoolReset();
+                    RefreshPage();
                 }
                 else
                     await DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
