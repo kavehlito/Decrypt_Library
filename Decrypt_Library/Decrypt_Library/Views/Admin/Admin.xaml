@@ -33,11 +33,12 @@
             <StackLayout Grid.Column="1"
                          Grid.Row="0">
 
-            <Label Text="Product Options"
+            <Label Text="Produkt Inställningar"
                    FontSize="35"
                    TextColor="White"
+                   Margin="70,0,0,0"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
+                   />
 
             </StackLayout>
 
@@ -45,14 +46,15 @@
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
-                   Margin="35,0,10,0"
+                   Margin="40,0,0,20"
+                   HorizontalOptions="CenterAndExpand"
                        BackgroundColor="White"
                        IsClippedToBounds="True"
                        HeightRequest="30">
 
                 <AbsoluteLayout>
 
-                    <Button Text="Add Product"
+                    <Button Text="Lägg till Produkter"
                                     BackgroundColor="White"
                                     TextColor="Black"
                                     Clicked="CompleteProduct_Pressed"
@@ -60,7 +62,7 @@
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>
 
-                    <Button Text="Show Product"
+                    <Button Text="Visa Produkter"
                                     BackgroundColor="White"
                                     TextColor="Black"
                                     AbsoluteLayout.LayoutBounds="220,0,190,35"
@@ -401,7 +403,7 @@
                                                    FontSize="14"
                                                    AbsoluteLayout.LayoutBounds="-10,25,100,20"/>
 
-                                            <Label Text="Publisher"
+                                            <Label Text="Utgivare"
                                                    TextColor="White"
                                                    FontAttributes="Bold"
                                                    FontSize="14"
@@ -544,9 +546,9 @@
     <ContentPage Title="Kategorier">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -554,54 +556,69 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+
+            <Label TextColor="White"
+                           FontSize="35"
+                           FontAttributes="Bold"
+                   Grid.Column="1"
+                               HorizontalOptions="CenterAndExpand"
+                           Text="Kategori Inställningar"/>
+
+
+
+            <StackLayout Grid.Column="1"
+                         Grid.Row="1"
+                         >
+
+
+
+
+                <Frame BorderColor="White"
+                       Padding="0"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                   Margin="30,0,40,0"
+                       HorizontalOptions="CenterAndExpand"
+                       BackgroundColor="White"
+                       IsClippedToBounds="True"
+                       HeightRequest="30">
+
+
+                    <AbsoluteLayout>
+
+                    <Button Text="Lägg till kategori"
+                            BackgroundColor="White"
+                                Clicked="AddCategoryButton_Pressed"
+                            AbsoluteLayout.LayoutBounds="0,-3,190,35"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                    </Button>
+
+                    <Button Text="Visa Kategorier"
+                            BackgroundColor="White"
+                            CornerRadius="10"
+                            AbsoluteLayout.LayoutBounds="150,-3,190,35"
+                            Clicked="ShowCategories_Pressed"
+                            FontAttributes="Bold"
+                            >
+                    </Button>
+
+                </AbsoluteLayout>
+
+            </Frame>
+            </StackLayout>
+
+
             <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
                    WidthRequest="500"
-                   Grid.Row="1">
+                   Grid.Row="2">
 
                 <StackLayout>
-
-     
-
                     <StackLayout Orientation="Vertical">
-
-                        <Label TextColor="White"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                               HorizontalOptions="CenterAndExpand"
-                           Text="Category Options"/>
-
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Add Category"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                                Clicked="AddCategoryButton_Pressed"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Show Category"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                            Clicked="ShowCategories_Pressed"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Remove Category"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                                    Clicked="RemoveCategoryButton_Pressed"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                        </StackLayout>
 
                         <StackLayout x:Name="createCategoryBar"
                                  IsVisible="false">
@@ -637,6 +654,7 @@
                                  IsVisible="false">
                             <ListView x:Name="categoryList"
                               IsVisible="true"
+                                      VerticalScrollBarVisibility="Never"
                               >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -665,59 +683,66 @@
     <ContentPage Title="Events">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <Label TextColor="White"
+                           FontSize="35"
+                           FontAttributes="Bold"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                               HorizontalOptions="CenterAndExpand"
+                           Text="Event Options"/>
+
+
+            <StackLayout Grid.Column="1"
+                         Grid.Row="1">
+
+
+                <Frame Padding="0"
+                       BorderColor="White"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       HeightRequest="30">
+
+                    <AbsoluteLayout>
+
+                        <Button Text="Add Event"
+                            BackgroundColor="White"
+                                     Clicked="AddEventButton_Pressed"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                        </Button>
+
+                        <Button Text="Show Event"
+                            BackgroundColor="White"
+                                AbsoluteLayout.LayoutBounds="100,0,200,30"
+                                    Clicked="ShowAllEvents_Pressed"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            >
+                        </Button>
+
+                    </AbsoluteLayout>
+
+                </Frame>
+            </StackLayout>
             <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
                    WidthRequest="500"
-                   Grid.Row="1">
+                   Grid.Row="2">
                 <StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <Label TextColor="White"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                               HorizontalOptions="CenterAndExpand"
-                           Text="Event Options"/>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Add Event"
-                            BackgroundColor="White"
-                                     Clicked="AddEventButton_Pressed"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Remove Event"
-                            BackgroundColor="White"
-                                    Clicked="RemoveEventButton_Pressed"
-                            HorizontalOptions="CenterAndExpand"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                            <Button Text="Show Event"
-                            BackgroundColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                                    Clicked="ShowAllEvents_Pressed"
-                            CornerRadius="10"
-                            FontAttributes="Bold"
-                            >
-                            </Button>
-
-                        </StackLayout>
-                    </StackLayout>
                     <StackLayout x:Name="createEventBar"
                                  IsVisible="false">
 
