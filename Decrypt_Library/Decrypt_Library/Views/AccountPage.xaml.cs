@@ -18,17 +18,20 @@ namespace Decrypt_Library.Views
             var numberOfReservation = MyPages.MyReservationsList();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void MyProfile_Clicked(object sender, EventArgs e)
         {
-          //  MyReservation.Text = MyPages.UserProfile();
+            //  MyReservation.Text = MyPages.UserProfile();
+            profileList.IsVisible = true;
+            profileList.ItemsSource = MyPages.UserProfile();
+
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void MyLoan_Clicked(object sender, EventArgs e)
         {
-           // Content.Text = MyPages.LateReturn();
+           //Content.Text = MyPages.LateReturn();
         }
 
-        private void Button_Clicked_2(object sender, EventArgs e)
+        private void MyReservations_Clicked(object sender, EventArgs e)
         {
           //  Text.= MyPages.MyReservationsList();
             
