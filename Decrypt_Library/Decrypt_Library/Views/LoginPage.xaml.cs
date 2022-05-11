@@ -39,7 +39,13 @@ namespace Decrypt_Library.Views
                 Error.IsVisible = false;
                 LogOut.IsVisible = true;
                 Headline.IsVisible = false;
+                var user = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
+
+                var ap = new AccountPage();
+                ap.User = user;
             }
+
+
 
         }
 
