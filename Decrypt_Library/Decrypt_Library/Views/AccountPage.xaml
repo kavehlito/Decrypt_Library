@@ -21,72 +21,76 @@
 
                 <StackLayout Orientation="Horizontal" >
 
-                    <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" />
-                    <Button x:Name="MyLoan" Text="Mina lån" Clicked="Button_Clicked_1" />
-                    <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" />
-                    <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked"/>
+                    <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" BackgroundColor="White" BorderColor="Black" CornerRadius="10"/>
+                    <Button x:Name="MyLoan" Text="Mina lån" Clicked="Button_Clicked_1" BackgroundColor="White" BorderColor="Black" CornerRadius="10"/>
+                    <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" BackgroundColor="White" BorderColor="Black" CornerRadius="10" />
+                    <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked" BackgroundColor="White" BorderColor="Black" CornerRadius="10"/>
 
                 </StackLayout>
-                
-                <Frame BackgroundColor="Black" 
-                   Grid.Column="1"
-                   HeightRequest="400"
+
+                <StackLayout>
+
+                    <Frame BackgroundColor="Black"
+                   BorderColor="Black"
+                   HeightRequest="700"
+                   Grid.Row="1"
                    CornerRadius="10"
-                   BorderColor="White"
-                   WidthRequest="500"
-                   Grid.Row="1">
+                   Grid.Column="1"
+                   WidthRequest="500">
 
-                    <StackLayout>
+                        <StackLayout>
 
-                        <ListView x:Name="reservations" IsVisible="true">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                                            <StackLayout Orientation="Vertical" HorizontalOptions="Start">
 
-                                                <Label Text="{Binding Title}" TextColor="White"/>
-                                                <Label Text="{Binding Author}" TextColor="White"/>
-                                                <Label Text="{Binding ISBN}" TextColor="White"/>
-                                                <Label Text="{Binding StartDate}" TextColor="White"/>
-                                                <Label Text="{Binding EndDate}" TextColor="White"/>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                                <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="removeButton_Clicked"
+                            <ListView x:Name="reservations" IsVisible="true">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal" >
+                                                <StackLayout Orientation="Vertical" >
+
+                                                    <Label Text="{Binding Title}" TextColor="White"/>
+                                                    <Label Text="{Binding Author}" TextColor="White"/>
+                                                    <Label Text="{Binding ISBN}" TextColor="White"/>
+                                                    <Label Text="{Binding StartDate}" TextColor="White"/>
+                                                    <Label Text="{Binding EndDate}" TextColor="White"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                                    <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="removeButton_Clicked"
                                                     BackgroundColor="Black" TextColor="White" FontAttributes="Bold"
                                                     CornerRadius="10" BorderColor="White" HorizontalOptions="End">
-                                                </Button>
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <StackLayout>
-                            <StackLayout>
-
-                                <ListView x:Name="loanList" IsVisible="true">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-
-                                                        <Label Text="{Binding Title}" TextColor="White"/>
-                                                        <Label Text="{Binding Author}" TextColor="White"/>
-                                                        <Label Text="{Binding ISBN}" TextColor="White"/>
-                                                        <Label Text="{Binding StartDate}" TextColor="White"/>
-                                                        <Label Text="{Binding EndDate}" TextColor="White"/>
-                                                    </StackLayout>
+                                                    </Button>
                                                 </StackLayout>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <StackLayout>
+                                <StackLayout>
+
+                                    <ListView x:Name="loanList" IsVisible="true">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                        <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+
+                                                            <Label Text="{Binding Title}" TextColor="White"/>
+                                                            <Label Text="{Binding Author}" TextColor="White"/>
+                                                            <Label Text="{Binding ISBN}" TextColor="White"/>
+                                                            <Label Text="{Binding StartDate}" TextColor="White"/>
+                                                            <Label Text="{Binding EndDate}" TextColor="White"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
                             </StackLayout>
                         </StackLayout>
-                    </StackLayout>
-                </Frame>
+                    </Frame>
+                </StackLayout>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
