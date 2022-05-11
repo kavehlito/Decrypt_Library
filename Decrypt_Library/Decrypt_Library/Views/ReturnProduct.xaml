@@ -11,6 +11,7 @@
             <Button x:Name="CheckOut" Text="Klar" IsVisible="false" Clicked="CheckOut_Clicked"  BackgroundColor="Black" TextColor="White" />
             <Label x:Name="Headline" Text="ÅTERLÄMNINGSKVITTO" FontSize="Large" IsVisible="false"/>
             <Label x:Name="Receipt" Text="" IsVisible="false"/>
+            <Button x:Name="StartAgain" Text="Starta om" Clicked="StartAgain_Clicked" IsVisible="false" BackgroundColor="Black" TextColor="White"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
