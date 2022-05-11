@@ -53,6 +53,18 @@ namespace Decrypt_Library.Views
             CheckOut.IsVisible = false;
             Headline.IsVisible = true;
             Receipt.IsVisible = true;
+            StartAgain.IsVisible = true;
+        }
+
+        private void StartAgain_Clicked(object sender, EventArgs e)
+        {
+            Product.IsVisible = true;
+            ReturnProductId.IsVisible = true;
+            ReturnNewProduct.IsVisible = false;
+            CheckOut.IsVisible = false;
+            Headline.IsVisible = false;
+            Receipt.IsVisible = false;
+            StartAgain.IsVisible = false;
         }
     }
 }

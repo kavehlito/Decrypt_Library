@@ -3,21 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.Loan">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="black">
             <Label x:Name="ProductIdError" Text="Produkten finns inte i systemet" TextColor="red" IsVisible="false" />
-            <Label x:Name="User" Text="" />
+            <Label x:Name="User" Text="" TextColor="White" />
             <Entry x:Name="CheckUserId" Placeholder="Lånetagar-Id" />
-            <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="Black" TextColor="White"/>
+            <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="White" TextColor="black" />
             <Label x:Name="UserIdError" Text="Lånatagaren finns inte i systemet." TextColor="Red" IsVisible="false" />
             <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false" />
-            <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="Black" TextColor="White" />
-            <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="Black" TextColor="White" />
-            <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="Black" TextColor="White" />
-            
-            
-            <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="Black" TextColor="White"/>
-            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false"/>
-            <Label x:Name="NumberOfItem" Text="" />
+            <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="White" TextColor="black" />
+            <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="White" TextColor="black" />
+            <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="White" TextColor="black" />
+
+
+            <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black"/>
+            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
+            <Label x:Name="NumberOfItem" Text="" TextColor="White" />
             
             <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
@@ -38,13 +38,13 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding Id}"
                                                    Grid.Column="0"
-                                                   TextColor="Black"/>
+                                                   TextColor="White"/>
                                     <Label Text="{Binding Title}"
                                                    Grid.Column="1"
-                                                   TextColor="Black"/>
+                                                   TextColor="White"/>
                                     <Label Text="{Binding ReturnDate}"
                                                    Grid.Column="2"
-                                                   TextColor="Black"/>
+                                                   TextColor="White"/>
 
                                     <Button Grid.Column="3"
                                                     TextColor="Black"
@@ -60,7 +60,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
+           
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
