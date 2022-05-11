@@ -17,28 +17,61 @@
 
             </Grid.ColumnDefinitions>
 
-            <StackLayout>
+            <AbsoluteLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                <Label Text="Välkommen till Mina Sidor!"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Padding="20,20,20,20"
+                       >
+                    
+                </Label>
+            </AbsoluteLayout>
 
-                <StackLayout Orientation="Horizontal" >
-
-                    <Button x:Name="MyProfile" Text="Min profil" Clicked="Button_Clicked" BackgroundColor="White" BorderColor="Black" CornerRadius="10"/>
-                    <Button x:Name="MyLoan" Text="Mina lån" Clicked="Button_Clicked_1" BackgroundColor="White" BorderColor="Black" CornerRadius="10"/>
-                    <Button x:Name="MyReservation" Text="Mina reservationer" Clicked="Button_Clicked_2" BackgroundColor="White" BorderColor="Black" CornerRadius="10" />
-                    <Button x:Name="MyLoanHistory" Text="Lånehistorik" Clicked="MyLoanHistory_Clicked" BackgroundColor="White" BorderColor="Black" CornerRadius="10"/>
-
-                </StackLayout>
-
-                <StackLayout>
+            <StackLayout Grid.Column="1" Grid.Row="1">
 
                     <Frame BackgroundColor="Black"
                    BorderColor="Black"
-                   HeightRequest="700"
+                   HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
                    WidthRequest="500">
 
                         <StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >
+
+                                <Button x:Name="MyProfile"
+                                        Text="Min profil"
+                                        Clicked="Button_Clicked"
+                                        BackgroundColor="White"
+                                        BorderColor="Black"
+                                        CornerRadius="10"
+                                        FontAttributes="Bold"/>
+                                <Button x:Name="MyLoan"
+                                        Text="Mina lån"
+                                        Clicked="Button_Clicked_1"
+                                        BackgroundColor="White"
+                                        BorderColor="Black"
+                                        CornerRadius="10"
+                                        FontAttributes="Bold"/>
+                                <Button x:Name="MyReservation"
+                                        Text="Mina reservationer"
+                                        Clicked="Button_Clicked_2"
+                                        BackgroundColor="White"
+                                        BorderColor="Black"
+                                        CornerRadius="10"
+                                        FontAttributes="Bold"/>
+                                <Button x:Name="MyLoanHistory"
+                                        Text="Lånehistorik"
+                                        Clicked="MyLoanHistory_Clicked"
+                                        BackgroundColor="White"
+                                        BorderColor="Black"
+                                        CornerRadius="10"
+                                        FontAttributes="Bold"/>
+
+                            </StackLayout>
 
 
                             <ListView x:Name="reservations" IsVisible="true">
@@ -90,7 +123,6 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                </StackLayout>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
