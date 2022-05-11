@@ -36,7 +36,7 @@ namespace Decrypt_Library.Readers
             }
             else
             {
-                userEntry.BackgroundColor = Color.MediumVioletRed;
+                userEntry.BackgroundColor = Color.IndianRed;
                 AdminPage.ProductPlaytimeCorrect = false;
             }
         }

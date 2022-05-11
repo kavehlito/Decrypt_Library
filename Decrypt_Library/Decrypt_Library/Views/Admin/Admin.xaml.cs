@@ -18,12 +18,16 @@ namespace Decrypt_Library.Views
         public AdminPage()
         {
             InitializeComponent();
+            BindingContext = new AdminProductViewModel();
             var employees = EntityframeworkUsers.ShowAllUsers();
             var employeeList = employees.Where(el => el.UserTypeId == 2).ToList();
 
             userList.ItemsSource = employeeList;
-            BindingContext = new AdminProductViewModel();
-            shelfPicker.ItemsSource = EntityframeworkShelf.ShowAllShelves();
+            shelfPicker.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
+            categoryPicker.ItemsSource = EntityframeworkCategories.ShowAllCategoryNames();
+            audiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups();
+            mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
+            languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
         }
 
         Product product = new Product();
@@ -149,7 +153,7 @@ namespace Decrypt_Library.Views
 
         private void entryLanguage_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryLanguage.Text = e.NewTextValue;
+            //entryLanguage.Text = e.NewTextValue;
         }
 
         private void entryAuthor_TextChanged(object sender, TextChangedEventArgs e)
@@ -164,12 +168,12 @@ namespace Decrypt_Library.Views
 
         private void entryCategoryId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryCategoryId.Text = e.NewTextValue;
+            //entryCategoryId.Text = e.NewTextValue;
         }
 
         private void entryShelfId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryShelfId.Text = e.NewTextValue;
+            //entryShelfId.Text = e.NewTextValue;
         }
 
         private void entryNarrator_TextChanged(object sender, TextChangedEventArgs e)
@@ -179,12 +183,12 @@ namespace Decrypt_Library.Views
 
         private void entryAudienceId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryAudienceId.Text = e.NewTextValue;
+            //entryAudienceId.Text = e.NewTextValue;
         }
 
         private void entryMediaId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryMediaId.Text = e.NewTextValue;
+            //entryMediaId.Text = e.NewTextValue;
         }
 
         private void entryDescription_TextChanged(object sender, TextChangedEventArgs e)
@@ -253,14 +257,14 @@ namespace Decrypt_Library.Views
             {
                 ProductTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
                 ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
-                ProductLanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
+                //ProductLanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
                 ProductPublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
                 ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
                 ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
-                ProductShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(entryShelfId.Text, out shelfId);
-                ProductCategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
-                ProductAudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
-                ProductMediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
+                ProductShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(shelfPicker.SelectedItem.ToString(), out shelfId);
+                //ProductCategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
+                //ProductAudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
+                //ProductMediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
                 ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
                 ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
                 ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);

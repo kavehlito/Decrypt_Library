@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,16 @@ namespace Decrypt_Library.EntityFrameworkCode
             {
                 mediatypes = db.MediaTypes.ToList();
                 return mediatypes;
+            }
+        }
+
+        public static List<string> ShowAllMediaNames()
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var mediaNames = db.MediaTypes.Select(x => x.FormatName).ToList();
+                return mediaNames;
             }
         }
     }

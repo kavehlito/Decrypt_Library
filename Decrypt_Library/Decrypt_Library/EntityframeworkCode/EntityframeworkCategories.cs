@@ -18,6 +18,16 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
+        public static List<string> ShowAllCategoryNames()
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var categoryNames = db.Categories.Select(x => x.CategoriesName).ToList();
+                return categoryNames;
+            }
+        }
+
         public static List<Category> ShowAllProdutsInCateogry()
         {
             return null;

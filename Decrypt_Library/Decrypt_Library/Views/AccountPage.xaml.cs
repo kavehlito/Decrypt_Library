@@ -67,7 +67,7 @@ namespace Decrypt_Library.Views
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = true;
             
-            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
+            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
 
         }
     }

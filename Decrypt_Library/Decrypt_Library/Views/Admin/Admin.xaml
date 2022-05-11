@@ -51,41 +51,42 @@
 
             </Grid>
 
-            <Frame BorderColor="White"
+            <Frame BorderColor="Black"
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
+                   CornerRadius="20"
                        BackgroundColor="White"
-                   HorizontalOptions="Center"
                        IsClippedToBounds="True"
-                       HeightRequest="35">
+                       HeightRequest="45">
 
-                <AbsoluteLayout>
+                <Grid>
+
 
                     <Button Text="Lägg till Produkter"
                                     BackgroundColor="White"
                                     TextColor="Black"
                                     Clicked="CompleteProduct_Pressed"
-                                    AbsoluteLayout.LayoutBounds="0,0,210,35"
+                            Grid.Column="0"
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>
 
                     <Button Text="Visa Produkter"
                                     BackgroundColor="White"
                                     TextColor="Black"
-                                    AbsoluteLayout.LayoutBounds="220,0,190,35"
+                            Grid.Column="1"
                                     Clicked="ShowProductsButton_Pressed"
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>
-                </AbsoluteLayout>
+                </Grid>
                 
             </Frame>
             <Frame BackgroundColor="Black" 
                    Grid.Column="1"
                    HeightRequest="500"
                    Padding="0"
-                   BorderColor="White"
-                   WidthRequest="100"
+                   BorderColor="Black"
+                   WidthRequest="410"
                    CornerRadius="10"
                    Grid.Row="3">
 
@@ -101,7 +102,7 @@
                         <StackLayout
                                     >
                         <ScrollView VerticalScrollBarVisibility="Never"
-                                    Margin="0,20,0,0">
+                                    Margin="0,30,0,0">
 
                                 <AbsoluteLayout>
                                     <Label Text="Produktnamn"
@@ -109,19 +110,19 @@
                                            AbsoluteLayout.LayoutBounds="30,0,100,35"
                                                TextColor="White"/>
 
-                                    <Label Text="ISBN 10 digits"
+                                    <Label Text="ISBN 10 siffror"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="210,0,300,50"
+                                           AbsoluteLayout.LayoutBounds="225,0,300,50"
                                                TextColor="White"/>
 
-                                    <Label Text="Berättare"
+                                    <Label Text="Beskrivning"
                                                FontAttributes="Bold"
                                            AbsoluteLayout.LayoutBounds="30,52,300,50"
                                                TextColor="White"/>
 
                                     <Label Text="Utgivare"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="210,52,300,50"
+                                           AbsoluteLayout.LayoutBounds="225,52,300,50"
                                                TextColor="White"/>
 
                                     <Label Text="Författare"
@@ -131,61 +132,59 @@
 
                                     <Label Text="Datum yyyy/mm/dd"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="210,105,300,50"
+                                           AbsoluteLayout.LayoutBounds="225,105,300,50"
                                                TextColor="White"/>
 
 
-                                    <Label Text="Hylla ID"
-                                           FontSize="12"
+                                    <Label Text="Hylla"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="30,165,300,50"
+                                           AbsoluteLayout.LayoutBounds="30,162,300,50"
                                                TextColor="White"/>
 
-                                    <Label Text="Kategori ID"
+                                    <Label Text="Kategori"
                                                FontAttributes="Bold"
-                                           FontSize="12"
-                                           AbsoluteLayout.LayoutBounds="95,165,300,50"
+                                           AbsoluteLayout.LayoutBounds="157,162,300,50"
                                                TextColor="White"/>
 
-                                    <Label Text="Publik ID"
+                                    <Label Text="Publik "
                                                FontAttributes="Bold"
-                                           FontSize="12"
-                                           AbsoluteLayout.LayoutBounds="170,165,300,50"
+                                           AbsoluteLayout.LayoutBounds="30,217,300,50"
+                                           
                                                TextColor="White"/>
 
 
-                                    <Label Text="Media ID"
-                                           FontSize="12"
+                                    <Label Text="Media"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="240,165,300,50"
+                                           AbsoluteLayout.LayoutBounds="230,217,300,50"
                                                TextColor="White"/>
 
-                                    <Label Text="Språk ID"
-                                           FontSize="12"
+                                    <Label Text="Språk"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="310,165,300,50"
+                                           AbsoluteLayout.LayoutBounds="283,162,300,50"
                                                TextColor="White"/>
 
                                     <Label Text="Speltid"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="30,217,300,50"
+                                           AbsoluteLayout.LayoutBounds="30,270,300,50"
                                                TextColor="White"/>
 
 
                                     <Label Text="Antal sidor"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="210,217,300,50"
+                                           AbsoluteLayout.LayoutBounds="155,270,300,50"
                                                TextColor="White"/>
 
-                                    <Label Text="Beskrivning"
+                                    <Label Text="Berättare"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="30,269,300,50"
+                                           AbsoluteLayout.LayoutBounds="280,270,300,50"
                                                TextColor="White"/>
+
 
 
 
                                     <StackLayout>
-                                    <Frame BorderColor="Black" HeightRequest="550">
+                                    <Frame BorderColor="Black"
+                                           HeightRequest="550">
                                         <StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
@@ -213,6 +212,7 @@
 
                                                 <Frame BorderColor="Black"
                                                        CornerRadius="15"
+                                                       Margin="15,0,0,0"
                                                        WidthRequest="175"
                                                    Padding="0">
 
@@ -235,30 +235,36 @@
 
                                                 <StackLayout Orientation="Horizontal" 
                                                              Margin="0,15,0,0">
+
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="175"
+                                                           WidthRequest="175"
                                                    Padding="0">
 
                                                         <Entry
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
+                                                    VerticalTextAlignment="Start"
+                                                    x:Name="entryDescription"
+                                                    TextChanged="entryDescription_TextChanged"
                                                     FontSize="12"
-                                                    AbsoluteLayout.LayoutBounds="-20,260,140,40"
-                                                    TextChanged="entryNarrator_TextChanged"
-                                                    x:Name="entryNarrator"
+                                                    AbsoluteLayout.LayoutBounds="-20,329,450,100"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack">
-
                                                             <Entry.Behaviors>
-                                                                <behaviors:NarratorValidationBehavior/>
+                                                                <behaviors:DescriptionValidationBehavior/>
                                                             </Entry.Behaviors>
+
                                                         </Entry>
+
 
                                                     </Frame>
 
+
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
+                                                       Margin="15,0,0,0"
+                                                           
                                                        WidthRequest="175"
                                                    Padding="0">
 
@@ -303,6 +309,7 @@
                                                     </Frame>
 
                                                     <Frame BorderColor="Black"
+                                                       Margin="15,0,0,0"
                                                        CornerRadius="15"
                                                        WidthRequest="175"
                                                    Padding="0">
@@ -327,108 +334,46 @@
                                                              Margin="0,20,0,0">
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="65"
+                                                       WidthRequest="120"
                                                    Padding="0">
 
-                                                        <Entry
-                                                    PlaceholderColor="Gray"
-                                                    BackgroundColor="White"
-                                                    FontSize="12"
-                                                    TextChanged="entryShelfId_TextChanged"
-                                                    x:Name="entryShelfId"
-                                                    FontAttributes="Bold"
-                                                    TextColor="BLack">
-                                                            <Entry.Behaviors>
-                                                                <behaviors:ShelfIdValidationBehavior/>
-                                                            </Entry.Behaviors>
 
-                                                        </Entry>
+                                                        <Picker 
+                                                                x:Name="shelfPicker"
+                                                                TextColor="Black"
+                                                                WidthRequest="125"
+                                                                FontAttributes="Bold"
+                                                                BackgroundColor="Gray"/>
+                    
                                                     </Frame>
 
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="65"
+                                                       WidthRequest="120"
                                                    Padding="0">
 
-                                                        <Entry
-                                                    PlaceholderColor="Gray"
-                                                    BackgroundColor="White"
-                                                    FontSize="12"
-                                                    TextChanged="entryCategoryId_TextChanged"
-                                                    x:Name="entryCategoryId"
-                                                    FontAttributes="Bold"
-                                                    TextColor="BLack">
-
-                                                            <Entry.Behaviors>
-                                                                <behaviors:CategoryIdValidationBehavior/>
-                                                            </Entry.Behaviors>
-                                                        </Entry>
+                                                        <Picker 
+                                                                x:Name="categoryPicker"
+                                                                TextColor="Black"
+                                                                WidthRequest="120"
+                                                                FontAttributes="Bold"
+                                                                BackgroundColor="Gray"/>
+                                        
                                                     </Frame>
+
+
 
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="65"
+                                                       WidthRequest="120"
                                                    Padding="0">
 
-                                                        <Entry
-                                                    PlaceholderColor="Gray"
-                                                    BackgroundColor="White"
-                                                    FontSize="12"
-                                                    AbsoluteLayout.LayoutBounds="210,190,110,40"
-                                                    TextChanged="entryAudienceId_TextChanged"
-                                                    x:Name="entryAudienceId"
-                                                    FontAttributes="Bold"
-                                                    TextColor="BLack">
-                                                            <Entry.Behaviors>
-                                                                <behaviors:AudienceValidationBehavior/>
-                                                            </Entry.Behaviors>
-
-                                                        </Entry>
-                                                    </Frame>
-
-                                                    <Frame BorderColor="Black"
-                                                       CornerRadius="15"
-                                                       WidthRequest="65"
-                                                   Padding="0">
-
-                                                        <Entry
-                                                    PlaceholderColor="Gray"
-                                                    BackgroundColor="White"
-                                                    FontSize="12"
-                                                    TextChanged="entryMediaId_TextChanged"
-                                                    x:Name="entryMediaId"
-                                                    FontAttributes="Bold"
-                                                    AbsoluteLayout.LayoutBounds="325,190,110,40"
-                                                
-                                                    TextColor="BLack">
-                                                            <Entry.Behaviors>
-                                                                <behaviors:MediaValidationBehavior/>
-                                                            </Entry.Behaviors>
-
-                                                        </Entry>
-                                                        
-                                                        
-                                                    </Frame>
-
-                                                    <Frame BorderColor="Black"
-                                                       CornerRadius="15"
-                                                       WidthRequest="65"
-                                                   Padding="0">
-
-                                                        <Entry
-                                                    PlaceholderColor="Gray"
-                                                    BackgroundColor="White"
-                                                    FontSize="12"
-                                                    TextChanged="entryLanguage_TextChanged"
-                                                    x:Name="entryLanguage"
-                                                    FontAttributes="Bold"
-                                                    TextColor="BLack">
-                                                            <Entry.Behaviors>
-                                                                <behaviors:LanguageValidationIdBehavior/>
-                                                            </Entry.Behaviors>
-
-                                                        </Entry>
-
+                                                        <Picker 
+                                                                x:Name="languagePicker"
+                                                                TextColor="Black"
+                                                                WidthRequest="115"
+                                                                FontAttributes="Bold"
+                                                                BackgroundColor="Gray"/>
 
                                                     </Frame>
                                                 </StackLayout>
@@ -439,6 +384,37 @@
                                                        CornerRadius="15"
                                                        WidthRequest="175"
                                                    Padding="0">
+                                                        <Picker HorizontalOptions="Center"
+                                                                x:Name="audiencePicker"
+                                                                TextColor="Black"
+                                                                WidthRequest="175"
+                                                                FontAttributes="Bold"
+                                                                BackgroundColor="Gray"/>
+                                                    </Frame>
+
+
+                                                    <Frame BorderColor="Black"
+                                                       CornerRadius="15"
+                                                           Margin="15,0,0,0"
+                                                       WidthRequest="175"
+                                                   Padding="0">
+
+                                                        <Picker HorizontalOptions="Center"
+                                                                x:Name="mediaPicker"
+                                                                TextColor="Black"
+                                                                WidthRequest="175"
+                                                                FontAttributes="Bold"
+                                                                BackgroundColor="Gray"/>
+
+                                                    </Frame>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal" 
+                                                             Margin="0,15,0,0">
+                                                    <Frame BorderColor="Black"
+                                                       CornerRadius="15"
+                                                       WidthRequest="120"
+                                                   Padding="0">
                                                         <Entry
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
@@ -446,7 +422,6 @@
                                                     TextChanged="entryPlaytime_TextChanged"
                                                     x:Name="entryPlaytime"
                                                     FontAttributes="Bold"
-                                                    AbsoluteLayout.LayoutBounds="135,260,140,40"
                                                     TextColor="BLack">
                                                             <Entry.Behaviors>
                                                                 <behaviors:PlaytimeValidationBehavior/>
@@ -458,7 +433,7 @@
 
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="175"
+                                                       WidthRequest="120"
                                                    Padding="0">
 
                                                         <Entry
@@ -468,7 +443,6 @@
                                                     x:Name="entryPages"
                                                     TextChanged="entryPages_TextChanged"
                                                     FontAttributes="Bold"
-                                                    AbsoluteLayout.LayoutBounds="290,260,140,40"
                                                     TextColor="BLack">
                                                             <Entry.Behaviors>
                                                                 <behaviors:PagesValidationBehavior/>
@@ -476,56 +450,41 @@
 
                                                         </Entry>
                                                     </Frame>
-                                                </StackLayout>
-
-                                                <StackLayout Orientation="Horizontal" 
-                                                             Margin="0,15,0,0">
                                                     <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="360"
-                                                           HeightRequest="100"
+                                                       WidthRequest="120"
                                                    Padding="0">
+
+
 
                                                         <Entry
                                                     PlaceholderColor="Gray"
                                                     BackgroundColor="White"
-                                                    VerticalTextAlignment="Start"
-                                                    x:Name="entryDescription"
-                                                    TextChanged="entryDescription_TextChanged"
                                                     FontSize="12"
-                                                    AbsoluteLayout.LayoutBounds="-20,329,450,100"
+                                                    TextChanged="entryNarrator_TextChanged"
+                                                    x:Name="entryNarrator"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack">
-                                                            <Entry.Behaviors>
-                                                                <behaviors:DescriptionValidationBehavior/>
-                                                            </Entry.Behaviors>
 
+                                                            <Entry.Behaviors>
+                                                                <behaviors:NarratorValidationBehavior/>
+                                                            </Entry.Behaviors>
                                                         </Entry>
 
-
                                                     </Frame>
+                                                </StackLayout>
+
+        
+
+
+                                                <StackLayout Orientation="Horizontal" 
+                                                             Margin="0,15,0,0">
+
+
+
 
                                                 </StackLayout>
 
-
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Frame BorderColor="White"
-                                                           CornerRadius="15"
-                                                           HeightRequest="30"
-                                                           Padding="0">
-
-
-                                                        <Picker HorizontalOptions="Center"
-                                                                x:Name="shelfPicker"
-                                                                TextColor="White"
-                                                                BackgroundColor="White"/>
-
-                                                    </Frame>
-
-                                                </StackLayout>
-
-
-             
 
 
 
