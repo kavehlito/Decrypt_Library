@@ -23,6 +23,7 @@ namespace Decrypt_Library.Views
 
             userList.ItemsSource = employeeList;
             BindingContext = new AdminProductViewModel();
+            shelfPicker.ItemsSource = EntityframeworkShelf.ShowAllShelves();
         }
 
         Product product = new Product();
@@ -526,8 +527,6 @@ namespace Decrypt_Library.Views
             entryEventRemovetab2.Text = e.NewTextValue;
         }
 
-
-
         #endregion
 
         #region Language Buttons
@@ -565,7 +564,6 @@ namespace Decrypt_Library.Views
                 createLanguageBar.IsVisible = false;
                 return;
             }
-
             try
             {
                 if (Readers.Readers.IntReaderConvertStringToInt(entryLanguageRemovetab3.Text, out int languageId))

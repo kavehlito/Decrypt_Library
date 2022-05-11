@@ -22,7 +22,7 @@ namespace Decrypt_Library.Views
         {
             //  MyReservation.Text = MyPages.UserProfile();
             profileList.IsVisible = true;
-            profileList.ItemsSource = MyPages.UserProfile();
+            profileList.ItemsSource = UserLogin.thisUser.ToString();
 
         }
 

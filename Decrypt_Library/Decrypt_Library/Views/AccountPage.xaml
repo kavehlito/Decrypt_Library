@@ -24,11 +24,8 @@
                        TextColor="Black"
                        Padding="20,20,20,20"
                        >
-                    
                 </Label>
             </AbsoluteLayout>
-
-            <StackLayout Grid.Column="1" Grid.Row="1">
 
                     <Frame BackgroundColor="Black"
                    BorderColor="Black"
@@ -73,8 +70,11 @@
 
                             </StackLayout>
 
+                        <StackLayout IsVisible="True">
+                            
+
                         <ListView x:Name="profileList"
-                              IsVisible="false">
+                              IsVisible="true">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -99,7 +99,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
+                        </StackLayout>
 
                         <ListView x:Name="reservations" IsVisible="false">
                                 <ListView.ItemTemplate>
@@ -144,7 +144,6 @@
                              </ListView>
                         </StackLayout>
                     </Frame>
-            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

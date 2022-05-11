@@ -26,9 +26,7 @@ namespace Decrypt_Library.Views.Admin
 
         }
 
-
         private ObservableCollection<Category> _CategoryCollectionList;
-
         public ObservableCollection<Category> CategoryCollectionList
         {
 
@@ -38,7 +36,6 @@ namespace Decrypt_Library.Views.Admin
                 _CategoryCollectionList = value;
                 OnPropertyChanged();
             }
-
         }
 
         private ObservableCollection<Product> _CollectionList;
@@ -69,6 +66,7 @@ namespace Decrypt_Library.Views.Admin
         {
             var admin = new AdminPage();
             var content = obj as Models.Event;
+
             EventCollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkEvents.RemoveEvent(content);
             EventCollectionList = new ObservableCollection<Models.Event>(EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents());
@@ -80,6 +78,14 @@ namespace Decrypt_Library.Views.Admin
         {
             var admin = new AdminPage();
             var content = obj as Category;
+
+            foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+            {
+                if (content.Id == item.CategoryId)
+                {
+                    return;
+                }
+            }
             CategoryCollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkCategories.RemoveCategory(content);
             CategoryCollectionList = new ObservableCollection<Category>(EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories());
@@ -91,11 +97,21 @@ namespace Decrypt_Library.Views.Admin
         {
             var admin = new AdminPage();
             var content = obj as Product;
+
+            foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+            {
+                if (content.LanguageId == item.LanguageId)
+                {
+                    return;
+                }
+            }
             CollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(content);
             CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
             admin.UpdateNewProductList();
             admin.RefreshPage();
         }
+
+ 
     }
 }

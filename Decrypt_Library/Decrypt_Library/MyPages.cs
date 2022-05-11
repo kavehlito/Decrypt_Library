@@ -80,8 +80,6 @@ namespace Decrypt_Library
             return LateBooksList.ToString();
         }
 
-        
-
         public static void TestMyPages()
         {
             Console.WriteLine("MIN PROFIL");
