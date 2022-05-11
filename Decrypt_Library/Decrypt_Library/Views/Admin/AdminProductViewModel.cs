@@ -13,7 +13,6 @@ namespace Decrypt_Library.Views.Admin
     {
 
         private ObservableCollection<Event> _EventCollectionList;
-
         public ObservableCollection<Event> EventCollectionList
         {
 
