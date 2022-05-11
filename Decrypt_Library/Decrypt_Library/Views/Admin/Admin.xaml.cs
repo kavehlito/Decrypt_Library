@@ -116,7 +116,7 @@ namespace Decrypt_Library.Views
         private void ShowNoWindows()
         {
             createProductTab.IsVisible = false;
-            removeProductTab.IsVisible = false;
+
         }
 
         private void ShowProductsButton_Pressed(object sender, EventArgs e)
@@ -201,10 +201,6 @@ namespace Decrypt_Library.Views
             entryPlaytime.Text = e.NewTextValue;
         }
 
-        private void entryProductRemove_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            entryProductRemove.Text = e.NewTextValue;
-        }
 
         private void ProductListItem_Tapped(object sender, ItemTappedEventArgs e)
         {
@@ -223,12 +219,7 @@ namespace Decrypt_Library.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region Complete product add
-        private async void ProductTextReset()
-        {
-            await Navigation.PushAsync(new AdminPage());
-        }
-
-        private void CompleteProduct_Pressed(object sender, EventArgs e)
+        private async void CompleteProduct_Pressed(object sender, EventArgs e)
         {
             ProductList.IsVisible = false;
             if (!createProductTab.IsVisible)
@@ -304,22 +295,21 @@ namespace Decrypt_Library.Views
                     product.HiddenProduct = hiddenProduct.IsToggled;
                     product.Status = inStock.IsToggled;
 
-                    EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
 
-                    ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts().OrderByDescending();
+                    EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
+                    ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+                    await Navigation.PushAsync(new AdminPage());
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
-                    product = null;
                     BoolReset();
-                    ProductTextReset();
                 }
                 else
-                    DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
+                    await DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
 
             }
             catch (Exception errormessage)
             {
-                DisplayActionSheet($"{errormessage.Message}", "Error", "OK");
+                await DisplayActionSheet($"{errormessage.Message}", "Error", "OK");
             }
         }
 

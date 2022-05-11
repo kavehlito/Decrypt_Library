@@ -45,7 +45,7 @@
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
-                   Margin="10,0,10,0"
+                   Margin="35,0,10,0"
                        BackgroundColor="White"
                        IsClippedToBounds="True"
                        HeightRequest="30">
@@ -74,13 +74,16 @@
                    Grid.Column="1"
                    HeightRequest="500"
                    Padding="0"
+                   Margin="0,20,0,0"
                    CornerRadius="10"
                    WidthRequest="100"
                    Grid.Row="3">
 
                 <StackLayout>
 
-                    <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Vertical"
+                                 x:Name="createProductTab" 
+                                     IsVisible="false">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -92,8 +95,7 @@
     
                         </Grid>
 
-                        <StackLayout x:Name="createProductTab" 
-                                     IsVisible="false"
+                        <StackLayout 
                                     >
                         <ScrollView VerticalScrollBarVisibility="Never">
                             <StackLayout>
@@ -491,19 +493,6 @@
                         </ScrollView>
                         </StackLayout>
 
-                        <StackLayout x:Name="removeProductTab"
-                                 IsVisible="false">
-
-                            <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Id på den produkt du vill ta bort"/>
-
-                            <Entry x:Name="entryProductRemove"
-                               TextChanged="entryProductRemove_TextChanged"
-                           >
-                            </Entry>
-                        </StackLayout>
                     </StackLayout>
 
                     <ListView x:Name="ProductList"
@@ -511,7 +500,7 @@
                               HasUnevenRows="False"
                               ItemsSource="{Binding CollectionList}"
                               ItemTapped="ProductListItem_Tapped"
-                              IsVisible="true"
+                              IsVisible="false"
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -538,7 +527,7 @@
                                                     FontAttributes="Bold"
                                                     Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ProductList}}" 
                                                     CommandParameter="{Binding .}"
-                                                    Text="Remove"/>
+                                                    Text="Ta bort"/>
                                         </Grid>
                                     </Frame>
                                 </ViewCell>

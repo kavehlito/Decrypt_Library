@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -30,10 +31,12 @@ namespace Decrypt_Library.Views.Admin
 
         public void OnDeleteTapped(object obj)
         {
+            var admin = new AdminPage();
             var content = obj as Product;
             CollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(content);
             CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
+            admin.UpdateNewProductList();
         }
     }
 }
