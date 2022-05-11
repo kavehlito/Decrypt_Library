@@ -3,19 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.Loan">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <AbsoluteLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                <Label Text="Utlåning!"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Padding="20,20,20,20"
+                       >
+
+                </Label>
+            </AbsoluteLayout>
+
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <Frame BackgroundColor="Black"
+                   BorderColor="Black"
+                   HeightRequest="500"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   Grid.Column="1"
+                   WidthRequest="500">
+
+                    
+                    <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1">
+            <Label x:Name="UserIdError" Text="Lånatagaren finns inte i systemet." TextColor="Red" IsVisible="false" />
             <Label x:Name="ProductIdError" Text="Produkten finns inte i systemet" TextColor="red" IsVisible="false" />
             <Label x:Name="User" Text="" TextColor="White" />
             <Entry x:Name="CheckUserId" Placeholder="Lånetagar-Id" />
-            <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="White" TextColor="black" />
-            <Label x:Name="UserIdError" Text="Lånatagaren finns inte i systemet." TextColor="Red" IsVisible="false" />
+                        <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+            
             <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false" />
-            <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="White" TextColor="black" />
-            <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="White" TextColor="black" />
-            <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="White" TextColor="black" />
+                        <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+                        <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold" />
+                        <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold" />
 
 
-            <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black"/>
+                        <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
             <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
             <Label x:Name="NumberOfItem" Text="" TextColor="White" />
             
@@ -38,13 +75,15 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding Id}"
                                                    Grid.Column="0"
-                                                   TextColor="White"/>
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
                                     <Label Text="{Binding Title}"
                                                    Grid.Column="1"
                                                    TextColor="White"/>
                                     <Label Text="{Binding ReturnDate}"
                                                    Grid.Column="2"
-                                                   TextColor="White"/>
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
 
                                     <Button Grid.Column="3"
                                                     TextColor="Black"
@@ -64,5 +103,8 @@
            
 
         </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

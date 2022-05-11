@@ -24,11 +24,8 @@
                        TextColor="Black"
                        Padding="20,20,20,20"
                        >
-                    
                 </Label>
             </AbsoluteLayout>
-
-            <StackLayout Grid.Column="1" Grid.Row="1">
 
                     <Frame BackgroundColor="Black"
                    BorderColor="Black"
@@ -151,7 +148,6 @@
                         </ListView>
                     </StackLayout>
                     </Frame>
-            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

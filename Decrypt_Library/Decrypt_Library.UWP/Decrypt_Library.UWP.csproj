@@ -104,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Alma Freng och solfångarna.jpg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
@@ -131,11 +132,30 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Berätta tre saker.jpg" />
+    <Content Include="Björnen sover.jpg" />
     <Content Include="bluegradient.png" />
     <Content Include="delete.png" />
+    <Content Include="Den som dödade helvetets änglar.jpg" />
+    <Content Include="Det blåser på månen.jpg" />
+    <Content Include="Där kräftorna sjunger.jpg" />
+    <Content Include="En vacker dag lämnar jag honom.jpg" />
+    <Content Include="Frost - En saga om två systrar Lätt att läsa.jpg" />
     <Content Include="gradient1.png" />
+    <Content Include="Halva Malmö består av killar som dumpat mig.jpg" />
+    <Content Include="Het augusti - erotisk novell.jpg" />
+    <Content Include="I dina händer.jpg" />
+    <Content Include="Kodnamn - PAM.jpg" />
+    <Content Include="Legenden om Sally Jones.jpg" />
+    <Content Include="Ljudboken som inte ville ta slut  %28del 1%29.jpg" />
+    <Content Include="Ljudboken som inte ville ta slut  %28del 2%29.jpg" />
+    <Content Include="Norrsken i skallen.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="purplegradient.jpg" />
+    <Content Include="Spegelmannen.jpg" />
+    <Content Include="Svansar runt i djungeln.jpg" />
+    <Content Include="Syskonen.jpg" />
+    <Content Include="Till minne av en mördare.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

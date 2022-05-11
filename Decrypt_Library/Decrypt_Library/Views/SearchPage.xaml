@@ -81,9 +81,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20"/>
-                                <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
+                                    <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="FillAndExpand" WidthRequest="100"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                    <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20"/>
+                                    <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15"/>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

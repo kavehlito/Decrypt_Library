@@ -98,8 +98,6 @@ namespace Decrypt_Library
             
         }
 
-        
-
         public static void TestMyPages()
         {
             Console.WriteLine("MIN PROFIL");

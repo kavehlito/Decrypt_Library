@@ -25,7 +25,6 @@ namespace Decrypt_Library.Views
 
             var sucess = UserLogin.CheckUserNameAndPassword(ssn, password);
             if (!sucess) Error.IsVisible = true;
-
             
             SSN.Text = null;
             Password.Text = null;
