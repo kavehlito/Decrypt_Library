@@ -1,6 +1,8 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using System;
 using System.Text;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Decrypt_Library
 {
@@ -41,43 +43,59 @@ namespace Decrypt_Library
 
         }
 
-        public static string MyLoanHistory()
+        public static List<MyPagesProductList> MyLoanHistory()
         {
-            if (UserLogin.thisUser == null) return "Du är inte inloggad!";
-
-            StringBuilder myLoanHistoryList = new StringBuilder();
+            if (UserLogin.thisUser == null) return null;
 
             var loanHistory = EntityframeworkBookHistory.ShowUserLoanHistory();
-            myLoanHistoryList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM", -40}{"ÅTERLÄMNAD"}");
-            foreach (var item in loanHistory)
+          
+            return loanHistory;
+
+            //StringBuilder myLoanHistoryList = new StringBuilder();
+            //myLoanHistoryList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM", -40}{"ÅTERLÄMNAD"}");
+            /*foreach (var item in loanHistory)
                 {
                     if (item.EndDate != null)
                         myLoanHistoryList.AppendLine($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString(),-40}{item.EndDate.Value.ToShortDateString()}");
                 }
+            */
 
-            return myLoanHistoryList.ToString();
         }
-        public static string LateReturn()
+        public static List<MyPagesProductList> LoanList()
         {
-            if (UserLogin.thisUser == null) return "Du är inte inloggad!";
 
-            StringBuilder LateBooksList = new StringBuilder();
-            var lateBooks = EntityframeworkBookHistory.ShowUserLoanHistory();
-            LateBooksList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM"}");
+            //StringBuilder LateBooksList = new StringBuilder();
+            //LateBooksList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM"}");
 
-            foreach (var item in lateBooks)
+            if (UserLogin.thisUser == null) return null;
+
+            var books = EntityframeworkBookHistory.ShowUserLoanHistory();
+            var loanList = new List<MyPagesProductList>();
+
+            foreach (var book in books)
             {
-                if (item.EndDate == null)
+                if (book != null)
                 {
-                    DateTime startdate = Convert.ToDateTime(item.StartDate);
-                    DateTime TodayDate = DateTime.Now;
-                    var numberOfDays = (TodayDate - startdate).TotalDays;
-                    LateBooksList.AppendLine();
-                    LateBooksList.Append($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString()}");
-                    if (numberOfDays > 30) LateBooksList.Append(" - Boken är försenad!");
+                    loanList.Add(book);
                 }
             }
-            return LateBooksList.ToString();
+
+            return loanList;
+            
+
+                //($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString(),-40}{item.EndDate.Value.ToShortDateString()}"
+
+               /* if (item.EndDate == null)
+                {
+                    item.Add(new MyPagesProductList());
+
+                    //DateTime startdate = Convert.ToDateTime(item.StartDate);
+                    //DateTime TodayDate = DateTime.Now;
+                    //var numberOfDays = (TodayDate - startdate).TotalDays;
+                    //LateBooksList.Append($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString()}");
+                    //if (numberOfDays > 30) LateBooksList.Append(" - Boken är försenad!");
+                } */
+            
         }
 
         

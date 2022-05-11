@@ -19,6 +19,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                   where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 3
                                   select new MyPagesProductList
                                   {
+                                      ID = bookHistory.Id,
                                       Title = product.Title,
                                       Author = product.AuthorName,
                                       ISBN = product.Isbn,
@@ -85,6 +86,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
     public class MyPagesProductList
     {
+        public int ID { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public Int64? ISBN { get; set; }

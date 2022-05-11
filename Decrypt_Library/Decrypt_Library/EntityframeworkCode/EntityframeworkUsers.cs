@@ -34,5 +34,30 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
            
         }
+
+        public static List<User> ShowSpecificUserLogIn(User userLogIn)
+        {
+            var user = ShowAllUsers();
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var specificUser = user.Where(u => u.Id == userLogIn.Id).ToList();
+
+                return specificUser;
+            }
+
+        }
+
+        public static User ShowSpecificUserByUserName(long? ssn)
+        {
+            var user = ShowAllUsers();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var specificUser = user.SingleOrDefault(u => u.Ssn == ssn);
+
+                return specificUser;
+            }
+
+        }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Decrypt_Library.Models;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,43 +9,66 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
+        private User _user;
+
+        public User User
+        {
+            get { return _user; }
+            set { _user = value; }
+        }
         public AccountPage()
         {
             InitializeComponent();
-            var numberOfReservation = MyPages.MyReservationsList();
+            // User = user;
+            
         }
 
         private void MyProfile_Clicked(object sender, EventArgs e)
         {
-            //  MyReservation.Text = MyPages.UserProfile();
-            profileList.IsVisible = true;
-            profileList.ItemsSource = MyPages.UserProfile();
+            profile.IsVisible = true;
+            loanHistoryList.IsVisible = false;
+            reservations.IsVisible = false;
 
+            //profileList.ItemsSource = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserLogIn(_user);
+            profileText.Text = MyPages.UserProfile();
         }
 
         private void MyLoan_Clicked(object sender, EventArgs e)
         {
-           //Content.Text = MyPages.LateReturn();
+            loanList.IsVisible = true;
+            profile.IsVisible = false;
+            loanList.ItemsSource = MyPages.LoanList();
         }
 
         private void MyReservations_Clicked(object sender, EventArgs e)
         {
-          //  Text.= MyPages.MyReservationsList();
-            
+            loanList.IsVisible = false;
+            profile.IsVisible = false;
+            reservations.IsVisible = true;
             reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
+            
 
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
         {
-         //   Content.Text = MyPages.MyLoanHistory();
-
-            loanList.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserLoanHistory();
+            loanList.IsVisible = false;
+            profile.IsVisible = false;
+            reservations.IsVisible = false;
+            loanHistoryList.IsVisible = true;
+            loanHistoryList.ItemsSource = MyPages.MyLoanHistory();
         }
 
-        private void removeButton_Clicked(object sender, EventArgs e)
+        private void RemoveButton_Clicked(object sender, EventArgs e)
         {
             // function for removing from list not the product
+            loanList.IsVisible = false;
+            profile.IsVisible = false;
+            loanHistoryList.IsVisible = false;
+            reservations.IsVisible = true;
+            
+            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
+
         }
     }
 }
