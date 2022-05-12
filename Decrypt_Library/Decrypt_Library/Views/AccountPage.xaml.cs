@@ -1,5 +1,4 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
-using Decrypt_Library.Models;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,14 +9,6 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
-        private User _user;
-        Label idLabel = new Label();
-        public User User
-        {
-            get { return _user; }
-            set { _user = value; }
-        }
-
         public AccountPage()
         {
             InitializeComponent();
@@ -30,7 +21,7 @@ namespace Decrypt_Library.Views
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = false;
 
-            //profileList.ItemsSource = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserLogIn(_user);
+
             profileText.Text = MyPages.UserProfile();
         }
 
@@ -48,10 +39,7 @@ namespace Decrypt_Library.Views
             profile.IsVisible = false;
             reservations.IsVisible = true;
 
-            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
-
-
-
+            reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
@@ -65,28 +53,15 @@ namespace Decrypt_Library.Views
 
         private void RemoveButton_Clicked(object sender, EventArgs e)
         {
-            // function for removing from list not the product
+
             loanList.IsVisible = false;
             profile.IsVisible = false;
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = true;
 
-            //BindingContext = Convert.ToInt32(this.Id);
-
-            var selectedId = Convert.ToInt32(this.BindingContext);
-
-           EntityFrameworkCode.EntityframeworkProducts.DeleteReservation(selectedId);
-
-
-
-            //BindingContext = reservations.Id;
-
-            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
-
-
-
-            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
-
+            Button btn = sender as Button;
+            MyPagesProductList reserveList = btn.BindingContext as MyPagesProductList;
+            EntityframeworkProducts.DeleteReservation(reserveList.ID);
         }
     }
 }
