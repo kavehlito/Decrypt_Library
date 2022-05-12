@@ -1,8 +1,9 @@
-﻿using Decrypt_Library.Models;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace Decrypt_Library.Views
 {
@@ -10,17 +11,18 @@ namespace Decrypt_Library.Views
     public partial class AccountPage : ContentPage
     {
         private User _user;
-
+        Label idLabel = new Label();
         public User User
         {
             get { return _user; }
             set { _user = value; }
         }
+
         public AccountPage()
         {
             InitializeComponent();
             // User = user;
-            
+
         }
 
         private void MyProfile_Clicked(object sender, EventArgs e)
@@ -45,9 +47,10 @@ namespace Decrypt_Library.Views
             loanList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = true;
-            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
-            
+            reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
 
+            BindingContext = this;
+            idLabel.SetBinding(Label.TextProperty, "ID");
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
@@ -66,9 +69,10 @@ namespace Decrypt_Library.Views
             profile.IsVisible = false;
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = true;
-            
-            
-            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
+
+            int id = Convert.ToInt32(idLabel.Text);
+            EntityframeworkProducts.DeleteReservation(id);
+
 
         }
     }
