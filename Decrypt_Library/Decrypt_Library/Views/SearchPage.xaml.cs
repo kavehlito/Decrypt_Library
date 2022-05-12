@@ -79,7 +79,7 @@ namespace Decrypt_Library.Views
             if (checkbox15.IsChecked)
                 MediaType.Add(3);
      
-            ProductList.ItemsSource = EntityframeworkMediaTypes.SpecificType(MediaType);
+            //ProductList.ItemsSource = EntityframeworkMediaTypes.SpecificType(MediaType);
         }
 
     }

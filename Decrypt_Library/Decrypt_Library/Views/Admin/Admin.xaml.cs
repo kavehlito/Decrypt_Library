@@ -39,7 +39,11 @@ namespace Decrypt_Library.Views
         /// Product Bools
         /// </summary>
         #region Product bools
-        public static bool ProductMediaIdCorrect { get; set; }    
+
+        bool ProductMediaIdCorrect = false;
+        bool ProductLanguageIdCorrect = false;
+        bool ProductAudienceIdCorrect = false;
+        bool ProductCategoryIdCorrect = false;
         public static bool ProductStatusCorrect { get; set; } 
         public static bool ProductIsbnCorrect { get; set; } 
         public static bool ProductTitleCorrect { get; set; } 
@@ -47,14 +51,11 @@ namespace Decrypt_Library.Views
         public static bool ProductPagesCorrect { get; set; } 
         public static bool ProductPlaytimeCorrect { get; set; } 
         public static bool ProductPublisherCorrect { get; set; } 
-        public static bool ProductLanguageIdCorrect { get; set; } 
         public static bool ProductAuthorNameCorrect { get; set; }
         public static bool ProductPublishDateCorrect { get; set; }
-        public static bool ProductCategoryIdCorrect { get; set; }
         public static bool ProductShelfIdCorrect { get; set; }
         public static bool ProductNarratorCorrect { get; set; }
         public static bool ProductNewProductCorrect { get; set; }
-        public static bool ProductAudienceIdCorrect { get; set; }
         public static bool ProductHiddenProductCorrect { get; set; }
 
         bool ProductCorrectProductInput = false;
@@ -151,11 +152,6 @@ namespace Decrypt_Library.Views
             entryPublisher.Text = e.NewTextValue;   
         }
 
-        private void entryLanguage_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //entryLanguage.Text = e.NewTextValue;
-        }
-
         private void entryAuthor_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryAuthor.Text = e.NewTextValue;
@@ -166,29 +162,9 @@ namespace Decrypt_Library.Views
             entryDate.Text = e.NewTextValue;    
         }
 
-        private void entryCategoryId_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //entryCategoryId.Text = e.NewTextValue;
-        }
-
-        private void entryShelfId_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //entryShelfId.Text = e.NewTextValue;
-        }
-
         private void entryNarrator_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryNarrator.Text = e.NewTextValue;
-        }
-
-        private void entryAudienceId_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //entryAudienceId.Text = e.NewTextValue;
-        }
-
-        private void entryMediaId_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //entryMediaId.Text = e.NewTextValue;
         }
 
         private void entryDescription_TextChanged(object sender, TextChangedEventArgs e)
@@ -226,6 +202,14 @@ namespace Decrypt_Library.Views
             await Navigation.PushAsync(new AdminPage());
         }
 
+        private void Colorize(bool Id, Picker userInput)
+        {
+            if(!Id)
+                userInput.BackgroundColor = Color.IndianRed;
+            else
+                userInput.BackgroundColor = Color.White;
+        }
+
         #endregion
 
         /// <summary>
@@ -259,6 +243,18 @@ namespace Decrypt_Library.Views
                 ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
                 ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
                 ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
+
+                ProductAudienceIdCorrect = !string.IsNullOrEmpty(audiencePicker.SelectedItem.ToString());
+                ProductLanguageIdCorrect = !string.IsNullOrEmpty(languagePicker.SelectedItem.ToString());
+                ProductShelfIdCorrect = !string.IsNullOrEmpty(shelfPicker.SelectedItem.ToString());
+                ProductCategoryIdCorrect = !string.IsNullOrEmpty(categoryPicker.SelectedItem.ToString());
+                ProductMediaIdCorrect = !string.IsNullOrEmpty(mediaPicker.SelectedItem.ToString());
+
+                Colorize(ProductAudienceIdCorrect, audiencePicker);
+                Colorize(ProductLanguageIdCorrect, languagePicker);
+                Colorize(ProductShelfIdCorrect, shelfPicker);
+                Colorize(ProductCategoryIdCorrect, categoryPicker);
+                Colorize(ProductMediaIdCorrect, mediaPicker);
 
                 ProductStatusCorrect = inStock.IsChecked;
                 ProductNewProductCorrect = newProduct.IsChecked;

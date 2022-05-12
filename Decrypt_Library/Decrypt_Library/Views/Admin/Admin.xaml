@@ -56,7 +56,7 @@
                        Grid.Column="1"
                        Grid.Row="2"
                    CornerRadius="20"
-                   Margin="30,0,30,0"
+                   Margin="40,0,30,0"
                        BackgroundColor="White"
                        IsClippedToBounds="True"
                        HeightRequest="35">
@@ -578,8 +578,6 @@
                                                     AbsoluteLayout.LayoutBounds="-20,520,450,50"
                                                     Text="Lägg till produkt "/>
 
-
-
                                         </StackLayout>
                                     </Frame>
                                 </StackLayout>
@@ -675,41 +673,41 @@
             </Grid.ColumnDefinitions>
 
 
-            <Label TextColor="White"
-                           FontSize="35"
-                           FontAttributes="Bold"
+            <Label TextColor="Gold"
+                   FontSize="25"
+                   FontAttributes="Bold"
                    Grid.Row="0"
                    Padding="0"
                    Grid.Column="1"
-                       Margin="0,10,0,0"
-                   
-                               HorizontalOptions="CenterAndExpand"
-                           Text="Kategori Inställningar"/>
+                   Margin="0,25,0,0"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Kategori Inställningar"/>
 
-
-
+            
             <StackLayout Grid.Column="1"
                          Grid.Row="1"
                          >
 
-                <Frame BorderColor="White"
+                <Frame BorderColor="Gold"
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
                        HorizontalOptions="CenterAndExpand"
                        BackgroundColor="White"
+                       CornerRadius="20"
                        WidthRequest="400"
+                       Margin="30,10,30,0"
+                       
+                       
                        IsClippedToBounds="True"
-                       HeightRequest="50">
-
+                       HeightRequest="40">
 
                     <Grid>
 
                     <Button Text="Lägg till kategori"
-                            BackgroundColor="White"
+                            BackgroundColor="Gold"
                             Grid.Column="0"
                                 Clicked="AddCategoryButton_Pressed"
-                            CornerRadius="10"
                             FontAttributes="Bold"
                             >
                     </Button>
@@ -717,7 +715,6 @@
                     <Button Text="Visa Kategorier"
                             BackgroundColor="White"
                             Grid.Column="1"
-                            CornerRadius="10"
                             Clicked="ShowCategories_Pressed"
                             FontAttributes="Bold"
                             >
@@ -733,7 +730,7 @@
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
-                   WidthRequest="500"
+                   WidthRequest="410"
                    Grid.Row="2">
 
                 <StackLayout>
@@ -743,13 +740,23 @@
                                  IsVisible="false">
 
                             <Label TextColor="White"
-                           FontSize="12"
                            FontAttributes="Bold"
-                           Text="Namn på nya kategorin tack!"/>
-                            <Entry x:Name="entryCategoryNametab2"
+                                   Margin="10,0,0,0"
+                           Text="Namn på nya kategorin"/>
+
+
+                            <Frame IsClippedToBounds="True"
+                                   Padding="0"
+                                   CornerRadius="20">
+                                <Entry x:Name="entryCategoryNametab2"
                                    TextChanged="entryCategoryNametab2_TextChanged"
                            >
-                            </Entry>
+                                </Entry>
+                            </Frame>
+                
+
+
+
 
                         </StackLayout>
 
@@ -789,16 +796,18 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Label Text="{Binding Id}"
                                                            Grid.Column="0"
+                                                           FontAttributes="Bold"
                                                             TextColor="White"/>
                                                     
                                                     <Label Text="{Binding CategoriesName}"
                                                            Grid.Column="1"
+                                                           FontAttributes="Bold"
                                                            TextColor="White"/>
 
                                                     <Button Grid.Column="3"
                                                     TextColor="Black"
                                                     CornerRadius="10"
-                                                    BackgroundColor="White"
+                                                    BackgroundColor="Gold"
                                                     FontAttributes="Bold"
                                                     Command="{Binding Path=BindingContext.CategoryDeleteCommand, Source={x:Reference categoryList}}" 
                                                     CommandParameter="{Binding .}"
