@@ -133,6 +133,8 @@ namespace Decrypt_Library.EntityFrameworkCode
                 var book = db.BookHistories;
                 var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
 
+
+
                 if (book != null)
                 {
                     book.Remove(updateQuantityProduct);

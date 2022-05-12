@@ -66,7 +66,9 @@ namespace Decrypt_Library.Views
             profile.IsVisible = false;
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = true;
-            
+
+            var removeID = reservations.Id;
+            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation(removeID);
             
             //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
 
