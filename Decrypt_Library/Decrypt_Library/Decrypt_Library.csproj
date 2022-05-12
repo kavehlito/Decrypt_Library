@@ -35,7 +35,7 @@
     <EmbeddedResource Update="Views\Admin\AdminContent.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Librarian.xaml">
+    <EmbeddedResource Update="Views\Events.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Loan.xaml">
@@ -63,6 +63,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Events.xaml.cs">
+      <DependentUpon>Events.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SelectedProductView.xaml.cs">
       <DependentUpon>SelectedProductView.xaml</DependentUpon>
     </Compile>
