@@ -8,23 +8,6 @@
                 <SearchBar Placeholder="Sök..." TextChanged="SearchBar_TextChanged"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <!--<ListView x:Name="groupedList" IsGroupingEnabled="true" HasUnevenRows="true" ItemTapped="ListViewItemTapped">
-                    <ListView.GroupHeaderTemplate>
-                        <DataTemplate>
-                            <ViewCell Height="40">
-                                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="40"  
-                                     Padding="5" Orientation="Horizontal">
-                                    <Label FontSize="16" TextColor="Blue" VerticalOptions="Center" Text="{Binding Key}" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.GroupHeaderTemplate>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Category, StringFormat='Av {0}'}" Detail="{Binding .}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
                 <CheckBox x:Name="checkbox1" WidthRequest="20" VerticalOptions="Center" Color="Black"
                           CheckedChanged="OnCheckBoxCheckedChangedC" IsChecked="false"  BindingContext="{Binding .}"/>
                 <Label Text="Deckare" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
@@ -53,28 +36,42 @@
                           CheckedChanged="OnCheckBoxCheckedChangedC" IsChecked="false"  BindingContext="{Binding .}"/>
                 <Label Text="Äventyr" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
                 </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <CheckBox x:Name="checkbox8" WidthRequest="20" VerticalOptions="Center" Color="Black"
                           CheckedChanged="OnCheckBoxCheckedChangedA" IsChecked="False"  BindingContext="{Binding .}"/>
-                <Label Text="För Barn 0-6 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60">
+                <Label Text="För Barn 0-6 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110">
                 </Label>
                 <CheckBox x:Name="checkbox9" WidthRequest="20" VerticalOptions="Center" Color="Black"
                           CheckedChanged="OnCheckBoxCheckedChangedA" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Barn 6-9 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="För Barn 6-9 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" >
                 </Label>
                 <CheckBox x:Name="checkbox10" WidthRequest="20" VerticalOptions="Center" Color="Black"
                           CheckedChanged="OnCheckBoxCheckedChangedA" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Barn 9-12 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" >
+                <Label Text="För Barn 9-12 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="120" >
                 </Label>
                 <CheckBox x:Name="checkbox11" WidthRequest="20" VerticalOptions="Center" Color="Black"
                           CheckedChanged="OnCheckBoxCheckedChangedA" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Ungdomar" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="90" >
+                <Label Text="För Ungdomar" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" >
                 </Label>
                 <CheckBox x:Name="checkbox12" WidthRequest="20" VerticalOptions="Center" Color="Black"
                           CheckedChanged="OnCheckBoxCheckedChangedA" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Vuxna" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="För Vuxna" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" >
                 </Label>
-
-
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox x:Name="checkbox13" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChangedT" IsChecked="false"  BindingContext="{Binding .}"/>
+                <Label Text="Bok" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="40" >
+                </Label>
+                    <CheckBox x:Name="checkbox14" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChangedT" IsChecked="false"  BindingContext="{Binding .}"/>
+                    <Label Text="E-Bok" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" >
+                    </Label>
+                    <CheckBox x:Name="checkbox15" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                          CheckedChanged="OnCheckBoxCheckedChangedT" IsChecked="false"  BindingContext="{Binding .}"/>
+                    <Label Text="Ljudbok" FontSize="Micro" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60" >
+                    </Label>
 
             </StackLayout>
             <ListView x:Name="ProductList" ItemTapped="ProductList_ItemTapped">
