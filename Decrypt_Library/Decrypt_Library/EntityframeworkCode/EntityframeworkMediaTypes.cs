@@ -1,9 +1,6 @@
 ﻿using Decrypt_Library.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
@@ -29,16 +26,14 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return mediaNames;
             }
         }
-        public static List<Product> SpecificType(List<int> TypeList)
+
+        public static int ShowSpecificMediaTypeIdByFormatName(string formatName)
         {
-            var products = new List<Product>();
+
             using (var db = new Decrypt_LibraryContext())
             {
-                foreach (var audience in TypeList)
-                {
-                    products.AddRange(db.Products.Where(x => x.MediaId == audience).ToList());
-                }
-                return products;
+                var languageId = db.MediaTypes.SingleOrDefault(x => x.FormatName.ToLower().Contains(formatName.ToLower())).Id;
+                return languageId;
             }
         }
     }
