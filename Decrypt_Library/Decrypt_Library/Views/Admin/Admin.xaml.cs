@@ -245,11 +245,6 @@ namespace Decrypt_Library.Views
 
             int pagesInput = 0;
             double playTime = 0;
-            int languageId = 0;
-            int shelfId = 0;
-            int categoryId = 0;
-            int audienceId = 0;
-            int mediaId = 0;
             long isbn = 0;
             DateTime date = DateTime.Now;
 
@@ -257,37 +252,27 @@ namespace Decrypt_Library.Views
             {
                 ProductTitleCorrect = Readers.Readers.StringReader(entryTitle.Text);
                 ProductIsbnCorrect = Readers.Readers.LongReaderOutLong(entryISBN.Text, out isbn);
-                //ProductLanguageIdCorrect = Readers.Readers.LegalIDRangeLanguage(entryLanguage.Text, out languageId);
                 ProductPublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
                 ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
                 ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
-                ProductShelfIdCorrect = Readers.Readers.LegalIDRangeShelfId(shelfPicker.SelectedItem.ToString(), out shelfId);
-                //ProductCategoryIdCorrect = Readers.Readers.LegalIDRangeCategoryId(entryCategoryId.Text, out categoryId);
-                //ProductAudienceIdCorrect = Readers.Readers.LegalIDRangeAudienceId(entryAudienceId.Text, out audienceId);
-                //ProductMediaIdCorrect = Readers.Readers.LegalIDRangeMediaId(entryMediaId.Text, out mediaId);
                 ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
                 ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
                 ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
                 ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
 
-                ProductStatusCorrect = inStock.IsToggled;
-                ProductNewProductCorrect = newProduct.IsToggled;
-                ProductHiddenProductCorrect = hiddenProduct.IsToggled;
+                ProductStatusCorrect = inStock.IsChecked;
+                ProductNewProductCorrect = newProduct.IsChecked;
+                ProductHiddenProductCorrect = hiddenProduct.IsChecked;
 
-                ProductCorrectProductInput = ProductMediaIdCorrect
-                                      && ProductIsbnCorrect
+                ProductCorrectProductInput = ProductIsbnCorrect
                                       && ProductTitleCorrect
                                       && ProductDescriptionCorrect
                                       && ProductPagesCorrect
                                       && ProductPlaytimeCorrect
                                       && ProductPublisherCorrect
-                                      && ProductLanguageIdCorrect
                                       && ProductAuthorNameCorrect
                                       && ProductPublishDateCorrect
-                                      && ProductCategoryIdCorrect
-                                      && ProductShelfIdCorrect
-                                      && ProductNarratorCorrect
-                                      && ProductAudienceIdCorrect;
+                                      && ProductNarratorCorrect;
 
                 if (ProductCorrectProductInput)
                 {
@@ -298,21 +283,20 @@ namespace Decrypt_Library.Views
                     product.Narrator = entryNarrator.Text;
 
                     product.Pages = pagesInput;
-                    product.LanguageId = languageId;
-                    product.ShelfId = shelfId;
-                    product.CategoryId = categoryId;
-                    product.AudienceId = audienceId;
-                    product.MediaId = mediaId;
+                    product.LanguageId = EntityframeworkLanguages.ShowSpecificCountryIdByLanguage(languagePicker.SelectedItem.ToString());
+                    product.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(shelfPicker.SelectedItem.ToString());
+                    product.CategoryId = EntityframeworkCategories.ShowSpecificCategoryIdByCategoriesName(categoryPicker.SelectedItem.ToString());
+                    product.AudienceId = EntityframeworkAudience.ShowSpecificAudienceIdByAgeGroup(audiencePicker.SelectedItem.ToString());
+                    product.MediaId = EntityframeworkMediaTypes.ShowSpecificMediaTypeIdByFormatName(mediaPicker.SelectedItem.ToString());
                     product.Isbn = isbn;
                     product.Playtime = playTime;
                     product.PublishDate = date;
-                    product.NewProduct = newProduct.IsToggled;
-                    product.HiddenProduct = hiddenProduct.IsToggled;
-                    product.Status = inStock.IsToggled;
+                    product.NewProduct = newProduct.IsChecked;
+                    product.HiddenProduct = hiddenProduct.IsChecked;
+                    product.Status = inStock.IsChecked;
 
-
-                    EntityFrameworkCode.EntityframeworkProducts.CreateProduct(product);
-                    ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+                    EntityframeworkProducts.CreateProduct(product);
+                    ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
                     RefreshPage();

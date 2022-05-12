@@ -41,5 +41,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return ageGroup;
             }
         }
+
+        public static int ShowSpecificAudienceIdByAgeGroup(string ageGroup)
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var languageId = db.Audiences.SingleOrDefault(x => x.AgeGroup.ToLower().Contains(ageGroup.ToLower())).Id;
+                return languageId;
+            }
+        }
     }
 }
