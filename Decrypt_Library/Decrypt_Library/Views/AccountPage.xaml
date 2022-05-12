@@ -78,12 +78,13 @@
                     </AbsoluteLayout>
 
 
-                    <ListView x:Name="reservations" 
-                                  IsVisible="false">
+                    <ListView x:Name="reservations"
+                                IsVisible="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold"/>
                                         <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                         <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                         <Label Text="{Binding ISBN,StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
@@ -92,7 +93,7 @@
 
                                         <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
                                                     BackgroundColor="Black" TextColor="White" FontAttributes="Bold"
-                                                    CornerRadius="10" BorderColor="White" HorizontalOptions="End" BindingContext="{Binding .}">
+                                                    CornerRadius="10" BorderColor="White" HorizontalOptions="End" BindingContext="{Binding ID}">
 
                                         </Button>
 
@@ -100,11 +101,12 @@
                                                      HeightRequest="3" >
                                         </BoxView>
                                     </StackLayout>
-
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+
 
                     <ListView x:Name="loanHistoryList" IsVisible="false">
                         <ListView.ItemTemplate>

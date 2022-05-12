@@ -1,4 +1,5 @@
 ﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -130,11 +131,18 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             using (var db = new Decrypt_LibraryContext())
             {
-                var book = db.BookHistories;
-                var updateQuantityProduct = book.Where(p => p.Id == selectedId).SingleOrDefault();
-
-                book.Remove(updateQuantityProduct);
+                var book = db.BookHistories.Where(b=> b.Id == selectedId).SingleOrDefault();
+                db.Remove(book);
                 db.SaveChanges();
+
+                //var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
+
+               /* if (book != null)
+                {
+                    book.Remove(updateQuantityProduct);
+                }
+               */
+
 
                 /* if (updateQuantityProduct == null)
                  {

@@ -38,6 +38,7 @@ namespace Decrypt_Library.Views
         {
             loanList.IsVisible = true;
             profile.IsVisible = false;
+            reservations.IsVisible = false;
             loanList.ItemsSource = MyPages.LoanList();
         }
 
@@ -46,10 +47,11 @@ namespace Decrypt_Library.Views
             loanList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = true;
-            reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
 
-            BindingContext = this;
-            idLabel.SetBinding(Label.TextProperty, "ID");
+            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
+
+
+
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
@@ -69,9 +71,21 @@ namespace Decrypt_Library.Views
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = true;
 
-            int id = Convert.ToInt32(idLabel.Text);
-            EntityframeworkProducts.DeleteReservation(id);
+            //BindingContext = Convert.ToInt32(this.Id);
 
+            var selectedId = Convert.ToInt32(this.BindingContext);
+
+           EntityFrameworkCode.EntityframeworkProducts.DeleteReservation(selectedId);
+
+
+
+            //BindingContext = reservations.Id;
+
+            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
+
+
+
+            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
 
         }
     }
