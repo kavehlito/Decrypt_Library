@@ -39,5 +39,14 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return shelvfnames;
             }
         }
+        public static int ShowSpecificShelfIdByLetter(string shelf)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var languageId = db.Shelves.SingleOrDefault(x => x.Shelfname.ToLower().Contains(shelf.ToLower())).Id;
+                return languageId;
+            }
+        }
+
     }
 }
