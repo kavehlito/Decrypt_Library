@@ -12,7 +12,6 @@ namespace Decrypt_Library.Views.Admin
 {
     internal class AdminProductViewModel : BindableObject
     {
-
         private ObservableCollection<Event> _EventCollectionList;
         public ObservableCollection<Event> EventCollectionList
         {
@@ -48,16 +47,18 @@ namespace Decrypt_Library.Views.Admin
         public ICommand DeleteCommand { get; }
         public ICommand CategoryDeleteCommand { get; }
         public ICommand EventDeleteCommand { get; }
+
         public AdminProductViewModel()
         {
-            CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
-            CategoryCollectionList = new ObservableCollection<Category>(EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories());
-            EventCollectionList = new ObservableCollection<Models.Event>(EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents());
+            CollectionList = new ObservableCollection<Product>(EntityframeworkProducts.ShowAllProducts());
+            CategoryCollectionList = new ObservableCollection<Category>(EntityframeworkCategories.ShowAllCategories());
+            EventCollectionList = new ObservableCollection<Event>(EntityframeworkEvents.ShowAllEvents());
 
             DeleteCommand = new Command(OnDeleteTapped);
             CategoryDeleteCommand = new Command(OnCategoryDeleteTapped);
             EventDeleteCommand = new Command(OnEventDeleteTapped);
         }
+
 
         public void OnEventDeleteTapped(object obj)
         {
@@ -65,8 +66,8 @@ namespace Decrypt_Library.Views.Admin
             var content = obj as Models.Event;
 
             EventCollectionList.Remove(content);
-            EntityFrameworkCode.EntityframeworkEvents.RemoveEvent(content);
-            EventCollectionList = new ObservableCollection<Models.Event>(EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents());
+            EntityframeworkEvents.RemoveEvent(content);
+            EventCollectionList = new ObservableCollection<Event>(EntityframeworkEvents.ShowAllEvents());
             admin.UpdateNewProductList();
             admin.RefreshPage();
         }
@@ -76,7 +77,7 @@ namespace Decrypt_Library.Views.Admin
             var admin = new AdminPage();
             var content = obj as Category;
 
-            foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+            foreach (var item in EntityframeworkProducts.ShowAllProducts())
             {
                 if (content.Id == item.CategoryId)
                 {
@@ -84,8 +85,8 @@ namespace Decrypt_Library.Views.Admin
                 }
             }
             CategoryCollectionList.Remove(content);
-            EntityFrameworkCode.EntityframeworkCategories.RemoveCategory(content);
-            CategoryCollectionList = new ObservableCollection<Category>(EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories());
+            EntityframeworkCategories.RemoveCategory(content);
+            CategoryCollectionList = new ObservableCollection<Category>(EntityframeworkCategories.ShowAllCategories());
             admin.UpdateNewProductList();
             admin.RefreshPage();
         }
@@ -95,7 +96,7 @@ namespace Decrypt_Library.Views.Admin
             var admin = new AdminPage();
             var content = obj as Product;
 
-            foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+            foreach (var item in EntityframeworkProducts.ShowAllProducts())
             {
                 if (content.LanguageId == item.LanguageId)
                 {
@@ -104,7 +105,7 @@ namespace Decrypt_Library.Views.Admin
             }
             CollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(content);
-            CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
+            CollectionList = new ObservableCollection<Product>(EntityframeworkProducts.ShowAllProducts());
             admin.UpdateNewProductList();
             admin.RefreshPage();
         }

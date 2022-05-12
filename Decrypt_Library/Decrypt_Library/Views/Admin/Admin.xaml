@@ -38,28 +38,26 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-       
 
                 <Label Text="Produkt Inställningar"
-                   FontSize="25"
+                       FontSize="25"
                        Padding="0"
                        Grid.Column="1"
                        Margin="0,25,0,0"
-                   TextColor="Gold"
-                   FontAttributes="Bold"
+                       TextColor="Gold"
+                       FontAttributes="Bold"
                    />
-
             </Grid>
 
             <Frame BorderColor="Gold"
-                       Padding="0"
-                       Grid.Column="1"
-                       Grid.Row="2"
+                   Padding="0"
+                   Grid.Column="1"
+                   Grid.Row="2"
                    CornerRadius="20"
-                   Margin="40,0,30,0"
-                       BackgroundColor="White"
-                       IsClippedToBounds="True"
-                       HeightRequest="35">
+                   Margin="35,0,25,0"
+                   BackgroundColor="White"
+                   IsClippedToBounds="True"
+                   HeightRequest="35">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -70,14 +68,14 @@
                                     BackgroundColor="Gold"
                                     TextColor="Black"
                                     Clicked="CompleteProduct_Pressed"
-                            Grid.Column="0"
+                                    Grid.Column="0"
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>
 
                     <Button Text="Visa Produkter"
                                     BackgroundColor="White"
                                     TextColor="Black"
-                            Grid.Column="1"
+                                    Grid.Column="1"
                                     Clicked="ShowProductsButton_Pressed"
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>

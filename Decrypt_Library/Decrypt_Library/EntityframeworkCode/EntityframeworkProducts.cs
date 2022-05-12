@@ -1,6 +1,8 @@
 ﻿using Decrypt_Library.Models;
+using Decrypt_Library.Views.Admin;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Decrypt_Library.EntityFrameworkCode
@@ -126,9 +128,17 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-        public static void DeleteReservation(int selectedId)
+        public static void DeleteReservation2(BookHistory bookhistory)
         {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                db.Remove(bookhistory);
+                db.SaveChanges();
+            }
+        }
 
+                public static void DeleteReservation(int selectedId)
+        {
             using (var db = new Decrypt_LibraryContext())
             {
                 var book = db.BookHistories.Where(b=> b.Id == selectedId).SingleOrDefault();
@@ -142,7 +152,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                     book.Remove(updateQuantityProduct);
                 }
                */
-
 
                 /* if (updateQuantityProduct == null)
                  {

@@ -31,8 +31,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                     return reservation.ToList();
 
                 }
-            
-
         }
 
         public static List<MyPagesProductList> ShowUserLoanHistory()

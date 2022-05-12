@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Name="accountPage"
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
         <Grid>
@@ -79,6 +80,7 @@
 
 
                     <ListView x:Name="reservations"
+                              ItemsSource="{Binding ReservationCollectionList}"
                                 IsVisible="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -93,7 +95,9 @@
 
                                         <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
                                                     BackgroundColor="Black" TextColor="White" FontAttributes="Bold"
-                                                    CornerRadius="10" BorderColor="White" HorizontalOptions="End" BindingContext="{Binding ID}">
+                                                    CornerRadius="10" BorderColor="White" HorizontalOptions="End"
+                                                       Command="{Binding Path=BindingContext.ReservationDeleteCommand, Source={x:Reference accountPage}}" 
+                                                    CommandParameter="{Binding .}">
 
                                         </Button>
 

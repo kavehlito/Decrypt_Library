@@ -1,5 +1,6 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
+using Decrypt_Library.Views.Admin;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -65,6 +66,10 @@ namespace Decrypt_Library.Views
 
         private void RemoveButton_Clicked(object sender, EventArgs e)
         {
+   
+
+
+
             // function for removing from list not the product
             loanList.IsVisible = false;
             profile.IsVisible = false;

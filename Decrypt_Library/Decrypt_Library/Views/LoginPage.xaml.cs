@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Views.Admin;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +22,7 @@ namespace Decrypt_Library.Views
 
         private void LogIn_Clicked(object sender, EventArgs e)
         {
+
             if (Password.Text == null || SSN.Text == null) { Password.Text = "0"; SSN.Text = "0"; }  
             Int64.TryParse(SSN.Text.ToString(), out long ssn);
             var password = Password.Text.ToString(); 
@@ -39,10 +43,6 @@ namespace Decrypt_Library.Views
                 Error.IsVisible = false;
                 LogOut.IsVisible = true;
                 Headline.IsVisible = false;
-                var user = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
-
-                var ap = new AccountPage();
-                ap.User = user;
             }
 
 
