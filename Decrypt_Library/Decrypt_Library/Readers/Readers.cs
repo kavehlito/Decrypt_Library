@@ -79,6 +79,8 @@ namespace Decrypt_Library.Readers
 
             return true;
         }
+        // Reader för email
+
         #endregion
 
         #region int reader
