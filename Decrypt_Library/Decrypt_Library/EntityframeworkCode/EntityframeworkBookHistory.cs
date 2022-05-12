@@ -10,25 +10,29 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         public static List<MyPagesProductList> ShowUserReservations()
         {
-            using (var db = new Decrypt_LibraryContext())
-            {
-                var reservation = from
-                                  bookHistory in db.BookHistories
-                                  join
-                                  product in db.Products on bookHistory.ProductId equals product.Id
-                                  where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 3
-                                  select new MyPagesProductList
-                                  {
-                                      ID = bookHistory.Id,
-                                      Title = product.Title,
-                                      Author = product.AuthorName,
-                                      ISBN = product.Isbn,
-                                      StartDate = bookHistory.StartDate,
-                                      EndDate = bookHistory.EndDate,
+           
+                using (var db = new Decrypt_LibraryContext())
+                {
+                    var reservation = from
+                                      bookHistory in db.BookHistories
+                                      join
+                                      product in db.Products on bookHistory.ProductId equals product.Id
+                                      where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 3
+                                      select new MyPagesProductList
+                                      {
+                                          ID = bookHistory.Id,
+                                          Title = product.Title,
+                                          Author = product.AuthorName,
+                                          ISBN = product.Isbn,
+                                          StartDate = bookHistory.StartDate,
+                                          EndDate = bookHistory.EndDate,
 
-                                  };
-                return reservation.ToList();
-            }
+                                      };
+                    return reservation.ToList();
+
+                }
+            
+
         }
 
         public static List<MyPagesProductList> ShowUserLoanHistory()
