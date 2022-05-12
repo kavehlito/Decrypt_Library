@@ -22,7 +22,6 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
             // User = user;
-
         }
 
         private void MyProfile_Clicked(object sender, EventArgs e)
