@@ -40,9 +40,6 @@ namespace Decrypt_Library.Views
                 LogOut.IsVisible = true;
                 Headline.IsVisible = false;
                 var user = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
-
-                var ap = new AccountPage();
-                ap.User = user;
             }
 
 

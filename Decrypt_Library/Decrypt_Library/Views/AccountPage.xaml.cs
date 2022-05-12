@@ -12,7 +12,6 @@ namespace Decrypt_Library.Views
         public AccountPage()
         {
             InitializeComponent();
-            // User = user;
         }
 
         private void MyProfile_Clicked(object sender, EventArgs e)
@@ -62,6 +61,9 @@ namespace Decrypt_Library.Views
             Button btn = sender as Button;
             MyPagesProductList reserveList = btn.BindingContext as MyPagesProductList;
             EntityframeworkProducts.DeleteReservation(reserveList.ID);
+
+            reservations.ItemsSource = null;
+            reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
     }
 }
