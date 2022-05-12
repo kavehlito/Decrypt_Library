@@ -1,8 +1,9 @@
-﻿using Decrypt_Library.Models;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace Decrypt_Library.Views
 {
@@ -10,17 +11,18 @@ namespace Decrypt_Library.Views
     public partial class AccountPage : ContentPage
     {
         private User _user;
-
+        Label idLabel = new Label();
         public User User
         {
             get { return _user; }
             set { _user = value; }
         }
+
         public AccountPage()
         {
             InitializeComponent();
             // User = user;
-            
+
         }
 
         private void MyProfile_Clicked(object sender, EventArgs e)

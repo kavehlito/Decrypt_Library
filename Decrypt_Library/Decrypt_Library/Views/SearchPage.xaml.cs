@@ -68,7 +68,19 @@ namespace Decrypt_Library.Views
 
             ProductList.ItemsSource = EntityframeworkCategories.SpecificCategory(categorys);
         }
+        private void OnCheckBoxCheckedChangedT(object sender, CheckedChangedEventArgs e)
+        {
+            List<int> MediaType = new List<int>();
 
-       
+            if (checkbox13.IsChecked)
+                MediaType.Add(1);
+            if (checkbox14.IsChecked)
+                MediaType.Add(2);
+            if (checkbox15.IsChecked)
+                MediaType.Add(3);
+     
+            //ProductList.ItemsSource = EntityframeworkMediaTypes.SpecificType(MediaType);
+        }
+
     }
 }

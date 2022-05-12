@@ -31,7 +31,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     CategoryId = cate.Id
                                 }).ToList();
 
-                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower())  ||
+                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) ||
                 p.AuthorName.ToLower().Contains(selectedTitle.ToLower())).ToList();
 
                 return findProduct;
@@ -144,12 +144,12 @@ namespace Decrypt_Library.EntityFrameworkCode
                */
 
 
-               /* if (updateQuantityProduct == null)
-                {
-                    Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
-                }
-                else updateQuantityProduct.StockUnit -= Quantity; 
-               */
+                /* if (updateQuantityProduct == null)
+                 {
+                     Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
+                 }
+                 else updateQuantityProduct.StockUnit -= Quantity; 
+                */
 
             }
         }

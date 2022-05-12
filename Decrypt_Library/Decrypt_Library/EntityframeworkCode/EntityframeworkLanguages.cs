@@ -28,6 +28,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return languageNames;
             }
         }
+        public static int ShowSpecificCountryIdByLanguage(string language)
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var languageId = db.Languages.SingleOrDefault(x => x.Languages.ToLower().Contains(language.ToLower())).Id;
+                return languageId;
+            }
+        }
 
         public static void CreateLanguage(Language language)
         {
