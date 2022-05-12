@@ -29,5 +29,17 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return mediaNames;
             }
         }
+        public static List<Product> SpecificType(List<int> TypeList)
+        {
+            var products = new List<Product>();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                foreach (var audience in TypeList)
+                {
+                    products.AddRange(db.Products.Where(x => x.MediaId == audience).ToList());
+                }
+                return products;
+            }
+        }
     }
 }
