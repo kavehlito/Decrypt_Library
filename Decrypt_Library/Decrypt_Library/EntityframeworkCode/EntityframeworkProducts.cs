@@ -124,5 +124,30 @@ namespace Decrypt_Library.EntityFrameworkCode
                 db.SaveChanges();
             }
         }
+
+        public static void DeleteReservation(int selectedId)
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var book = db.BookHistories;
+                var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
+
+                if (book != null)
+                {
+                    book.Remove(updateQuantityProduct);
+                }
+
+                db.SaveChanges();
+
+               /* if (updateQuantityProduct == null)
+                {
+                    Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
+                }
+                else updateQuantityProduct.StockUnit -= Quantity; 
+               */
+
+            }
+        }
     }
 }

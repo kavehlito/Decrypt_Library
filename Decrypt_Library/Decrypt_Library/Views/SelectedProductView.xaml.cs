@@ -17,7 +17,6 @@ namespace Decrypt_Library.Views
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
 
-            
             if (UserLogin.thisUser == null)
             {
                 LoanOrReserveButton.IsVisible = false;

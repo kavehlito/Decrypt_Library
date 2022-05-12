@@ -24,11 +24,8 @@
                        TextColor="Black"
                        Padding="20,20,20,20"
                        >
-                    
                 </Label>
             </AbsoluteLayout>
-
-            <StackLayout Grid.Column="1" Grid.Row="1">
 
                     <Frame BackgroundColor="Black"
                    BorderColor="Black"
@@ -73,78 +70,87 @@
 
                             </StackLayout>
 
-                        <ListView x:Name="profileList"
-                              IsVisible="false">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                         <StackLayout Orientation="Vertical" >
+                        <AbsoluteLayout x:Name="profile" IsVisible="false">
+                            <Label x:Name="profileText" Text="" TextColor="White"
+                               FontAttributes="Bold" AbsoluteLayout.LayoutBounds="5, 20, 300, 200">
+                            </Label>
 
-                                                <Label Text="{Binding UserName, StringFormat= 'Användarnamn: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Phonenumber, StringFormat= 'Telefonnr: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Email, StringFormat= 'Email: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Password, StringFormat= 'Lösenord: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Ssn, StringFormat= 'Personnummer: {0}'}" TextColor="White" FontAttributes="Bold"/>
-
-                                                <BoxView BackgroundColor="White"
-                                                     HeightRequest="3" >
-                                                </BoxView>
+                        </AbsoluteLayout>
 
 
-                                         </StackLayout>
-
-                                      
-
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-
-
-                        <ListView x:Name="reservations" IsVisible="false">
-                                <ListView.ItemTemplate>
+                    <ListView x:Name="reservations" 
+                                  IsVisible="false">
+                        <ListView.ItemTemplate>
                                     <DataTemplate>
                                        <ViewCell>
                                           <StackLayout Orientation="Vertical" >
+                                                 <Label x:Name="reservationID" IsVisible="true"  Text="{Binding ID}" TextColor="White" FontAttributes="Bold"/>
+                                                 <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                 <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                 <Label Text="{Binding ISBN,StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                 <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                 <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold"/>
 
-                                                <Label Text="{Binding Title}" TextColor="White"/>
-                                                <Label Text="{Binding Author}" TextColor="White"/>
-                                                <Label Text="{Binding ISBN}" TextColor="White"/>
-                                                <Label Text="{Binding StartDate}" TextColor="White"/>
-                                                <Label Text="{Binding EndDate}" TextColor="White"/>
-
-                                               <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="removeButton_Clicked"
+                                    <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
                                                     BackgroundColor="Black" TextColor="White" FontAttributes="Bold"
                                                     CornerRadius="10" BorderColor="White" HorizontalOptions="End">
-                                               </Button>
-                                          </StackLayout>
+
+                                    </Button>
+
+                                            <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                            </BoxView>
+                                        </StackLayout>
                                             
                                        </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                             
-                            <ListView x:Name="loanList" IsVisible="false">
+                            <ListView x:Name="loanHistoryList" IsVisible="false">
                                  <ListView.ItemTemplate>
                                        <DataTemplate>
                                             <ViewCell>
-                                                 <StackLayout Orientation="Horizontal" >
-                                                        <StackLayout Orientation="Vertical" >
+                                                 <StackLayout Orientation="Vertical">
 
-                                                            <Label Text="{Binding Title}" TextColor="White"/>
-                                                            <Label Text="{Binding Author}" TextColor="White"/>
-                                                            <Label Text="{Binding ISBN}" TextColor="White"/>
-                                                            <Label Text="{Binding StartDate}" TextColor="White"/>
-                                                            <Label Text="{Binding EndDate}" TextColor="White"/>
-                                                        </StackLayout>
+                                                       <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                       <Label Text="{Binding Author,StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                       <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                       <Label Text="{Binding StartDate,StringFormat= 'Lånades: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                       <Label Text="{Binding EndDate,StringFormat= 'Återlämnad: {0}'}" TextColor="White" FontAttributes="Bold"/>
+
+                                                    <BoxView BackgroundColor="White"
+                                                     HeightRequest="3">
+                                                    </BoxView>
                                                  </StackLayout>
                                             </ViewCell>
                                        </DataTemplate>
                                  </ListView.ItemTemplate>
                              </ListView>
-                        </StackLayout>
+
+                        <ListView x:Name="loanList" IsVisible="false">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical">
+
+                                            <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding EndDate, StringFormat= 'Återlämnas senast: {0}'}" TextColor="White" FontAttributes="Bold"/>
+
+                                            <BoxView BackgroundColor="White"
+                                                     HeightRequest="3">
+                                            </BoxView>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                     </Frame>
-            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
+

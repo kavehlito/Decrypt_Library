@@ -29,5 +29,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return shelf2;
             }
         }
+
+        public static List<string> ShowAllShelfNames()
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var shelvfnames = db.Shelves.Select(x=>x.Shelfname).ToList();
+                return shelvfnames;
+            }
+        }
     }
 }

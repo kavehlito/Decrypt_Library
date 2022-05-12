@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Decrypt_Library.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Librarian : ContentPage
+    public partial class Events : ContentPage
     {
-        public Librarian()
+        public Events()
         {
             InitializeComponent();
         }

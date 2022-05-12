@@ -1,4 +1,5 @@
-﻿using Decrypt_Library.Models;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,32 +14,25 @@ namespace Decrypt_Library.Views.Admin
     {
 
         private ObservableCollection<Event> _EventCollectionList;
-
         public ObservableCollection<Event> EventCollectionList
         {
-
             get { return _EventCollectionList; }
             set
             {
                 _EventCollectionList = value;
                 OnPropertyChanged();
             }
-
         }
 
-
         private ObservableCollection<Category> _CategoryCollectionList;
-
         public ObservableCollection<Category> CategoryCollectionList
         {
-
             get { return _CategoryCollectionList; }
             set
             {
                 _CategoryCollectionList = value;
                 OnPropertyChanged();
             }
-
         }
 
         private ObservableCollection<Product> _CollectionList;
@@ -54,12 +48,12 @@ namespace Decrypt_Library.Views.Admin
         public ICommand DeleteCommand { get; }
         public ICommand CategoryDeleteCommand { get; }
         public ICommand EventDeleteCommand { get; }
-
         public AdminProductViewModel()
         {
             CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
             CategoryCollectionList = new ObservableCollection<Category>(EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories());
             EventCollectionList = new ObservableCollection<Models.Event>(EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents());
+
             DeleteCommand = new Command(OnDeleteTapped);
             CategoryDeleteCommand = new Command(OnCategoryDeleteTapped);
             EventDeleteCommand = new Command(OnEventDeleteTapped);
@@ -69,6 +63,7 @@ namespace Decrypt_Library.Views.Admin
         {
             var admin = new AdminPage();
             var content = obj as Models.Event;
+
             EventCollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkEvents.RemoveEvent(content);
             EventCollectionList = new ObservableCollection<Models.Event>(EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents());
@@ -80,6 +75,14 @@ namespace Decrypt_Library.Views.Admin
         {
             var admin = new AdminPage();
             var content = obj as Category;
+
+            foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+            {
+                if (content.Id == item.CategoryId)
+                {
+                    return;
+                }
+            }
             CategoryCollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkCategories.RemoveCategory(content);
             CategoryCollectionList = new ObservableCollection<Category>(EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories());
@@ -91,11 +94,21 @@ namespace Decrypt_Library.Views.Admin
         {
             var admin = new AdminPage();
             var content = obj as Product;
+
+            foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
+            {
+                if (content.LanguageId == item.LanguageId)
+                {
+                    return;
+                }
+            }
             CollectionList.Remove(content);
             EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(content);
             CollectionList = new ObservableCollection<Product>(EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts());
             admin.UpdateNewProductList();
             admin.RefreshPage();
         }
+
+ 
     }
 }

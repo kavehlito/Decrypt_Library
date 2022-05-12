@@ -19,6 +19,16 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         }
 
+        public static List<string> ShowAllLanguageNames()
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var languageNames = db.Languages.Select(x => x.Languages).ToList();
+                return languageNames;
+            }
+        }
+
         public static void CreateLanguage(Language language)
         {
             using (var db = new Decrypt_LibraryContext())

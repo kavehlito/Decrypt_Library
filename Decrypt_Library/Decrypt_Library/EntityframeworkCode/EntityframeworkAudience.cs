@@ -31,5 +31,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
+
+        public static List<string> ShowAllAudienceGroups()
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var ageGroup = db.Audiences.Select(x => x.AgeGroup).ToList();
+                return ageGroup;
+            }
+        }
     }
 }

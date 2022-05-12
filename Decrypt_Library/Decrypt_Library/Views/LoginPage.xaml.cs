@@ -25,7 +25,6 @@ namespace Decrypt_Library.Views
 
             var sucess = UserLogin.CheckUserNameAndPassword(ssn, password);
             if (!sucess) Error.IsVisible = true;
-
             
             SSN.Text = null;
             Password.Text = null;
@@ -40,7 +39,13 @@ namespace Decrypt_Library.Views
                 Error.IsVisible = false;
                 LogOut.IsVisible = true;
                 Headline.IsVisible = false;
+                var user = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
+
+                var ap = new AccountPage();
+                ap.User = user;
             }
+
+
 
         }
 
