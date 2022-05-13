@@ -13,8 +13,30 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Loan : ContentPage
     {
-        //StringBuilder receipt = new StringBuilder($"{"STRECKKOD",-20}{"TITEL", -70}{"ÅTERLÄMNINGSDATUM",-40}");
-        
+        protected override void OnDisappearing()
+        {
+            if (CheckUserId.Text == null) CheckUserId.Text = "0";
+            int.TryParse(CheckUserId.Text.ToString(), out int userId);
+            base.OnDisappearing();
+            Cart.DeleteCart(userId);
+            CheckUserId.IsVisible = true;
+            checkUserButton.IsVisible = true;
+            StartAgain.IsVisible = false;
+            User.Text = null;
+            User.IsVisible = true;
+            CheckUserId.Text = null;
+            Headline.IsVisible = false;
+            Cart.cartList.Clear();
+            AddNewProduct.IsVisible = false;
+            CheckOut.IsVisible = false;
+            Product.IsVisible = false;
+            Add.IsVisible = false;
+            ProductList.ItemsSource = null;
+            NumberOfItem.IsVisible = false;
+            ProductIdError.IsVisible = false;
+            UserIdError.IsVisible = false;
+            Headline.IsVisible = false;
+        }
 
         public Loan()
         {
@@ -63,6 +85,7 @@ namespace Decrypt_Library.Views
                 CheckOut.IsVisible = true;
                 ProductIdError.IsVisible = false;
                 Headline.IsVisible = true;
+                NumberOfItem.IsVisible = true;
                 NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
             }
         }
@@ -83,6 +106,7 @@ namespace Decrypt_Library.Views
             AddNewProduct.IsVisible = false;
             CheckOut.IsVisible = false;
             StartAgain.IsVisible = true;
+            Cart.cartList.Clear();
         }
 
         private void StartAgain_Clicked(object sender, EventArgs e)
@@ -94,7 +118,7 @@ namespace Decrypt_Library.Views
             User.IsVisible = true;
             CheckUserId.Text = null;
             Headline.IsVisible = false;
-            Cart.cartList.Clear();
+            
             
         }
 
@@ -105,7 +129,14 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-                      
+            Button btn = sender as Button;
+            CartList loanList = btn.BindingContext as CartList;
+            Cart.DeleteItemInCart(loanList.Id);
+            //EntityframeworkProducts.DeleteReservation(loanList.ID);
+
+            ProductList.ItemsSource = null;
+            ProductList.ItemsSource = Cart.cartList;
+            NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
         }
     }
 }

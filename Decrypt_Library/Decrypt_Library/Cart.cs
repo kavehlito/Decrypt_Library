@@ -27,6 +27,37 @@ namespace Decrypt_Library
             }
         }
 
+        public static void DeleteCart(int userId)
+        {
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var cartList = db.Carts;
+                var usercartList = cartList.Where(p => p.UserId == userId);
+
+                foreach (var item in usercartList)
+                {
+                    cartList.Remove(item);
+                }
+                db.SaveChanges();
+            }
+        }
+
+        public static void DeleteItemInCart(int productId)
+        {
+         cartList.Remove(cartList.SingleOrDefault(x => x.Id == productId));
+
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var cartList = db.Carts;
+                var product = cartList.SingleOrDefault(x => x.ProductId == productId);
+
+                cartList.Remove(product);
+                
+                db.SaveChanges();
+            }
+         
+        }
+
         public static bool CheckProductId(int productId)
         {
 
@@ -58,14 +89,14 @@ namespace Decrypt_Library
                 {
                     return false;
                 }
-                UpdateBookStatus(productId);
+                
                 return true;
             }
         }
 
         
 
-        public static void UpdateBookStatus(int productId)
+        public static void UpdateBookStatus(int? productId)
         {
             using (var db = new Models.Decrypt_LibraryContext())
             {
@@ -93,6 +124,7 @@ namespace Decrypt_Library
                     {
                     bookHistory.Add(new Models.BookHistory() { StartDate = DateTime.Now, ProductId = item.ProductId, EventId = 2, UserId = userId });
                     cart.Remove(item);
+                    UpdateBookStatus(item.ProductId);
                     }
                 }
                 

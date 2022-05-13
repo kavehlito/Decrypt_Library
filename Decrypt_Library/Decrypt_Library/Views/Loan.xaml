@@ -36,7 +36,7 @@
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
-                   WidthRequest="500">
+                   WidthRequest="650">
 
                     
                     <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1">
@@ -54,7 +54,7 @@
 
                         <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
             <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
-            <Label x:Name="NumberOfItem" Text="" TextColor="White" />
+            <Label x:Name="NumberOfItem" Text="" TextColor="White" IsVisible="false" />
             
             <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
@@ -79,7 +79,8 @@
                                                    FontAttributes="Bold"/>
                                     <Label Text="{Binding Title}"
                                                    Grid.Column="1"
-                                                   TextColor="White"/>
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
                                     <Label Text="{Binding ReturnDate}"
                                                    Grid.Column="2"
                                                    TextColor="White"
@@ -91,7 +92,8 @@
                                                     BackgroundColor="White"
                                                     FontAttributes="Bold"
                                                     Clicked="Button_Clicked"
-                                                    Text="Ta bort"/>
+                                                    Text="Ta bort"
+                                                    Margin="0,0,0,50"/>
 
                                 </Grid>
                             </Frame>
