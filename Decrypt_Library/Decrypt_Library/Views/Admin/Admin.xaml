@@ -55,7 +55,7 @@
                    Grid.Row="2"
                    CornerRadius="20"
                    Margin="35,0,25,0"
-                   BackgroundColor="White"
+                   BackgroundColor="Gold"
                    IsClippedToBounds="True"
                    HeightRequest="35">
 
@@ -626,24 +626,27 @@
                                                    FontAttributes="Bold"
                                                    TextColor="White"/>
 
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Button 
+                                                        TextColor="Black"
+                                                        CornerRadius="20"
+                                                        Grid.Column="0"
+                                                        BackgroundColor="Gold"
+                                                        FontAttributes="Bold"
+                                                        Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ProductList}}" 
+                                                        CommandParameter="{Binding .}"
+                                                        Text="Ta bort"/>
+                                                    
+                                                </Grid>
+
                                             </StackLayout>
 
-                                            <AbsoluteLayout Grid.Column="1">
-
-                                                <Button 
-                                                    TextColor="Black"
-                                                    CornerRadius="10"
-                                                    BackgroundColor="Gold"
-                                                    FontAttributes="Bold"
-                                                    Grid.Row="2"
-                                                        AbsoluteLayout.LayoutBounds="50,70,75,50"
-                                                    Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ProductList}}" 
-                                                    CommandParameter="{Binding .}"
-                                                    Text="Ta bort"/>
-
-
-                                            </AbsoluteLayout>
-                               
                                         </Grid>
                                     </Frame>
                                 </ViewCell>
@@ -661,7 +664,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="45"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -691,10 +694,10 @@
                        Grid.Column="1"
                        Grid.Row="2"
                        HorizontalOptions="CenterAndExpand"
-                       BackgroundColor="White"
+                       BackgroundColor="Gold"
                        CornerRadius="20"
-                       WidthRequest="400"
-                       Margin="30,10,30,0"
+                       WidthRequest="350"
+                       Margin="0,10,0,0"
                        
                        
                        IsClippedToBounds="True"
@@ -804,7 +807,7 @@
 
                                                     <Button Grid.Column="3"
                                                     TextColor="Black"
-                                                    CornerRadius="10"
+                                                    CornerRadius="20"
                                                     BackgroundColor="Gold"
                                                     FontAttributes="Bold"
                                                     Command="{Binding Path=BindingContext.CategoryDeleteCommand, Source={x:Reference categoryList}}" 
@@ -829,7 +832,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="45"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -838,12 +841,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label TextColor="White"
-                           FontSize="35"
+            <Label TextColor="Gold"
+                           FontSize="25"
                            FontAttributes="Bold"
                    Grid.Row="0"
                    Grid.Column="1"
-                       Margin="0,10,0,0"
+                       Margin="0,20,0,0"
                                HorizontalOptions="CenterAndExpand"
                            Text="Event Inställningar"/>
 
@@ -853,18 +856,19 @@
 
 
                 <Frame Padding="0"
-                       BorderColor="White"
-                       BackgroundColor="White"
+                       BorderColor="Gold"
+                       BackgroundColor="Gold"
                        Grid.Row="1"
                        HorizontalOptions="Center"
                        Grid.Column="1"
-                       WidthRequest="400"
-                       HeightRequest="50">
+                       CornerRadius="20"
+                       WidthRequest="350"
+                       HeightRequest="35">
 
                     <Grid>
 
                         <Button Text="Lägg till Event"
-                            BackgroundColor="White"
+                            BackgroundColor="Gold"
                                      Clicked="AddEventButton_Pressed"
                                 Grid.Column="0"
                             CornerRadius="0"
@@ -885,59 +889,97 @@
 
                 </Frame>
             </StackLayout>
-            <Frame BackgroundColor="Black" 
+            <Frame BackgroundColor="Black"
+                   BorderColor="Transparent"
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
-                   WidthRequest="500"
+                   WidthRequest="410"
                    Grid.Row="2">
                 <StackLayout>
 
                     <StackLayout x:Name="createEventBar"
                                  IsVisible="false">
+                        <AbsoluteLayout>
 
-                    <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Eventnamn"/>
-                    <Entry x:Name="entryEventNametab2"
-                           TextChanged="entryEventNametab2_TextChanged"
-                           >
-                    </Entry>
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="30,63,100,30"
+                                   Text="Beskrivning"/>
 
-                    <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Beskrivning"/>
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="230,-2,200,30"
+                                   Text="Datum"/>
 
-                    <Entry x:Name="entryEventDescriptiontab2"
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="30,-2,200,30"
+                                   Text="Eventnamn"/>
+
+                            <StackLayout Margin="0,10,0,0">
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame CornerRadius="20"
+                                               Margin="10,10,0,0"
+                                               Grid.Column="0"
+                                               IsClippedToBounds="True"
+                                               Padding="0">
+                                            
+                                            <Entry x:Name="entryEventNametab2"
+                                                   TextChanged="entryEventNametab2_TextChanged"
+                                                   >
+                                            </Entry>
+                                        </Frame>
+
+                                        <Frame CornerRadius="20"
+                                               IsClippedToBounds="True"
+                                               WidthRequest="100"
+                                               Margin="10,10,0,0"
+                                               Grid.Column="1"
+                                               Padding="0">
+                                            
+                                            <Entry x:Name="entryEventTimetab2"
+                                                   Placeholder="yyyy/mm/dd"
+                                                   TextChanged="entryEventTimetab2_TextChanged">
+                                            </Entry>
+                                        </Frame>
+                                    </Grid>
+                                </StackLayout>
+
+                        <Frame CornerRadius="20"
+                               WidthRequest="380"
+                               Margin="20,20,20,0"
+                               IsClippedToBounds="True"
+                               Padding="0">
+                            
+                            <Entry x:Name="entryEventDescriptiontab2"
                            TextChanged="entryEventDescriptiontab2_TextChanged"
                            >
-                    </Entry>
+                            </Entry>
 
-                    <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Tid och datum år/månad/dag"/>
-                    <Entry x:Name="entryEventTimetab2"
-                           Placeholder="yyyy/mm/dd"
-                           TextChanged="entryEventTimetab2_TextChanged"
-                           >
-                    </Entry>
+                        </Frame>
+
+                            </StackLayout>
+
+                        </AbsoluteLayout>
+
+
+
                     </StackLayout>
-                    <StackLayout x:Name="removeEventTab"
-                                 IsVisible="false">
-
-                        <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Id på det event du vill ta bort"/>
-
-                        <Entry x:Name="entryEventRemovetab2"
-                               TextChanged="entryEventRemovetab2_TextChanged"
-                           >
-                        </Entry>
-                    </StackLayout>
+   
                     <ListView x:Name="eventList"
                               HasUnevenRows="False"
                               ItemsSource="{Binding EventCollectionList}"
@@ -952,7 +994,6 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
 
@@ -960,24 +1001,41 @@
 
                                             <Label Text="{Binding Id}"
                                                    Grid.Column="0"
+                                                   FontAttributes="Bold"
                                                    TextColor="White"/>
-                                            <Label Text="{Binding EventName}"
-                                                   Grid.Column="1"
-                                            TextColor="White"/>
 
-                                            <Label Text="{Binding Time}"
-                                                   Grid.Column="2"
-                                            TextColor="White"/>
+                                            <StackLayout Grid.Column="1">
+
+                                                <Label Text="{Binding EventName}"
+                                                       FontAttributes="BOld"
+                                                       TextColor="White"/>
+
+                                                <Label Text="{Binding Time}"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White"/>
 
 
-                                            <Button Grid.Column="4"
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <Button Grid.Column="0"
                                                     TextColor="Black"
-                                                    CornerRadius="10"
-                                                    BackgroundColor="White"
+                                                    CornerRadius="20"
+                                                    BackgroundColor="Gold"
                                                     FontAttributes="Bold"
                                                     Command="{Binding Path=BindingContext.EventDeleteCommand, Source={x:Reference ProductList}}" 
                                                     CommandParameter="{Binding .}"
                                                     Text="Ta bort"/>
+
+                                                </Grid>
+
+                                      
+                                            </StackLayout>
+
+                              
                                         </Grid>
                                     </Frame>
                                 </ViewCell>
@@ -1235,7 +1293,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -1244,29 +1302,29 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label TextColor="White"
-                           FontSize="35"
+            <Label TextColor="Gold"
+                           FontSize="25"
                            FontAttributes="Bold"
                    Grid.Column="1"
                    Grid.Row="0"
-                       Margin="0,10,0,0"
+                       Margin="0,20,0,0"
                                HorizontalOptions="CenterAndExpand"
                            Text="Språk Inställningar"/>
 
 
 
-            <Frame BorderColor="White"
+            <Frame BorderColor="Gold"
                    Grid.Column="1"
                    Grid.Row="1"
-                   BackgroundColor="White"
-                   HeightRequest="45"
-                   WidthRequest="400"
+                   BackgroundColor="Gold"
+                   CornerRadius="20"
+                   WidthRequest="350"
                    HorizontalOptions="Center"
                                Padding="0">
                 <Grid>
 
                     <Button Text="Lägg till Språk"
-                            BackgroundColor="White"
+                            BackgroundColor="Gold"
                                     Clicked="AddLanguageButton_Pressed"
                             Grid.Column="0"
                             CornerRadius="0"
@@ -1289,7 +1347,7 @@
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
-                   WidthRequest="500"
+                   WidthRequest="410"
                    Grid.Row="2">
                 <StackLayout>
 
@@ -1299,13 +1357,21 @@
                                  IsVisible="false">
 
                         <Label TextColor="White"
-                           FontSize="12"
                            FontAttributes="Bold"
+                               Margin="20,0,0,0"
                            Text="Språk namn"/>
-                        <Entry x:Name="entryLanguageCreatetab3"
+
+                        <Frame Padding="0"
+                               CornerRadius="20"
+                               IsClippedToBounds="True">
+                            <Entry x:Name="entryLanguageCreatetab3"
                                TextChanged="entryLanguageCreatetab3_TextChanged"
                            >
-                        </Entry>
+                            </Entry>
+                        </Frame>
+
+               
+       
 
                     </StackLayout>
                     <StackLayout x:Name="removeLanguageBar"
@@ -1330,9 +1396,11 @@
                                         <StackLayout Orientation="Horizontal">
 
                                             <Label Text="{Binding Id}"
-                                            TextColor="White"/>
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"/>
                                             <Label Text="{Binding Languages}"
-                                            TextColor="White"/>
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"/>
                                         </StackLayout>
                                     </Frame>
                                 </ViewCell>

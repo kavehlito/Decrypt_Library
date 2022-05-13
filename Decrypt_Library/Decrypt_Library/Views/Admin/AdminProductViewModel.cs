@@ -62,54 +62,27 @@ namespace Decrypt_Library.Views.Admin
 
         public void OnEventDeleteTapped(object obj)
         {
-            var admin = new AdminPage();
-            var content = obj as Models.Event;
-
+            var content = obj as Event;
             EventCollectionList.Remove(content);
             EntityframeworkEvents.RemoveEvent(content);
             EventCollectionList = new ObservableCollection<Event>(EntityframeworkEvents.ShowAllEvents());
-            admin.UpdateNewProductList();
-            admin.RefreshPage();
+
         }
 
         public void OnCategoryDeleteTapped(object obj)
         {
-            var admin = new AdminPage();
             var content = obj as Category;
-
-            foreach (var item in EntityframeworkProducts.ShowAllProducts())
-            {
-                if (content.Id == item.CategoryId)
-                {
-                    return;
-                }
-            }
             CategoryCollectionList.Remove(content);
             EntityframeworkCategories.RemoveCategory(content);
             CategoryCollectionList = new ObservableCollection<Category>(EntityframeworkCategories.ShowAllCategories());
-            admin.UpdateNewProductList();
-            admin.RefreshPage();
         }
 
         public void OnDeleteTapped(object obj)
         {
-            var admin = new AdminPage();
             var content = obj as Product;
-
-            foreach (var item in EntityframeworkProducts.ShowAllProducts())
-            {
-                if (content.LanguageId == item.LanguageId)
-                {
-                    return;
-                }
-            }
             CollectionList.Remove(content);
-            EntityFrameworkCode.EntityframeworkProducts.RemoveProduct(content);
+            EntityframeworkProducts.RemoveProduct(content);
             CollectionList = new ObservableCollection<Product>(EntityframeworkProducts.ShowAllProducts());
-            admin.UpdateNewProductList();
-            admin.RefreshPage();
         }
-
- 
     }
 }

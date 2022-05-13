@@ -57,7 +57,7 @@ namespace Decrypt_Library.Views
         public static bool ProductNarratorCorrect { get; set; }
         public static bool ProductNewProductCorrect { get; set; }
         public static bool ProductHiddenProductCorrect { get; set; }
-
+        
         bool ProductCorrectProductInput = false;
         #endregion
 
@@ -406,7 +406,6 @@ namespace Decrypt_Library.Views
         #region Buttons tab3 events
         private void ShowAllEvents_Pressed(object sender, EventArgs e)
         {
-            removeEventTab.IsVisible = false;
             createEventBar.IsVisible = false;
             eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
         }
@@ -436,7 +435,6 @@ namespace Decrypt_Library.Views
         private void AddEventButton_Pressed(object sender, EventArgs e)
         {
             DateTime date = DateTime.Now;
-            removeEventTab.IsVisible = false;
 
             if (!createEventBar.IsVisible) 
             {
@@ -477,38 +475,6 @@ namespace Decrypt_Library.Views
                     DisplayAlert("Error", "not valid inputs", "OK");
                 }
             }
-        }
-
-        private void RemoveEventButton_Pressed(object sender, EventArgs e)
-        {
-            int convertedSelectedId = 0;
-            createEventBar.IsVisible = false;
-            if (!removeEventTab.IsVisible)
-            {
-                removeEventTab.IsVisible = true;
-                return;
-            }
-
-            try
-            {
-                if(Readers.Readers.LegalIDRangeEvent(entryEventRemovetab2.Text, out convertedSelectedId));
-                {
-                    createdEvent.Id = convertedSelectedId;
-                    EntityFrameworkCode.EntityframeworkEvents.RemoveEvent(createdEvent);
-                    createdEvent = null;
-                    eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
-                    removeEventTab.IsVisible = false; 
-                }
-            }
-            catch (Exception)
-            {
-                DisplayAlert("Error", "not a valid input", "OK");
-            }
-        }
-
-        private void entryEventRemovetab2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            entryEventRemovetab2.Text = e.NewTextValue;
         }
 
         #endregion
