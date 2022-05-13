@@ -19,18 +19,18 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
-        public static List<Product> ShowSearchedProduct(string selectedTitle)
+        public static List<CategoryName_Product> ShowSearchedProduct(string selectedTitle)
         {
             using (var db = new Decrypt_LibraryContext())
             {
                 var products = (from prod in db.Products
                                 join cate in db.Categories on prod.CategoryId equals cate.Id
-                                select new Product
+                                select new CategoryName_Product
                                 {
                                     Id = prod.Id,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
-                                    CategoryId = cate.Id
+                                    
                                 }).ToList();
 
                 var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) ||

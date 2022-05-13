@@ -16,7 +16,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return mediatypes;
             }
         }
-
         public static List<string> ShowAllMediaNames()
         {
 
