@@ -1,8 +1,6 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,61 +24,52 @@ namespace Decrypt_Library.Views
 
         private async void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedItemFromList = (Product)e.Item;
+            var selectedItemFromList = (CategoryName_Product)e.Item;
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
         }
-         private void OnCheckBoxCheckedChangedA(object sender, CheckedChangedEventArgs e)
+        private void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            List<int> audiences = new List<int>();
-
-            if (checkbox8.IsChecked)
-                audiences.Add(3);
-            if (checkbox9.IsChecked)
-                audiences.Add(4);
-            if (checkbox10.IsChecked)
-                audiences.Add(5);
-            if (checkbox11.IsChecked)
-                audiences.Add(2);
-            if (checkbox12.IsChecked)
-                audiences.Add(1);
-           
-            ProductList.ItemsSource = EntityframeworkAudience.SpecificAudience(audiences);
-        }
-        private void OnCheckBoxCheckedChangedC(object sender, CheckedChangedEventArgs e)
-        {
-            List<int> categorys = new List<int>();
+            List<string> category = new List<string>();
 
             if (checkbox1.IsChecked)
-                categorys.Add(1);
+                category.Add("Deckare");
             if (checkbox2.IsChecked)
-                categorys.Add(2);
+                category.Add("Drama");
             if (checkbox3.IsChecked)
-                categorys.Add(3);
+                category.Add("Novell");
             if (checkbox4.IsChecked)
-                categorys.Add(4);
+                category.Add("Roman");
             if (checkbox5.IsChecked)
-                categorys.Add(5);
+                category.Add("Saga");
             if (checkbox6.IsChecked)
-                categorys.Add(6);
+                category.Add("Självbiografier");
             if (checkbox7.IsChecked)
-                categorys.Add(7);
+                category.Add("Äventyr");
+           
+           
+              if (checkbox8.IsChecked)
+                category.Add("För Barn 0-6 år");
+              if (checkbox9.IsChecked)
+                category.Add("För Barn 6-9 år");
+              if (checkbox10.IsChecked)
+                category.Add("För Barn 9-12 år");
+              if (checkbox11.IsChecked)
+                category.Add("För Ungdomar");
+              if (checkbox12.IsChecked)
+                category.Add("För Vuxna");
+             
+              if (checkbox13.IsChecked)
+                category.Add("Bok");
+              if (checkbox14.IsChecked)
+                category.Add("E-bok");
+              if (checkbox15.IsChecked)
+                category.Add("Ljudbok");
 
-            ProductList.ItemsSource = EntityframeworkCategories.SpecificCategory(categorys);
+            ProductList.ItemsSource = EntityframeworkCategories.Checkboxes(category);
+
         }
-        private void OnCheckBoxCheckedChangedT(object sender, CheckedChangedEventArgs e)
-        {
-            List<int> MediaType = new List<int>();
-
-            if (checkbox13.IsChecked)
-                MediaType.Add(1);
-            if (checkbox14.IsChecked)
-                MediaType.Add(2);
-            if (checkbox15.IsChecked)
-                MediaType.Add(3);
-     
-            ProductList.ItemsSource = EntityframeworkMediaTypes.SpecificType(MediaType);
-        }
-
     }
 }
+
+

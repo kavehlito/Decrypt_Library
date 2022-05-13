@@ -56,19 +56,35 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-        public static List<Product> SpecificCategory(List<int> categoryList)
+        public static List<CategoryName_Product> Checkboxes(List<string> checkboxList)
         {
-            var products = new List<Product>();
+            var products = new List<CategoryName_Product>();
             using (var db = new Decrypt_LibraryContext())
             {
-                foreach (var category in categoryList)
-                {
-                    products.AddRange(db.Products.Where(x => x.CategoryId == category).ToList());
-                }
-                return products;
+                var product = (from prod in db.Products
+                                join cate in db.Categories on prod.CategoryId equals cate.Id
+                                join aud in db.Audiences on prod.AudienceId equals aud.Id
+                                join med in db.MediaTypes on prod.MediaId equals med.Id
+                                select new CategoryName_Product
+                                {
+                                    Id = prod.Id,
+                                    Title = prod.Title,
+                                    AuthorName = prod.AuthorName,
+                                    Audience = aud.AgeGroup,
+                                    Media = med.FormatName,
+                                    Category = cate.CategoriesName
+                                    
+                                }).ToList();
+
+               
+                    foreach (var prod in checkboxList)
+                    {
+                        products.AddRange(product.Where(x => x.Category == prod || x.Audience == prod || x.Media == prod).ToList());
+                    }
+                    return products;
+                              
             }
         }
-
     }
 }
 
