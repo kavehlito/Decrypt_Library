@@ -4,9 +4,53 @@
              x:Class="Decrypt_Library.Views.Events">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="eventList"
+                              HasUnevenRows="False"
+                            
+                              VerticalScrollBarVisibility="Never"
+                              
+                              >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Id}"
+                                                   Grid.Column="0"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"/>
+
+                                    <StackLayout Grid.Column="1">
+
+                                        <Label Text="{Binding EventName}"
+                                                       FontAttributes="BOld"
+                                                       TextColor="Black"/>
+
+                                        <Label Text="{Binding Time}"
+                                                       FontAttributes="Bold"
+                                                       TextColor="Black"/>
+
+
+                                        
+
+
+                                    </StackLayout>
+
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
