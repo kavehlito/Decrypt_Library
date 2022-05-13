@@ -33,6 +33,16 @@ namespace Decrypt_Library.EntityFrameworkCode
             return null;
         }
 
+        public static int ShowSpecificCategoryIdByCategoriesName(string categoryName)
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var languageId = db.Categories.SingleOrDefault(x => x.CategoriesName.ToLower().Contains(categoryName.ToLower())).Id;
+                return languageId;
+            }
+        }
+
         public static void CreateCategory(Category category)
         {
             using (var db = new Decrypt_LibraryContext())

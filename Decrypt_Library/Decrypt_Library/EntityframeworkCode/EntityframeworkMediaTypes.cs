@@ -1,9 +1,6 @@
 ﻿using Decrypt_Library.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
@@ -26,6 +23,16 @@ namespace Decrypt_Library.EntityFrameworkCode
             {
                 var mediaNames = db.MediaTypes.Select(x => x.FormatName).ToList();
                 return mediaNames;
+            }
+        }
+
+        public static int ShowSpecificMediaTypeIdByFormatName(string formatName)
+        {
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var languageId = db.MediaTypes.SingleOrDefault(x => x.FormatName.ToLower().Contains(formatName.ToLower())).Id;
+                return languageId;
             }
         }
     }

@@ -1,5 +1,8 @@
 ﻿using Decrypt_Library.Models;
+using Decrypt_Library.Views.Admin;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Decrypt_Library.EntityFrameworkCode
@@ -30,7 +33,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     
                                 }).ToList();
 
-                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower())  ||
+                var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) ||
                 p.AuthorName.ToLower().Contains(selectedTitle.ToLower())).ToList();
 
                 return findProduct;
@@ -125,27 +128,37 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-        public static void DeleteReservation(int selectedId)
+        public static void DeleteReservation2(BookHistory bookhistory)
         {
-
             using (var db = new Decrypt_LibraryContext())
             {
-                var book = db.BookHistories;
-                var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
+                db.Remove(bookhistory);
+                db.SaveChanges();
+            }
+        }
 
-                if (book != null)
+                public static void DeleteReservation(int selectedId)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var book = db.BookHistories.Where(b=> b.Id == selectedId).SingleOrDefault();
+                db.Remove(book);
+                db.SaveChanges();
+
+                //var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
+
+               /* if (book != null)
                 {
                     book.Remove(updateQuantityProduct);
                 }
-
-                db.SaveChanges();
-
-               /* if (updateQuantityProduct == null)
-                {
-                    Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
-                }
-                else updateQuantityProduct.StockUnit -= Quantity; 
                */
+
+                /* if (updateQuantityProduct == null)
+                 {
+                     Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
+                 }
+                 else updateQuantityProduct.StockUnit -= Quantity; 
+                */
 
             }
         }

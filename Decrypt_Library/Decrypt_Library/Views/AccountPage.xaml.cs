@@ -1,26 +1,17 @@
-﻿using Decrypt_Library.Models;
+﻿using Decrypt_Library.EntityFrameworkCode;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace Decrypt_Library.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
-        private User _user;
-
-        public User User
-        {
-            get { return _user; }
-            set { _user = value; }
-        }
         public AccountPage()
         {
             InitializeComponent();
-            // User = user;
-            
         }
 
         private void MyProfile_Clicked(object sender, EventArgs e)
@@ -29,7 +20,7 @@ namespace Decrypt_Library.Views
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = false;
 
-            //profileList.ItemsSource = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserLogIn(_user);
+
             profileText.Text = MyPages.UserProfile();
         }
 
@@ -37,6 +28,7 @@ namespace Decrypt_Library.Views
         {
             loanList.IsVisible = true;
             profile.IsVisible = false;
+            reservations.IsVisible = false;
             loanList.ItemsSource = MyPages.LoanList();
         }
 
@@ -45,9 +37,8 @@ namespace Decrypt_Library.Views
             loanList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = true;
-            reservations.ItemsSource = EntityFrameworkCode.EntityframeworkBookHistory.ShowUserReservations();
-            
 
+            reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
 
         private void MyLoanHistory_Clicked(object sender, EventArgs e)
@@ -61,15 +52,18 @@ namespace Decrypt_Library.Views
 
         private void RemoveButton_Clicked(object sender, EventArgs e)
         {
-            // function for removing from list not the product
+
             loanList.IsVisible = false;
             profile.IsVisible = false;
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = true;
-            
-            
-            //reservations.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.DeleteReservation();
 
+            Button btn = sender as Button;
+            MyPagesProductList reserveList = btn.BindingContext as MyPagesProductList;
+            EntityframeworkProducts.DeleteReservation(reserveList.ID);
+
+            reservations.ItemsSource = null;
+            reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
     }
 }
