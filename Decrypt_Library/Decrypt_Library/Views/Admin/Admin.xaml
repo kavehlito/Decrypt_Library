@@ -1414,16 +1414,62 @@
 
             <StackLayout>
                 <Label Text="Statistik"
-                   FontAttributes="Bold"
-                   Grid.Column="1"
-                   Grid.Row="0"
-                   FontSize="25"
+                       FontAttributes="Bold"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       FontSize="25"
+                       Margin="0,20,0,0"
                        HorizontalOptions="CenterAndExpand"
-                   TextColor="Gold"/>
+                       TextColor="Gold"/>
+
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="AUto"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <Frame Padding="0" 
+                           BorderColor="Gold"
+                           CornerRadius="20"
+                           WidthRequest="400"
+                           HeightRequest="35"
+                           Margin="0,10,0,0"
+                           BackgroundColor="Gold"
+                           Grid.Column="1">
+
+                        <Grid>
+
+                            <Button Text="Produkter"
+                                    BackgroundColor="Gold"
+                                    TextColor="Black"
+                                    Grid.Column="0"
+                                    CornerRadius="0"
+                                    FontAttributes="Bold"/>
+
+                            <Button Text="Användare"
+                                    BackgroundColor="White"
+                                    TextColor="Black"
+                                    Grid.Column="1"
+                                    CornerRadius="0"
+                                    FontAttributes="Bold"/>
+
+                            <Button Text="Utlåning"
+                                    BackgroundColor="Gold"
+                                    TextColor="Black"
+                                    Grid.Column="2"
+                                    CornerRadius="0"
+                                    FontAttributes="Bold"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
 
                 <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -1432,44 +1478,42 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
 
-            <Frame BorderColor="White"
-                   Grid.Column="1"
-                   WidthRequest="400"
-                   HeightRequest="400"
-                   Grid.Row="1">
-                
-            </Frame>
+                    <Frame BorderColor="Transparent"
+                           Grid.Column="1"
+                           WidthRequest="400"
+                           x:Name="example1"
+                           IsVisible="True"
+                           HeightRequest="400"
+                           Grid.Row="1">
 
-            <Frame BorderColor="White"
-                   WidthRequest="400"
-                   HeightRequest="400"
-                   Grid.Column="2"
-                   Grid.Row="1">
+                    </Frame>
 
-            </Frame>
+                    <Frame BorderColor="Transparent"
+                           Grid.Column="1"
+                           WidthRequest="400"
+                           x:Name="example2"
+                           IsVisible="True"
+                           HeightRequest="400"
+                           Grid.Row="1">
 
-            <Frame BorderColor="White"
-                   Grid.Column="1"
-                   WidthRequest="400"
-                   HeightRequest="400"
-                   Grid.Row="2">
+                    </Frame>
 
-            </Frame>
+                    <Frame BorderColor="Transparent"
+                           Grid.Column="1"
+                           WidthRequest="400"
+                           x:Name="example3"
+                           IsVisible="True"
+                           HeightRequest="400"
+                           Grid.Row="1">
 
-            <Frame BorderColor="White"
-                   Grid.Column="2"
-                   WidthRequest="400"
-                   HeightRequest="400"
-                   Grid.Row="2">
+                    </Frame>
 
-            </Frame>
 
-        </Grid>
+                </Grid>
 
             </StackLayout>
 
