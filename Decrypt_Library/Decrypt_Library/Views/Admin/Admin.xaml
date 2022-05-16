@@ -1501,7 +1501,6 @@
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            
                         </ListView>
                     </Frame>
 
