@@ -646,8 +646,16 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
+            userInfo.IsVisible = false;
             productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
             productInfo.IsVisible = true; 
+        }
+
+        private void Button_Clicked_User(object sender, EventArgs e)
+        {
+            productInfo.IsVisible = false;
+            userInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
+            userInfo.IsVisible =true;
         }
     }
 }
