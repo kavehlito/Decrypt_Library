@@ -15,6 +15,7 @@ namespace Decrypt_Library.Views
         public Events()
         {
             InitializeComponent();
+            eventList.ItemsSource= EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
         }
     }
 }
