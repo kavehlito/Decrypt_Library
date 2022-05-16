@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Decrypt_Library.Models
 {
@@ -10,7 +8,7 @@ namespace Decrypt_Library.Models
         public string Audience { get; set; }
         public string Language { get; set; }
         public string Category { get; set; }
-        //public string Shelf { get; set; }
+        public string Shelf { get; set; }
         public string MediaType { get; set; }
         public string Title { get; set; }
         public string AuthorName { get; set; }
