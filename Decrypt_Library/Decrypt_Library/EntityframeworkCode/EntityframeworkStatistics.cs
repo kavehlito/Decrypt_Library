@@ -1,5 +1,7 @@
-﻿using Decrypt_Library.Models;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Decrypt_Library.EntityframeworkCode
 {
@@ -8,31 +10,51 @@ namespace Decrypt_Library.EntityframeworkCode
         // Skapa metod för att hämta in info från databas och returnera en lista som sedan ska visas DESC, 
         // senast utlånad högst upp
 
-        public static List<BookHistory> ShowReservationsByDescOrder()
+        public static List<MyPagesProductList> ShowLoansByDescOrder()
         {
             using (var db = new Decrypt_LibraryContext())
             {
-                var reservationByOrder = from
-                                         reservations in db.BookHistory
-                                         join
-                                         product in db.Products on bookHistory.ProductId equals product.Id
-                                       //  where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 3
-                                         select new MyPagesProductList
-                                         {
-                                             ID = bookHistory.Id,
-                                             Title = product.Title,
-                                             Author = product.AuthorName,
-                                             ISBN = product.Isbn,
-                                             StartDate = bookHistory.StartDate,
-                                             EndDate = bookHistory.EndDate,
+                var loanedByOrder = from
+                                    loaned in db.BookHistories
+                                    join
+                                    product in db.Products on loaned.ProductId equals product.Id
+                                    orderby loaned.StartDate descending
+                                    where loaned.EventId == 2
+                                    select new MyPagesProductList
+                                    {
+                                        ID = loaned.Id,
+                                        Title = product.Title,
+                                        Author = product.AuthorName,
+                                        ISBN = product.Isbn,
+                                        StartDate = loaned.StartDate,
+                                        EndDate = loaned.EndDate,
 
-                                         };
-                return reservationByOrder.ToList().OrderBy;
+                                    };
+                return loanedByOrder.ToList();
 
             }
         }
 
         // Mest frekvent läst kategori - lånehistorik
+        public static List<MyPagesProductList> MostReadCategory()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var mostRead = (from
+                               mostPop in db.BookHistories
+                               join product in db.Products on mostPop.ProductId equals product.Id
+                               join category in db.Categories on product.CategoryId equals category.Id
+                               where mostPop.EventId == 2
+                               select category).ToList().GroupBy(c => c.Id)
+                                    .Select(c => new MyPagesProductList
+                                    {
+                                        CategoriesName = c.FirstOrDefault().CategoriesName,
+                                        Count = c.Count(),
+                                    }).OrderByDescending(c => c.Count).ToList();
+                return mostRead;
+            }
+        }
+
         // Mest utlånat inom respektive Medietyp
         // Antal böcker i sortimentet just nu
         // Hur många förseningar
