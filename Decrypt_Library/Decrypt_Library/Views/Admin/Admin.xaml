@@ -1449,7 +1449,9 @@
                                     TextColor="Black"
                                     Grid.Column="0"
                                     CornerRadius="0"
-                                    FontAttributes="Bold"/>
+                                    FontAttributes="Bold"
+                                    Clicked="Button_Clicked_Product"/>
+                            
 
                             <Button Text="Användare"
                                     BackgroundColor="White"
@@ -1481,7 +1483,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-
                     <Frame BorderColor="Transparent"
                            Grid.Column="1"
                            WidthRequest="400"
@@ -1489,7 +1490,19 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
-
+                        <ListView x:Name="productInfo" IsVisible="false">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding CategoriesName, StringFormat='Kategori: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Count, StringFormat='Antal: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            
+                        </ListView>
                     </Frame>
 
                     <Frame BorderColor="Transparent"

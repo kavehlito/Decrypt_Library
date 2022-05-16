@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace Decrypt_Library.EntityframeworkCode
 {
-    internal class EntityframeworkStatistics
+    public class EntityframeworkStatistics
     {
         // Skapa metod för att hämta in info från databas och returnera en lista som sedan ska visas DESC, 
-        // senast utlånad högst upp
+        // senast utlånad högst upp - till användare i Admin
 
         public static List<MyPagesProductList> ShowLoansByDescOrder()
         {
@@ -42,10 +42,10 @@ namespace Decrypt_Library.EntityframeworkCode
             {
                 var mostRead = (from
                                mostPop in db.BookHistories
-                               join product in db.Products on mostPop.ProductId equals product.Id
-                               join category in db.Categories on product.CategoryId equals category.Id
-                               where mostPop.EventId == 2
-                               select category).ToList().GroupBy(c => c.Id)
+                                join product in db.Products on mostPop.ProductId equals product.Id
+                                join category in db.Categories on product.CategoryId equals category.Id
+                                where mostPop.EventId == 2
+                                select category).ToList().GroupBy(c => c.Id)
                                     .Select(c => new MyPagesProductList
                                     {
                                         CategoriesName = c.FirstOrDefault().CategoriesName,

@@ -641,8 +641,13 @@ namespace Decrypt_Library.Views
 
 
 
+
         #endregion
 
-
+        private void Button_Clicked_Product(object sender, EventArgs e)
+        {
+            productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
+            productInfo.IsVisible = true; 
+        }
     }
 }
