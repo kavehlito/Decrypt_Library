@@ -1409,85 +1409,74 @@
 
     <ContentPage Title="Statistik">
 
-        <Grid>
+
+        <ScrollView>
+
+            <StackLayout>
+                <Label Text="Statistik"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   FontSize="25"
+                       HorizontalOptions="CenterAndExpand"
+                   TextColor="Gold"/>
+
+                <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Text="Statistik"
-                   FontAttributes="Bold"
-                   FontSize="35"
-                   HorizontalOptions="CenterAndExpand"
-                   TextColor="White"
+      
+
+            <Frame BorderColor="White"
                    Grid.Column="1"
-                   />
+                   WidthRequest="400"
+                   HeightRequest="400"
+                   Grid.Row="1">
+                
+            </Frame>
 
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand"
-                         Margin="0,30,0,0"
-                         Grid.Row="1"
-                         Grid.Column="1">
-                <Frame BackgroundColor="White"
-                       WidthRequest="100"
-                       HeightRequest="100"
-                       >
-                    
-                </Frame>
-                <Frame BackgroundColor="White"
-                       WidthRequest="100"
-                       HeightRequest="100">
+            <Frame BorderColor="White"
+                   WidthRequest="400"
+                   HeightRequest="400"
+                   Grid.Column="2"
+                   Grid.Row="1">
 
-                </Frame>
+            </Frame>
 
-            </StackLayout>
+            <Frame BorderColor="White"
+                   Grid.Column="1"
+                   WidthRequest="400"
+                   HeightRequest="400"
+                   Grid.Row="2">
 
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand"
-                         Margin="0,30,0,0"
-                         Grid.Row="2"
-                         Grid.Column="1">
-                <Frame BackgroundColor="White"
-                       WidthRequest="100"
-                       HeightRequest="100"
-                       >
+            </Frame>
 
-                </Frame>
-                <Frame BackgroundColor="White"
-                       WidthRequest="100"
-                       HeightRequest="100">
+            <Frame BorderColor="White"
+                   Grid.Column="2"
+                   WidthRequest="400"
+                   HeightRequest="400"
+                   Grid.Row="2">
 
-                </Frame>
-
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand"
-                         Margin="0,30,0,0"
-                         Grid.Row="3"
-                         Grid.Column="1">
-                <Frame BackgroundColor="White"
-                       WidthRequest="100"
-                       HeightRequest="100"
-                       >
-
-                </Frame>
-                <Frame BackgroundColor="White"
-                       WidthRequest="100"
-                       HeightRequest="100">
-
-                </Frame>
-
-            </StackLayout>
+            </Frame>
 
         </Grid>
+
+            </StackLayout>
+
+
+        </ScrollView>
 
     </ContentPage>
 
