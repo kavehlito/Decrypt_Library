@@ -18,7 +18,6 @@ namespace Decrypt_Library.Views
         public AdminPage()
         {
             InitializeComponent();
-            BindingContext = new AdminProductViewModel();
             var employees = EntityframeworkUsers.ShowAllUsers();
             var employeeList = employees.Where(el => el.UserTypeId == 2).ToList();
 
@@ -187,20 +186,6 @@ namespace Decrypt_Library.Views
         {
             if (sender is ListView lv) lv.SelectedItem = null;
         }
-        public void UpdateNewProductList() 
-        { 
-            ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
-            categoryList.ItemsSource = EntityframeworkCategories.ShowAllCategories();
-            eventList.ItemsSource = EntityframeworkEvents.ShowAllEvents();
-            RefreshPage();
-
-        }
-
-        public async void RefreshPage()
-        {
-            BoolReset();
-            await Navigation.PushAsync(new AdminPage());
-        }
 
         private void Colorize(bool Id, Picker userInput)
         {
@@ -295,7 +280,7 @@ namespace Decrypt_Library.Views
                     ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
-                    RefreshPage();
+                    product = new Product();
                 }
                 else
                     await DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
@@ -307,6 +292,15 @@ namespace Decrypt_Library.Views
             }
         }
 
+        private void RemoveProduct_ButtonClicked(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Product selectedProduct = btn.BindingContext as Product;
+            EntityframeworkProducts.RemoveProduct(selectedProduct);
+
+            ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+        }
+
         #endregion
 
         /// <summary>
@@ -316,27 +310,21 @@ namespace Decrypt_Library.Views
         /// <param name="e"></param>
         #region Buttons tab2 categories
 
-        private void entryCategoryNametab2_TextChanged(object sender, TextChangedEventArgs e)
+        private void EntryCategoryNametab2_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryCategoryNametab2.Text = e.NewTextValue;
         }
 
-        private void entryCategoryIdRemovetab2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            entryCategoryIdtab2.Text = e.NewTextValue;
-        }
         private void ShowCategories_Pressed(object sender, EventArgs e)
         {
-            removeCategoryTab.IsVisible = false;
             createCategoryBar.IsVisible = false;
             categoryTab.IsVisible= true;
             categoryList.IsVisible= true;
-            categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
+            categoryList.ItemsSource = EntityframeworkCategories.ShowAllCategories();
         }
 
         private void AddCategoryButton_Pressed(object sender, EventArgs e)
         {
-            removeCategoryTab.IsVisible = false;
             if (!createCategoryBar.IsVisible)
             {
                 createCategoryBar.IsVisible = true;
@@ -348,52 +336,34 @@ namespace Decrypt_Library.Views
                 if (Readers.Readers.StringReader(entryCategoryNametab2.Text))
                 {
                     category.CategoriesName = entryCategoryNametab2.Text;
-                    EntityFrameworkCode.EntityframeworkCategories.CreateCategory(category);
+                    EntityframeworkCategories.CreateCategory(category);
                     createCategoryBar.IsVisible = false;
-                    categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
-                    entryCategoryNametab2.Text = "";
-                    category = null;
+                    categoryList.ItemsSource = EntityframeworkCategories.ShowAllCategories();
+                    category = new Category();
                 }
             }
 
-            catch (Exception)
+            catch (Exception exception)
             {
-                DisplayAlert("Error", "not allowed input", "ok");
+                DisplayAlert("Error", $"{exception}", "ok");
             }
         }
 
-        private void RemoveCategoryButton_Pressed(object sender, EventArgs e)
+        private void RemoveCategory_ButtonClicked(object sender, EventArgs e)
         {
-            createCategoryBar.IsVisible = false;
-            if (!removeCategoryTab.IsVisible)
+            Button btn = sender as Button;
+            Category selectedCategory = btn.BindingContext as Category;
+
+            foreach (var item in EntityframeworkProducts.ShowAllProducts())
             {
-                removeCategoryTab.IsVisible = true;
-                return;
-            }
-            try
-            {
-                if (Readers.Readers.IntReaderConvertStringToInt(entryCategoryIdtab2.Text, out int categoryId))
+                if (selectedCategory.Id == item.CategoryId)
                 {
-                    foreach (var products in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
-                    {
-                        if (products.CategoryId == categoryId)
-                        {
-                            DisplayActionSheet("Error", "You're not allowed to remove a category with existing products in it", "OK");
-                            return;
-                        }
-                    }
-                    category.Id = categoryId;
-                    EntityFrameworkCode.EntityframeworkCategories.RemoveCategory(category);
-                    removeCategoryTab.IsVisible = false;
-                    categoryList.ItemsSource = EntityFrameworkCode.EntityframeworkCategories.ShowAllCategories();
-                    entryCategoryIdtab2.Text = "";
-                    category = null;
+                    DisplayAlert("Error", "Can't remove a language with products associated to it", "OK");
+                    return;
                 }
             }
-            catch (Exception exception)
-            {
-                DisplayAlert("Error", $"{exception.Message}", "ok");
-            }
+            EntityframeworkCategories.RemoveCategory(selectedCategory);
+            categoryList.ItemsSource = EntityframeworkCategories.ShowAllCategories();
         }
 
         #endregion
@@ -432,6 +402,7 @@ namespace Decrypt_Library.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region Event buttons
+
         private void AddEventButton_Pressed(object sender, EventArgs e)
         {
             DateTime date = DateTime.Now;
@@ -465,16 +436,24 @@ namespace Decrypt_Library.Views
                     createdEvent.EventName = entryEventNametab2.Text;
                     createdEvent.Description = entryEventDescriptiontab2.Text;
                     createdEvent.Time = date;
-                    EntityFrameworkCode.EntityframeworkEvents.CreateEvent(createdEvent);
-                    eventList.ItemsSource = EntityFrameworkCode.EntityframeworkEvents.ShowAllEvents();
+                    EntityframeworkEvents.CreateEvent(createdEvent);
+                    eventList.ItemsSource = EntityframeworkEvents.ShowAllEvents();
                     createEventBar.IsVisible = false;
-                    createdEvent = null;
+                    createdEvent = new Event();
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
-                    DisplayAlert("Error", "not valid inputs", "OK");
+                    DisplayAlert("Error", $"{exception}", "OK");
                 }
             }
+        }
+        private void RemoveEvent_ButtonClicked(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Event selectedEvent = btn.BindingContext as Event;
+            EntityframeworkEvents.RemoveEvent(selectedEvent);
+
+            eventList.ItemsSource = EntityframeworkEvents.ShowAllEvents();
         }
 
         #endregion
@@ -498,44 +477,13 @@ namespace Decrypt_Library.Views
                     EntityFrameworkCode.EntityframeworkLanguages.CreateLanguage(language);
                     languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
                     createLanguageBar.IsVisible = false;
+                    language = new Language();
                 }
             } catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "OK");
             }
         }
-        #endregion
-
-        private void RemoveLanguageButton_Pressed(object sender, EventArgs e)
-        {
-            if (!removeLanguageBar.IsVisible)
-            {
-                removeLanguageBar.IsVisible = true;
-                createLanguageBar.IsVisible = false;
-                return;
-            }
-            try
-            {
-                if (Readers.Readers.IntReaderConvertStringToInt(entryLanguageRemovetab3.Text, out int languageId))
-                {
-                    foreach (var item in EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts())
-                    {
-                        if (languageId == item.LanguageId)
-                        {
-                            DisplayAlert("Error", "Can't remove a language with products associated to it", "OK");
-                        }
-                    }
-                    language.Id = languageId;
-                    EntityFrameworkCode.EntityframeworkLanguages.RemoveLanguage(language);
-                    languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
-                    removeLanguageBar.IsVisible = false;
-                }
-            } catch(Exception exception)
-            {
-                DisplayAlert("Error", $"{exception.Message}", "OK");
-            }
-        }
-
         private void entryLanguageCreatetab3_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryLanguageCreatetab3.Text = e.NewTextValue;  
@@ -548,8 +496,31 @@ namespace Decrypt_Library.Views
 
         private void ShowLanguagesButton_Pressed(object sender, EventArgs e)
         {
+            createLanguageBar.IsVisible = false;
             languageList.ItemsSource = EntityframeworkLanguages.ShowAllLanguages();
         }
+
+
+        private void Remove_LanguageButton(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Language selectedLanguage = btn.BindingContext as Language;
+
+
+            foreach (var item in EntityframeworkProducts.ShowAllProducts())
+            {
+                if (selectedLanguage.Id == item.LanguageId)
+                {
+                    DisplayAlert("Error", "Can't remove a language with products associated to it", "OK");
+                    return;
+                }
+            }
+
+            EntityframeworkLanguages.RemoveLanguage(selectedLanguage);
+            languageList.ItemsSource = EntityframeworkLanguages.ShowAllLanguages();
+        }
+        #endregion
+
 
         #region Employee Options
 
@@ -665,6 +636,7 @@ namespace Decrypt_Library.Views
         {
             Entry_Completed(sender, e);
         }
+
 
 
 

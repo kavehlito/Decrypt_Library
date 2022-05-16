@@ -591,7 +591,6 @@
                     <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
                               HasUnevenRows="False"
-                              ItemsSource="{Binding CollectionList}"
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
                               >
@@ -639,8 +638,7 @@
                                                         Grid.Column="0"
                                                         BackgroundColor="Gold"
                                                         FontAttributes="Bold"
-                                                        Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ProductList}}" 
-                                                        CommandParameter="{Binding .}"
+                                                        Clicked="RemoveProduct_ButtonClicked"
                                                         Text="Ta bort"/>
                                                     
                                                 </Grid>
@@ -750,7 +748,7 @@
                                    Padding="0"
                                    CornerRadius="20">
                                 <Entry x:Name="entryCategoryNametab2"
-                                   TextChanged="entryCategoryNametab2_TextChanged"
+                                   TextChanged="EntryCategoryNametab2_TextChanged"
                            >
                                 </Entry>
                             </Frame>
@@ -761,27 +759,10 @@
 
                         </StackLayout>
 
-                        <StackLayout x:Name="removeCategoryTab"
-                                 IsVisible="false">
-
-                            <Label TextColor="White"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           Text="Id på den kategori du vill ta bort"/>
-
-                            <Entry x:Name="entryCategoryIdtab2"
-                                   TextChanged="entryCategoryIdRemovetab2_TextChanged"
-                           >
-
-                            </Entry>
-
-                        </StackLayout>
-
                         <StackLayout x:Name="categoryTab"
                                  IsVisible="false">
                             <ListView x:Name="categoryList"
                               IsVisible="true"
-                              ItemsSource="{Binding CategoryCollectionList}"
                                       VerticalScrollBarVisibility="Never"
                               >
                                 <ListView.ItemTemplate>
@@ -808,10 +789,9 @@
                                                     <Button Grid.Column="3"
                                                     TextColor="Black"
                                                     CornerRadius="20"
+                                                            Clicked="RemoveCategory_ButtonClicked"
                                                     BackgroundColor="Gold"
                                                     FontAttributes="Bold"
-                                                    Command="{Binding Path=BindingContext.CategoryDeleteCommand, Source={x:Reference categoryList}}" 
-                                                    CommandParameter="{Binding .}"
                                                     Text="Ta bort"/>
 
                                                 </Grid>
@@ -982,7 +962,6 @@
    
                     <ListView x:Name="eventList"
                               HasUnevenRows="False"
-                              ItemsSource="{Binding EventCollectionList}"
                               VerticalScrollBarVisibility="Never"
                               
                               >
@@ -1026,8 +1005,7 @@
                                                     CornerRadius="20"
                                                     BackgroundColor="Gold"
                                                     FontAttributes="Bold"
-                                                    Command="{Binding Path=BindingContext.EventDeleteCommand, Source={x:Reference ProductList}}" 
-                                                    CommandParameter="{Binding .}"
+                                                            Clicked="RemoveEvent_ButtonClicked"
                                                     Text="Ta bort"/>
 
                                                 </Grid>
@@ -1401,6 +1379,22 @@
                                             <Label Text="{Binding Languages}"
                                                    FontAttributes="Bold"
                                                    TextColor="White"/>
+
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Button 
+                                                        TextColor="Black"
+                                                        CornerRadius="20"
+                                                        Grid.Column="1"
+                                                        BackgroundColor="Gold"
+                                                    Clicked="Remove_LanguageButton"
+                                                        FontAttributes="Bold"
+                                                        Text="Ta bort"/>
+                                            </Grid>
                                         </StackLayout>
                                     </Frame>
                                 </ViewCell>
