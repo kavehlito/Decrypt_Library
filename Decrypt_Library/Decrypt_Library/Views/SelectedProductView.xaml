@@ -15,6 +15,7 @@
                 <Label x:Name="Audiencelbl" Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
                 <Label x:Name="Langlbl" Text="{Binding Language, StringFormat='Språk: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
                 <Label x:Name="Catelbl" Text="{Binding Category, StringFormat='Kategori: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                <Label x:Name="Shelflbl" Text="{Binding Shelf, StringFormat='Hylla: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
                 <Label x:Name="mediaTypelbl" Text="{Binding MediaType, StringFormat='Format: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
                 
                 <StackLayout VerticalOptions="EndAndExpand" WidthRequest="700">
