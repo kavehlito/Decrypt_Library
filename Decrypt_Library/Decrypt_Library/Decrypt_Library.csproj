@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="SelectedEventView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
