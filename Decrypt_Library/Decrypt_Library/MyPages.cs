@@ -74,7 +74,7 @@ namespace Decrypt_Library
 
             foreach (var book in books)
             {
-                if (book != null)
+                if (book == null)
                 {
                     loanList.Add(book);
                 }
