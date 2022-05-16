@@ -6,12 +6,11 @@
             xmlns:AdminMenu="clr-namespace:Decrypt_Library.Views.Admin" x:DataType="decrypt_library:MainPage"
             x:Class="Decrypt_Library.MainPage"
             BarBackgroundColor="Black"
-            BarTextColor="White"
-            >
+            BarTextColor="White">
 
     <TabbedPage.Children>
 
-        <Views:AboutPage Title="Om oss"></Views:AboutPage>
+        <Views:AboutPage Title="Om oss" Padding="0"></Views:AboutPage>
         <Views:AccountPage Title="Mina Sidor"></Views:AccountPage>
         <Views:LoginPage Title="Logga in"></Views:LoginPage>
         <Views:SearchPage Title="Sök"></Views:SearchPage>
