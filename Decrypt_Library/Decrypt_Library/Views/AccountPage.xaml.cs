@@ -24,16 +24,22 @@ namespace Decrypt_Library.Views
             profileText.Text = MyPages.UserProfile();
         }
 
-        private void MyLoan_Clicked(object sender, EventArgs e)
+        private async void MyLoan_Clicked(object sender, EventArgs e)
         {
+            if (UserLogin.thisUser == null)
+                await DisplayAlert("Oops", "Du är inte inloggad", "OK");
+
             loanList.IsVisible = true;
             profile.IsVisible = false;
             reservations.IsVisible = false;
             loanList.ItemsSource = MyPages.LoanList();
         }
 
-        private void MyReservations_Clicked(object sender, EventArgs e)
+        private async void MyReservations_Clicked(object sender, EventArgs e)
         {
+            if (UserLogin.thisUser == null)
+                await DisplayAlert("Oops", "Du är inte inloggad", "OK");
+
             loanList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = true;
@@ -41,8 +47,11 @@ namespace Decrypt_Library.Views
             reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
 
-        private void MyLoanHistory_Clicked(object sender, EventArgs e)
+        private async void MyLoanHistory_Clicked(object sender, EventArgs e)
         {
+            if (UserLogin.thisUser == null)
+                await DisplayAlert("Oops", "Du är inte inloggad", "OK");
+
             loanList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = false;

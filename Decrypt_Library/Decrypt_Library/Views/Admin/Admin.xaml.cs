@@ -651,7 +651,7 @@ namespace Decrypt_Library.Views
             productInfo.IsVisible = true; 
         }
 
-        private void Button_Clicked_User(object sender, EventArgs e)
+        private void Button_Clicked_Loaned(object sender, EventArgs e)
         {
             productInfo.IsVisible = false;
             userInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();

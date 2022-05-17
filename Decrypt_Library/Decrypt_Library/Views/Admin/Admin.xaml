@@ -1516,7 +1516,7 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
-                        <ListView x:Name="userInfo" IsVisible="false">
+                        <ListView x:Name="loanedInfo" IsVisible="false">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
