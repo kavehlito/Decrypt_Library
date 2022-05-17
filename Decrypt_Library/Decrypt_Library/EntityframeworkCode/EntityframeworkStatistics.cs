@@ -35,6 +35,16 @@ namespace Decrypt_Library.EntityframeworkCode
             }
         }
 
+        public static int LoanedBooksATM()
+        {
+            using(var db = new Decrypt_LibraryContext())
+            {
+                var loanedBooks = db.Products.Where(s => s.Status ==false).ToList().Count();
+ 
+            return loanedBooks;
+            }
+        }
+
         // Mest frekvent läst kategori - lånehistorik
         public static List<MyPagesProductList> MostReadCategory()
         {
@@ -64,15 +74,12 @@ namespace Decrypt_Library.EntityframeworkCode
                 return amountOfBooks.Count();
             }
         }
-        // Hur många utlånade just nu
 
-
-
-        // Mest utlånat inom respektive Medietyp
         // Hur många förseningar
+        // Mest utlånat inom respektive Medietyp
+        // Funktion för mest populära event - går ej att testa än
         // Statistik på hur långa reservationer för resp bok ** 
         // Kommer joina Kategorier och Users (skulle vi tro)
-        // Funktion för mest populära event - går ej att testa än
         // TIPS PÅ NY FUNKTION: I statistik ska en knapp finnas "Skicka varning" där när användare loggar in nästa
         // gång så dyker en DisplayAlert upp med "Du har fått en varning, lämna genast tillbaka din bok"
     }

@@ -1495,15 +1495,22 @@
 
                         <ScrollView>
                             <StackLayout>
-                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White"/>
-                            <ListView x:Name="productInfo" IsVisible="false">
+                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="15" TextColor="White"/>
+                                <StackLayout>
+                                    
+                                </StackLayout>
+                                <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="15" TextColor="White"/>
+                                <ListView x:Name="productInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding CategoriesName, StringFormat='Kategori: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding CategoriesName, StringFormat='{0}'}" TextColor="White" FontAttributes="Bold"/>
                                                 <Label Text="{Binding Count, StringFormat='Antal: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                            </StackLayout>
+                                                    <StackLayout>
+                                                        
+                                                    </StackLayout>
+                                                </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -1525,7 +1532,7 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout >
+                                            <StackLayout>
                                                 <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding UserName}"/>
                                                 <Label Text="{Binding UserName, StringFormat= 'Namn: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
                                                 <Label Text="{Binding Ssn, StringFormat= 'Personnr: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
@@ -1554,11 +1561,13 @@
 
 
                         <ScrollView>
-                            <ListView x:Name="loanedInfo" IsVisible="false">
+                            <StackLayout>
+                                <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White"/>
+                                <ListView x:Name="loanedInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout >
+                                            <StackLayout>
                                                 <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
                                                 <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
                                                 <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
@@ -1572,6 +1581,7 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
+                            </StackLayout>
                         </ScrollView>
 
                     </Frame>

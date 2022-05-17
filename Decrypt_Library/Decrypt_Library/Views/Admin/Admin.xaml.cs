@@ -654,6 +654,11 @@ namespace Decrypt_Library.Views
             var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
             AmountOfBooks.Text = $"Antal produkter i sortimentet just nu: {bookNr}";
             AmountOfBooks.IsVisible = true;
+
+            FavoriteCategory.IsVisible = true;
+            FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
+
+            AmountOfBooksLoaned.IsVisible = false;
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)
@@ -662,6 +667,12 @@ namespace Decrypt_Library.Views
             userInfo.IsVisible=false;
             loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
             loanedInfo.IsVisible =true;
+
+            var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
+            AmountOfBooksLoaned.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
+            AmountOfBooks.IsVisible = false;
+            AmountOfBooksLoaned.IsVisible = true;
+            FavoriteCategory.IsVisible = false;
         }
 
         private void Button_Clicked_User(object sender, EventArgs e)
@@ -670,6 +681,7 @@ namespace Decrypt_Library.Views
             productInfo.IsVisible = false;
             userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers();
             userInfo.IsVisible= true;
+            FavoriteCategory.IsVisible=false;
         }
     }
 }
