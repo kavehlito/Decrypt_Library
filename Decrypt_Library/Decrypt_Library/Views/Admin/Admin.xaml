@@ -1688,7 +1688,7 @@
                                             <StackLayout Margin="0,20,0,0">
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="{Binding CategoriesName, StringFormat='{0}:'}" TextColor="White" FontAttributes="Bold"/>
-                                                    <Label Text="{Binding Count, StringFormat=' {0} st'}" TextColor="White" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Count, StringFormat='Lånad {0} ggr'}" TextColor="White" FontAttributes="Bold"/>
                                                 </StackLayout>
                                                 <BoxView BackgroundColor="White"
                                                      HeightRequest="3" >
@@ -1744,30 +1744,65 @@
                            HeightRequest="400"
                            Grid.Row="1">
 
+                        <ScrollView VerticalScrollBarVisibility="Never">
+                            <StackLayout>
 
-                        <StackLayout>
-                            <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White" FontSize="16"
+                                <StackLayout>
+                                    <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                            <ListView x:Name="loanedInfo" IsVisible="false">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout>
-                                                <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
-                                                <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
-                                                <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
-                                                <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+                                    <ListView x:Name="loanedInfo" IsVisible="false">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
+                                                        <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                        <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                        <Label Text="{Binding EndDate, StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
 
-                                                <BoxView BackgroundColor="White"
+                                                        <BoxView BackgroundColor="White"
                                                      HeightRequest="3" >
-                                                </BoxView>
-                                            </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>
+                                                        </BoxView>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White" FontSize="16"
+                                       TextDecorations="Underline" Padding="0"/>
+
+                                    <ListView x:Name="loanedInfoStatistics" IsVisible="false">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
+                                                        <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                        <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                        <Label Text="{Binding EndDate,StringFormat= 'Återlämnades: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+
+                                                        <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+
+
+
+                            </StackLayout>
+
+                        </ScrollView>
+
+
+                       
                     </Frame>
 
 
