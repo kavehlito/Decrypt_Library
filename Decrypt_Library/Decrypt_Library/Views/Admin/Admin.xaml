@@ -1459,14 +1459,15 @@
                                     Grid.Column="1"
                                     CornerRadius="0"
                                     FontAttributes="Bold"
-                                    Clicked="Button_Clicked_Loaned"/>
+                                    Clicked="Button_Clicked_User"/>
 
                             <Button Text="Utlåning"
                                     BackgroundColor="Gold"
                                     TextColor="Black"
                                     Grid.Column="2"
                                     CornerRadius="0"
-                                    FontAttributes="Bold"/>
+                                    FontAttributes="Bold"
+                                    Clicked="Button_Clicked_Loaned"/>
                         </Grid>
                     </Frame>
                 </Grid>
@@ -1520,25 +1521,27 @@
                            Grid.Row="1">
 
                         <ScrollView>
-                            <ListView x:Name="loanedInfo" IsVisible="false">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout >
-                                            <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
-                                            <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
-                                            <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
-                                            <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+                            <ListView x:Name="userInfo" IsVisible="false">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout >
+                                                <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding UserName}"/>
+                                                <Label Text="{Binding UserName, StringFormat= 'Namn: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                <Label Text="{Binding Ssn, StringFormat= 'Personnr: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                <Label Text="{Binding Phonenumber,StringFormat= 'Tele: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+                                                <Label Text="{Binding Email,StringFormat= 'Email: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
 
-                                            <BoxView BackgroundColor="White"
+                                                <BoxView BackgroundColor="White"
                                                      HeightRequest="3" >
-                                            </BoxView>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                                </BoxView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </ScrollView>
+
                     </Frame>
 
                     <Frame BorderColor="Transparent"
@@ -1548,6 +1551,28 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
+
+
+                        <ScrollView>
+                            <ListView x:Name="loanedInfo" IsVisible="false">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout >
+                                                <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
+                                                <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+
+                                                <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                </BoxView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
 
                     </Frame>
 

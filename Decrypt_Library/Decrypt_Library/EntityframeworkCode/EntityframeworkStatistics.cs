@@ -66,6 +66,8 @@ namespace Decrypt_Library.EntityframeworkCode
         }
         // Hur många utlånade just nu
 
+
+
         // Mest utlånat inom respektive Medietyp
         // Hur många förseningar
         // Statistik på hur långa reservationer för resp bok ** 

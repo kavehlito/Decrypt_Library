@@ -647,6 +647,7 @@ namespace Decrypt_Library.Views
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
             loanedInfo.IsVisible = false;
+            userInfo.IsVisible = false;
             productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
             productInfo.IsVisible = true; 
         }
@@ -654,8 +655,17 @@ namespace Decrypt_Library.Views
         private void Button_Clicked_Loaned(object sender, EventArgs e)
         {
             productInfo.IsVisible = false;
+            userInfo.IsVisible=false;
             loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
             loanedInfo.IsVisible =true;
+        }
+
+        private void Button_Clicked_User(object sender, EventArgs e)
+        {
+            loanedInfo.IsVisible=false;
+            productInfo.IsVisible = false;
+            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers();
+            userInfo.IsVisible= true;
         }
     }
 }
