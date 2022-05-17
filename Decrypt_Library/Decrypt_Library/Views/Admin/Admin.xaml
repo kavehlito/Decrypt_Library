@@ -1674,6 +1674,30 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
+
+                        <ScrollView>
+                            <StackLayout>
+                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding="8" TextDecorations="Underline"/>
+                                    <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding ="8" TextDecorations="Underline"/>
+                                    <ListView x:Name="productInfo" IsVisible="false">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                                <StackLayout Margin="0,20,0,0">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding CategoriesName, StringFormat='{0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                        <Label Text="{Binding Count, StringFormat=' {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                    </StackLayout>
+                                                    <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            </StackLayout>
+                        </ScrollView>
                     </Frame>
 
                     <Frame BorderColor="Transparent"
@@ -1683,6 +1707,29 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
+
+                        <ScrollView>
+                            <ListView x:Name="userInfo" IsVisible="false">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding UserName}"/>
+                                                <Label Text="{Binding UserName, StringFormat= 'Namn: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                <Label Text="{Binding Ssn, StringFormat= 'Personnr: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                <Label Text="{Binding Phonenumber,StringFormat= 'Tele: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+                                                <Label Text="{Binding Email,StringFormat= 'Email: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+
+                                                <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                </BoxView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
+
                     </Frame>
 
                     <Frame BorderColor="Transparent"
@@ -1692,6 +1739,32 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
+
+
+                        <ScrollView>
+                            <StackLayout>
+                                <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White"/>
+                                <ListView x:Name="loanedInfo" IsVisible="false">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
+                                                <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+
+                                                <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                </BoxView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            </StackLayout>
+                        </ScrollView>
+
                     </Frame>
 
 
