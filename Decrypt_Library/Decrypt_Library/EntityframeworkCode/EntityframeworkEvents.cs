@@ -20,6 +20,16 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
+        public static Models.Event ShowSelectedEvents(int eventId)
+        {
+
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var events = db.Events.SingleOrDefault(x => x.Id == eventId);
+                return events;
+            }
+        }
+
         public static void RemoveEvent(Event selectedEvent)
         {
             using (var db = new Decrypt_LibraryContext())

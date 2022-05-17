@@ -1,7 +1,6 @@
 ﻿using Decrypt_Library.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Decrypt_Library.EntityFrameworkCode
@@ -11,27 +10,31 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         public static List<MyPagesProductList> ShowUserReservations()
         {
-           
-                using (var db = new Decrypt_LibraryContext())
-                {
-                    var reservation = from
-                                      bookHistory in db.BookHistories
-                                      join
-                                      product in db.Products on bookHistory.ProductId equals product.Id
-                                      where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 3
-                                      select new MyPagesProductList
-                                      {
-                                          ID = bookHistory.Id,
-                                          Title = product.Title,
-                                          Author = product.AuthorName,
-                                          ISBN = product.Isbn,
-                                          StartDate = bookHistory.StartDate,
-                                          EndDate = bookHistory.EndDate,
+            if (UserLogin.thisUser == null) return null;
 
-                                      };
-                    return reservation.ToList();
 
-                }
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var reservation = from
+                                  bookHistory in db.BookHistories
+                                  join
+                                  product in db.Products on bookHistory.ProductId equals product.Id
+                                  where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 3
+                                  select new MyPagesProductList
+                                  {
+                                      ID = bookHistory.Id,
+                                      Title = product.Title,
+                                      Author = product.AuthorName,
+                                      ISBN = product.Isbn,
+                                      StartDate = bookHistory.StartDate,
+                                      EndDate = bookHistory.EndDate,
+
+                                  };
+                return reservation.ToList();
+
+            }
+
+
         }
 
         public static List<MyPagesProductList> ShowUserLoanHistory()
@@ -95,6 +98,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         public Int64? ISBN { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-
+        public string CategoriesName { get; set; }
+        public int Count { get; set; }
     }
 }

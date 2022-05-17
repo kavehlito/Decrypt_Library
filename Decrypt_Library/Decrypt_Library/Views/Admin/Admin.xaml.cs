@@ -674,9 +674,32 @@ namespace Decrypt_Library.Views
                 }
             }
 
-            EntityframeworkUsers.RemoveUser(user);
+        private void Button_Clicked_Product(object sender, EventArgs e)
+        {
+            loanedInfo.IsVisible = false;
+            userInfo.IsVisible = false;
+            productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
+            productInfo.IsVisible = true;
 
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers();
+            var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
+            AmountOfBooks.Text = $"Antal produkter i sortimentet just nu: {bookNr}";
+            AmountOfBooks.IsVisible = true;
+        }
+
+        private void Button_Clicked_Loaned(object sender, EventArgs e)
+        {
+            productInfo.IsVisible = false;
+            userInfo.IsVisible=false;
+            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
+            loanedInfo.IsVisible =true;
+        }
+
+        private void Button_Clicked_User(object sender, EventArgs e)
+        {
+            loanedInfo.IsVisible=false;
+            productInfo.IsVisible = false;
+            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers();
+            userInfo.IsVisible= true;
         }
     }
 }
