@@ -516,7 +516,6 @@ namespace Decrypt_Library.Views
         }
         #endregion
 
-
         #region Employee Options
 
         private void AddUser_ButtonClicked(object sender, EventArgs e)
