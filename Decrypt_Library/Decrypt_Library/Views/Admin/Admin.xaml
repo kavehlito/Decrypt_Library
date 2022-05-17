@@ -1459,7 +1459,7 @@
                                     Grid.Column="1"
                                     CornerRadius="0"
                                     FontAttributes="Bold"
-                                    Clicked="Button_Clicked_User"/>
+                                    Clicked="Button_Clicked_Loaned"/>
 
                             <Button Text="Utlåning"
                                     BackgroundColor="Gold"
@@ -1516,7 +1516,9 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
-                        <ListView x:Name="loanedInfo" IsVisible="false">
+
+                        <ScrollView>
+                            <ListView x:Name="loanedInfo" IsVisible="false">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -1534,7 +1536,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
+                        </ScrollView>
                     </Frame>
 
                     <Frame BorderColor="Transparent"
