@@ -520,7 +520,6 @@ namespace Decrypt_Library.Views
         }
         #endregion
 
-
         #region Employee Options
 
         private void AddUser_ButtonClicked(object sender, EventArgs e)
@@ -673,6 +672,7 @@ namespace Decrypt_Library.Views
                     }
                 }
             }
+        }
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
@@ -689,17 +689,17 @@ namespace Decrypt_Library.Views
         private void Button_Clicked_Loaned(object sender, EventArgs e)
         {
             productInfo.IsVisible = false;
-            userInfo.IsVisible=false;
+            userInfo.IsVisible = false;
             loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
-            loanedInfo.IsVisible =true;
+            loanedInfo.IsVisible = true;
         }
 
         private void Button_Clicked_User(object sender, EventArgs e)
         {
-            loanedInfo.IsVisible=false;
+            loanedInfo.IsVisible = false;
             productInfo.IsVisible = false;
             userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers();
-            userInfo.IsVisible= true;
+            userInfo.IsVisible = true;
         }
     }
 }
