@@ -100,6 +100,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         public DateTime? EndDate { get; set; }
         public string CategoriesName { get; set; }
         public int Count { get; set; }
+        public int Sum { get; set; }
 
     }
 }
