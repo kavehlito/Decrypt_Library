@@ -1495,7 +1495,7 @@
 
                         <ScrollView>
                             <StackLayout>
-                                <Label x:Name="AmountOfBooks"/>
+                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White"/>
                             <ListView x:Name="productInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>

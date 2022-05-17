@@ -649,7 +649,11 @@ namespace Decrypt_Library.Views
             loanedInfo.IsVisible = false;
             userInfo.IsVisible = false;
             productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
-            productInfo.IsVisible = true; 
+            productInfo.IsVisible = true;
+
+            var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
+            AmountOfBooks.Text = $"Antal produkter i sortimentet just nu: {bookNr}";
+            AmountOfBooks.IsVisible = true;
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)
