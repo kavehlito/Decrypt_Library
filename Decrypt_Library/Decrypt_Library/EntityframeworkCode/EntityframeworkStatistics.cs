@@ -55,20 +55,13 @@ namespace Decrypt_Library.EntityframeworkCode
             }
         }
         // Antal böcker i sortimentet just nu
-        public static List<MyPagesProductList> AmountOfBooks()
+        public static int AmountOfBooks()
         {
             using(var db = new Decrypt_LibraryContext())
             {
-                var amountOfBooks = (from
-                                    books in db.Products
-                                    .Select(b => new MyPagesProductList
-                                    {
-                                        ISBN =b.Id,
-                                        Sum = b.Sum(),
-
-                                    }).OrderByDescending(b => b.Sum).ToList();
+                var amountOfBooks = db.Products;
                 
-                return amountOfBooks;
+                return amountOfBooks.Count();
             }
         }
         // Hur många utlånade just nu

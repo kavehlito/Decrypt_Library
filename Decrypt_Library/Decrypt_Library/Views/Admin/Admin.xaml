@@ -1493,7 +1493,8 @@
                            Grid.Row="1">
 
                         <ScrollView>
-
+                            <StackLayout>
+                                <Label x:Name="AmountOfBooks"/>
                             <ListView x:Name="productInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -1506,6 +1507,7 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
+                            </StackLayout>
                         </ScrollView>
                     </Frame>
 
