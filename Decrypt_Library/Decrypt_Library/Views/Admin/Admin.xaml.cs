@@ -18,15 +18,14 @@ namespace Decrypt_Library.Views
         public AdminPage()
         {
             InitializeComponent();
-            var employees = EntityframeworkUsers.ShowAllUsers();
-            var employeeList = employees.Where(el => el.UserTypeId == 2).ToList();
 
-            userList.ItemsSource = employeeList;
             shelfPicker.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
             categoryPicker.ItemsSource = EntityframeworkCategories.ShowAllCategoryNames();
             audiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups();
             mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
             languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
+            userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
+
         }
 
         Product product = new Product();
@@ -524,87 +523,64 @@ namespace Decrypt_Library.Views
 
         #region Employee Options
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void AddUser_ButtonClicked(object sender, EventArgs e)
         {
             userList.IsVisible = false;
             register.IsVisible = true;
             startLabel.IsVisible = false;
             endLabel.IsVisible = true;
-            pressedButton.IsVisible = false;    
 
             //await Navigation.PushAsync(new RegisterPage());
-
         }
 
-        bool correctUserName = false;
-        bool correctPassword = false;
-        bool correctEmail = false;
-        bool correctPhone = false;
-        bool correctSSN = false;
+        public static bool correctUserName = false;
+        public static bool correctPassword = false;
+        public static bool correctConfirmationPassword = false;
+        public static bool correctEmail = false;
+        public static bool correctPhone = false;
+        public static bool correctSSN = false;
 
-        private void Entry_Completed(object sender, EventArgs e)
+        private void RegisterUser_AdminClicked(object sender, EventArgs e)
         {
             var user = new User();
             long convertedPhoneNr = 0;
             long convertedSSN = 0;
+            int userType = 0;
 
             try
             {
-                correctUserName = Readers.Readers.StringReaderSpecifyStringRange(Username.Text, 3, 15);
-                correctPassword = Readers.Readers.StringPasswordCorrect(Password.Text, 8, true);
-                correctEmail = Readers.Readers.EmailReader(Email.Text);
+                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
                 correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
                 correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
+                
+                foreach (var item in EntityframeworkUsers.ShowAllUserTypes())
+                {
+                    if (item.UserTypeName.Contains(userIDpicker.SelectedItem.ToString()))
+                        userType = item.Id;
+                }
 
-                if (!correctUserName)
-                    wrongUsernameInput.IsVisible = true;
-                else
-                    wrongUsernameInput.IsVisible = false;
-
-                if (!correctPassword)
-                    wrongPasswordInput.IsVisible = true;
-                else
-                    wrongPasswordInput.IsVisible = false;
-
-                if (!correctEmail)
-                    wrongEmailInput.IsVisible = true;
-                else
-                    wrongEmailInput.IsVisible = false;
-
-                correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
-                if (!correctPhone)
-                    wrongPhoneInput.IsVisible = true;
-                else
-                    wrongPhoneInput.IsVisible = false;
-
-                correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
                 if (!correctSSN)
                 {
-                    wrongSSNInput.IsVisible = true;
-
                     foreach (var item in EntityframeworkUsers.ShowAllUsers())
                     {
                         if (item.Ssn == user.Ssn)
                         {
                             DisplayAlert("Error!", "Det finns redan en användare med samma personnummer", "Gå vidare");
-
                         }
                     }
                 }
-                if (!correctSSN)
-                {
-                    wrongSSNInput.IsVisible = true;
-                    //return;
-                }
-                else
-                    wrongSSNInput.IsVisible = false;
             }
             catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "Try again!");
             }
 
-            bool completeRegistration = correctUserName && correctPassword && correctEmail && correctPhone && correctSSN;
+            bool completeRegistration = correctUserName 
+                                        && correctPassword 
+                                        && correctEmail 
+                                        && correctPhone 
+                                        && correctSSN
+                                        && correctConfirmationPassword;
 
             if (completeRegistration)
             {
@@ -613,8 +589,16 @@ namespace Decrypt_Library.Views
                 user.Email = Email.Text;
                 user.Phonenumber = convertedPhoneNr;
                 user.Ssn = convertedSSN;
-                user.UserTypeId = 2;
+                user.UserTypeId = userType;
 
+                Username.Text = "";
+                Email.Text = "";
+                SSN.Text = "";
+                Phone.Text = "";
+                Password.Text = "";
+                passwordConfirmation.Text = "";
+                register.IsVisible = false;
+                userList.IsVisible = true;
 
                 EntityframeworkUsers.CreateUser(user);
                 DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
@@ -634,15 +618,65 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            Entry_Completed(sender, e);
+            RegisterUser_AdminClicked(sender, e);
         }
-
-
-
-
 
         #endregion
 
+        private void ShowAllUsers_Clicked(object sender, EventArgs e)
+        {
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.Id >= 2);
+            register.IsVisible = false;
+            endLabel.IsVisible = false;
+            startLabel.IsVisible = true;
+            userList.IsVisible = true;
+        }
 
+        private void Username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Username.Text = e.NewTextValue;
+        }
+        private void Email_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Email.Text = e.NewTextValue;
+        }
+        private void SSN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SSN.Text= e.NewTextValue;
+        }
+        private void Phone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Phone.Text = e.NewTextValue;
+        }
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Password.Text = e.NewTextValue;
+        }
+        private void PasswordConfirmation_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            passwordConfirmation.Text = e.NewTextValue;
+        }
+
+        private void Remove_UserClicked(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            User user = btn.BindingContext as User;
+
+            foreach (var users in EntityframeworkUsers.ShowAllUsers())
+            {
+                foreach (var bookhistory in users.BookHistories)
+                {
+                    if (bookhistory.UserId == user.Id)
+                    {
+                        DisplayAlert("Error", "Du kan inte ta bort en användare med historik", "OK");
+                        return;
+                    }
+                }
+            }
+
+            EntityframeworkUsers.RemoveUser(user);
+
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers();
+        }
     }
 }
