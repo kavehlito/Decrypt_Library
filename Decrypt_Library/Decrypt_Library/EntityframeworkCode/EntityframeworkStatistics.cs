@@ -54,11 +54,27 @@ namespace Decrypt_Library.EntityframeworkCode
                 return mostRead;
             }
         }
+        // Antal böcker i sortimentet just nu
+        public static List<MyPagesProductList> AmountOfBooks()
+        {
+            using(var db = new Decrypt_LibraryContext())
+            {
+                var amountOfBooks = (from
+                                    books in db.Products
+                                    .Select(b => new MyPagesProductList
+                                    {
+                                        ISBN =b.Id,
+                                        Sum = b.Sum(),
+
+                                    }).OrderByDescending(b => b.Sum).ToList();
+                
+                return amountOfBooks;
+            }
+        }
+        // Hur många utlånade just nu
 
         // Mest utlånat inom respektive Medietyp
-        // Antal böcker i sortimentet just nu
         // Hur många förseningar
-        // Hur många utlånade just nu
         // Statistik på hur långa reservationer för resp bok ** 
         // Kommer joina Kategorier och Users (skulle vi tro)
         // Funktion för mest populära event - går ej att testa än
