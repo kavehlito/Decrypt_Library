@@ -691,7 +691,7 @@ namespace Decrypt_Library.Views
         {
             productInfo.IsVisible = false;
             userInfo.IsVisible = false;
-            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
+            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder().Where(x => x.EndDate == null);
             loanedInfo.IsVisible = true;
 
             var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
@@ -705,11 +705,11 @@ namespace Decrypt_Library.Views
         {
             loanedInfo.IsVisible = false;
             productInfo.IsVisible = false;
-            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers();
+            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.Id >= 2);
             userInfo.IsVisible = true;
             FavoriteCategory.IsVisible = false;
             AmountOfBooks.IsVisible = false;
-            AmountOfBooksLoaned.IsVisible=false;
+            AmountOfBooksLoaned.IsVisible = false;
         }
 
     }

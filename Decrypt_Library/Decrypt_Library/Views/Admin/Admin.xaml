@@ -1678,29 +1678,27 @@
                            HeightRequest="400"
                            Grid.Row="1">
 
-                        <ScrollView>
-                            <StackLayout>
-                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
-                                    <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding ="0" TextDecorations="Underline"/>
-                                    <ListView x:Name="productInfo" IsVisible="false">
+                        <StackLayout>
+                            <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
+                            <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding ="0" TextDecorations="Underline"/>
+                            <ListView x:Name="productInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                                <StackLayout Margin="0,20,0,0">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{Binding CategoriesName, StringFormat='{0}:'}" TextColor="White" FontAttributes="Bold"/>
-                                                        <Label Text="{Binding Count, StringFormat=' {0} st'}" TextColor="White" FontAttributes="Bold"/>
-                                                    </StackLayout>
-                                                    <BoxView BackgroundColor="White"
+                                            <StackLayout Margin="0,20,0,0">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding CategoriesName, StringFormat='{0}:'}" TextColor="White" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Count, StringFormat=' {0} st'}" TextColor="White" FontAttributes="Bold"/>
+                                                </StackLayout>
+                                                <BoxView BackgroundColor="White"
                                                      HeightRequest="3" >
-                                                        </BoxView>
-                                                    </StackLayout>
+                                                </BoxView>
+                                            </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                            </StackLayout>
-                        </ScrollView>
+                        </StackLayout>
                     </Frame>
 
                     <Frame BorderColor="Transparent"
@@ -1710,8 +1708,8 @@
                            IsVisible="True"
                            HeightRequest="400"
                            Grid.Row="1">
-
-                        <ScrollView>
+                        
+                        <StackLayout>
                             <ListView x:Name="userInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -1731,7 +1729,10 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </ScrollView>
+
+                        </StackLayout>
+
+                          
 
                     </Frame>
 
@@ -1744,11 +1745,11 @@
                            Grid.Row="1">
 
 
-                        <ScrollView>
-                            <StackLayout>
-                                <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White" FontSize="16"
+                        <StackLayout>
+                            <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
-                                <ListView x:Name="loanedInfo" IsVisible="false">
+
+                            <ListView x:Name="loanedInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -1766,9 +1767,7 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                            </StackLayout>
-                        </ScrollView>
-
+                        </StackLayout>
                     </Frame>
 
 
