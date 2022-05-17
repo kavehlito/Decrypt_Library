@@ -1495,22 +1495,21 @@
 
                         <ScrollView>
                             <StackLayout>
-                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="15" TextColor="White"/>
-                                <StackLayout>
-                                    
-                                </StackLayout>
-                                <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="15" TextColor="White"/>
-                                <ListView x:Name="productInfo" IsVisible="false">
+                                <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding="8" TextDecorations="Underline"/>
+                                    <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding ="8" TextDecorations="Underline"/>
+                                    <ListView x:Name="productInfo" IsVisible="false">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding CategoriesName, StringFormat='{0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Count, StringFormat='Antal: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                    <StackLayout>
-                                                        
+                                                <StackLayout Margin="0,20,0,0">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding CategoriesName, StringFormat='{0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                        <Label Text="{Binding Count, StringFormat=' {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                     </StackLayout>
-                                                </StackLayout>
+                                                    <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
