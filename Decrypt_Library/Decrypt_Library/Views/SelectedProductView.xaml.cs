@@ -16,6 +16,7 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
+            reviewList.ItemsSource = EntityframeworkReview.ShowBookReview(Title);
 
             if (UserLogin.thisUser == null)
             {
@@ -30,7 +31,7 @@ namespace Decrypt_Library.Views
 
             if (LoanOrReserveButton.Text == "True")
             {
-                LoanOrReserveButton.Text = "Låna";
+                LoanOrReserveButton.IsVisible = false;
                 statuslbl.Text = "Produkten finns att låna";
             }
             else

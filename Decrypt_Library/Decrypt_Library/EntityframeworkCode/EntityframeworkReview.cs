@@ -9,14 +9,21 @@ namespace Decrypt_Library.EntityFrameworkCode
 {
     internal class EntityframeworkReview
     {
-        public static List<Review> ShowBookReview(User user)
+        public static List<ReviewNames> ShowBookReview(string title)
         {
-            var review = new List<Review>();
-
             using (var db = new Decrypt_LibraryContext())
             {
-                review = db.Reviews.ToList();
-                return review;
+                var reviews = (from r in db.Reviews
+                              join p in db.Products on r.ProduktId equals p.Id
+                              join u in db.Users on r.UserId equals u.Id
+                              where p.Title == title
+                              select new ReviewNames
+                              {
+                                  UserName = u.UserName,
+                                  ReviewText = r.ReviewText,
+                                  Stars = r.Stars
+                              }).ToList();
+                return reviews;
             }
         }
     }
