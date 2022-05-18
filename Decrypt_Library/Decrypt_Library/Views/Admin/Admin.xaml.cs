@@ -630,9 +630,7 @@ namespace Decrypt_Library.Views
             {
                 DisplayAlert("Ooops", "Dubbelkolla alla fält och försök igen", "OK");
             }
-
         }
-
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
@@ -700,6 +698,16 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
+            example2.IsVisible = false;
+            example3.IsVisible = false;
+
+            if (!example1.IsVisible)
+            {
+                example1.IsVisible = true;
+                return;
+            }
+
+
             productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
             productInfo.IsVisible = true;
 
@@ -722,8 +730,6 @@ namespace Decrypt_Library.Views
 
             mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
             mostPopular.IsVisible = true;
-
-
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)

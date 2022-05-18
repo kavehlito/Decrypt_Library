@@ -594,13 +594,11 @@
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
                               >
-
                         <ListView.Header>
-
-                    
-                                <StackLayout x:Name="shelfChangeTab"  
+                            
+                                <StackLayout x:Name="shelfChangeTab"
+                                             Margin="0,15,0,15"
                                          IsVisible="False">
-
 
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -1743,13 +1741,13 @@
                            HeightRequest="400"
                            Grid.Row="1">
 
-                        <ScrollView VerticalScrollBarVisibility="Never">
+                        <ScrollView VerticalScrollBarVisibility="Always">
 
                             <StackLayout>
-                                <StackLayout>
                                     <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
                                     <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding ="0" TextDecorations="Underline"/>
-                                    <ListView x:Name="productInfo" IsVisible="false">
+                                    <ListView x:Name="productInfo" IsVisible="True"
+                                              HeightRequest="250">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -1766,12 +1764,9 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                </StackLayout>
 
-
-                                <StackLayout>
-                                    <Label x:Name="TopFive" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
-                                    <ListView x:Name="mostPopular" IsVisible="false">
+                                    <Label x:Name="TopFive" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
+                                    <ListView x:Name="mostPopular" IsVisible="True">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -1788,20 +1783,15 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                </StackLayout>
-
                             </StackLayout>
-
-
                         </ScrollView>
-
                     </Frame>
 
                     <Frame BorderColor="Transparent"
                            Grid.Column="1"
                            WidthRequest="400"
                            x:Name="example2"
-                           IsVisible="True"
+                           IsVisible="False"
                            HeightRequest="400"
                            Grid.Row="1">
 
@@ -1836,7 +1826,7 @@
                            Grid.Column="1"
                            WidthRequest="400"
                            x:Name="example3"
-                           IsVisible="True"
+                           IsVisible="False"
                            HeightRequest="400"
                            Grid.Row="1">
 
