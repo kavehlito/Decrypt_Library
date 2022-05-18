@@ -624,7 +624,7 @@ namespace Decrypt_Library.Views
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.Id >= 2);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
             register.IsVisible = false;
             endLabel.IsVisible = false;
             startLabel.IsVisible = true;
@@ -695,9 +695,8 @@ namespace Decrypt_Library.Views
         {
             productInfo.IsVisible = false;
             userInfo.IsVisible = false;
-            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
-            loanedInfo.IsVisible =true;
-
+            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder().Where(x=>x.EndDate > DateTime.Now);
+            loanedInfo.IsVisible = true;
             var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
             AmountOfBooksLoaned.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
             AmountOfBooks.IsVisible = false;

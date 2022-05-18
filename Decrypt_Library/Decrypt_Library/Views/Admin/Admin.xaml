@@ -1679,7 +1679,7 @@
                             <StackLayout>
                                 <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding="8" TextDecorations="Underline"/>
                                     <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding ="8" TextDecorations="Underline"/>
-                                    <ListView x:Name="productInfo" IsVisible="false">
+                                    <ListView x:Name="productInfo" IsVisible="False">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>

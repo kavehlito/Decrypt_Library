@@ -20,7 +20,6 @@ namespace Decrypt_Library.Views
             loanHistoryList.IsVisible = false;
             reservations.IsVisible = false;
 
-
             profileText.Text = MyPages.UserProfile();
         }
 
