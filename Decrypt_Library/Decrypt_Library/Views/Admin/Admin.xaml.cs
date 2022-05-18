@@ -689,6 +689,13 @@ namespace Decrypt_Library.Views
             AmountOfBooksLoanedATM.IsVisible = false;
             loanedInfoStatistics.IsVisible = false;
 
+            TopFive.Text = "TOP 5 mest lånade produkter";
+            TopFive.IsVisible = true;
+
+            mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
+            mostPopular.IsVisible = true;
+
+
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)
@@ -710,6 +717,8 @@ namespace Decrypt_Library.Views
             userInfo.IsVisible = false;
             AmountOfBooks.IsVisible = false;
             FavoriteCategory.IsVisible = false;
+            TopFive.IsVisible=false;
+            mostPopular.IsVisible = false;
         }
 
         private void Button_Clicked_User(object sender, EventArgs e)
@@ -724,6 +733,8 @@ namespace Decrypt_Library.Views
             AmountOfBooksLoaned.IsVisible = false;
             AmountOfBooksLoanedATM.IsVisible = false;
             loanedInfoStatistics.IsVisible = false;
+            TopFive.IsVisible = false;
+            mostPopular.IsVisible = false;
         }
 
     }
