@@ -1,6 +1,5 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -45,7 +44,7 @@ namespace Decrypt_Library.EntityframeworkCode
                                     join
                                     product in db.Products on loaned.ProductId equals product.Id
                                     orderby loaned.StartDate descending
-                                    where loaned.EventId == 2 
+                                    where loaned.EventId == 2
                                     select new MyPagesProductList
                                     {
                                         ID = loaned.Id,
@@ -60,14 +59,33 @@ namespace Decrypt_Library.EntityframeworkCode
 
             }
         }
+
+        public static List<MyPagesProductList> ShowTopFiveMostRead()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var mostRead = (from
+                               mostPop in db.BookHistories
+                                join product in db.Products on mostPop.ProductId equals product.Id
+                                where mostPop.EventId == 2
+                                select product).ToList().GroupBy(c => c.Id)
+                                    .Select(c => new MyPagesProductList
+                                    {
+                                        Title = c.FirstOrDefault().Title,
+                                        Count = c.Count(),
+                                    }).OrderByDescending(c => c.Count).ToList().Take(5);
+                return mostRead.ToList();
+            }
+
+        }
         // Amount of books loaned at the moment
         public static int LoanedBooksATM()
         {
-            using(var db = new Decrypt_LibraryContext())
+            using (var db = new Decrypt_LibraryContext())
             {
-                var loanedBooks = db.Products.Where(s => s.Status ==false).ToList().Count();
- 
-            return loanedBooks;
+                var loanedBooks = db.Products.Where(s => s.Status == false).ToList().Count();
+
+                return loanedBooks;
             }
         }
 
@@ -93,10 +111,10 @@ namespace Decrypt_Library.EntityframeworkCode
         // Total amount of books in the library
         public static int AmountOfBooks()
         {
-            using(var db = new Decrypt_LibraryContext())
+            using (var db = new Decrypt_LibraryContext())
             {
                 var amountOfBooks = db.Products;
-                
+
                 return amountOfBooks.Count();
             }
         }
