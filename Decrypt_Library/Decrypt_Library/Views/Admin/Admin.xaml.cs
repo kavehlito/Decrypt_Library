@@ -116,7 +116,7 @@ namespace Decrypt_Library.Views
         private void ShowNoWindows()
         {
             createProductTab.IsVisible = false;
-
+            shelfChangeTab.IsVisible = false;
         }
 
         private void ShowProductsButton_Pressed(object sender, EventArgs e)
