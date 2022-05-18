@@ -35,7 +35,7 @@ namespace Decrypt_Library.EntityframeworkCode
 
             }
         }
-
+        // Shows all the loaned books
         public static List<MyPagesProductList> ShowLoansByDescOrderGeneral()
         {
             using (var db = new Decrypt_LibraryContext())
@@ -60,7 +60,7 @@ namespace Decrypt_Library.EntityframeworkCode
 
             }
         }
-
+        // Amount of books loaned at the moment
         public static int LoanedBooksATM()
         {
             using(var db = new Decrypt_LibraryContext())
@@ -71,7 +71,7 @@ namespace Decrypt_Library.EntityframeworkCode
             }
         }
 
-        // Mest frekvent läst kategori - lånehistorik
+        // Most read category
         public static List<MyPagesProductList> MostReadCategory()
         {
             using (var db = new Decrypt_LibraryContext())
@@ -90,7 +90,7 @@ namespace Decrypt_Library.EntityframeworkCode
                 return mostRead;
             }
         }
-        // Antal böcker i sortimentet just nu
+        // Total amount of books in the library
         public static int AmountOfBooks()
         {
             using(var db = new Decrypt_LibraryContext())
@@ -100,7 +100,8 @@ namespace Decrypt_Library.EntityframeworkCode
                 return amountOfBooks.Count();
             }
         }
-        // Mest utlånat inom respektive Medietyp
+        // Most loaned Mediatype
+
 
         // Hur många förseningar
         // Funktion för mest populära event - går ej att testa än
