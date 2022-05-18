@@ -181,11 +181,11 @@ namespace Decrypt_Library.Views
             changeShelf.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
             shelfChangeProduct = e.Item as Product;
             tappedBook.Text = shelfChangeProduct.Title;
+            ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
 
             if (!shelfChangeTab.IsVisible)
             {
                 shelfChangeTab.IsVisible = true;
-                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
             }
         }
 
