@@ -15,7 +15,6 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-
         public static List<string> ShowAllUserTypeNames()
         {
             using (var db = new Decrypt_LibraryContext())

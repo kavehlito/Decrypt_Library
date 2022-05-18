@@ -47,6 +47,8 @@
                        TextColor="Gold"
                        FontAttributes="Bold"
                    />
+
+    
             </Grid>
 
             <Frame BorderColor="Gold"
@@ -588,14 +590,68 @@
 
                     <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
-                              HasUnevenRows="False"
+                              HasUnevenRows="False"                       
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
                               >
+
+                        <ListView.Header>
+
+                    
+                                <StackLayout x:Name="shelfChangeTab"  
+                                         IsVisible="False">
+
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Label 
+                                    x:Name="tappedBook"
+                                    HorizontalOptions="CenterAndExpand"
+                                           Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    TextColor="White"/>
+
+
+                                    <Frame Padding="0"
+                                           Grid.Column="2"
+                                           IsClippedToBounds="True"
+                                       BorderColor="White"
+                                           WidthRequest="100"
+                                       CornerRadius="20">
+
+                                        <Picker x:Name="changeShelf"
+                                                BackgroundColor="White"
+                                                FontAttributes="Bold">
+                                        </Picker>
+
+                                    </Frame>
+
+                                    <Button Text="Byt hylla"
+                                            Grid.Column="3"
+                                            x:Name="ChosenProduct"
+                                            CornerRadius="20"
+                                            TextColor="Black"
+                                            Clicked="ChosenProduct_Clicked"
+                                            BackgroundColor="Gold"
+                                            FontAttributes="Bold"
+                                            />
+                                </Grid>
+
+                            </StackLayout>
+
+                        </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame>
+                                    <Frame Margin="0,10,0,0">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
@@ -622,6 +678,11 @@
                                                        FontSize="15"
                                                    FontAttributes="Bold"
                                                    TextColor="White"/>
+
+                                                <Label Text="Klicka på en produkt för att byta hylla på den"
+                                                       FontAttributes="Bold"
+                                                       TextColor="Gold"
+                                                       FontSize="10"/>
 
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
@@ -761,6 +822,7 @@
                                  IsVisible="false">
                             <ListView x:Name="categoryList"
                               IsVisible="true"
+                                      ItemTapped="CategoryList_ItemTapped"
                                       VerticalScrollBarVisibility="Never"
                               >
                                 <ListView.ItemTemplate>
@@ -960,6 +1022,7 @@
 
                     <ListView x:Name="eventList"
                               HasUnevenRows="False"
+                              ItemTapped="EventList_ItemTapped"
                               VerticalScrollBarVisibility="Never"
                               
                               >
@@ -1112,6 +1175,7 @@
 
                         <ListView x:Name="userList"
                                   HasUnevenRows="False"
+                                  ItemTapped="UserList_ItemTapped"
                                   VerticalScrollBarVisibility="Never"
                                   IsVisible="True">
                             <ListView.ItemTemplate>
@@ -1552,6 +1616,7 @@
                         </Entry>
                     </StackLayout>
                     <ListView x:Name="languageList"
+                              ItemTapped="LanguageList_ItemTapped"
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>

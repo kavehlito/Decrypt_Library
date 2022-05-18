@@ -24,6 +24,7 @@ namespace Decrypt_Library.Views
         }
 
         Product product = new Product();
+        Product shelfChangeProduct = new Product();
         Category category = new Category();
         Event createdEvent = new Event();
         Language language = new Language();
@@ -122,7 +123,7 @@ namespace Decrypt_Library.Views
         {
             ProductList.IsVisible = true;
             ShowNoWindows();
-            ProductList.ItemsSource = EntityFrameworkCode.EntityframeworkProducts.ShowAllProducts();
+            ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
 
         private void Button_AddProductClicked(object sender, EventArgs e)
@@ -178,15 +179,31 @@ namespace Decrypt_Library.Views
 
         private void ProductListItem_Tapped(object sender, ItemTappedEventArgs e)
         {
-            if (sender is ListView lv) lv.SelectedItem = null;
+            changeShelf.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
+            shelfChangeProduct = e.Item as Product;
+            tappedBook.Text = shelfChangeProduct.Title;
+
+            if (!shelfChangeTab.IsVisible)
+            {
+                shelfChangeTab.IsVisible = true;
+                return;
+            }
         }
 
-        private void Colorize(bool Id, Picker userInput)
+        private void ChosenProduct_Clicked(object sender, EventArgs e)
         {
-            if (!Id)
-                userInput.BackgroundColor = Color.IndianRed;
-            else
-                userInput.BackgroundColor = Color.White;
+            try
+            {
+                shelfChangeProduct.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(changeShelf.SelectedItem.ToString());
+                EntityframeworkProducts.UpdateProduct(shelfChangeProduct);
+                shelfChangeTab.IsVisible = false;
+                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+                ProductList.IsVisible = true;
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
 
         #endregion
@@ -228,12 +245,6 @@ namespace Decrypt_Library.Views
                 ProductShelfIdCorrect = !string.IsNullOrEmpty(shelfPicker.SelectedItem.ToString());
                 ProductCategoryIdCorrect = !string.IsNullOrEmpty(categoryPicker.SelectedItem.ToString());
                 ProductMediaIdCorrect = !string.IsNullOrEmpty(mediaPicker.SelectedItem.ToString());
-
-                Colorize(ProductAudienceIdCorrect, audiencePicker);
-                Colorize(ProductLanguageIdCorrect, languagePicker);
-                Colorize(ProductShelfIdCorrect, shelfPicker);
-                Colorize(ProductCategoryIdCorrect, categoryPicker);
-                Colorize(ProductMediaIdCorrect, mediaPicker);
 
                 ProductStatusCorrect = inStock.IsChecked;
                 ProductNewProductCorrect = newProduct.IsChecked;
@@ -304,6 +315,10 @@ namespace Decrypt_Library.Views
         /// <param name="e"></param>
         #region Buttons tab2 categories
 
+        private void CategoryList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
         private void EntryCategoryNametab2_TextChanged(object sender, TextChangedEventArgs e)
         {
             entryCategoryNametab2.Text = e.NewTextValue;
@@ -368,6 +383,10 @@ namespace Decrypt_Library.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region Buttons tab3 events
+        private void EventList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
         private void ShowAllEvents_Pressed(object sender, EventArgs e)
         {
             createEventBar.IsVisible = false;
@@ -454,6 +473,10 @@ namespace Decrypt_Library.Views
 
         #region Language Buttons
 
+        private void LanguageList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
         private void AddLanguageButton_Pressed(object sender, EventArgs e)
         {
             try
@@ -517,6 +540,11 @@ namespace Decrypt_Library.Views
         #endregion
 
         #region Employee Options
+
+        private void UserList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
 
         private void AddUser_ButtonClicked(object sender, EventArgs e)
         {
@@ -734,6 +762,7 @@ namespace Decrypt_Library.Views
             userInfo.IsVisible = true;
 
         }
+
 
     }
 }
