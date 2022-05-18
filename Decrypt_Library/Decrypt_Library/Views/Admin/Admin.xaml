@@ -566,15 +566,40 @@
                                                         </Frame>
                                                     </AbsoluteLayout>
 
+                                                    <Frame Padding="0" 
+                                                           BorderColor="Gold"
+                                                           BackgroundColor="Gold"
+                                                           CornerRadius="20"
+                                                           IsClippedToBounds="True"
+                                                           Margin="0,10,0,0"
+                                                           AbsoluteLayout.LayoutBounds="-20,520,200,50">
 
-                                                    <Button CornerRadius="20"
-                                                    Clicked="CompleteProduct_Pressed"
-                                                    BackgroundColor="Gold"
-                                                    TextColor="Black"
-                                                    FontAttributes="Bold"
-                                                    Margin="0,20,0,0"
-                                                    AbsoluteLayout.LayoutBounds="-20,520,450,50"
-                                                    Text="Lägg till produkt "/>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="190"/>
+                                                                <ColumnDefinition Width="190"/>
+                                                            </Grid.ColumnDefinitions>
+
+
+                                                            <Button CornerRadius="20"
+                                                                    Clicked="CompleteProduct_Pressed"
+                                                                    BackgroundColor="Gold"
+                                                                    TextColor="Black"
+                                                                    FontAttributes="Bold"
+                                                                    Grid.Column="0"
+                                                                    Text="Lägg till produkt "/>
+
+
+                                                            <Button CornerRadius="0"
+                                                                    BackgroundColor="White"
+                                                                    TextColor="Black"
+                                                                    Grid.Column="1"
+                                                                    Clicked="CancelProductButton_Clicked"
+                                                                    FontAttributes="Bold"
+                                                                    Text="Avbryt"/>
+                                                        </Grid>
+
+                                                    </Frame>
 
                                                 </StackLayout>
                                             </Frame>

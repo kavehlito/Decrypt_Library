@@ -210,6 +210,10 @@ namespace Decrypt_Library.Views
                 return;
             }
         }
+        private async void CancelProductButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AdminPage());
+        }
 
         #endregion
 
@@ -291,14 +295,15 @@ namespace Decrypt_Library.Views
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
                     product = new Product();
+                    await Navigation.PushAsync(new AdminPage());
                 }
                 else
-                    await DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
+                    return;
 
             }
-            catch (Exception errormessage)
+            catch 
             {
-                await DisplayActionSheet($"{errormessage.Message}", "Error", "OK");
+                return;
             }
         }
 
@@ -766,6 +771,6 @@ namespace Decrypt_Library.Views
 
         }
 
- 
+  
     }
 }
