@@ -590,7 +590,7 @@
 
                     <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
-                              HasUnevenRows="False"                       
+                              HasUnevenRows="False"    
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
                               >
@@ -598,50 +598,48 @@
                             
                                 <StackLayout x:Name="shelfChangeTab"
                                              Margin="0,15,0,15"
+                                             Orientation="Horizontal"
                                          IsVisible="False">
 
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                <StackLayout>
 
+                                    <Label 
+                                    Text="Välj hylla för vald produkt"
+                                    FontSize="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontAttributes="Bold"
+                                    TextColor="Gold"/>
 
                                     <Label 
                                     x:Name="tappedBook"
+                                    FontSize="10"
                                     HorizontalOptions="CenterAndExpand"
-                                           Grid.Column="1"
                                     FontAttributes="Bold"
                                     TextColor="White"/>
+                                </StackLayout>
 
 
-                                    <Frame Padding="0"
-                                           Grid.Column="2"
+                                <Frame Padding="0"
                                            IsClippedToBounds="True"
                                        BorderColor="White"
                                            WidthRequest="100"
                                        CornerRadius="20">
 
-                                        <Picker x:Name="changeShelf"
+                                    <Picker x:Name="changeShelf"
                                                 BackgroundColor="White"
                                                 FontAttributes="Bold">
-                                        </Picker>
+                                    </Picker>
 
-                                    </Frame>
+                                </Frame>
 
-                                    <Button Text="Byt hylla"
-                                            Grid.Column="3"
-                                            x:Name="ChosenProduct"
+                                <Button Text="Byt hylla"
+                                            x:Name="confirmShelfChangeButton"
                                             CornerRadius="20"
                                             TextColor="Black"
                                             Clicked="ChosenProduct_Clicked"
                                             BackgroundColor="Gold"
                                             FontAttributes="Bold"
                                             />
-                                </Grid>
 
                             </StackLayout>
 

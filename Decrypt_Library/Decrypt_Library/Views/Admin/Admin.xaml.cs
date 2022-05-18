@@ -176,7 +176,6 @@ namespace Decrypt_Library.Views
             entryPlaytime.Text = e.NewTextValue;
         }
 
-
         private void ProductListItem_Tapped(object sender, ItemTappedEventArgs e)
         {
             changeShelf.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
@@ -186,12 +185,17 @@ namespace Decrypt_Library.Views
             if (!shelfChangeTab.IsVisible)
             {
                 shelfChangeTab.IsVisible = true;
-                return;
+                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
             }
         }
 
         private void ChosenProduct_Clicked(object sender, EventArgs e)
         {
+            if(changeShelf.SelectedIndex == -1)
+            {
+                return;
+            }
+
             try
             {
                 shelfChangeProduct.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(changeShelf.SelectedItem.ToString());
@@ -199,6 +203,7 @@ namespace Decrypt_Library.Views
                 shelfChangeTab.IsVisible = false;
                 ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
                 ProductList.IsVisible = true;
+                shelfChangeProduct = new Product();
             }
             catch (Exception)
             {
@@ -761,6 +766,6 @@ namespace Decrypt_Library.Views
 
         }
 
-
+ 
     }
 }
