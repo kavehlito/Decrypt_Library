@@ -118,9 +118,9 @@ namespace Decrypt_Library.EntityframeworkCode
                 return amountOfBooks.Count();
             }
         }
+        // Mest utlånat inom respektive Medietyp
 
         // Hur många förseningar
-        // Mest utlånat inom respektive Medietyp
         // Funktion för mest populära event - går ej att testa än
         // Statistik på hur långa reservationer för resp bok ** 
         // Kommer joina Kategorier och Users (skulle vi tro)
