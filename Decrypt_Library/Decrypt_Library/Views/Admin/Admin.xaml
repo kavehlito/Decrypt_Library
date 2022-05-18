@@ -1733,21 +1733,21 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Frame BorderColor="Transparent"
+                    <Frame BorderColor="White"
                            Grid.Column="1"
                            WidthRequest="400"
-                           x:Name="example1"
-                           IsVisible="True"
+                           x:Name="ProductTab"
+                           IsVisible="False"
                            HeightRequest="400"
                            Grid.Row="1">
 
                         <ScrollView VerticalScrollBarVisibility="Always">
 
                             <StackLayout>
-                                    <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
+                                <StackLayout>
+                                    <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Gold" Padding="0" TextDecorations="Underline"/>
                                     <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding ="0" TextDecorations="Underline"/>
-                                    <ListView x:Name="productInfo" IsVisible="True"
-                                              HeightRequest="250">
+                                    <ListView x:Name="productInfo" IsVisible="false" HeightRequest="150">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -1764,9 +1764,10 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+                                
 
-                                    <Label x:Name="TopFive" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
-                                    <ListView x:Name="mostPopular" IsVisible="True">
+                                    <Label x:Name="TopFive" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="White" Padding="0" TextDecorations="Underline"/>
+                                    <ListView x:Name="mostPopular" IsVisible="false" >
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -1783,14 +1784,17 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+                                </StackLayout>                                   
                             </StackLayout>
                         </ScrollView>
                     </Frame>
+                    
+                    
 
                     <Frame BorderColor="Transparent"
                            Grid.Column="1"
                            WidthRequest="400"
-                           x:Name="example2"
+                           x:Name="userTab"
                            IsVisible="False"
                            HeightRequest="400"
                            Grid.Row="1">
@@ -1825,7 +1829,7 @@
                     <Frame BorderColor="Transparent"
                            Grid.Column="1"
                            WidthRequest="400"
-                           x:Name="example3"
+                           x:Name="loanedTab"
                            IsVisible="False"
                            HeightRequest="400"
                            Grid.Row="1">
@@ -1837,7 +1841,7 @@
                                     <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="White" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="loanedInfo" IsVisible="false">
+                                    <ListView x:Name="loanedInfo" IsVisible="false" HeightRequest="150">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
