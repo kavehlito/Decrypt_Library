@@ -1,12 +1,7 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
-using Decrypt_Library.Views.Admin;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +26,7 @@ namespace Decrypt_Library.Views
         Product product = new Product();
         Category category = new Category();
         Event createdEvent = new Event();
-        Language language = new Language(); 
+        Language language = new Language();
 
         /// <summary>
         /// Product Bools
@@ -42,20 +37,20 @@ namespace Decrypt_Library.Views
         bool ProductLanguageIdCorrect = false;
         bool ProductAudienceIdCorrect = false;
         bool ProductCategoryIdCorrect = false;
-        public static bool ProductStatusCorrect { get; set; } 
-        public static bool ProductIsbnCorrect { get; set; } 
-        public static bool ProductTitleCorrect { get; set; } 
-        public static bool ProductDescriptionCorrect { get; set; } 
-        public static bool ProductPagesCorrect { get; set; } 
-        public static bool ProductPlaytimeCorrect { get; set; } 
-        public static bool ProductPublisherCorrect { get; set; } 
+        public static bool ProductStatusCorrect { get; set; }
+        public static bool ProductIsbnCorrect { get; set; }
+        public static bool ProductTitleCorrect { get; set; }
+        public static bool ProductDescriptionCorrect { get; set; }
+        public static bool ProductPagesCorrect { get; set; }
+        public static bool ProductPlaytimeCorrect { get; set; }
+        public static bool ProductPublisherCorrect { get; set; }
         public static bool ProductAuthorNameCorrect { get; set; }
         public static bool ProductPublishDateCorrect { get; set; }
         public static bool ProductShelfIdCorrect { get; set; }
         public static bool ProductNarratorCorrect { get; set; }
         public static bool ProductNewProductCorrect { get; set; }
         public static bool ProductHiddenProductCorrect { get; set; }
-        
+
         bool ProductCorrectProductInput = false;
         #endregion
 
@@ -147,7 +142,7 @@ namespace Decrypt_Library.Views
 
         private void entryPublisher_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryPublisher.Text = e.NewTextValue;   
+            entryPublisher.Text = e.NewTextValue;
         }
 
         private void entryAuthor_TextChanged(object sender, TextChangedEventArgs e)
@@ -157,7 +152,7 @@ namespace Decrypt_Library.Views
 
         private void entryDate_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryDate.Text = e.NewTextValue;    
+            entryDate.Text = e.NewTextValue;
         }
 
         private void entryNarrator_TextChanged(object sender, TextChangedEventArgs e)
@@ -188,7 +183,7 @@ namespace Decrypt_Library.Views
 
         private void Colorize(bool Id, Picker userInput)
         {
-            if(!Id)
+            if (!Id)
                 userInput.BackgroundColor = Color.IndianRed;
             else
                 userInput.BackgroundColor = Color.White;
@@ -317,8 +312,8 @@ namespace Decrypt_Library.Views
         private void ShowCategories_Pressed(object sender, EventArgs e)
         {
             createCategoryBar.IsVisible = false;
-            categoryTab.IsVisible= true;
-            categoryList.IsVisible= true;
+            categoryTab.IsVisible = true;
+            categoryList.IsVisible = true;
             categoryList.ItemsSource = EntityframeworkCategories.ShowAllCategories();
         }
 
@@ -406,7 +401,7 @@ namespace Decrypt_Library.Views
         {
             DateTime date = DateTime.Now;
 
-            if (!createEventBar.IsVisible) 
+            if (!createEventBar.IsVisible)
             {
                 createEventBar.IsVisible = true;
                 return;
@@ -424,8 +419,8 @@ namespace Decrypt_Library.Views
                 DisplayAlert("Error wrong input", "one of tha values were wrong", "ok");
             }
 
-            EventEventInputsCorrect = EventEventNameCorrect 
-                                           && EventEventTimeCorrect 
+            EventEventInputsCorrect = EventEventNameCorrect
+                                           && EventEventTimeCorrect
                                            && EventEventDescrptionCorrect;
 
             if (EventEventInputsCorrect)
@@ -478,14 +473,15 @@ namespace Decrypt_Library.Views
                     createLanguageBar.IsVisible = false;
                     language = new Language();
                 }
-            } catch (Exception exception)
+            }
+            catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "OK");
             }
         }
         private void entryLanguageCreatetab3_TextChanged(object sender, TextChangedEventArgs e)
         {
-            entryLanguageCreatetab3.Text = e.NewTextValue;  
+            entryLanguageCreatetab3.Text = e.NewTextValue;
         }
 
         private void entryLanguageRemovetab3_TextChanged(object sender, TextChangedEventArgs e)
@@ -551,7 +547,7 @@ namespace Decrypt_Library.Views
                 correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
                 correctPhone = Readers.Readers.LongReaderLengthEqualsTo(Phone.Text, 10, out convertedPhoneNr);
                 correctSSN = Readers.Readers.LongReaderLengthEqualsTo(SSN.Text, 10, out convertedSSN);
-                
+
                 foreach (var item in EntityframeworkUsers.ShowAllUserTypes())
                 {
                     if (item.UserTypeName.Contains(userIDpicker.SelectedItem.ToString()))
@@ -574,10 +570,10 @@ namespace Decrypt_Library.Views
                 DisplayAlert("Error", $"{exception.Message}", "Try again!");
             }
 
-            bool completeRegistration = correctUserName 
-                                        && correctPassword 
-                                        && correctEmail 
-                                        && correctPhone 
+            bool completeRegistration = correctUserName
+                                        && correctPassword
+                                        && correctEmail
+                                        && correctPhone
                                         && correctSSN
                                         && correctConfirmationPassword;
 
@@ -641,7 +637,7 @@ namespace Decrypt_Library.Views
         }
         private void SSN_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SSN.Text= e.NewTextValue;
+            SSN.Text = e.NewTextValue;
         }
         private void Phone_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -676,41 +672,59 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
-            loanedInfo.IsVisible = false;
-            userInfo.IsVisible = false;
             productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
             productInfo.IsVisible = true;
 
             var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
-            AmountOfBooks.Text = $"Antal produkter i sortimentet just nu: {bookNr}";
+            AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
             AmountOfBooks.IsVisible = true;
+
 
             FavoriteCategory.IsVisible = true;
             FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
 
+            userInfo.IsVisible = false;
+            loanedInfo.IsVisible = false;
             AmountOfBooksLoaned.IsVisible = false;
+            AmountOfBooksLoanedATM.IsVisible = false;
+            loanedInfoStatistics.IsVisible = false;
+
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)
         {
+            var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
+            AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
+            AmountOfBooksLoanedATM.IsVisible = true;
+           
+            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
+            loanedInfo.IsVisible = true;
+
+            AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid:";
+            AmountOfBooksLoaned.IsVisible = true;
+
+            loanedInfoStatistics.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
+            loanedInfoStatistics.IsVisible = true;
+
             productInfo.IsVisible = false;
             userInfo.IsVisible = false;
-            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder().Where(x=>x.EndDate > DateTime.Now);
-            loanedInfo.IsVisible = true;
-            var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
-            AmountOfBooksLoaned.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
             AmountOfBooks.IsVisible = false;
-            AmountOfBooksLoaned.IsVisible = true;
             FavoriteCategory.IsVisible = false;
         }
 
         private void Button_Clicked_User(object sender, EventArgs e)
         {
+            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.Id >= 2);
+            userInfo.IsVisible = true;
+
             loanedInfo.IsVisible = false;
             productInfo.IsVisible = false;
-            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers();
-            userInfo.IsVisible= true;
-            FavoriteCategory.IsVisible=false;
+            FavoriteCategory.IsVisible = false;
+            AmountOfBooks.IsVisible = false;
+            AmountOfBooksLoaned.IsVisible = false;
+            AmountOfBooksLoanedATM.IsVisible = false;
+            loanedInfoStatistics.IsVisible = false;
         }
+
     }
 }

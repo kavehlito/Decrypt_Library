@@ -1,5 +1,6 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +20,32 @@ namespace Decrypt_Library.EntityframeworkCode
                                     join
                                     product in db.Products on loaned.ProductId equals product.Id
                                     orderby loaned.StartDate descending
-                                    where loaned.EventId == 2
+                                    where loaned.EventId == 2 && loaned.EndDate == null
+                                    select new MyPagesProductList
+                                    {
+                                        ID = loaned.Id,
+                                        Title = product.Title,
+                                        Author = product.AuthorName,
+                                        ISBN = product.Isbn,
+                                        StartDate = loaned.StartDate,
+                                        EndDate = loaned.StartDate.Value.AddDays(30),
+
+                                    };
+                return loanedByOrder.ToList();
+
+            }
+        }
+
+        public static List<MyPagesProductList> ShowLoansByDescOrderGeneral()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var loanedByOrder = from
+                                    loaned in db.BookHistories
+                                    join
+                                    product in db.Products on loaned.ProductId equals product.Id
+                                    orderby loaned.StartDate descending
+                                    where loaned.EventId == 2 
                                     select new MyPagesProductList
                                     {
                                         ID = loaned.Id,
