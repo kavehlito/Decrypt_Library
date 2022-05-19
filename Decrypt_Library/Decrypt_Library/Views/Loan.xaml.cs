@@ -33,8 +33,6 @@ namespace Decrypt_Library.Views
             Add.IsVisible = false;
             ProductList.ItemsSource = null;
             NumberOfItem.IsVisible = false;
-            ProductIdError.IsVisible = false;
-            UserIdError.IsVisible = false;
             Headline.IsVisible = false;
         }
 
@@ -48,12 +46,11 @@ namespace Decrypt_Library.Views
             if (CheckUserId.Text == null) CheckUserId.Text = "0";
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
             var sucess = Cart.CheckUserId(userId, out string UserName);
-            if (!sucess) {UserIdError.IsVisible = true; CheckUserId.Text = null; }
+            if (!sucess) {DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
             else
             {
                 CheckUserId.IsVisible = false;
                 checkUserButton.IsVisible = false;
-                UserIdError.IsVisible = false;
                 Product.IsVisible = true;
                 Add.IsVisible = true;
                 User.Text = $"Lånekortsnummer: {CheckUserId.Text}, Namn: {UserName}";
@@ -67,7 +64,7 @@ namespace Decrypt_Library.Views
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
             int.TryParse(Product.Text.ToString(), out int produktId);
             var productSuccess = Cart.CheckProductId(produktId);
-            if (!productSuccess) { ProductIdError.IsVisible = true; Product.Text = null; }
+            if (!productSuccess) { DisplayAlert("Felmeddelande", "Produkten går inte att låna just nu.", "OK"); Product.Text = null; }
             else
             {
 
@@ -83,7 +80,6 @@ namespace Decrypt_Library.Views
                 Add.IsVisible = false;
                 AddNewProduct.IsVisible = true;
                 CheckOut.IsVisible = true;
-                ProductIdError.IsVisible = false;
                 Headline.IsVisible = true;
                 NumberOfItem.IsVisible = true;
                 NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
@@ -118,8 +114,10 @@ namespace Decrypt_Library.Views
             User.IsVisible = true;
             CheckUserId.Text = null;
             Headline.IsVisible = false;
-            
-            
+            Cart.cartList.Clear();
+            ProductList.ItemsSource = null;
+            ProductList.ItemsSource = Cart.cartList;
+            NumberOfItem.IsVisible = false;
         }
 
         private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -132,9 +130,9 @@ namespace Decrypt_Library.Views
             Button btn = sender as Button;
             CartList loanList = btn.BindingContext as CartList;
             Cart.DeleteItemInCart(loanList.Id);
-            //EntityframeworkProducts.DeleteReservation(loanList.ID);
-
+            
             ProductList.ItemsSource = null;
+
             ProductList.ItemsSource = Cart.cartList;
             NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
         }

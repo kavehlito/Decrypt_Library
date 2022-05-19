@@ -1,17 +1,156 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
-             x:Class="Decrypt_Library.Views.LoginPage">
+             x:Class="Decrypt_Library.Views.LoginPage"
+             BackgroundColor="Black">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="Headline" Text="Logga in" />
-            
-            <Entry x:Name="SSN" Placeholder="Personnummer" />
-            <Entry x:Name="Password" Placeholder="Lösenord" IsPassword="True" />
-            <Button x:Name="LogIn" Text="Logga in" Clicked="LogIn_Clicked" BackgroundColor="Black" TextColor="White"/>
-            <Label x:Name="Error" Text="Felaktigt personnummer eller lösenord. Försök igen!" TextColor="Red" HorizontalOptions="Center" IsVisible="false" />
-            <Label x:Name="Test" Text="" />
-            <Button x:Name="LogOut" Text="Logga ut" Clicked="LogOut_Clicked" IsVisible="false" BackgroundColor="Black" TextColor="White" />
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <AbsoluteLayout Grid.Column="1">
+
+                    <Label x:Name="Headline"
+                           Text="Logga in"
+                           FontAttributes="Bold"
+                           TextColor="Gold"
+                           AbsoluteLayout.LayoutBounds="25,195,120,40"
+                           FontSize="20"/>
+
+                    <Frame BorderColor="Transparent"
+                           Grid.Column="1"
+                           Margin="0,50,0,0"
+                           WidthRequest="410"
+                           HeightRequest="410"
+                           Grid.Row="1">
+
+                        <StackLayout>
+
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Image Grid.Row="0"
+                               Source="decrypt6.png"
+                               />
+
+                                <Frame Padding="0"
+                                       CornerRadius="10"
+                                       Grid.Row="2"
+                                       Margin="0,50,0,0"
+                                       BorderColor="Black">
+
+                                    <StackLayout Padding="0" x:Name="loginFrame">
+                                        <Frame Padding="0"
+                                               CornerRadius="20">
+
+                                            <Entry x:Name="SSN" 
+                                                   FontAttributes="Bold"
+                                                   TextChanged="SSN_TextChanged"
+                                                   Placeholder="Personnummer" 
+                                                   />
+                                        </Frame>
+
+                                        <Frame Padding="0"
+                                               CornerRadius="20">
+
+                                            <Entry x:Name="Password" 
+                                                   Placeholder="Lösenord"
+                                                   TextChanged="Password_TextChanged"
+                                                   IsPassword="True" />
+                                        </Frame>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Grid Grid.Row="3"
+                                      Padding="0">
+
+                                    <Button x:Name="LogIn"
+                                            Text="Logga in"
+                                            Clicked="LogIn_Clicked" 
+                                            FontAttributes="Bold"
+                                            CornerRadius="10"
+                                            BackgroundColor="Gold" 
+                                            TextColor="Black"/>
+
+                                    
+                      
+                                </Grid>
+                            </Grid>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                    <Label TextColor="Gold"
+                           FontAttributes="Bold"
+                           x:Name="Test"
+                           FontSize="15"
+                           AbsoluteLayout.LayoutBounds="120,190,260,35"/>
+
+                    <Button x:Name="LogOut" 
+                            Text="Logga ut" 
+                            Clicked="LogOut_Clicked" 
+                            IsVisible="False" 
+                            CornerRadius="10"
+                            AbsoluteLayout.LayoutBounds="100,220,260,35"
+                            BackgroundColor="Gold" 
+                            FontAttributes="Bold"
+                            TextColor="Black"/>
+
+
+                    <Label x:Name="Error" 
+                           Text="Felaktigt personnummer eller lösenord. Försök igen!" 
+                           TextColor="Red" 
+                           FontAttributes="Bold"
+                           AbsoluteLayout.LayoutBounds="20,375,400,30"
+                           HorizontalOptions="Center" 
+                          IsVisible="False" />
+
+                    <StackLayout Orientation="Horizontal"
+                                 x:Name="alternativeOptions"
+                                 HorizontalOptions="CenterAndExpand"
+                                 AbsoluteLayout.LayoutBounds="20,350,400,30">
+                        <Button Text="Inget konto? Registrera dig här!"
+                                FontAttributes="Bold"
+                                FontSize="10"
+                                Clicked="Button_Clicked"
+                                BackgroundColor="Transparent"
+                                TextColor="Gold"/>
+
+                        <Button Text="Glömt lösenord?"
+                                FontAttributes="Bold"
+                                FontSize="10"
+                                BackgroundColor="Transparent"
+                                TextColor="Gold"/>
+
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="Black"
+                             x:Name="borderHide"
+                             AbsoluteLayout.LayoutBounds="20,264,400,9"/>
+
+
+                </AbsoluteLayout>
+
+            </Grid>
 
         </StackLayout>
     </ContentPage.Content>

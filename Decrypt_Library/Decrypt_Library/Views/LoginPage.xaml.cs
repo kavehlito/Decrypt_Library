@@ -43,10 +43,10 @@ namespace Decrypt_Library.Views
                 Error.IsVisible = false;
                 LogOut.IsVisible = true;
                 Headline.IsVisible = false;
-                var user = EntityFrameworkCode.EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
+                alternativeOptions.IsVisible = false;
+                borderHide.IsVisible = false;
+                var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
             }
-
-
 
         }
 
@@ -60,6 +60,23 @@ namespace Decrypt_Library.Views
             Error.IsVisible = false;
             LogOut.IsVisible = false;
             Headline.IsVisible=true;
+            borderHide.IsVisible = true;
+            alternativeOptions.IsVisible = true;
+        }
+
+        private void SSN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SSN.Text = e.NewTextValue;
+        }
+
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Password.Text = e.NewTextValue;
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }

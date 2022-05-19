@@ -101,5 +101,9 @@ namespace Decrypt_Library.EntityFrameworkCode
         public string CategoriesName { get; set; }
         public int Count { get; set; }
 
+        public int? MediaType { get; set; }
+        public string FormatName { get; set; }
+
+
     }
 }

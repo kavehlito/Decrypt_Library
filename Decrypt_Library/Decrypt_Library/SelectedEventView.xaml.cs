@@ -23,13 +23,8 @@ namespace Decrypt_Library
             InitializeComponent();
             SelectedId = selectedId;
             BindingContext = EntityFrameworkCode.EntityframeworkEvents.ShowSelectedEvents(SelectedId);
-            if (UserLogin.thisUser == null) UserError.IsVisible = true;
-            else SignUpButton.IsVisible = true;
         }
 
-        private void SignUpButton_Clicked(object sender, EventArgs e)
-        {
-            EventSignUp.EventSignUpMethod(SelectedId);
-        }
+      
     }
 }
