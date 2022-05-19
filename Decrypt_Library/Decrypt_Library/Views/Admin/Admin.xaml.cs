@@ -279,7 +279,6 @@ namespace Decrypt_Library.Views
         private async void CompleteProduct_Pressed(object sender, EventArgs e)
         {
 
-
             int pagesInput = 0;
             double playTime = 0;
             long isbn = 0;
@@ -686,6 +685,9 @@ namespace Decrypt_Library.Views
 
                 foreach (var item in EntityframeworkUsers.ShowAllUserTypes())
                 {
+                    if (userIDpicker.SelectedIndex == -1)
+                        return;
+
                     if (item.UserTypeName.Contains(userIDpicker.SelectedItem.ToString()))
                         userType = item.Id;
                 }
@@ -732,7 +734,7 @@ namespace Decrypt_Library.Views
                 userList.IsVisible = true;
 
                 EntityframeworkUsers.CreateUser(user);
-                DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
+                userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
             }
             else
             {
@@ -754,7 +756,7 @@ namespace Decrypt_Library.Views
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 2 || x.UserTypeId == 3);
             register.IsVisible = false;
             endLabel.IsVisible = false;
             startLabel.IsVisible = true;
@@ -802,7 +804,9 @@ namespace Decrypt_Library.Views
                     }
                 }
             }
-        }
+            EntityframeworkUsers.RemoveUser(user);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
+        }   
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
