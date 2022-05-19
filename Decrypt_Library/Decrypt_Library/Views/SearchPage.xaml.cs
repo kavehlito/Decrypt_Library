@@ -69,18 +69,19 @@ namespace Decrypt_Library.Views
                 media.Add(3);
             ProductList.ItemsSource = EntityframeworkCategories.Checkboxes(category, age, media);
 
-            /*var alternative = EntityframeworkCategories.Checkboxes(category, age, media);
-
-            if (alternative.Count == 0)
-            {
-                //"Din sökning gav inget resultat"
-            }
-            else
-            {
-                ProductList.ItemsSource = alternative;
-            }*/
+            var alternative = EntityframeworkCategories.Checkboxes(category, age, media);
+            
+               if (alternative.Count == 0)
+                {   
+                    mySearch.Text = "Din sökning gav inget resultat...";
+                    mySearch.Opacity = 1;
+                }
+                else
+                {
+                    mySearch.Opacity = 0;
+                    ProductList.ItemsSource = alternative;
+                }      
         }
-
     }
 }
 

@@ -73,8 +73,11 @@
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
                 <Label Text="Ljudbok" FontSize="Micro" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6">
                     </Label>
-
             </StackLayout>
+            <Label x:Name="mySearch" FontSize="Large" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Gray" />
+            <StackLayout/>
+
+
             <ListView x:Name="ProductList" ItemTapped="ProductList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
