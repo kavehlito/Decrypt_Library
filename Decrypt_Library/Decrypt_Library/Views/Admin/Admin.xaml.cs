@@ -733,6 +733,42 @@ namespace Decrypt_Library.Views
                 register.IsVisible = false;
                 userList.IsVisible = true;
 
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.UserName.Contains(user.UserName))
+                    {
+                        DisplayAlert("Error", $"{user.UserName} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.Ssn == user.Ssn)
+                    {
+                        DisplayAlert("Error", $"{user.Ssn} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.Phonenumber == user.Phonenumber)
+                    {
+                        DisplayAlert("Error", $"{user.Phonenumber} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.Email == user.Email)
+                    {
+                        DisplayAlert("Error", $"{user.Email} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
                 EntityframeworkUsers.CreateUser(user);
                 userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
             }
