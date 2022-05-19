@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Name="accountPage"
+             BackgroundColor="Black"
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -18,58 +19,72 @@
 
             </Grid.ColumnDefinitions>
 
-            <AbsoluteLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
-                <Label Text="Välkommen till Mina Sidor!"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       Padding="20,20,20,20"
-                       >
-                </Label>
-            </AbsoluteLayout>
 
-            <Frame BackgroundColor="Black"
-                   BorderColor="Black"
-                   HeightRequest="500"
+            <Frame BackgroundColor="Transparent"
+                   BorderColor="Transparent"
+                   HeightRequest="450"
                    Grid.Row="1"
                    CornerRadius="10"
+                   Margin="0,20,0,0"
                    Grid.Column="1"
-                   WidthRequest="500">
+                   WidthRequest="410">
 
                 <StackLayout>
+                        <Image Source="decrypt6.png"
+                               Scale="0.7"/>
+                    
+                    <Label TextColor="Gold"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           Margin="15,0,0,0"
+                           Text="Mina sidor"/>
 
-                    <StackLayout Orientation="Horizontal" >
-
-                        <Button x:Name="MyProfile"
-                                        Text="Min profil"
+                    <Frame
+                        Padding="0"
+                        CornerRadius="20"
+                        BackgroundColor="Gold"
+                         HorizontalOptions="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="MyProfile"
+                                        Text="Profil"
                                         Clicked="MyProfile_Clicked"
-                                        BackgroundColor="White"
-                                        BorderColor="Black"
-                                        CornerRadius="10"
+                                        BackgroundColor="Gold"
+                                    FontSize="12"
+                                    Grid.Column="0"
+                                    BorderColor="Transparent"
                                         FontAttributes="Bold"/>
-                        <Button x:Name="MyLoan"
-                                        Text="Mina lån"
+                            <Button x:Name="MyLoan"
+                                        Text="Lån"
+                                    BorderColor="Transparent"
+                                    FontSize="12"
                                         Clicked="MyLoan_Clicked"
-                                        BackgroundColor="White"
-                                        BorderColor="Black"
-                                        CornerRadius="10"
+                                    Grid.Column="1"    
+                                        BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
-                        <Button x:Name="MyReservation"
-                                        Text="Mina reservationer"
+                            <Button x:Name="MyReservation"
+                                        Text="Reservationer"
                                         Clicked="MyReservations_Clicked"
-                                        BackgroundColor="White"
-                                        BorderColor="Black"
-                                        CornerRadius="10"
+                                    FontSize="12"
+                                    BorderColor="Transparent"
+                                    Grid.Column="2"    
+                                        BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
-                        <Button x:Name="MyLoanHistory"
+                            <Button x:Name="MyLoanHistory"
                                         Text="Lånehistorik"
                                         Clicked="MyLoanHistory_Clicked"
-                                        BackgroundColor="White"
-                                        BorderColor="Black"
-                                        CornerRadius="10"
+                                    FontSize="12"
+                                    BorderColor="Transparent"
+                                    Grid.Column="3"    
+                                        BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
 
-                    </StackLayout>
+                        </Grid>
+     
+
+                    </Frame>
 
                     <AbsoluteLayout x:Name="profile" IsVisible="false">
                         <Label x:Name="profileText" Text="" TextColor="White"
@@ -79,7 +94,10 @@
                     </AbsoluteLayout>
 
 
-                    <ListView x:Name="reservations" IsVisible="false">
+                    <ListView x:Name="reservations" 
+                              Margin="0,10,0,0"
+                              VerticalScrollBarVisibility="Never"
+                              IsVisible="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -91,8 +109,8 @@
                                         <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                         <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                         <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
-                                                    BackgroundColor="Black" TextColor="White" FontAttributes="Bold"
-                                                    CornerRadius="10" BorderColor="White" HorizontalOptions="End">
+                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
 
                                         </Button>
 
@@ -105,7 +123,10 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <ListView x:Name="loanHistoryList" IsVisible="false">
+                    <ListView x:Name="loanHistoryList" 
+                                      Margin="0,10,0,0"
+                              VerticalScrollBarVisibility="Never"
+                              IsVisible="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -126,7 +147,10 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <ListView x:Name="loanList" IsVisible="false">
+                    <ListView x:Name="loanList" 
+                                      Margin="0,10,0,0"
+                              VerticalScrollBarVisibility="Never"
+                              IsVisible="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
