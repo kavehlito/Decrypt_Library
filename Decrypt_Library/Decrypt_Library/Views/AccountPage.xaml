@@ -105,8 +105,6 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-
-
                     <ListView x:Name="loanHistoryList" IsVisible="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>

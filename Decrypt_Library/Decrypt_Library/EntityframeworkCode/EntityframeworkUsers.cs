@@ -15,24 +15,42 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
+        public static List<string> ShowAllUserTypeNames()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var usertypes = db.UserTypes.Select(x => x.UserTypeName).ToList();
+                return usertypes;
+            }
+        }
+
+        public static List<UserType> ShowAllUserTypes()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var usertypes = db.UserTypes.ToList();
+                return usertypes;
+            }
+        }
+
         public static void CreateUser(User newCustomer)
         {
-            try
+            using (var db = new Decrypt_LibraryContext())
             {
-                using (var db = new Decrypt_LibraryContext())
-                {
-                    var userList = db.Users;
+                var userList = db.Users;
 
-                    userList.Add(newCustomer);
-                    db.SaveChanges();
-                }
-
+                userList.Add(newCustomer);
+                db.SaveChanges();
             }
-            catch (System.Exception)
+        }
+
+        public static void RemoveUser(User user)
+        {
+            using (var db = new Decrypt_LibraryContext())
             {
-                
+                db.Remove(user);
+                db.SaveChanges();
             }
-           
         }
 
         public static List<User> ShowSpecificUserLogIn(User userLogIn)

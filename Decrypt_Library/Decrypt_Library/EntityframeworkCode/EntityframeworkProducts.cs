@@ -1,8 +1,5 @@
 ﻿using Decrypt_Library.Models;
-using Decrypt_Library.Views.Admin;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Decrypt_Library.EntityFrameworkCode
@@ -30,7 +27,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Id = prod.Id,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
-                                    
+
                                 }).ToList();
 
                 var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) ||
@@ -48,7 +45,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                 join lang in db.Languages on prod.LanguageId equals lang.Id
                                 join cate in db.Categories on prod.CategoryId equals cate.Id
                                 join media in db.MediaTypes on prod.MediaId equals media.Id
-                                //join shelf in db.Shelves on prod.ShelfId equals shelf.Id
+                                join shelf in db.Shelves on prod.ShelfId equals shelf.Id
                                 where prod.Id == productId
                                 select new SelectedProduct
                                 {
@@ -56,7 +53,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Audience = age.AgeGroup,
                                     Language = lang.Languages,
                                     Category = cate.CategoriesName,
-                                    //Shelf = shelf.Shelfname,
+                                    Shelf = shelf.Shelfname,
                                     MediaType = media.FormatName,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
@@ -118,6 +115,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                 db.SaveChanges();
             }
         }
+
+        public static void UpdateProduct(Product product)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                db.Products.Update(product);
+                db.SaveChanges();
+            }
+        }
         public static void RemoveProduct(Product product)
         {
             using (var db = new Decrypt_LibraryContext())
@@ -137,21 +143,21 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-                public static void DeleteReservation(int selectedId)
+        public static void DeleteReservation(int selectedId)
         {
             using (var db = new Decrypt_LibraryContext())
             {
-                var book = db.BookHistories.Where(b=> b.Id == selectedId).SingleOrDefault();
+                var book = db.BookHistories.Where(b => b.Id == selectedId).SingleOrDefault();
                 db.Remove(book);
                 db.SaveChanges();
 
                 //var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
 
-               /* if (book != null)
-                {
-                    book.Remove(updateQuantityProduct);
-                }
-               */
+                /* if (book != null)
+                 {
+                     book.Remove(updateQuantityProduct);
+                 }
+                */
 
                 /* if (updateQuantityProduct == null)
                  {

@@ -29,6 +29,8 @@ namespace Decrypt_Library.Readers
             var IdPattern = "^[1-9]{1}[0-9]{1,5000}$";
             var userEntry = sender as Entry;
 
+     
+
             if (Regex.IsMatch(e.NewTextValue, IdPattern) && int.TryParse(e.NewTextValue, out _))
             {
                 userEntry.BackgroundColor = Color.YellowGreen;

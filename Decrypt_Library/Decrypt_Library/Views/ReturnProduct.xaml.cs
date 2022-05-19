@@ -24,16 +24,15 @@ namespace Decrypt_Library.Views
             if (Product.Text == null) Product.Text = "0";
             int.TryParse(Product.Text.ToString(), out int productId);
             var success = Decrypt_Library.ReturnProduct.UpdateProductHistory(productId, out string title);
-            if (!success) { Product.Text = null; Error.IsVisible = true; }
+            if (!success) { Product.Text = null; DisplayAlert("Felmeddelande", "Boken går inte att lämna tillbaka eftersom den inte är utlånad.", "OK"); }
             else
             {
-                Error.IsVisible = false;
                 Product.Text = null;
                 Product.IsVisible = false;
                 ReturnProductId.IsVisible = false;
                 ReturnNewProduct.IsVisible = true;
                 CheckOut.IsVisible = true;
-                receipt.AppendLine($"\n{productId,-27}{title,-64}");
+                receipt.AppendLine($"\n{productId,-27}{title,-64}{DateTime.Now:g}");
             }
         }
 
@@ -52,6 +51,7 @@ namespace Decrypt_Library.Views
             ReturnNewProduct.IsVisible = false;
             CheckOut.IsVisible = false;
             Headline.IsVisible = true;
+            Receipt.Text = receipt.ToString();
             Receipt.IsVisible = true;
             StartAgain.IsVisible = true;
         }
@@ -65,6 +65,8 @@ namespace Decrypt_Library.Views
             Headline.IsVisible = false;
             Receipt.IsVisible = false;
             StartAgain.IsVisible = false;
+            Receipt = null;
+
         }
     }
 }

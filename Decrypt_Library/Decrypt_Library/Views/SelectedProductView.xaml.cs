@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Decrypt_Library.Models;
 
 namespace Decrypt_Library.Views
 {
@@ -16,6 +17,7 @@ namespace Decrypt_Library.Views
         {
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
+            reviewList.ItemsSource = EntityframeworkReview.ShowBookReview(Title);
 
             if (UserLogin.thisUser == null)
             {
@@ -30,7 +32,7 @@ namespace Decrypt_Library.Views
 
             if (LoanOrReserveButton.Text == "True")
             {
-                LoanOrReserveButton.Text = "Låna";
+                LoanOrReserveButton.IsVisible = false;
                 statuslbl.Text = "Produkten finns att låna";
             }
             else
@@ -67,6 +69,11 @@ namespace Decrypt_Library.Views
                     await DisplayAlert("Hurra!", "Produkten är nu reserverad", "Fortsätt bläddra");
                 }
             }
+        }
+
+        private void reviewEntry_Completed(object sender, EventArgs e)
+        {
+            
         }
     }
 }

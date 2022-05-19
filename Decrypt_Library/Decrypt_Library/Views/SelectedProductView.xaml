@@ -5,36 +5,63 @@
              Title="{Binding Title}"
              BackgroundImageSource="darkbackground.jpg">
     <ContentPage.Content>
-        <StackLayout x:Name="mainSL" Orientation="Horizontal">
-            <StackLayout Padding="20" VerticalOptions="Start">
-                <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="FillAndExpand" WidthRequest="300"/>
-            </StackLayout>
-            <StackLayout Orientation="Vertical" Padding="20" >
-                <Label x:Name="Titlelbl" Text="{Binding Title, StringFormat='Titel: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
-                <Label x:Name="Authorlbl" Text="{Binding AuthorName, StringFormat='Författare: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
-                <Label x:Name="Audiencelbl" Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
-                <Label x:Name="Langlbl" Text="{Binding Language, StringFormat='Språk: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
-                <Label x:Name="Catelbl" Text="{Binding Category, StringFormat='Kategori: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
-                <Label x:Name="mediaTypelbl" Text="{Binding MediaType, StringFormat='Format: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
-                
-                <StackLayout VerticalOptions="EndAndExpand" WidthRequest="700">
-                    <Label x:Name="Isbnlbl" Text="{Binding Isbn, StringFormat='ISBN: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="Datelbl" Text="{Binding PublishDate, StringFormat='Utgiven: {0:dd/M-yyyy}'}" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="Publisherlbl" Text="{Binding Publisher, StringFormat='Förlag: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="pageslbl" Text="{Binding Pages, StringFormat='Antal Sidor: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="narratorlbl" Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="playtimelbl" Text="{Binding Playtime, StringFormat='Speltid: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="Descriptionlbl" Text="{Binding Description, StringFormat='Beskrivning: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
-                    <Label x:Name="statuslbl" Text="{Binding Status}" TextColor="PaleVioletRed" FontSize="20"/>
+        <ScrollView>
+            <StackLayout x:Name="mainSL" Orientation="Horizontal">
+                <StackLayout Padding="20" VerticalOptions="Start">
+                    <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="FillAndExpand" WidthRequest="300"/>
                 </StackLayout>
-                
-                <AbsoluteLayout HorizontalOptions="Start" >
-                    <Label x:Name="PlsLoginlbl" Text="Du måste vara inloggad för att låna/reservera en bok" FontSize="25" TextColor="PaleVioletRed" IsVisible="false"
+                <StackLayout Orientation="Vertical" Padding="20" >
+                    <Label x:Name="Titlelbl" Text="{Binding Title, StringFormat='Titel: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                    <Label x:Name="Authorlbl" Text="{Binding AuthorName, StringFormat='Författare: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                    <Label x:Name="Audiencelbl" Text="{Binding Audience, StringFormat='Åldersgrupp: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                    <Label x:Name="Langlbl" Text="{Binding Language, StringFormat='Språk: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                    <Label x:Name="Catelbl" Text="{Binding Category, StringFormat='Kategori: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                    <Label x:Name="Shelflbl" Text="{Binding Shelf, StringFormat='Hylla: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+                    <Label x:Name="mediaTypelbl" Text="{Binding MediaType, StringFormat='Format: {0}'}" TextColor="#DDC6B6" FontSize="30"/>
+
+                    <StackLayout VerticalOptions="EndAndExpand" WidthRequest="700">
+                        <Label x:Name="Isbnlbl" Text="{Binding Isbn, StringFormat='ISBN: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="Datelbl" Text="{Binding PublishDate, StringFormat='Utgiven: {0:dd/M-yyyy}'}" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="Publisherlbl" Text="{Binding Publisher, StringFormat='Förlag: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="pageslbl" Text="{Binding Pages, StringFormat='Antal Sidor: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="narratorlbl" Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="playtimelbl" Text="{Binding Playtime, StringFormat='Speltid: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="Descriptionlbl" Text="{Binding Description, StringFormat='Beskrivning: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="statuslbl" Text="{Binding Status}" TextColor="PaleVioletRed" FontSize="20"/>
+                    </StackLayout>
+
+                    <AbsoluteLayout HorizontalOptions="Start" >
+                        <Label x:Name="PlsLoginlbl" Text="Du måste vara inloggad för att låna/reservera en bok" FontSize="25" TextColor="PaleVioletRed" IsVisible="false"
                        AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.8,0.5" FontAttributes="Bold"/>
-                    <Button x:Name="LoanOrReserveButton" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="Center" Clicked="LoanOrReserveButton_Clicked"
+                        <Button x:Name="LoanOrReserveButton" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="Center" Clicked="LoanOrReserveButton_Clicked"
                         Text="{Binding Status}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5,150,50"/>
-                </AbsoluteLayout>
+                    </AbsoluteLayout>
+
+                    <StackLayout>
+                        <Label Text="Recensioner" FontSize="40" TextColor="PaleVioletRed" TextDecorations="Underline"/>
+                        <ListView x:Name="reviewList" BackgroundColor="#1a1919" HeightRequest="500" WidthRequest="800" SeparatorVisibility="Default" SeparatorColor="PaleVioletRed">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Margin="20">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding UserName}" TextColor="PaleVioletRed" FontSize="20" TextDecorations="Underline"/>
+                                                <Label Text="gav produkten" TextColor="#DDC6B6" FontSize="20"/>
+                                                <Label Text="{Binding Stars, StringFormat='{0}&#9733;'}" TextColor="Gold" FontSize="20" TextDecorations="Underline"/>
+                                                <Label Text="stjärnor!" TextColor="#DDC6B6" FontSize="20"/>
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text="{Binding ReviewText}" TextColor="#DDC6B6" FontSize="20"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Entry x:Name="reviewEntry" Placeholder="Skriv vad du tyckte om produkten här..." ClearButtonVisibility="WhileEditing" Completed="reviewEntry_Completed"/>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

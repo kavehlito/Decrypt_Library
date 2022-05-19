@@ -47,6 +47,5 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return languageId;
             }
         }
-
     }
 }
