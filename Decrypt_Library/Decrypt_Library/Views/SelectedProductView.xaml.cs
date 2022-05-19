@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Decrypt_Library.Models;
 
 namespace Decrypt_Library.Views
 {
@@ -68,6 +69,11 @@ namespace Decrypt_Library.Views
                     await DisplayAlert("Hurra!", "Produkten är nu reserverad", "Fortsätt bläddra");
                 }
             }
+        }
+
+        private void reviewEntry_Completed(object sender, EventArgs e)
+        {
+            
         }
     }
 }
