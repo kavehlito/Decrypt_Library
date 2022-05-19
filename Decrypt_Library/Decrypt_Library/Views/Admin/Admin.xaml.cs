@@ -21,7 +21,6 @@ namespace Decrypt_Library.Views
             mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
             languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
             userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
-
         }
 
         Product product = new Product();
@@ -29,6 +28,8 @@ namespace Decrypt_Library.Views
         Category category = new Category();
         Event createdEvent = new Event();
         Language language = new Language();
+
+        int? selectedMediaId;
 
         /// <summary>
         /// Product Bools
@@ -190,6 +191,57 @@ namespace Decrypt_Library.Views
             }
         }
 
+        private void MediaPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            selectedMediaId = picker.SelectedIndex + 1;
+
+            if (selectedMediaId == 1 || selectedMediaId == 2)
+            {
+                pageLabel.IsVisible = true;
+                pageFrame.IsVisible = true;
+                entryPages.IsVisible = true;
+                entryPages.IsEnabled = true;
+
+                playTimeLabel.IsVisible = false;
+                playTimeFrame.IsVisible = false;
+                entryPlaytime.IsVisible = false;
+                entryPlaytime.IsEnabled = false;
+                
+                narratorLabel.IsVisible = false;
+                narratorFrame.IsVisible = false;
+                entryNarrator.IsVisible = false;
+                entryNarrator.IsEnabled = false;
+            }
+            if(selectedMediaId == 3)
+            {
+                playTimeLabel.IsVisible = true;
+                playTimeFrame.IsVisible = true;
+                entryPlaytime.IsVisible = true;
+                entryPlaytime.IsEnabled = true;
+                
+                narratorLabel.IsVisible = true;
+                narratorFrame.IsVisible = true;
+                entryNarrator.IsVisible = true;
+                entryNarrator.IsEnabled = true;
+
+                pageLabel.IsVisible = false;
+                entryPages.IsVisible = false;
+                entryPages.IsEnabled = false;
+                pageFrame.IsVisible = false;
+
+            }
+        }
+        private void ShowCreateProdctTab_ButtonClicked(object sender, EventArgs e)
+        {
+            ProductList.IsVisible = false;
+            if (!createProductTab.IsVisible)
+            {
+                createProductTab.IsVisible = true;
+                return;
+            }
+        }
+
         private void ChosenProduct_Clicked(object sender, EventArgs e)
         {
             if(changeShelf.SelectedIndex == -1)
@@ -211,6 +263,11 @@ namespace Decrypt_Library.Views
                 return;
             }
         }
+        private async void CancelProductButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
 
         #endregion
 
@@ -222,17 +279,36 @@ namespace Decrypt_Library.Views
         #region Complete product add
         private async void CompleteProduct_Pressed(object sender, EventArgs e)
         {
-            ProductList.IsVisible = false;
-            if (!createProductTab.IsVisible)
-            {
-                createProductTab.IsVisible = true;
-                return;
-            }
 
             int pagesInput = 0;
             double playTime = 0;
             long isbn = 0;
             DateTime date = DateTime.Now;
+
+            if (shelfPicker.SelectedIndex != -1)
+                shelfPicker.BackgroundColor = Color.YellowGreen;
+            else
+                shelfPicker.BackgroundColor = Color.IndianRed;
+
+            if (categoryPicker.SelectedIndex != -1)
+                categoryPicker.BackgroundColor = Color.YellowGreen;
+            else
+                categoryPicker.BackgroundColor = Color.IndianRed;
+
+            if (languagePicker.SelectedIndex != -1)
+                languagePicker.BackgroundColor = Color.YellowGreen;
+            else
+                languagePicker.BackgroundColor = Color.IndianRed;
+
+            if (audiencePicker.SelectedIndex != -1)
+                audiencePicker.BackgroundColor = Color.YellowGreen;
+            else
+                audiencePicker.BackgroundColor = Color.IndianRed;
+
+            if (mediaPicker.SelectedIndex != -1)
+                mediaPicker.BackgroundColor = Color.YellowGreen;
+            else
+                mediaPicker.BackgroundColor = Color.IndianRed;
 
             try
             {
@@ -241,22 +317,34 @@ namespace Decrypt_Library.Views
                 ProductPublisherCorrect = Readers.Readers.StringReader(entryPublisher.Text);
                 ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
                 ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
-                ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
-                ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
-                ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
                 ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
 
                 ProductAudienceIdCorrect = !string.IsNullOrEmpty(audiencePicker.SelectedItem.ToString());
                 ProductLanguageIdCorrect = !string.IsNullOrEmpty(languagePicker.SelectedItem.ToString());
                 ProductShelfIdCorrect = !string.IsNullOrEmpty(shelfPicker.SelectedItem.ToString());
                 ProductCategoryIdCorrect = !string.IsNullOrEmpty(categoryPicker.SelectedItem.ToString());
-                ProductMediaIdCorrect = !string.IsNullOrEmpty(mediaPicker.SelectedItem.ToString());
+
+                if(selectedMediaId == 1 || selectedMediaId == 2)
+                {
+                    ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
+                    ProductPlaytimeCorrect = true;
+                    ProductNarratorCorrect = true;
+                    ProductMediaIdCorrect = true;
+                }
+                if(selectedMediaId == 3)
+                {
+                    ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
+                    ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
+                    ProductPagesCorrect = true;
+                    ProductMediaIdCorrect = true;
+                }
 
                 ProductStatusCorrect = inStock.IsChecked;
                 ProductNewProductCorrect = newProduct.IsChecked;
                 ProductHiddenProductCorrect = hiddenProduct.IsChecked;
 
                 ProductCorrectProductInput = ProductIsbnCorrect
+                                      && ProductMediaIdCorrect
                                       && ProductTitleCorrect
                                       && ProductDescriptionCorrect
                                       && ProductPagesCorrect
@@ -268,20 +356,31 @@ namespace Decrypt_Library.Views
 
                 if (ProductCorrectProductInput)
                 {
+                    if (selectedMediaId == 1 || selectedMediaId == 2)
+                    {
+                        product.Pages = pagesInput;
+                        product.Narrator = null;
+                        product.Playtime = null;
+                    }
+
+                    if (selectedMediaId == 3)
+                    {
+                        product.Narrator = entryNarrator.Text;
+                        product.Playtime = playTime;
+                        product.Pages = null;
+                    }
+
                     product.Title = entryTitle.Text;
                     product.Description = entryDescription.Text;
                     product.AuthorName = entryAuthor.Text;
                     product.Publisher = entryPublisher.Text;
-                    product.Narrator = entryNarrator.Text;
 
-                    product.Pages = pagesInput;
                     product.LanguageId = EntityframeworkLanguages.ShowSpecificCountryIdByLanguage(languagePicker.SelectedItem.ToString());
                     product.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(shelfPicker.SelectedItem.ToString());
                     product.CategoryId = EntityframeworkCategories.ShowSpecificCategoryIdByCategoriesName(categoryPicker.SelectedItem.ToString());
                     product.AudienceId = EntityframeworkAudience.ShowSpecificAudienceIdByAgeGroup(audiencePicker.SelectedItem.ToString());
-                    product.MediaId = EntityframeworkMediaTypes.ShowSpecificMediaTypeIdByFormatName(mediaPicker.SelectedItem.ToString());
+                    product.MediaId = selectedMediaId;
                     product.Isbn = isbn;
-                    product.Playtime = playTime;
                     product.PublishDate = date;
                     product.NewProduct = newProduct.IsChecked;
                     product.HiddenProduct = hiddenProduct.IsChecked;
@@ -292,14 +391,17 @@ namespace Decrypt_Library.Views
                     createProductTab.IsVisible = false;
                     ProductList.IsVisible = true;
                     product = new Product();
+
+                    await Navigation.PushAsync(new MainPage());
+
                 }
                 else
-                    await DisplayActionSheet($"Wrong input", "could not be inserted", "OK");
+                    return;
 
             }
-            catch (Exception errormessage)
+            catch 
             {
-                await DisplayActionSheet($"{errormessage.Message}", "Error", "OK");
+                return;
             }
         }
 
@@ -584,6 +686,9 @@ namespace Decrypt_Library.Views
 
                 foreach (var item in EntityframeworkUsers.ShowAllUserTypes())
                 {
+                    if (userIDpicker.SelectedIndex == -1)
+                        return;
+
                     if (item.UserTypeName.Contains(userIDpicker.SelectedItem.ToString()))
                         userType = item.Id;
                 }
@@ -629,8 +734,44 @@ namespace Decrypt_Library.Views
                 register.IsVisible = false;
                 userList.IsVisible = true;
 
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.UserName.Contains(user.UserName))
+                    {
+                        DisplayAlert("Error", $"{user.UserName} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.Ssn == user.Ssn)
+                    {
+                        DisplayAlert("Error", $"{user.Ssn} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.Phonenumber == user.Phonenumber)
+                    {
+                        DisplayAlert("Error", $"{user.Phonenumber} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
+                foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                {
+                    if (item.Email == user.Email)
+                    {
+                        DisplayAlert("Error", $"{user.Email} finns redan i databasen", "OK");
+                        return;
+                    }
+                }
+
                 EntityframeworkUsers.CreateUser(user);
-                DisplayAlert("YAY!", "Nu är din registrering klar - logga in för att komma till boksidan", "Gå vidare");
+                userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
             }
             else
             {
@@ -652,7 +793,7 @@ namespace Decrypt_Library.Views
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 2 || x.UserTypeId == 3);
             register.IsVisible = false;
             endLabel.IsVisible = false;
             startLabel.IsVisible = true;
@@ -700,7 +841,9 @@ namespace Decrypt_Library.Views
                     }
                 }
             }
-        }
+            EntityframeworkUsers.RemoveUser(user);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
+        }   
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {

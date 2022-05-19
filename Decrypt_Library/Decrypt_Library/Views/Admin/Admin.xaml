@@ -69,7 +69,7 @@
                     <Button Text="Lägg till Produkter"
                                     BackgroundColor="Gold"
                                     TextColor="Black"
-                                    Clicked="CompleteProduct_Pressed"
+                            Clicked="ShowCreateProdctTab_ButtonClicked"
                                     Grid.Column="0"
                                     CornerRadius="0"
                                     FontAttributes="Bold"/>
@@ -191,17 +191,23 @@
 
                                         <Label Text="Speltid"
                                                FontAttributes="Bold"
+                                               IsVisible="false"
+                                               x:Name="playTimeLabel"
                                            AbsoluteLayout.LayoutBounds="30,320,300,50"
                                                TextColor="White"/>
 
                                         <Label Text="Antal sidor"
+                                               x:Name="pageLabel"
+                                               IsVisible="false"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="155,320,300,50"
+                                           AbsoluteLayout.LayoutBounds="30,320,300,50"
                                                TextColor="White"/>
 
                                         <Label Text="Berättare"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="280,320,300,50"
+                                               IsVisible="false"
+                                               x:Name="narratorLabel"
+                                           AbsoluteLayout.LayoutBounds="230,320,300,50"
                                                TextColor="White"/>
 
                                         <Label Text="Finns i lager"
@@ -443,6 +449,7 @@
                                                                 x:Name="mediaPicker"
                                                                 TextColor="Black"
                                                                 WidthRequest="175"
+                                                                    SelectedIndexChanged="MediaPicker_SelectedIndexChanged"
                                                                 FontAttributes="Bold"
                                                                 BackgroundColor="White"/>
 
@@ -453,13 +460,16 @@
                                                              Margin="0,15,0,0">
                                                         <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="120"
+                                                               x:Name="playTimeFrame"
+                                                       WidthRequest="185"
                                                    Padding="0">
                                                             <Entry
                                                     PlaceholderColor="White"
                                                     BackgroundColor="White"
                                                     FontSize="12"
                                                     TextChanged="entryPlaytime_TextChanged"
+                                                                IsVisible="false"
+                                                                IsEnabled="false"
                                                     x:Name="entryPlaytime"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack">
@@ -473,7 +483,8 @@
 
                                                         <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="120"
+                                                               x:Name="pageFrame"
+                                                       WidthRequest="175"
                                                    Padding="0">
 
                                                             <Entry
@@ -481,6 +492,8 @@
                                                     BackgroundColor="White"
                                                     FontSize="12"
                                                     x:Name="entryPages"
+                                                                IsVisible="false"
+                                                                IsEnabled="false"
                                                     TextChanged="entryPages_TextChanged"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack">
@@ -492,7 +505,8 @@
                                                         </Frame>
                                                         <Frame BorderColor="Black"
                                                        CornerRadius="15"
-                                                       WidthRequest="120"
+                                                               x:Name="narratorFrame"
+                                                       WidthRequest="185"
                                                    Padding="0">
 
 
@@ -502,6 +516,8 @@
                                                     BackgroundColor="White"
                                                     FontSize="12"
                                                     TextChanged="entryNarrator_TextChanged"
+                                                                IsEnabled="false"
+                                                                IsVisible="false"
                                                     x:Name="entryNarrator"
                                                     FontAttributes="Bold"
                                                     TextColor="BLack">
@@ -564,17 +580,46 @@
 
 
                                                         </Frame>
+
+                       
                                                     </AbsoluteLayout>
 
+                                                    <AbsoluteLayout>
+                                                        <Frame Padding="0" 
+                                                           BorderColor="Gold"
+                                                           BackgroundColor="Gold"
+                                                           CornerRadius="20"
+                                                           IsClippedToBounds="True"
+                                                           Margin="0,10,0,0">
 
-                                                    <Button CornerRadius="20"
-                                                    Clicked="CompleteProduct_Pressed"
-                                                    BackgroundColor="Gold"
-                                                    TextColor="Black"
-                                                    FontAttributes="Bold"
-                                                    Margin="0,20,0,0"
-                                                    AbsoluteLayout.LayoutBounds="-20,520,450,50"
-                                                    Text="Lägg till produkt "/>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="180"/>
+                                                                    <ColumnDefinition Width="180"/>
+                                                                </Grid.ColumnDefinitions>
+
+
+                                                                <Button CornerRadius="20"
+                                                                    Clicked="CompleteProduct_Pressed"
+                                                                    BackgroundColor="Gold"
+                                                                    TextColor="Black"
+                                                                    FontAttributes="Bold"
+                                                                    Grid.Column="0"
+                                                                    Text="Lägg till produkt "/>
+
+
+                                                                <Button CornerRadius="0"
+                                                                    BackgroundColor="White"
+                                                                    TextColor="Black"
+                                                                    Grid.Column="1"
+                                                                    Clicked="CancelProductButton_Clicked"
+                                                                    FontAttributes="Bold"
+                                                                    Text="Avbryt"/>
+                                                            </Grid>
+
+                                                        </Frame>
+
+                                                    </AbsoluteLayout>
 
                                                 </StackLayout>
                                             </Frame>
