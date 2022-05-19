@@ -38,11 +38,9 @@
                    Grid.Column="1"
                    WidthRequest="650">
 
-                    
+
                     <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1">
-            <Label x:Name="UserIdError" Text="Lånatagaren finns inte i systemet." TextColor="Red" IsVisible="false" />
-            <Label x:Name="ProductIdError" Text="Produkten finns inte i systemet" TextColor="red" IsVisible="false" />
-            <Label x:Name="User" Text="" TextColor="White" />
+                        <Label x:Name="User" Text="" TextColor="White" />
             <Entry x:Name="CheckUserId" Placeholder="Lånetagar-Id" />
                         <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
             
@@ -53,14 +51,16 @@
 
 
                         <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
-            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
+
+                        <StackLayout>
+                            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
             <Label x:Name="NumberOfItem" Text="" TextColor="White" IsVisible="false" />
-            
-            <ListView x:Name="ProductList"
+                        </StackLayout>
+
+                        <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
                               ItemTapped="ProductList_ItemTapped"
                               IsVisible="true"
-                              
                               >
                 <ListView.ItemTemplate>
                     <DataTemplate>
