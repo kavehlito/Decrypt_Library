@@ -33,7 +33,7 @@ namespace Decrypt_Library.Views
                 ReturnProductId.IsVisible = false;
                 ReturnNewProduct.IsVisible = true;
                 CheckOut.IsVisible = true;
-                receipt.AppendLine($"\n{productId,-27}{title,-64}");
+                receipt.AppendLine($"\n{productId,-27}{title,-64}{DateTime.Now:g}");
             }
         }
 
@@ -52,6 +52,7 @@ namespace Decrypt_Library.Views
             ReturnNewProduct.IsVisible = false;
             CheckOut.IsVisible = false;
             Headline.IsVisible = true;
+            Receipt.Text = receipt.ToString();
             Receipt.IsVisible = true;
             StartAgain.IsVisible = true;
         }
@@ -65,6 +66,8 @@ namespace Decrypt_Library.Views
             Headline.IsVisible = false;
             Receipt.IsVisible = false;
             StartAgain.IsVisible = false;
+            Receipt = null;
+
         }
     }
 }

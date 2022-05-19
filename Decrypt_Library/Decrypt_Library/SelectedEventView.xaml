@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Decrypt_Library.SelectedEventView">
+             x:Class="Decrypt_Library.SelectedEventView"
+             BackgroundImageSource="darkbackground.jpg">
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding EventName}" FontSize="Large" />
-            <Label Text="{Binding Time}" FontAttributes="Bold" />
-            <Label Text="{Binding Description}" />
-            <Label x:Name="UserError" Text="Du måste vara inloggad för att anmäla dig till eventet." TextColor="Red" IsVisible="false"/>
-            <Button x:Name="SignUpButton" Text="Anmäl dig" IsVisible="false" Clicked="SignUpButton_Clicked" />
+            <Label Text="{Binding EventName}" FontSize="Large" TextColor="#DDC6B6"/>
+            <Label Text="{Binding Time}" FontAttributes="Bold" TextColor="#DDC6B6"/>
+            <Label Text="{Binding Description}" TextColor="#DDC6B6"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

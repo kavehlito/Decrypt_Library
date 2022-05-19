@@ -4,7 +4,42 @@
              x:Class="Decrypt_Library.Views.Events">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="eventList"
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <AbsoluteLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Kommande event:"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Padding="20,20,20,20"
+                       >
+                    </Label>
+                </AbsoluteLayout>
+
+                <Frame BackgroundColor="Black"
+                   BorderColor="Black"
+                   HeightRequest="500"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   Grid.Column="1"
+                   WidthRequest="500">
+
+                    
+
+                        <ListView x:Name="eventList"
                               HasUnevenRows="False"
                             
                               VerticalScrollBarVisibility="Never"
@@ -23,26 +58,28 @@
 
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Text="{Binding Id}"
+                                    <Label Text=""
                                                    Grid.Column="0"
                                                    FontAttributes="Bold"
-                                                   TextColor="Black"/>
+                                                   TextColor="White"/>
 
                                     <StackLayout Grid.Column="1">
 
                                         <Label Text="{Binding EventName}"
                                                        FontAttributes="BOld"
-                                                       TextColor="Black"/>
+                                                       TextColor="White"/>
 
                                         <Label Text="{Binding Time}"
                                                        FontAttributes="Bold"
-                                                       TextColor="Black"/>
+                                                       TextColor="White"/>
 
 
-                                        
 
+                                                <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                </BoxView>
 
-                                    </StackLayout>
+                                            </StackLayout>
 
 
                                 </Grid>
@@ -51,6 +88,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+                </Frame>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
