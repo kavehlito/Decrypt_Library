@@ -1,6 +1,7 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -863,12 +864,16 @@ namespace Decrypt_Library.Views
             FavoriteCategory.IsVisible = true;
             FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
 
-            TopFive.Text = "TOP 5 mest lånade produkter";
+            TopFive.Text = "TOP 5 mest populära produkter:";
             TopFive.IsVisible = true;
 
             mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
             mostPopular.IsVisible = true;
-            
+
+            mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType().Count().ToString();
+            FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
+            FavouriteMediaType.IsVisible = true;
+
 
 
         }
