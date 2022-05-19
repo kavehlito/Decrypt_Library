@@ -127,16 +127,16 @@ namespace Decrypt_Library.EntityframeworkCode
                 var mostPop = (from
                                 pop in db.BookHistories
                                 join product in db.Products on pop.ProductId equals product.Id
-                                join mediatype in db.MediaTypes on pop.Id equals mediatype.Id
+                                join mediatype in db.MediaTypes on product.MediaId equals mediatype.Id
                                 where pop.EventId == 2
-                                select product).ToList().GroupBy(c => c.Id)
+                                select mediatype).ToList().GroupBy(c => c.Id)
                                     .Select(c => new MyPagesProductList
                                     {
-                                        MediaType = c.FirstOrDefault().MediaId,
-                                        //FormatName = c.FirstOrDefault().Id,
+                                        //MediaType = c.FirstOrDefault().,
+                                        FormatName = c.FirstOrDefault().FormatName,
                                         Count = c.Count(),
                                     }).OrderByDescending(c => c.Count).ToList();
-                return mostPop.ToList();
+                return mostPop;
             }
 
         }

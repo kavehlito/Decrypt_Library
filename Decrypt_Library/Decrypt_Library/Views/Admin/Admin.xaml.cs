@@ -870,7 +870,7 @@ namespace Decrypt_Library.Views
             mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
             mostPopular.IsVisible = true;
 
-            mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType().Count().ToString();
+            mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType();
             FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
             FavouriteMediaType.IsVisible = true;
 
