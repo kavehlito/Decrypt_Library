@@ -120,6 +120,27 @@ namespace Decrypt_Library.EntityframeworkCode
         }
         // Most loaned Mediatype
 
+        public static List<MyPagesProductList> ShowMostPopMediaType()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var mostPop = (from
+                                pop in db.BookHistories
+                                join product in db.Products on pop.ProductId equals product.Id
+                                join mediatype in db.MediaTypes on pop.Id equals mediatype.Id
+                                where pop.EventId == 2
+                                select product).ToList().GroupBy(c => c.Id)
+                                    .Select(c => new MyPagesProductList
+                                    {
+                                        MediaType = c.FirstOrDefault().MediaId,
+                                        //FormatName = c.FirstOrDefault().Id,
+                                        Count = c.Count(),
+                                    }).OrderByDescending(c => c.Count).ToList();
+                return mostPop.ToList();
+            }
+
+        }
+
 
         // Hur många förseningar
         // Funktion för mest populära event - går ej att testa än
