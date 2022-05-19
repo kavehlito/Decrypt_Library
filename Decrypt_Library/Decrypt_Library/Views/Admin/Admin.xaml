@@ -1776,12 +1776,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Frame BorderColor="White"
+                    <Frame BorderColor="Transparent"
                            Grid.Column="1"
                            WidthRequest="400"
                            x:Name="ProductTab"
                            IsVisible="False"
-                           HeightRequest="400"
+                           HeightRequest="500"
                            Grid.Row="1">
 
                         <ScrollView VerticalScrollBarVisibility="Never">
@@ -1872,11 +1872,11 @@
                            WidthRequest="400"
                            x:Name="userTab"
                            IsVisible="False"
-                           HeightRequest="400"
+                           HeightRequest="500"
                            Grid.Row="1">
 
                         <StackLayout>
-                            <ListView x:Name="userInfo" VerticalScrollBarVisibility="Never" >
+                            <ListView x:Name="userInfo" VerticalScrollBarVisibility="Never" HeightRequest="200" >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -1907,7 +1907,7 @@
                            WidthRequest="400"
                            x:Name="loanedTab"
                            IsVisible="False"
-                           HeightRequest="400"
+                           HeightRequest="500"
                            Grid.Row="1">
 
                         <ScrollView VerticalScrollBarVisibility="Never">
@@ -1917,7 +1917,7 @@
                                     <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="loanedInfo" HeightRequest="150" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="loanedInfo" HeightRequest="180" VerticalScrollBarVisibility="Never">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -1941,7 +1941,7 @@
                                     <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="loanedInfoStatistics" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="loanedInfoStatistics" VerticalScrollBarVisibility="Never" HeightRequest="200">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>

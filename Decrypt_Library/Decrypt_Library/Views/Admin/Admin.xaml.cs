@@ -893,7 +893,8 @@ namespace Decrypt_Library.Views
             loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
             loanedInfo.IsVisible = true;
 
-            AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid:";
+            var statistic = EntityframeworkCode.EntityframeworkStatistics.TotalAmountOfBooksLoaned().ToString();
+            AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid: {statistic}";
             AmountOfBooksLoaned.IsVisible = true;
 
             loanedInfoStatistics.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
