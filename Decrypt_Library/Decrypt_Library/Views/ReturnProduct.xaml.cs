@@ -24,10 +24,9 @@ namespace Decrypt_Library.Views
             if (Product.Text == null) Product.Text = "0";
             int.TryParse(Product.Text.ToString(), out int productId);
             var success = Decrypt_Library.ReturnProduct.UpdateProductHistory(productId, out string title);
-            if (!success) { Product.Text = null; Error.IsVisible = true; }
+            if (!success) { Product.Text = null; DisplayAlert("Felmeddelande", "Boken går inte att lämna tillbaka eftersom den inte är utlånad.", "OK"); }
             else
             {
-                Error.IsVisible = false;
                 Product.Text = null;
                 Product.IsVisible = false;
                 ReturnProductId.IsVisible = false;
