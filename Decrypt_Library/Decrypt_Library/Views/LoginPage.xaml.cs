@@ -61,7 +61,7 @@ namespace Decrypt_Library.Views
             Error.IsVisible = false;
             LogOut.IsVisible = false;
             Headline.IsVisible=true;
-            alternativeOptions.IsVisible = false;
+            alternativeOptions.IsVisible = true;
         }
 
         private void SSN_TextChanged(object sender, TextChangedEventArgs e)
