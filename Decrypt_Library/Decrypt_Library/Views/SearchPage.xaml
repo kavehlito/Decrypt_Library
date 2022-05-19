@@ -2,76 +2,76 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.SearchPage"
-             BackgroundImageSource="darkbackground.jpg">
+              BackgroundImageSource="darkbackground.jpg">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
                 <SearchBar Placeholder="Sök..." TextChanged="SearchBar_TextChanged"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <CheckBox x:Name="checkbox1" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox1" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="Deckare" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="Deckare" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6">
                 </Label>
-                <CheckBox x:Name="checkbox2" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox2" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="False"  BindingContext="{Binding .}"/>
-                <Label Text="Drama" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="Drama" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox3" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox3" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="False"  BindingContext="{Binding .}"/>
-                <Label Text="Novell" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60">
+                <Label Text="Novell" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6">
                 </Label>
-                <CheckBox x:Name="checkbox4" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox4" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="Roman" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="Roman" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox5" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox5" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="Saga" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" >
+                <Label Text="Saga" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox6" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox6" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="Självbiografi" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="90" >
+                <Label Text="Självbiografi" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="90" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox7" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox7" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="Äventyr" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="Äventyr" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6" >
                 </Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <CheckBox x:Name="checkbox8" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox8" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="False"  BindingContext="{Binding .}"/>
-                <Label Text="För Barn 0-6 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110">
+                <Label Text="För Barn 0-6 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" TextColor="#DDC6B6">
                 </Label>
-                <CheckBox x:Name="checkbox9" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox9" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Barn 6-9 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" >
+                <Label Text="För Barn 6-9 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox10" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox10" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Barn 9-12 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="120" >
+                <Label Text="För Barn 9-12 år" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="120" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox11" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox11" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Ungdomar" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" >
+                <Label Text="För Ungdomar" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" TextColor="#DDC6B6" >
                 </Label>
-                <CheckBox x:Name="checkbox12" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox12" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="För Vuxna" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" >
+                <Label Text="För Vuxna" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="110" TextColor="#DDC6B6" >
                 </Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <CheckBox x:Name="checkbox13" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox13" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                <Label Text="Bok" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="40" >
+                <Label Text="Bok" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="40" TextColor="#DDC6B6" >
                 </Label>
-                    <CheckBox x:Name="checkbox14" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox14" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                    <Label Text="E-Bok" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" >
+                <Label Text="E-Bok" FontSize="Micro" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50" TextColor="#DDC6B6" >
                     </Label>
-                    <CheckBox x:Name="checkbox15" WidthRequest="20" VerticalOptions="Center" Color="Black"
+                <CheckBox x:Name="checkbox15" WidthRequest="20" VerticalOptions="Center" Color="#DDC6B6"
                           CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="false"  BindingContext="{Binding .}"/>
-                    <Label Text="Ljudbok" FontSize="Micro" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60" >
+                <Label Text="Ljudbok" FontSize="Micro" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60" TextColor="#DDC6B6">
                     </Label>
 
             </StackLayout>
@@ -84,8 +84,8 @@
                                     <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="FillAndExpand" WidthRequest="100"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-                                    <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20"/>
-                                    <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15"/>
+                                    <Label Text="{Binding Title}" HorizontalOptions="Start" FontSize="20" TextColor="#DDC6B6"/>
+                                    <Label Text="{Binding AuthorName, StringFormat='Av {0}'}" HorizontalOptions="Start" FontSize="15" TextColor="#DDC6B6"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

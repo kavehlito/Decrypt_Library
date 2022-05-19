@@ -1,7 +1,6 @@
 ﻿using Decrypt_Library.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Decrypt_Library.EntityFrameworkCode
 {
@@ -66,33 +65,53 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-        public static List<CategoryName_Product> Checkboxes(List<string> checkboxList)
+        public static List<Product> Checkboxes(List<int> category, List<int> age, List<int> media)
         {
-            var products = new List<CategoryName_Product>();
+            var products = new List<Product>();
             using (var db = new Decrypt_LibraryContext())
             {
-                var product = (from prod in db.Products
-                                join cate in db.Categories on prod.CategoryId equals cate.Id
-                                join aud in db.Audiences on prod.AudienceId equals aud.Id
-                                join med in db.MediaTypes on prod.MediaId equals med.Id
-                                select new CategoryName_Product
-                                {
-                                    Id = prod.Id,
-                                    Title = prod.Title,
-                                    AuthorName = prod.AuthorName,
-                                    Audience = aud.AgeGroup,
-                                    Media = med.FormatName,
-                                    Category = cate.CategoriesName
-                                    
-                                }).ToList();
-
-               
-                    foreach (var prod in checkboxList)
-                    {
-                        products.AddRange(product.Where(x => x.Category == prod || x.Audience == prod || x.Media == prod).ToList());
-                    }
-                    return products;
-                              
+                if (category.Count() > 0 && age.Count() == 0 && media.Count() == 0)
+                {
+                    products = db.Products.Where(c => category.Contains((int)c.CategoryId)).ToList();
+                }
+                else if (category.Count() == 0 && age.Count() > 0 && media.Count() == 0)
+                {
+                    products = db.Products.Where(a => age.Contains((int)a.AudienceId)).ToList();
+                }
+                else if (category.Count() == 0 && age.Count() == 0 && media.Count() > 0)
+                {
+                    products = db.Products.Where(m => media.Contains((int)m.MediaId)).ToList();
+                }
+                else if (category.Count() > 0 && age.Count() > 0 && media.Count() == 0)
+                {
+                    products = db.Products
+                    .Where(c => category.Contains((int)c.CategoryId))
+                    .Where(a => age.Contains((int)a.AudienceId))
+                    .ToList();
+                }
+                else if (category.Count() == 0 && age.Count() > 0 && media.Count() > 0)
+                {
+                    products = db.Products
+                    .Where(a => age.Contains((int)a.AudienceId))
+                    .Where(m => media.Contains((int)m.MediaId))
+                    .ToList();
+                }
+                else if (category.Count() > 0 && age.Count() == 0 && media.Count() > 0)
+                {
+                    products = db.Products
+                    .Where(c => category.Contains((int)c.CategoryId))
+                    .Where(m => media.Contains((int)m.MediaId))
+                    .ToList();
+                }
+                else if (category.Count() > 0 && age.Count() > 0 && media.Count() > 0)
+                {
+                    products = db.Products
+                    .Where(c => category.Contains((int)c.CategoryId))
+                    .Where(a => age.Contains((int)a.AudienceId))
+                    .Where(m => media.Contains((int)m.MediaId))
+                    .ToList();
+                }
+                return products;
             }
         }
     }
