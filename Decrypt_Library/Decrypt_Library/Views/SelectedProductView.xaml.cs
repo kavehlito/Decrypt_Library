@@ -3,6 +3,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Decrypt_Library.Models;
+using System.Linq;
 
 namespace Decrypt_Library.Views
 {
@@ -18,16 +19,22 @@ namespace Decrypt_Library.Views
             InitializeComponent();
             BindingContext = EntityframeworkProducts.ShowProductInformation(selectedId);
             reviewList.ItemsSource = EntityframeworkReview.ShowBookReview(Title);
+            starPicker.ItemsSource = EntityframeworkReview.StarValues();
 
             if (UserLogin.thisUser == null)
             {
                 LoanOrReserveButton.IsVisible = false;
-                PlsLoginlbl.IsVisible = true;
+                PlsLoginReservelbl.IsVisible = true;
+                PlsloginReviewlbl.IsVisible = true;
             }
             else
             {
                 LoanOrReserveButton.IsVisible = true;
-                PlsLoginlbl.IsVisible = false;
+                PlsLoginReservelbl.IsVisible = false;
+                PlsloginReviewlbl.IsVisible = false;
+                reviewButton.IsVisible = true;
+                reviewEntry.IsVisible = true;
+                starPicker.IsVisible = true;
             }
 
             if (LoanOrReserveButton.Text == "True")
@@ -71,9 +78,36 @@ namespace Decrypt_Library.Views
             }
         }
 
-        private void reviewEntry_Completed(object sender, EventArgs e)
+        private async void reviewEntry_Completed(object sender, EventArgs e)
         {
-            
+            var review = new Review();
+
+            if (string.IsNullOrWhiteSpace(reviewEntry.Text))
+            {
+                await DisplayAlert("Tomt fält!", "Textfältet får inte vara tomt, skriv in något!", "Ok");
+            }
+            else if (starPicker.SelectedIndex == -1)
+            {
+                await DisplayAlert("Tomt fält!", "Vänligen ange betyget du vill ge produkten!", "Ok");
+            }
+            else
+            {
+                review.ReviewText = reviewEntry.Text;
+                review.Stars = (int?)starPicker.SelectedItem;
+                review.UserId = UserLogin.thisUser.Id;
+                review.ProduktId = Convert.ToInt32(Idlbl.Text);
+
+                EntityframeworkReview.ReviewEntry(review);
+                reviewList.ItemsSource = null;
+                reviewList.ItemsSource = reviewList.ItemsSource = EntityframeworkReview.ShowBookReview(Title);
+                reviewEntry.Text = null;
+                starPicker.SelectedIndex = -1;
+            }
+        }
+
+        private void reviewButton_Clicked(object sender, EventArgs e)
+        {
+            reviewEntry_Completed(sender, e);
         }
     }
 }
