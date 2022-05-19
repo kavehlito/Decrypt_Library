@@ -44,6 +44,7 @@ namespace Decrypt_Library.Views
                 LogOut.IsVisible = true;
                 Headline.IsVisible = false;
                 alternativeOptions.IsVisible = false;
+                borderHide.IsVisible = false;
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
             }
 
@@ -61,6 +62,7 @@ namespace Decrypt_Library.Views
             Error.IsVisible = false;
             LogOut.IsVisible = false;
             Headline.IsVisible=true;
+            borderHide.IsVisible = true;
             alternativeOptions.IsVisible = true;
         }
 

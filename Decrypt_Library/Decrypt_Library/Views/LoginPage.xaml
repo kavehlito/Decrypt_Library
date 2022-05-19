@@ -143,6 +143,11 @@
 
                     </StackLayout>
 
+                    <BoxView BackgroundColor="Black"
+                             x:Name="borderHide"
+                             AbsoluteLayout.LayoutBounds="20,264,400,9"/>
+
+
                 </AbsoluteLayout>
 
             </Grid>
