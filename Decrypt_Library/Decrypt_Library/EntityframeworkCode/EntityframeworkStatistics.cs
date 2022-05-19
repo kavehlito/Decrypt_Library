@@ -118,6 +118,19 @@ namespace Decrypt_Library.EntityframeworkCode
                 return amountOfBooks.Count();
             }
         }
+
+        //Total amount of loaned products
+        public static int TotalAmountOfBooksLoaned()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var amountOfBooks = db.BookHistories.Where(e => e.EventId == 2);
+
+                return amountOfBooks.Count();
+            }
+        }
+
+
         // Most loaned Mediatype
 
         public static List<MyPagesProductList> ShowMostPopMediaType()
