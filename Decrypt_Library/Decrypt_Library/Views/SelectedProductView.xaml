@@ -38,14 +38,17 @@
                     </AbsoluteLayout>
 
                     <StackLayout>
-                        <ListView x:Name="reviewList" BackgroundColor="#262223">
+                        <Label Text="Recensioner" FontSize="40" TextColor="PaleVioletRed" TextDecorations="Underline"/>
+                        <ListView x:Name="reviewList" BackgroundColor="#1a1919" HeightRequest="500" WidthRequest="800" SeparatorVisibility="Default" SeparatorColor="PaleVioletRed">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout>
+                                        <StackLayout Margin="20">
                                             <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding UserName}" TextColor="#DDC6B6" FontSize="20"/>
-                                                <Label Text="{Binding Stars, StringFormat='Stjärnor: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
+                                                <Label Text="{Binding UserName}" TextColor="PaleVioletRed" FontSize="20" TextDecorations="Underline"/>
+                                                <Label Text="gav produkten" TextColor="#DDC6B6" FontSize="20"/>
+                                                <Label Text="{Binding Stars, StringFormat='{0}&#9733;'}" TextColor="Gold" FontSize="20" TextDecorations="Underline"/>
+                                                <Label Text="stjärnor!" TextColor="#DDC6B6" FontSize="20"/>
                                             </StackLayout>
                                             <StackLayout>
                                                 <Label Text="{Binding ReviewText}" TextColor="#DDC6B6" FontSize="20"/>
@@ -55,6 +58,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Entry x:Name="reviewEntry" Placeholder="Skriv vad du tyckte om produkten här..." ClearButtonVisibility="WhileEditing" Completed="reviewEntry_Completed"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

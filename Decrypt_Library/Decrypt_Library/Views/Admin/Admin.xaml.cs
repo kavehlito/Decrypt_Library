@@ -738,7 +738,7 @@ namespace Decrypt_Library.Views
                 {
                     if (item.UserName.Contains(user.UserName))
                     {
-                        DisplayAlert("Error", $"{user.UserName} finns redan i databasen", "OK");
+                        DisplayAlert("Error", $"Användarnamnet: {user.UserName} finns redan i databasen", "OK");
                         return;
                     }
                 }
@@ -747,7 +747,7 @@ namespace Decrypt_Library.Views
                 {
                     if (item.Ssn == user.Ssn)
                     {
-                        DisplayAlert("Error", $"{user.Ssn} finns redan i databasen", "OK");
+                        DisplayAlert("Error", $"Användare med personummer: {user.Ssn} finns redan i databasen", "OK");
                         return;
                     }
                 }
@@ -756,7 +756,7 @@ namespace Decrypt_Library.Views
                 {
                     if (item.Phonenumber == user.Phonenumber)
                     {
-                        DisplayAlert("Error", $"{user.Phonenumber} finns redan i databasen", "OK");
+                        DisplayAlert("Error", $"Användare med telefonnumret: {user.Phonenumber} finns redan i databasen", "OK");
                         return;
                     }
                 }
@@ -765,7 +765,7 @@ namespace Decrypt_Library.Views
                 {
                     if (item.Email == user.Email)
                     {
-                        DisplayAlert("Error", $"{user.Email} finns redan i databasen", "OK");
+                        DisplayAlert("Error", $"Användare med Email: {user.Email} finns redan i databasen", "OK");
                         return;
                     }
                 }

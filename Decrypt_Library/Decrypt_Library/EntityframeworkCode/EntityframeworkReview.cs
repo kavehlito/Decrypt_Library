@@ -26,5 +26,15 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return reviews;
             }
         }
+        public static void ReviewEntry(Review newReview)
+        {
+            using(var db = new Decrypt_LibraryContext())
+            {
+                var review = db.Reviews;
+
+                review.Add(newReview);
+                db.SaveChanges();
+            }
+        }
     }
 }
