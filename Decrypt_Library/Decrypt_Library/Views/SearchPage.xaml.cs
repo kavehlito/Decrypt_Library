@@ -1,6 +1,7 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -67,7 +68,19 @@ namespace Decrypt_Library.Views
             if (checkbox15.IsChecked)
                 media.Add(3);
             ProductList.ItemsSource = EntityframeworkCategories.Checkboxes(category, age, media);
+
+            /*var alternative = EntityframeworkCategories.Checkboxes(category, age, media);
+
+            if (alternative.Count == 0)
+            {
+                //"Din sökning gav inget resultat"
+            }
+            else
+            {
+                ProductList.ItemsSource = alternative;
+            }*/
         }
+
     }
 }
 
