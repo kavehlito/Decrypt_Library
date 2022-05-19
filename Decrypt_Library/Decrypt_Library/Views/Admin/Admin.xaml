@@ -1299,6 +1299,13 @@
                                            AbsoluteLayout.LayoutBounds="10,170,300,20"
                                            TextColor="White"/>
 
+                                    <Label Text="lösenordet måste innehålla minst 1 siffra"
+                                           FontAttributes="Bold"
+                                           FontSize="8"
+                                           AbsoluteLayout.LayoutBounds="10,227,300,20"
+                                           TextColor="White"/>
+
+
 
                                     <Label Text="Skriv lösenordet igen"
                                            FontAttributes="Bold"

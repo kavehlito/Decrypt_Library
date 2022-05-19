@@ -1,71 +1,191 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
-             x:Class="Decrypt_Library.Views.AboutPage">
+             x:Class="Decrypt_Library.Views.AboutPage"
+             BackgroundColor="Black">
     <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        
-        
-        <AbsoluteLayout BackgroundColor="Beige">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1"
+                   Text="Välkommen till Decrypt biblioteket"
+                   TextColor="Gold"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,0"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="20"/>
 
-           
-                <Label Text="Välkommen till Decrypt biblioteket" 
-                           AbsoluteLayout.LayoutBounds="0.5, 0.1, 500, 100" 
-                           AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           FontSize="Large" HorizontalOptions="Center"   />
-                    
-               
-                    <Frame BorderColor="Black" 
-                           BackgroundColor="AliceBlue"
-                           AbsoluteLayout.LayoutBounds="0.5, 100, 150, 200" >
+            <Frame BorderColor="Transparent"
+                   Grid.Row="1"
+                   HeightRequest="410"
+                   WidthRequest="410"
+                   Grid.Column="1">
 
-                        <Label Text="Öppettider:
-                           Måndag 10-19
-                           Tisdag    10-19
-                           Onsdag  10-19
-                           Torsdag  10-19
-                           Fredag    10-19
-                           Lördag    11-15
-                           Söndag   Stängt
-                           "
-                              />
+                <ScrollView VerticalScrollBarVisibility="Never">
 
-                    </Frame>
-            
-            <Label Text="Om oss." 
-                           AbsoluteLayout.LayoutBounds="0.5, 0.60, 400, 100" 
-                           AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           FontSize="Medium" HorizontalOptions="Center"   />
-            <Label Text="Har du frågor om dina lån, våra arrangemang, e-böcker eller 
+                    <StackLayout>
+
+                        <Label Text="Om oss"
+                           FontSize="15" 
+                           FontAttributes="Bold"
+                           TextColor="Gold"
+                           HorizontalOptions="Start"/>
+
+                        <Label Text="Har du frågor om dina lån, våra arrangemang, e-böcker eller 
                    något annat som rör biblioteket? Eller har du synpunkter eller 
                    klagomål? Skriv eller ring till  oss så svarar vi, senast efter 
                    två vardagar." 
-                           AbsoluteLayout.LayoutBounds="0.5, 0.65, 500, 100" 
-                           AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           FontSize="Micro" HorizontalOptions="CenterAndExpand"   />
-            <StackLayout HorizontalOptions="Start" Orientation="Vertical" Padding=" 3">
-                <Image Source="Böcker.jpg" HorizontalOptions="FillAndExpand" WidthRequest="100"/>
-            </StackLayout>
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               FontSize="12"/>
 
-            <Label Text="Kontakta oss" 
-                           AbsoluteLayout.LayoutBounds="0.92, 0.3, 400, 100" 
-                           AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           FontSize="Medium" HorizontalOptions="Center"   />
-            <Label Text="Bokvägen 13
-                                Stockholm
-                             08-123 45 678
-                                Decrypt@bibliotek.se
-                            " 
-                           AbsoluteLayout.LayoutBounds="0.9, 0.36, 210, 100" 
-                           AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           FontSize="Micro" HorizontalOptions="CenterAndExpand"   />
+                        <Grid Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Padding="0"
+                               HeightRequest="125"
+                               CornerRadius="30"
+                               BorderColor="Transparent"
+                               IsClippedToBounds="True">
+
+                                <Image Source="https://this-person-does-not-exist.com/img/avatar-07d0b97f99205faab5a4bc4860d8a13d.jpg"/>
+
+                            </Frame>
+
+                            <Frame Padding="0"
+                               HeightRequest="125"
+                               CornerRadius="30"
+                                   Grid.Column="1"
+                               BorderColor="Transparent"
+                               IsClippedToBounds="True">
+
+                                <Image Source="https://this-person-does-not-exist.com/img/avatar-de55db001cf13d22603b04fc6b94da29.jpg"/>
+
+                            </Frame>
+
+                        </Grid>
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label TextColor="White"
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               Margin="20,0,0,0"
+                               Text="Gertrud Örnpung"/>
+
+                            <Label TextColor="White"
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               Margin="50,0,0,0"
+                               Text="Owe Ståhlbåge"/>
+
+                        </StackLayout>
+
+                        <StackLayout
+                               Margin="0,20,0,0"
+                            Orientation="Horizontal">
+                            <Label Text="Kontakta oss"
+                           FontSize="15" 
+                           FontAttributes="Bold"
+                           TextColor="Gold"
+                           HorizontalOptions="Start"/>
+
+                            <Label Text="Öppettider"
+                           FontSize="15" 
+                           FontAttributes="Bold"
+                           TextColor="Gold"
+                                   Margin="150,0,0,0"
+                           HorizontalOptions="Start"/>
+                        </StackLayout>
 
 
-        </AbsoluteLayout>
-         
-            
-     
-        
+                        <StackLayout Orientation="Horizontal"
+                                     >
 
+                            <StackLayout
+                                Spacing="0">
+                                <Label Text="Address: Bokvägen 13"
+                               
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Start"/>
+
+                                <Label Text="173333"
+                               
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Start"/>
+
+                                <Label Text="Stockholm"
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Start"/>
+
+                                <Label Text="08-123 45 678" 
+                               
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Start"/>
+
+                                <Label Text="Decrypt@bibliotek.se"
+
+                               
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Start"/>
+                            </StackLayout>
+
+
+                            <StackLayout Margin="115,0,0,0"
+                                         Spacing="0">
+
+                                <Label Text="Måndag - Fredag 10-19"
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                            />
+
+                                <Label Text="Helger - Fredag 10-19"
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Start"/>
+                            </StackLayout>
+
+
+
+
+
+
+             
+                        </StackLayout>
+
+
+
+                    </StackLayout>
+
+
+
+                </ScrollView>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
+    

@@ -48,8 +48,6 @@ namespace Decrypt_Library.Views
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
             }
 
-
-
         }
 
         private void LogOut_Clicked(object sender, EventArgs e)
