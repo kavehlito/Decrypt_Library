@@ -22,23 +22,30 @@ namespace Decrypt_Library.Views
 
             profileText.Text = MyPages.UserProfile();
         }
-
-        private async void MyLoan_Clicked(object sender, EventArgs e)
+        private void MyLoan_Clicked(object sender, EventArgs e)
         {
             if (UserLogin.thisUser == null)
-                await DisplayAlert("Oops", "Du är inte inloggad", "OK");
+            {
+                profile.IsVisible = true;
+                return;
+            }
 
-            loanList.IsVisible = true;
+            loanHistoryList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = false;
+            loanList.IsVisible = true;
             loanList.ItemsSource = MyPages.LoanList();
         }
 
-        private async void MyReservations_Clicked(object sender, EventArgs e)
+        private void MyReservations_Clicked(object sender, EventArgs e)
         {
             if (UserLogin.thisUser == null)
-                await DisplayAlert("Oops", "Du är inte inloggad", "OK");
+            {
+                profile.IsVisible = true;
+                return;
+            }
 
+            loanHistoryList.IsVisible = false;
             loanList.IsVisible = false;
             profile.IsVisible = false;
             reservations.IsVisible = true;
@@ -46,10 +53,13 @@ namespace Decrypt_Library.Views
             reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
 
-        private async void MyLoanHistory_Clicked(object sender, EventArgs e)
+        private void MyLoanHistory_Clicked(object sender, EventArgs e)
         {
             if (UserLogin.thisUser == null)
-                await DisplayAlert("Oops", "Du är inte inloggad", "OK");
+            {
+                profile.IsVisible = true;
+                return;
+            }
 
             loanList.IsVisible = false;
             profile.IsVisible = false;
@@ -73,5 +83,6 @@ namespace Decrypt_Library.Views
             reservations.ItemsSource = null;
             reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
+
     }
 }

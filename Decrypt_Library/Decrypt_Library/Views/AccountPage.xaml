@@ -89,9 +89,17 @@
 
                     <AbsoluteLayout x:Name="profile" IsVisible="false">
                         <Label x:Name="profileText" 
-                               Text="Du är inte inloggad" TextColor="White"
+                               Text="Du är inte inloggad!" TextColor="White"
                                FontAttributes="Bold" AbsoluteLayout.LayoutBounds="5, 20, 300, 200">
                         </Label>
+
+
+                        <ProgressBar 
+                            x:Name="loginPage"
+                            ProgressColor="Gold"
+                                AbsoluteLayout.LayoutBounds="0,70,410,5"
+                               />
+
 
                     </AbsoluteLayout>
 

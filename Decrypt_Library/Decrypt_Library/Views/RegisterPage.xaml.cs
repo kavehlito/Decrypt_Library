@@ -44,6 +44,15 @@ namespace Decrypt_Library.Views
 
                     foreach (var item in EntityframeworkUsers.ShowAllUsers())
                     {
+                        if (item.UserName.Contains(Username.Text))
+                        {
+                            DisplayAlert("Error!", "Det finns redan en användare med samma användarnamn", "Gå vidare");
+                            return;
+                        }
+                    }
+
+                    foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                    {
                         if (item.Ssn == convertedSSN)
                         {
                             DisplayAlert("Error!", "Det finns redan en användare med samma personnummer", "Gå vidare");
@@ -74,19 +83,19 @@ namespace Decrypt_Library.Views
                     user.Ssn = convertedSSN;
                     user.UserTypeId = 1;
 
+                    EntityframeworkUsers.CreateUser(user);
                     registerFrame.IsVisible = false;
                     registrationDoneFrame.IsVisible = true;
 
                     refreshProgress.Progress = 0;
                     refreshProgress.IsVisible = true;
-                    await refreshProgress.ProgressTo(1, 2000, Easing.Linear);
+                    await refreshProgress.ProgressTo(1, 2500, Easing.Linear);
 
                     var tab = new MainPage();
                     tab.CurrentPage = tab.Children[2];
 
                     await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
-                    EntityframeworkUsers.CreateUser(user);
                 }
                 else
                 {
