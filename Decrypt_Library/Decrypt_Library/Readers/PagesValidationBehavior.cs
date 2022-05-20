@@ -30,7 +30,7 @@ namespace Decrypt_Library.Readers
 
             if (Regex.IsMatch(e.NewTextValue, IdPattern) && int.TryParse(e.NewTextValue, out _))
             {
-                userEntry.BackgroundColor = Color.YellowGreen;
+                userEntry.BackgroundColor = Color.White;
                 AdminPage.ProductPagesCorrect = true;
             }
             else

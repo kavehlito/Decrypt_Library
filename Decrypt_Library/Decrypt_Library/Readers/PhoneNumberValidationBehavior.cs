@@ -30,13 +30,16 @@ namespace Decrypt_Library.Readers
 
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
             {
-                userEntry.BackgroundColor = Color.YellowGreen;
+                userEntry.BackgroundColor = Color.White;
                 AdminPage.correctPhone = true;
+                RegisterPage._correctPhone = true;
+
             }
             else
             {
                 userEntry.BackgroundColor = Color.IndianRed;
                 AdminPage.correctPhone = false;
+                RegisterPage._correctPhone = false;
             }
         }
     }

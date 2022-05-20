@@ -28,15 +28,18 @@ namespace Decrypt_Library.Readers
             var IdPattern = "^[a-zA-Z]{2,20}$";
             var userEntry = sender as Entry;
 
+
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
             {
-                userEntry.BackgroundColor = Color.YellowGreen;
+                userEntry.BackgroundColor = Color.White;
                 AdminPage.correctUserName = true;
+                RegisterPage._correctUserName = true;
             }
             else
             {
                 userEntry.BackgroundColor = Color.IndianRed;
                 AdminPage.correctUserName = false;
+                RegisterPage._correctUserName = false;
             }
         }
     }

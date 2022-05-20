@@ -29,13 +29,17 @@ namespace Decrypt_Library.Readers
 
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
             {
-                userEntry.BackgroundColor = Color.YellowGreen;
+                userEntry.BackgroundColor = Color.White;
                 AdminPage.ProductAuthorNameCorrect = true;
+                RegisterPage._correctSSN = true;
+
             }
             else
             {
                 userEntry.BackgroundColor = Color.IndianRed;
                 AdminPage.ProductAuthorNameCorrect = false;
+                RegisterPage._correctSSN = false;
+
             }
         }
     }

@@ -25,20 +25,21 @@ namespace Decrypt_Library.Readers
 
         private void BindAbleOnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var service = new ConfirmPasswordValidationBehavior();
             var IdPattern = "([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*";
             var userEntry = sender as Entry;
 
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
             {
                 userEntry.Text = e.NewTextValue;
-                userEntry.BackgroundColor = Color.YellowGreen;
+                userEntry.BackgroundColor = Color.White;
                 AdminPage.correctPassword = true;
+                RegisterPage._correctPassword = true;
             }
             else
             {
                 userEntry.BackgroundColor = Color.IndianRed;
                 AdminPage.correctPassword = false;
+                RegisterPage._correctPassword = false;
             }
         }
     }

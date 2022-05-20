@@ -78,7 +78,11 @@ namespace Decrypt_Library.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage());
+            UserLogin.LogOutUsers();
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[6];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
     }
 }

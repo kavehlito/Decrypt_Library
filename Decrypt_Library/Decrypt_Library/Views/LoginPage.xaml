@@ -6,7 +6,6 @@
     <ContentPage.Content>
         <StackLayout>
 
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -87,7 +86,7 @@
                                             Clicked="LogIn_Clicked" 
                                             FontAttributes="Bold"
                                             CornerRadius="10"
-                                            BackgroundColor="Gold" 
+                                            BackgroundColor="Gold"
                                             TextColor="Black"/>
 
                                     
@@ -108,10 +107,10 @@
                     <Button x:Name="LogOut" 
                             Text="Logga ut" 
                             Clicked="LogOut_Clicked" 
-                            IsVisible="False" 
+                            IsVisible="False"
                             CornerRadius="10"
                             AbsoluteLayout.LayoutBounds="100,220,260,35"
-                            BackgroundColor="Gold" 
+                            BackgroundColor="Gold"
                             FontAttributes="Bold"
                             TextColor="Black"/>
 

@@ -31,7 +31,7 @@ namespace Decrypt_Library.Readers
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
             {
                 userEntry.Text = e.NewTextValue;
-                userEntry.BackgroundColor = Color.YellowGreen;
+                userEntry.BackgroundColor = Color.White;
                 AdminPage.ProductPublishDateCorrect = true;
             }
             else
