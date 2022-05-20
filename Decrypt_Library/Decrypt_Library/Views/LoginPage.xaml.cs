@@ -20,7 +20,7 @@ namespace Decrypt_Library.Views
             InitializeComponent();
         }
 
-        private void LogIn_Clicked(object sender, EventArgs e)
+        private async void LogIn_Clicked(object sender, EventArgs e)
         {
 
             if (Password.Text == null || SSN.Text == null) { Password.Text = "0"; SSN.Text = "0"; }  
@@ -47,6 +47,7 @@ namespace Decrypt_Library.Views
                 borderHide.IsVisible = false;
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
 
+
                 //if (UserLogin.thisUser.UserTypeId == 3)
                 //{
                 //    Page pageToAdd = new AdminPage();
@@ -59,6 +60,7 @@ namespace Decrypt_Library.Views
         }
         private async void LogOut_Clicked(object sender, EventArgs e)
         {
+ 
             UserLogin.LogOutUsers();
             var tab = new MainPage();
             tab.CurrentPage = tab.Children[2];

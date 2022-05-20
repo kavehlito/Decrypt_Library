@@ -20,11 +20,10 @@ namespace Decrypt_Library.Views
 
         private async void eventList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-        
-                var selectedItemFromList = (Models.Event)e.Item;
-                await Navigation.PushAsync(new SelectedEventView(selectedItemFromList.Id));
-                ((ListView)sender).SelectedItem = null;
-            
+            var selectedItemFromList = (Models.Event)e.Item;
+            await Navigation.PushAsync(new SelectedEventView(selectedItemFromList.Id));
+            ((ListView)sender).SelectedItem = null;
+
         }
     }
 }

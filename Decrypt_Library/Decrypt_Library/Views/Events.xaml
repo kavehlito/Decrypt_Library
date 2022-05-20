@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black"
              x:Class="Decrypt_Library.Views.Events">
     <ContentPage.Content>
         <StackLayout>
@@ -19,75 +20,77 @@
 
                 </Grid.ColumnDefinitions>
 
-                <AbsoluteLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Kommande event:"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       Padding="20,20,20,20"
-                       >
-                    </Label>
-                </AbsoluteLayout>
-
                 <Frame BackgroundColor="Black"
                    BorderColor="Black"
                    HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
-                   WidthRequest="500">
+                   WidthRequest="410">
 
-                    
+                    <StackLayout>
 
-                        <ListView x:Name="eventList"
+
+
+                        <StackLayout>
+
+
+                            <Image Source="decrypt6.png"
+                   Grid.Column="1"
+                                   Margin="0,10,0,0"
+                               Scale="0.7"/>
+
+                            <Label TextColor="Gold"
+                                   FontAttributes="Bold"
+                                   FontSize="15"
+                                   Margin="30,0,0,0"
+                               Text="Varfor do soga? Varfor do soga på koken?"/>
+
+                            <AbsoluteLayout>
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="20,0,370,1"
+                                     BackgroundColor="White"/>
+
+                            </AbsoluteLayout>
+
+
+                            <ListView x:Name="eventList"
                               HasUnevenRows="False"
                             
                               VerticalScrollBarVisibility="Never"
                               ItemTapped="eventList_ItemTapped"
                               >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Frame>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame>
 
-                                    </Grid.ColumnDefinitions>
+                                                <StackLayout>
 
-                                    <Label Text=""
-                                                   Grid.Column="0"
-                                                   FontAttributes="Bold"
-                                                   TextColor="White"/>
-
-                                    <StackLayout Grid.Column="1">
-
-                                        <Label Text="{Binding EventName}"
+                                                    <Label Text="{Binding EventName}"
                                                        FontAttributes="BOld"
                                                        TextColor="White"/>
 
-                                        <Label Text="{Binding Time}"
+                                                    <Label Text="{Binding Time}"
                                                        FontAttributes="Bold"
                                                        TextColor="White"/>
 
-
-
-                                                <BoxView BackgroundColor="White"
+                                                    <BoxView BackgroundColor="White"
                                                      HeightRequest="3" >
-                                                </BoxView>
+                                                    </BoxView>
 
-                                            </StackLayout>
+                                                </StackLayout>
 
 
-                                </Grid>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+
+
                 </Frame>
             </Grid>
         </StackLayout>

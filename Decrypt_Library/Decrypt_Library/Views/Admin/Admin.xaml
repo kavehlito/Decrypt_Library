@@ -38,6 +38,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
 
                 <Label Text="Produkt Inställningar"
                        FontSize="25"
@@ -48,7 +49,6 @@
                        FontAttributes="Bold"
                    />
 
-    
             </Grid>
 
             <Frame BorderColor="Gold"
