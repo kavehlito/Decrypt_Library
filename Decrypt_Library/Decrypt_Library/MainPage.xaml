@@ -6,6 +6,7 @@
             xmlns:AdminMenu="clr-namespace:Decrypt_Library.Views.Admin" x:DataType="decrypt_library:MainPage"
             x:Class="Decrypt_Library.MainPage"
             BarBackgroundColor="Black"
+            ChildAdded="TabbedPage_ChildAdded"
             BarTextColor="White">
 
     <TabbedPage.Children>

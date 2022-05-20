@@ -47,22 +47,23 @@ namespace Decrypt_Library.Views
                 borderHide.IsVisible = false;
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
 
+                //if (UserLogin.thisUser.UserTypeId == 3)
+                //{
+                //    Page pageToAdd = new AdminPage();
+                //    var homePage = new MainPage();
+                //    pageToAdd.Title = "Admin";
+                //    homePage.Children.Add(pageToAdd);
+                //    await Navigation.PushAsync(homePage);
+                //}
             }
-
         }
-
-        private void LogOut_Clicked(object sender, EventArgs e)
+        private async void LogOut_Clicked(object sender, EventArgs e)
         {
-            Test.IsVisible = false;
             UserLogin.LogOutUsers();
-            SSN.IsVisible = true;
-            Password.IsVisible = true;
-            LogIn.IsVisible = true;
-            Error.IsVisible = false;
-            LogOut.IsVisible = false;
-            Headline.IsVisible=true;
-            borderHide.IsVisible = true;
-            alternativeOptions.IsVisible = true;
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[2];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
 
         private void SSN_TextChanged(object sender, TextChangedEventArgs e)

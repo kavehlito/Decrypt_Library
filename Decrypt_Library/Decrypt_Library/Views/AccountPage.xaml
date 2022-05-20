@@ -56,6 +56,7 @@
                                     Grid.Column="0"
                                     BorderColor="Transparent"
                                         FontAttributes="Bold"/>
+                            
                             <Button x:Name="MyLoan"
                                         Text="Lån"
                                     BorderColor="Transparent"
@@ -64,6 +65,7 @@
                                     Grid.Column="1"    
                                         BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
+                            
                             <Button x:Name="MyReservation"
                                         Text="Reservationer"
                                         Clicked="MyReservations_Clicked"
@@ -72,6 +74,7 @@
                                     Grid.Column="2"    
                                         BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
+                            
                             <Button x:Name="MyLoanHistory"
                                         Text="Lånehistorik"
                                         Clicked="MyLoanHistory_Clicked"
@@ -82,12 +85,11 @@
                                         FontAttributes="Bold"/>
 
                         </Grid>
-     
-
                     </Frame>
 
                     <AbsoluteLayout x:Name="profile" IsVisible="false">
-                        <Label x:Name="profileText" Text="" TextColor="White"
+                        <Label x:Name="profileText" 
+                               Text="Du är inte inloggad" TextColor="White"
                                FontAttributes="Bold" AbsoluteLayout.LayoutBounds="5, 20, 300, 200">
                         </Label>
 

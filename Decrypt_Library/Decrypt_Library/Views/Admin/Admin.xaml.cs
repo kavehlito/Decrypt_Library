@@ -387,12 +387,11 @@ namespace Decrypt_Library.Views
                     product.Status = inStock.IsChecked;
 
                     EntityframeworkProducts.CreateProduct(product);
-                    ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
-                    createProductTab.IsVisible = false;
-                    ProductList.IsVisible = true;
                     product = new Product();
+                    var tab = new MainPage();
+                    tab.CurrentPage = tab.Children[5];
 
-                    await Navigation.PushAsync(new MainPage());
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
                 }
                 else

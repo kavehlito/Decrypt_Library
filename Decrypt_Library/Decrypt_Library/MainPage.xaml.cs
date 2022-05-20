@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decrypt_Library.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,10 +14,6 @@ namespace Decrypt_Library
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        private void AdminPage_Focused(object sender, FocusEventArgs e)
-        {
         }
     }
 }
