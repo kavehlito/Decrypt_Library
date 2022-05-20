@@ -7,6 +7,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -16,31 +17,96 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="1"
-                   Text="Välkommen till Decrypt biblioteket"
-                   TextColor="Gold"
-                   FontAttributes="Bold"
-                   Margin="0,20,0,0"
-                   HorizontalOptions="CenterAndExpand"
-                   FontSize="20"/>
+
+            <Image Source="decrypt6.png"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                               />
+
+            <AbsoluteLayout Grid.Column="1"
+                            Grid.Row="1">
+                <Label Text="Välkommen till decrypt biblioteket"
+                       FontAttributes="Bold"
+                       AbsoluteLayout.LayoutBounds="105,115,300,20"
+                       TextColor="Gold"/>
+
+
+            </AbsoluteLayout>
+
 
             <Frame BorderColor="Transparent"
-                   Grid.Row="1"
+                   Grid.Row="2"
                    HeightRequest="410"
                    WidthRequest="410"
+                   Margin="0,20,0,0"
                    Grid.Column="1">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
                     <StackLayout>
 
-                        <Label Text="Om oss"
+                        <Frame
+                        Padding="0"
+                        CornerRadius="20"
+                        BackgroundColor="Gold"
+                         HorizontalOptions="Center">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Button 
+                                        Text="Om oss"
+                                        BackgroundColor="Gold"
+                                    FontSize="12"
+                                    Clicked="Button_Clicked"
+                                    Grid.Column="0"
+                                    BorderColor="Transparent"
+                                        FontAttributes="Bold"/>
+
+                                <Button 
+                                        Text="Öppettider"
+                                    BorderColor="Transparent"
+                                    FontSize="12"
+                                    Clicked="Button_Clicked_1"
+                                    Grid.Column="1"    
+                                        BackgroundColor="Gold"
+                                        FontAttributes="Bold"/>
+
+                                <Button 
+                                        Text="Kontakt"
+                                    FontSize="12"
+                                    BorderColor="Transparent"
+                                    Grid.Column="2"    
+                                    Clicked="Button_Clicked_2"
+                                        BackgroundColor="Gold"
+                                        FontAttributes="Bold"/>
+
+                                <Button 
+                                        Text="Klagomål"
+                                    FontSize="12"
+                                    BorderColor="Transparent"
+                                    Grid.Column="3"    
+                                    Clicked="Button_Clicked_3"
+                                        BackgroundColor="Gold"
+                                        FontAttributes="Bold"/>
+
+                            </Grid>
+                        </Frame>
+
+                        <Frame Padding="0">
+
+                            <StackLayout
+                                Margin="10,0,0,0">
+
+                                <StackLayout x:Name="aboutUs"
+                                         IsVisible="false">
+                                    <Label Text="Om oss"
                            FontSize="15" 
                            FontAttributes="Bold"
                            TextColor="Gold"
                            HorizontalOptions="Start"/>
 
-                        <Label Text="Har du frågor om dina lån, våra arrangemang, e-böcker eller 
+                                    <Label Text="Har du frågor om dina lån, våra arrangemang, e-böcker eller 
                    något annat som rör biblioteket? Eller har du synpunkter eller 
                    klagomål? Skriv eller ring till  oss så svarar vi, senast efter 
                    två vardagar." 
@@ -48,140 +114,126 @@
                                TextColor="White"
                                FontSize="12"/>
 
-                        <Grid Margin="0,20,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                                    <Label Text="The Lore"
+                                           FontSize="15" 
+                                           FontAttributes="Bold"
+                                           TextColor="Gold"
+                                           HorizontalOptions="Start"/>
 
-                            <Frame Padding="0"
-                               HeightRequest="125"
-                               CornerRadius="30"
-                               BorderColor="Transparent"
-                               IsClippedToBounds="True">
-
-                                <Image Source="https://this-person-does-not-exist.com/img/avatar-07d0b97f99205faab5a4bc4860d8a13d.jpg"/>
-
-                            </Frame>
-
-                            <Frame Padding="0"
-                               HeightRequest="125"
-                               CornerRadius="30"
-                                   Grid.Column="1"
-                               BorderColor="Transparent"
-                               IsClippedToBounds="True">
-
-                                <Image Source="https://this-person-does-not-exist.com/img/avatar-de55db001cf13d22603b04fc6b94da29.jpg"/>
-
-                            </Frame>
-
-                        </Grid>
-
-                        <StackLayout Orientation="Horizontal">
-
-                            <Label TextColor="White"
+                                    <Label Text="Decrypt startades 2001 av Gertrud Örnpung som kommer från Island där hennes familj hade bott i gamla kvarlämnade aluminumbaracker från andra världskriget. Tillsammans bodde hon i aluminuimbarracken med sin gravt handikappade familj och 10 gravt handikappade höns. Hon flyttade till Sverige efter 80-talet."
+                                           
                                FontAttributes="Bold"
-                               FontSize="10"
-                               Margin="20,0,0,0"
-                               Text="Gertrud Örnpung"/>
+                               TextColor="White"
+                               FontSize="12"/>
 
-                            <Label TextColor="White"
-                               FontAttributes="Bold"
-                               FontSize="10"
-                               Margin="50,0,0,0"
-                               Text="Owe Ståhlbåge"/>
+                                    <Label FontAttributes="Bold"
+                                           TextColor="White"
+                                           FontSize="12"
+                                           Text="När Gertrud Örnpung kom till Sverige så bodde först i den lilla intellektuella staden Lund tills hon insåg att hon inte var så intellektuell och flyttade därefter till Stockholm där alla andra är lika dumma som hon är."
+                                           />
 
-                        </StackLayout>
+                                    <Label FontAttributes="Bold"
+                                           TextColor="White"
+                                           FontSize="12"
+                                           Text="Under det slitna 90-talet träffade Gertrud Ove Von Ståhlbåge. Arketypen av en misslyckad människa, en svagsint intellektuell typ som hade fått åka tåg om det var 1942!"
+                                           />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        TextColor="White"
+                                         Text="- 'Men men' utbrast Ove, varpå han tillade: 'tiderna förändras och helt plötsligt så är eugeni tabu men ändå ska alla ha den snyggaste och smartaste partnern' Inte fan e jag bitter för det va? hehe nädå, jag som är så snygg frossar i dessa hycklande tider! 
+                                        
+                                        Ove hade alltid haft ett sinne för humor tyckte folk men egentligen var han fullt allvarlig hela tiden och trodde på riktigt att han var snygg. Men sanningen var att dom enda konversationer han någonsin hade med någon annan var med rösterna i hans huvud för ingen klarade av att titta på honom under en längre tid.
+                                        Guns N' Roses sista refräng i November Rain är lit"
+                                        />
 
-                        <StackLayout
-                               Margin="0,20,0,0"
-                            Orientation="Horizontal">
-                            <Label Text="Kontakta oss"
-                           FontSize="15" 
-                           FontAttributes="Bold"
-                           TextColor="Gold"
-                           HorizontalOptions="Start"/>
+                                </StackLayout>
 
-                            <Label Text="Öppettider"
-                           FontSize="15" 
-                           FontAttributes="Bold"
-                           TextColor="Gold"
-                                   Margin="150,0,0,0"
-                           HorizontalOptions="Start"/>
-                        </StackLayout>
+                                <StackLayout x:Name="conplaints"
+                                             IsVisible="False"
+                                            >
+                                    <Label FontAttributes="Bold"
+                                           FontSize="12"
+                                           TextColor="White"
+                                           Text="Nuförtiden ska alla ha en åsikt om allt och alla ska klaga. Speciellt invandrare, gamla, kvinnor och andra grupper som är kassa på allt. För att vi ska få någon ordning på det här landet måste någon sätta ner foten och det väljer vi i Decrypt att göra. Är det något så får ni ringa mig 2000-aldrig."/>
+
+                                </StackLayout>
 
 
-                        <StackLayout Orientation="Horizontal"
-                                     >
+                                <StackLayout x:Name="openTimes"
+                                             IsVisible="False">
 
-                            <StackLayout
+                                    <Label Text="Öppettider"
+                                           FontSize="15" 
+                                           FontAttributes="Bold"
+                                           TextColor="Gold"
+                                           HorizontalOptions="Start"/>
+
+                                    <StackLayout Spacing="0">
+
+                                        <Label Text="Måndag - Fredag 10-19"
+                                               FontSize="12" 
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               />
+
+                                        <Label Text="Helger - Fredag 10-19"
+                                               FontSize="12" 
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Start"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout x:Name="contantInfo"
+                                             IsVisible="False"
                                 Spacing="0">
-                                <Label Text="Address: Bokvägen 13"
+
+                                    <Label Text="Kontakta oss"
+                                           FontSize="15" 
+                                           FontAttributes="Bold"
+                                           TextColor="Gold"
+                                           HorizontalOptions="Start"/>
+
+
+                                    <Label Text="Address: Bokvägen 13"
+                                           FontSize="12" 
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Start"/>
+
+                                    <Label Text="173333"
+                                           FontSize="12" 
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Start"/>
+
+                                    <Label Text="Stockholm"
+                                           FontSize="12" 
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Start"/>
+
+                                    <Label Text="08-123 45 678" 
                                
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Start"/>
+                                           FontSize="12" 
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Start"/>
 
-                                <Label Text="173333"
-                               
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Start"/>
+                                    <Label Text="Decrypt@bibliotek.se"
+                                           FontSize="12" 
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Start"/>
+                                </StackLayout>
 
-                                <Label Text="Stockholm"
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Start"/>
 
-                                <Label Text="08-123 45 678" 
-                               
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Start"/>
-
-                                <Label Text="Decrypt@bibliotek.se"
-
-                               
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Start"/>
                             </StackLayout>
 
-
-                            <StackLayout Margin="115,0,0,0"
-                                         Spacing="0">
-
-                                <Label Text="Måndag - Fredag 10-19"
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                            />
-
-                                <Label Text="Helger - Fredag 10-19"
-                           FontSize="12" 
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Start"/>
-                            </StackLayout>
-
-
-
-
-
-
-             
-                        </StackLayout>
-
-
+                        </Frame>
 
                     </StackLayout>
-
-
 
                 </ScrollView>
             </Frame>

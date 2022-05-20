@@ -20,8 +20,8 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Frame BackgroundColor="Black"
-                   BorderColor="Black"
+                <Frame BackgroundColor="Transparent"
+                   BorderColor="Transparent"
                    HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
