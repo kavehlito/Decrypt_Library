@@ -155,7 +155,62 @@
                                     <Label FontAttributes="Bold"
                                            FontSize="12"
                                            TextColor="White"
-                                           Text="Nuförtiden ska alla ha en åsikt om allt och alla ska klaga. Speciellt invandrare, gamla, kvinnor och andra grupper som är kassa på allt. För att vi ska få någon ordning på det här landet måste någon sätta ner foten och det väljer vi i Decrypt att göra. Är det något så får ni ringa mig 2000-aldrig."/>
+                                           Text="Här kan du skriva ditt gnäll, det är möjligt att någon lyssnar på dig 2000-aldrig:"
+                                           />
+
+                                    <AbsoluteLayout Margin="0,20,0,0">
+                                        <Label Text="Skriv din mailadress"
+                                               AbsoluteLayout.LayoutBounds="15,5,200,20"
+                                           TextColor="White"
+                                           FontAttributes="Bold"/>
+
+                                        <Frame Padding="0"
+                                               IsClippedToBounds="True"
+                                               AbsoluteLayout.LayoutBounds="0,30,400,30"
+                                           CornerRadius="20">
+
+                                            <Entry >
+
+                                            </Entry>
+
+                                        </Frame>
+
+                                        <BoxView BackgroundColor="Black"
+                                                 AbsoluteLayout.LayoutBounds="0,29,400,2"/>
+
+                                        <BoxView BackgroundColor="Black"
+                                                 AbsoluteLayout.LayoutBounds="0,60,400,2"/>
+
+
+                                        <Label TextColor="White"
+                                                       FontAttributes="Bold"
+                                                       Text="Här kan du framför ditt klagomål"
+                                                       AbsoluteLayout.LayoutBounds="15,75,300,20"/>
+
+                                        <Frame Padding="0"
+                                               IsClippedToBounds="True"
+                                               AbsoluteLayout.LayoutBounds="0,100,400,100"
+                                           CornerRadius="20"
+                                               BorderColor="Black">
+
+                                            <AbsoluteLayout>
+
+                                               
+
+                                                <Entry AbsoluteLayout.LayoutBounds="0,0,400,100"
+                                                       CursorPosition="1"
+                                                       >
+
+
+                                                </Entry>
+                                            </AbsoluteLayout>
+
+                                   
+
+                                        </Frame>
+
+                                    </AbsoluteLayout>
+
 
                                 </StackLayout>
 
