@@ -132,20 +132,7 @@
                                            Text="När Gertrud Örnpung kom till Sverige så bodde först i den lilla intellektuella staden Lund tills hon insåg att hon inte var så intellektuell och flyttade därefter till Stockholm där alla andra är lika dumma som hon är."
                                            />
 
-                                    <Label FontAttributes="Bold"
-                                           TextColor="White"
-                                           FontSize="12"
-                                           Text="Under det slitna 90-talet träffade Gertrud Ove Von Ståhlbåge. Arketypen av en misslyckad människa, en svagsint intellektuell typ som hade fått åka tåg om det var 1942!"
-                                           />
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="12"
-                                        TextColor="White"
-                                         Text="- 'Men men' utbrast Ove, varpå han tillade: 'tiderna förändras och helt plötsligt så är eugeni tabu men ändå ska alla ha den snyggaste och smartaste partnern' Inte fan e jag bitter för det va? hehe nädå, jag som är så snygg frossar i dessa hycklande tider! 
-                                        
-                                        Ove hade alltid haft ett sinne för humor tyckte folk men egentligen var han fullt allvarlig hela tiden och trodde på riktigt att han var snygg. Men sanningen var att dom enda konversationer han någonsin hade med någon annan var med rösterna i hans huvud för ingen klarade av att titta på honom under en längre tid.
-                                        Guns N' Roses sista refräng i November Rain är lit"
-                                        />
+                          
 
                                 </StackLayout>
 
@@ -232,7 +219,7 @@
                                                TextColor="White"
                                                />
 
-                                        <Label Text="Helger - Fredag 10-19"
+                                        <Label Text="Helger 10-19"
                                                FontSize="12" 
                                                FontAttributes="Bold"
                                                TextColor="White"
