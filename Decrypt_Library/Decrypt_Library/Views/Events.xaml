@@ -44,7 +44,7 @@
                                    FontAttributes="Bold"
                                    FontSize="15"
                                    Margin="30,0,0,0"
-                               Text="Varfor do soga? Varfor do soga på koken?"/>
+                               Text="Boka in dig på ett event!"/>
 
                             <AbsoluteLayout>
                                 <BoxView 
