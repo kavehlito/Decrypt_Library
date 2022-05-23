@@ -216,14 +216,18 @@
                                         <Label Text="Måndag - Fredag 10-19"
                                                FontSize="12" 
                                                FontAttributes="Bold"
-                                               TextColor="White"
-                                               />
-
-                                        <Label Text="Helger 10-19"
+                                               TextColor="White"/>
+                                        <Label Text="Lördag 11-16"
                                                FontSize="12" 
                                                FontAttributes="Bold"
                                                TextColor="White"
                                                HorizontalOptions="Start"/>
+                                        <Label Text="Söndag STÄNGT"
+                                               FontSize="12" 
+                                               FontAttributes="Bold"
+                                               TextColor="IndianRed" 
+                                               HorizontalOptions="Start"/>
+                                       
                                     </StackLayout>
                                 </StackLayout>
 

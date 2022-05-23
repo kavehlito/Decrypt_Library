@@ -71,7 +71,7 @@ namespace Decrypt_Library.Views
 
             var alternative = EntityframeworkCategories.Checkboxes(category, age, media);
             
-               if (alternative.Count == 0)
+            /*   if (alternative.Count == 0 || )
                 {   
                     mySearch.Text = "Din sökning gav inget resultat...";
                     mySearch.Opacity = 1;
@@ -80,7 +80,7 @@ namespace Decrypt_Library.Views
                 {
                     mySearch.Opacity = 0;
                     ProductList.ItemsSource = alternative;
-                }      
+                }  */    
         }
     }
 }
