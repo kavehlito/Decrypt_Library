@@ -135,6 +135,7 @@
     <Content Include="Berätta tre saker.jpg" />
     <Content Include="Björnen sover.jpg" />
     <Content Include="bluegradient.png" />
+    <Content Include="card2.jpg" />
     <Content Include="darkbackground.jpg" />
     <Content Include="decrypt6.png" />
     <Content Include="delete.png" />
@@ -156,6 +157,7 @@
     <Content Include="purplegradient.jpg" />
     <Content Include="Spegelmannen.jpg" />
     <Content Include="Svansar runt i djungeln.jpg" />
+    <Content Include="swish.png" />
     <Content Include="Syskonen.jpg" />
     <Content Include="Till minne av en mördare.jpg" />
   </ItemGroup>

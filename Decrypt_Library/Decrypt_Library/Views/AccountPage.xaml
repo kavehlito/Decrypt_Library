@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Name="accountPage"
              BackgroundColor="Black"
+             xmlns:behaviors="clr-namespace:Decrypt_Library.Readers"
              x:Class="Decrypt_Library.Views.AccountPage">
     <ContentPage.Content>
         <Grid>
@@ -22,7 +23,7 @@
 
             <Frame BackgroundColor="Transparent"
                    BorderColor="Transparent"
-                   HeightRequest="450"
+                   HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
                    Margin="0,20,0,0"
@@ -30,25 +31,26 @@
                    WidthRequest="410">
 
                 <StackLayout>
+                    <StackLayout>
                         <Image Source="decrypt6.png"
                                Scale="0.7"/>
-                    
-                    <Label TextColor="Gold"
+
+                        <Label TextColor="Gold"
                            FontSize="15"
                            FontAttributes="Bold"
                            Margin="15,0,0,0"
                            Text="Mina sidor"/>
 
-                    <Frame
+                        <Frame
                         Padding="0"
                         CornerRadius="20"
                         BackgroundColor="Gold"
                          HorizontalOptions="Center">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Button x:Name="MyProfile"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Button x:Name="MyProfile"
                                         Text="Profil"
                                         Clicked="MyProfile_Clicked"
                                         BackgroundColor="Gold"
@@ -56,8 +58,8 @@
                                     Grid.Column="0"
                                     BorderColor="Transparent"
                                         FontAttributes="Bold"/>
-                            
-                            <Button x:Name="MyLoan"
+
+                                <Button x:Name="MyLoan"
                                         Text="Lån"
                                     BorderColor="Transparent"
                                     FontSize="12"
@@ -65,8 +67,8 @@
                                     Grid.Column="1"    
                                         BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
-                            
-                            <Button x:Name="MyReservation"
+
+                                <Button x:Name="MyReservation"
                                         Text="Reservationer"
                                         Clicked="MyReservations_Clicked"
                                     FontSize="12"
@@ -74,8 +76,8 @@
                                     Grid.Column="2"    
                                         BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
-                            
-                            <Button x:Name="MyLoanHistory"
+
+                                <Button x:Name="MyLoanHistory"
                                         Text="Lånehistorik"
                                         Clicked="MyLoanHistory_Clicked"
                                     FontSize="12"
@@ -84,102 +86,334 @@
                                         BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
 
-                        </Grid>
-                    </Frame>
+                            </Grid>
+                        </Frame>
 
-                    <AbsoluteLayout x:Name="profile" IsVisible="false">
-                        <Label x:Name="profileText" 
+
+
+                        <Frame BorderColor="Black" WidthRequest="400"
+                               CornerRadius="20"
+                               BackgroundColor="White"
+                               Padding="0"
+                               IsVisible="False"
+                               x:Name="profileBar"
+                                   HeightRequest="30">
+
+                            <Grid>
+
+                                <Button Text="Se din profil"
+                                            BackgroundColor="White"
+                                            FontAttributes="Bold"
+                                            Clicked="ProfileButton_Clicked"
+                                            Grid.Column="0"
+                                            FontSize="10"/>
+
+                                <Button Text="Lånekort"
+                                            BackgroundColor="White"
+                                            Grid.Column="1"
+                                            Clicked="LoanCardButton_Clicked"
+                                            FontAttributes="Bold"
+                                            FontSize="10"/>
+
+                                <Button Text="Favoriter"
+                                            BackgroundColor="White"
+                                            Grid.Column="2"
+                                            Clicked="FavoriteButton_Pressed"
+                                            FontAttributes="Bold"
+                                            FontSize="10"/>
+
+
+                                <Button Text="Ändra lösenord"
+                                            BackgroundColor="White"
+                                            Grid.Column="3"
+                                            Clicked="Button_Clicked_3"
+                                            FontAttributes="Bold"
+                                            FontSize="10"/>
+                            </Grid>
+
+                        </Frame>
+
+     
+
+                        <StackLayout x:Name="profile" 
+                                 Margin="10,0,0,0"
+                                 IsVisible="True">
+
+                            <Label x:Name="profileText" 
+                                   IsVisible="False"
                                Text="Du är inte inloggad!" TextColor="White"
-                               FontAttributes="Bold" AbsoluteLayout.LayoutBounds="5, 20, 300, 200">
-                        </Label>
+                               FontAttributes="Bold"/>
+
+                            <Frame
+                              IsVisible="False"
+                              x:Name="loanCard">
+                                <AbsoluteLayout>
+
+                                    <Frame BackgroundColor="White"
+                                   CornerRadius="10"
+                                   Padding="0"
+                                   AbsoluteLayout.LayoutBounds="10,0,330,200">
+
+                                        <Grid>
+                                            <Image Source="card2.jpg"
+                                       Aspect="AspectFill"
+                                       />
+
+                                            <AbsoluteLayout>
+                                                <Label Text="Decryptbiblioteket"
+                                               FontAttributes="Bold"
+                                               FontSize="20"
+                                               AbsoluteLayout.LayoutBounds="20,10,300,30"
+                                               TextColor="white"/>
+
+                                                <Label TextColor="White"
+                                               FontAttributes="Bold"
+                                               FontSize="10"
+                                               AbsoluteLayout.LayoutBounds="220,90,100,30"
+                                               Text="Expires 2025-01-01"/>
+
+                                                <BoxView AbsoluteLayout.LayoutBounds="0,110,350,1"
+                                                 BackgroundColor="White"/>
+
+                                                <Label TextColor="White"
+                                               Text="9999 9999 9999 9999"
+                                               AbsoluteLayout.LayoutBounds="20,120,200,30"
+                                               FontAttributes="bold"/>
 
 
-                        <ProgressBar 
-                            x:Name="loginPage"
-                            ProgressColor="Gold"
-                                AbsoluteLayout.LayoutBounds="0,70,410,5"
-                               />
+                                                <Label TextColor="White"
+                                               Text="Gertrud Örnpung"
+                                               x:Name="currentUserName"
+                                               FontSize="10"
+                                               AbsoluteLayout.LayoutBounds="20,140,200,30"
+                                               FontAttributes="bold"/>
+
+                                                <StackLayout Orientation="Horizontal"
+                                                     Spacing="2"
+                                               AbsoluteLayout.LayoutBounds="250,20,200,30"
+                                                     >
+
+                                                    <Label TextColor="White"
+                                               Text="AnvändarID:"
+                                               FontSize="10"
+                                               FontAttributes="bold"/>
+
+                                                    <Label x:Name="currentUserID"
+                                                   FontAttributes="Bold"
+                                                   FontSize="10"
+                                                   TextColor="White"/>
+                                                </StackLayout>
+
+                                                <Image Source="decrypt6.png"
+                                               AbsoluteLayout.LayoutBounds="120,100,300,100"
+                                               Scale="0.3"/>
 
 
-                    </AbsoluteLayout>
+                                                <Label TextColor="White"
+                                               Text="8909064444"
+                                               FontSize="10"
+                                               x:Name="currentUserSSN"
+                                               AbsoluteLayout.LayoutBounds="20,155,100,30"
+                                               FontAttributes="bold"/>
+
+                             
 
 
-                    <ListView x:Name="reservations" 
+                                            </AbsoluteLayout>
+                                        </Grid>
+
+
+                                    </Frame>
+
+                                </AbsoluteLayout>
+                            </Frame>
+
+                            <Frame IsVisible="False"
+                                   BackgroundColor="Transparent"
+                                   HeightRequest="50"
+                                   x:Name="FavoriteTab">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="White"
+                                           Text="Betala genom swish på nummer
+                                           07358585858"
+                                           FontAttributes="Bold"
+                                           />
+
+                                    <Image Source="swish.png"
+                                       Scale="2"
+                                           Margin="0,0,10,0"
+                                       HorizontalOptions="End"/>
+
+                                </StackLayout>
+
+                            </Frame>
+
+                            <Frame x:Name="changePassword"
+                                   IsVisible="False"
+                                   BackgroundColor="Transparent">
+
+                                <AbsoluteLayout>
+
+                                    <Label TextColor="White"
+                                           Text="Skriv ditt nya lösenord:"
+                                           FontSize="12"
+                                           AbsoluteLayout.LayoutBounds="10,0,150,20"
+                                           FontAttributes="Bold"
+                                           />
+
+                                    <Label TextColor="White"
+                                           Text="Skriv ditt lösenord igen:"
+                                           FontSize="12"
+                                           AbsoluteLayout.LayoutBounds="190,0,150,20"
+                                           FontAttributes="Bold"
+                                           />
+
+                                    <Button TextColor="Black"
+                                                FontAttributes="Bold"
+                                                CornerRadius="20"
+                                            x:Name="updatePasswordButton"
+                                                AbsoluteLayout.LayoutBounds="0,60,355,30"
+                                                Text="Bekräfta ditt val"
+                                            Clicked="NewPasswordConfirmed"
+                                                BackgroundColor="Gold"/>
+
+
+
+                                    <StackLayout Padding="0"
+                                                 Margin="0,20,0,0">
+                                        <StackLayout 
+                                        Padding="0"
+                                        Orientation="Horizontal">
+                                            <Frame Padding="0"
+                                               WidthRequest="175"
+                                               CornerRadius="20">
+                                                <Entry FontAttributes="Bold"
+                                                   TextChanged="Entry_TextChanged"
+                                                       x:Name="password"
+                                                   IsPassword="True">
+
+                                                    <Entry.Behaviors>
+                                                        <behaviors:PasswordValidationBehavior/>
+                                                    </Entry.Behaviors>
+                                                </Entry>
+                                            </Frame>
+
+                                            <Frame Padding="0"
+                                               WidthRequest="175"
+                                               CornerRadius="20">
+                                                <Entry
+                                                IsPassword="True"
+                                                    TextChanged="Entry_TextChanged_1"
+                                                       x:Name="confirmPassword"
+                                                FontAttributes="Bold">
+
+                                                    <Entry.Behaviors>
+                                                        <behaviors:ConfirmPasswordValidationBehavior/>
+                                                    </Entry.Behaviors>
+                                                </Entry>
+                                            </Frame>
+
+                                        </StackLayout>
+
+
+                                    </StackLayout>
+
+
+                                    <BoxView BackgroundColor="Black"
+                                             AbsoluteLayout.LayoutBounds="0,20,400,2"/>
+
+                                    <BoxView BackgroundColor="Black"
+                                             AbsoluteLayout.LayoutBounds="0,52,400,2"/>
+
+                                </AbsoluteLayout>
+
+                            </Frame>
+                        </StackLayout>
+
+ 
+
+
+                        <ListView x:Name="reservations" 
                               Margin="0,10,0,0"
                               VerticalScrollBarVisibility="Never"
                               IsVisible="false">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding ISBN,StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding ISBN,StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding StartDate, StringFormat= 'Reserverad: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
                                                     BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
                                                     CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
 
-                                        </Button>
+                                            </Button>
 
-                                        <BoxView BackgroundColor="White"
+                                            <BoxView BackgroundColor="White"
                                                      HeightRequest="3" >
-                                        </BoxView>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                            </BoxView>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <ListView x:Name="loanHistoryList" 
+                        <ListView x:Name="loanHistoryList" 
                                       Margin="0,10,0,0"
                               VerticalScrollBarVisibility="Never"
                               IsVisible="false">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Vertical">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical">
 
-                                        <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Author,StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding StartDate,StringFormat= 'Lånades: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding EndDate,StringFormat= 'Återlämnad: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Author,StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding StartDate,StringFormat= 'Lånades: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding EndDate,StringFormat= 'Återlämnad: {0}'}" TextColor="White" FontAttributes="Bold"/>
 
-                                        <BoxView BackgroundColor="White"
+                                            <BoxView BackgroundColor="White"
                                                      HeightRequest="3">
-                                        </BoxView>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                            </BoxView>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <ListView x:Name="loanList" 
+                        <ListView x:Name="loanList" 
                                       Margin="0,10,0,0"
                               VerticalScrollBarVisibility="Never"
                               IsVisible="false">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Vertical">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical">
 
-                                        <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                        <Label Text="{Binding EndDate, StringFormat= 'Återlämnas senast: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding EndDate, StringFormat= 'Återlämnas senast: {0}'}" TextColor="White" FontAttributes="Bold"/>
 
-                                        <BoxView BackgroundColor="White"
+                                            <BoxView BackgroundColor="White"
                                                      HeightRequest="3">
-                                        </BoxView>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                            </BoxView>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+                    </StackLayout>
+
                 </StackLayout>
             </Frame>
         </Grid>

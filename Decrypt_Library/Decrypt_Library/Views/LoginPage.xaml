@@ -60,18 +60,19 @@
                                         <Frame Padding="0"
                                                CornerRadius="20">
 
-                                            <Entry x:Name="SSN" 
+                                            <Entry x:Name="SSN"
                                                    FontAttributes="Bold"
                                                    TextChanged="SSN_TextChanged"
-                                                   Placeholder="Personnummer" 
+                                                   Placeholder="Personnummer"
                                                    />
                                         </Frame>
 
                                         <Frame Padding="0"
                                                CornerRadius="20">
 
-                                            <Entry x:Name="Password" 
+                                            <Entry x:Name="Password"
                                                    Placeholder="Lösenord"
+                                                   FontAttributes="Bold"
                                                    TextChanged="Password_TextChanged"
                                                    IsPassword="True" />
                                         </Frame>

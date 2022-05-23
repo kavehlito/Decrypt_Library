@@ -12,7 +12,6 @@ namespace Decrypt_Library.EntityFrameworkCode
         {
             if (UserLogin.thisUser == null) return null;
 
-
             using (var db = new Decrypt_LibraryContext())
             {
                 var reservation = from

@@ -15,6 +15,16 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
+        public static void UpdateUser(User user)
+        {
+            var users = ShowAllUsers();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                db.Users.Update(user);
+                db.SaveChanges();
+            }
+        }
+
         public static List<string> ShowAllUserTypeNames()
         {
             using (var db = new Decrypt_LibraryContext())
