@@ -89,6 +89,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         }
 
         // Recommendation list based on past loans of books and agegroup - NOT DONE
+        /*
         public static List<MyPagesProductList> ShowRecommendations()
         {
             using (var db = new Decrypt_LibraryContext())
@@ -109,6 +110,7 @@ namespace Decrypt_Library.EntityFrameworkCode
              
                 return product.Where(p => p.CategoryId == recommend.Select(r => r.CategoryId);
             }
+            */
         }
     }
 }
