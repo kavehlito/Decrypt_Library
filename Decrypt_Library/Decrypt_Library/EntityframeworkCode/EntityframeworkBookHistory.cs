@@ -102,7 +102,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         public int? MediaType { get; set; }
         public string FormatName { get; set; }
-
-
+        public int? AgeGroupId { get; set; }
+        public int? CategoryId { get; set; }
     }
 }
