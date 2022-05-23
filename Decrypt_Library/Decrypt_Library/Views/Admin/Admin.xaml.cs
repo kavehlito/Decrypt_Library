@@ -23,8 +23,10 @@ namespace Decrypt_Library.Views
             userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
         }
 
+
+
         Product product = new Product();
-        Product shelfChangeProduct = new Product();
+        Product selectedProductToChange = new Product();
         Category category = new Category();
         Event createdEvent = new Event();
         Language language = new Language();
@@ -180,10 +182,15 @@ namespace Decrypt_Library.Views
 
         private void ProductListItem_Tapped(object sender, ItemTappedEventArgs e)
         {
+            ProductList.IsVisible = false;
+            shelfChangeTab.IsVisible = true;
             changeShelf.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
-            shelfChangeProduct = e.Item as Product;
-            tappedBook.Text = shelfChangeProduct.Title;
+            changeAudiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups(); 
+            changeCategoryPicker.ItemsSource = EntityframeworkCategories.ShowAllCategoryNames();
+            selectedProductToChange = e.Item as Product;
+            tappedBook.Text = selectedProductToChange.Title;
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+
 
             if (!shelfChangeTab.IsVisible)
             {
@@ -235,11 +242,52 @@ namespace Decrypt_Library.Views
         private void ShowCreateProdctTab_ButtonClicked(object sender, EventArgs e)
         {
             ProductList.IsVisible = false;
+            shelfChangeTab.IsVisible = false;
             if (!createProductTab.IsVisible)
             {
                 createProductTab.IsVisible = true;
                 return;
             }
+        }
+
+        private void ChangeProduct_Clicked(object sender, EventArgs e)
+        {
+
+            try
+            {
+                selectedProductToChange.Title = changedTitleEntry.Text ?? selectedProductToChange.Title;
+                selectedProductToChange.Description = changedDescriptionEntry.Text ?? selectedProductToChange.Description;
+
+                if (changeCategoryPicker.SelectedIndex != -1)
+                    selectedProductToChange.CategoryId = EntityframeworkCategories.ShowSpecificCategoryIdByCategoriesName(changeCategoryPicker.SelectedItem.ToString());
+
+                if (changeAudiencePicker.SelectedIndex != -1)
+                    selectedProductToChange.AudienceId = EntityframeworkAudience.ShowSpecificAudienceIdByAgeGroup(changeAudiencePicker.SelectedItem.ToString());
+
+                shelfChangeTab.IsVisible = false;
+                EntityframeworkProducts.UpdateProduct(selectedProductToChange);
+                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+                ProductList.IsVisible = true;
+                selectedProductToChange = new Product();
+
+                changedTitleEntry.Text = "";
+                changedDescriptionEntry.Text = "";
+                changeAudiencePicker.SelectedIndex = -1;
+                changeAudiencePicker.SelectedIndex = -1;
+
+                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+                ProductList.IsVisible=true;
+                selectedProductToChange= new Product();
+
+
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", $"{exception.Message}", "OK");
+            }
+
+      
+  
         }
 
         private void ChosenProduct_Clicked(object sender, EventArgs e)
@@ -251,12 +299,12 @@ namespace Decrypt_Library.Views
 
             try
             {
-                shelfChangeProduct.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(changeShelf.SelectedItem.ToString());
-                EntityframeworkProducts.UpdateProduct(shelfChangeProduct);
+                selectedProductToChange.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(changeShelf.SelectedItem.ToString());
+                EntityframeworkProducts.UpdateProduct(selectedProductToChange);
                 shelfChangeTab.IsVisible = false;
                 ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
                 ProductList.IsVisible = true;
-                shelfChangeProduct = new Product();
+                selectedProductToChange = new Product();
             }
             catch (Exception)
             {
@@ -265,9 +313,18 @@ namespace Decrypt_Library.Views
         }
         private async void CancelProductButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
 
+        private async void CancelEditProductButton_Clicked(object sender, EventArgs e)
+        {
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+        }
 
         #endregion
 
@@ -387,10 +444,11 @@ namespace Decrypt_Library.Views
                     product.Status = inStock.IsChecked;
 
                     EntityframeworkProducts.CreateProduct(product);
+
                     product = new Product();
                     var tab = new MainPage();
                     tab.CurrentPage = tab.Children[5];
-
+                    
                     await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
                 }
@@ -914,6 +972,6 @@ namespace Decrypt_Library.Views
 
         }
 
- 
+  
     }
 }
