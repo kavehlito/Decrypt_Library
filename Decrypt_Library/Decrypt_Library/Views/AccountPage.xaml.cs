@@ -118,6 +118,8 @@ namespace Decrypt_Library.Views
 
         private void Button_Clicked_3(object sender, EventArgs e)
         {
+            password.Text = "";
+            confirmPassword.Text = "";
             updatePasswordButton.Text = "Bekräfta ditt val";
             MakeAllBarsInvisible();
             profile.IsVisible = true;
