@@ -88,29 +88,34 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         }
 
-        // Recommendation list based on past loans of books and agegroup - NOT DONE
-        /*
-        public static List<MyPagesProductList> ShowRecommendations()
+        // Recommendation list based on past loans of books and agegroup
+        
+        public static List<Product> ShowRecommendations()
         {
+             var recoList = new List<Product>();
             using (var db = new Decrypt_LibraryContext())
             {
                 var product = db.Products;
-
                 var recommend = (from
-                                recommending in db.BookHistories
-                                join prod in db.Products on recommending.ProductId equals prod.Id
+                                reco in db.BookHistories
+                                join prod in db.Products on reco.ProductId equals prod.Id
                                 join aud in db.Audiences on prod.AudienceId equals aud.Id
                                 join category in db.Categories on prod.CategoryId equals category.Id
-                                where recommending.EventId == 2
+                                where reco.EventId == 2 && reco.UserId == UserLogin.thisUser.Id
                                 select new MyPagesProductList
                                 {
                                     AgeGroupId = prod.AudienceId,
                                     CategoryId = prod.CategoryId,
-                                });
-             
-                return product.Where(p => p.CategoryId == recommend.Select(r => r.CategoryId);
+                                    UsersID = reco.UserId,
+                                }).ToList();
+
+                foreach (var item in recommend)
+                {
+                    recoList = product.Where(p => p.CategoryId == item.CategoryId).ToList();
+                }
+
             }
-            */
+                return recoList.ToList();
         }
     }
 }

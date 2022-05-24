@@ -104,5 +104,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         public string FormatName { get; set; }
         public int? AgeGroupId { get; set; }
         public int? CategoryId { get; set; }
+        public int? UsersID { get; set; }
+
     }
 }
