@@ -331,12 +331,16 @@
                             </Frame>
                         </StackLayout>
 
- 
+
+                        <Grid>
+                            
+                            
+                            
 
 
                         <ListView x:Name="reservations" 
-                              Margin="0,10,0,0"
                               VerticalScrollBarVisibility="Never"
+                                  Margin="0,10,0,0"
                               IsVisible="false">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -364,7 +368,7 @@
                         </ListView>
 
                         <ListView x:Name="loanHistoryList" 
-                                      Margin="0,10,0,0"
+                                  Margin="0,10,0,0"
                               VerticalScrollBarVisibility="Never"
                               IsVisible="false">
                             <ListView.ItemTemplate>
@@ -386,11 +390,11 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
+                        
                         <ListView x:Name="loanList" 
-                                      Margin="0,10,0,0"
+                                  Margin="0,10,0,0"
                               VerticalScrollBarVisibility="Never"
-                              IsVisible="false">
+                              IsVisible="False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -410,6 +414,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+
+                        </Grid>
 
 
                     </StackLayout>

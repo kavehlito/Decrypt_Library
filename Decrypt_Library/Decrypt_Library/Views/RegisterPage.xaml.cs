@@ -46,7 +46,7 @@ namespace Decrypt_Library.Views
                     {
                         if (item.UserName.Contains(Username.Text))
                         {
-                            DisplayAlert("Error!", "Det finns redan en användare med samma användarnamn", "Gå vidare");
+                            await DisplayAlert("Error!", "Det finns redan en användare med samma användarnamn", "Gå vidare");
                             return;
                         }
                     }
@@ -55,7 +55,7 @@ namespace Decrypt_Library.Views
                     {
                         if (item.Ssn == convertedSSN)
                         {
-                            DisplayAlert("Error!", "Det finns redan en användare med samma personnummer", "Gå vidare");
+                            await DisplayAlert("Error!", "Det finns redan en användare med samma personnummer", "Gå vidare");
                             return;
                         }
                     }
@@ -64,7 +64,7 @@ namespace Decrypt_Library.Views
                     {
                         if (item.Phonenumber == convertedPhoneNumber)
                         {
-                            DisplayAlert("Error!", "Det finns redan en användare med samma telefonummer", "Gå vidare");
+                            await DisplayAlert("Error!", "Det finns redan en användare med samma telefonummer", "Gå vidare");
                             return;
                         }
                     }
@@ -73,7 +73,7 @@ namespace Decrypt_Library.Views
                     {
                         if (item.Email.Contains(Email.Text))
                         {
-                            DisplayAlert("Error!", "Det finns redan en användare med samma Email", "Gå vidare");
+                            await DisplayAlert("Error!", "Det finns redan en användare med samma Email", "Gå vidare");
                             return;
                         }
                     }
@@ -99,12 +99,12 @@ namespace Decrypt_Library.Views
                 }
                 else
                 {
-                    DisplayAlert("Ooops", "Dubbelkolla alla fält och klicka i användarvillkor", "OK");
+                    await DisplayAlert("Ooops", "Dubbelkolla alla fält och klicka i användarvillkor", "OK");
                 }
             }
             catch (Exception exception)
             {
-                DisplayAlert("Error", $"{exception.Message}", "Try again!");
+                await DisplayAlert("Error", $"{exception.Message}", "Try again!");
             }
 
         }

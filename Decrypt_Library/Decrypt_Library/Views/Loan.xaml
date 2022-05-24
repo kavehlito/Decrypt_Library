@@ -32,11 +32,11 @@
             <StackLayout Grid.Column="1" Grid.Row="1">
                 <Frame BackgroundColor="Black"
                    BorderColor="Black"
-                   HeightRequest="500"
+                   HeightRequest="400"
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
-                   WidthRequest="650">
+                   WidthRequest="410">
 
 
                     <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1">

@@ -111,6 +111,5 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return product.Where(p => p.CategoryId == recommend.Select(r => r.CategoryId);
             }
             */
-        }
     }
 }
