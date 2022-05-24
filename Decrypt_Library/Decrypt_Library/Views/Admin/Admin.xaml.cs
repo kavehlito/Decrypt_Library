@@ -1,7 +1,7 @@
-﻿using Decrypt_Library.EntityFrameworkCode;
+﻿using Decrypt_Library.EntityframeworkCode;
+using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,6 +21,8 @@ namespace Decrypt_Library.Views
             mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
             languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
             userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
+            statsPicker.ItemsSource = EntityframeworkStatistics.StatsValues();
+
         }
 
         Product product = new Product();
@@ -207,19 +209,19 @@ namespace Decrypt_Library.Views
                 playTimeFrame.IsVisible = false;
                 entryPlaytime.IsVisible = false;
                 entryPlaytime.IsEnabled = false;
-                
+
                 narratorLabel.IsVisible = false;
                 narratorFrame.IsVisible = false;
                 entryNarrator.IsVisible = false;
                 entryNarrator.IsEnabled = false;
             }
-            if(selectedMediaId == 3)
+            if (selectedMediaId == 3)
             {
                 playTimeLabel.IsVisible = true;
                 playTimeFrame.IsVisible = true;
                 entryPlaytime.IsVisible = true;
                 entryPlaytime.IsEnabled = true;
-                
+
                 narratorLabel.IsVisible = true;
                 narratorFrame.IsVisible = true;
                 entryNarrator.IsVisible = true;
@@ -244,7 +246,7 @@ namespace Decrypt_Library.Views
 
         private void ChosenProduct_Clicked(object sender, EventArgs e)
         {
-            if(changeShelf.SelectedIndex == -1)
+            if (changeShelf.SelectedIndex == -1)
             {
                 return;
             }
@@ -324,14 +326,14 @@ namespace Decrypt_Library.Views
                 ProductShelfIdCorrect = !string.IsNullOrEmpty(shelfPicker.SelectedItem.ToString());
                 ProductCategoryIdCorrect = !string.IsNullOrEmpty(categoryPicker.SelectedItem.ToString());
 
-                if(selectedMediaId == 1 || selectedMediaId == 2)
+                if (selectedMediaId == 1 || selectedMediaId == 2)
                 {
                     ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
                     ProductPlaytimeCorrect = true;
                     ProductNarratorCorrect = true;
                     ProductMediaIdCorrect = true;
                 }
-                if(selectedMediaId == 3)
+                if (selectedMediaId == 3)
                 {
                     ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
                     ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
@@ -398,7 +400,7 @@ namespace Decrypt_Library.Views
                     return;
 
             }
-            catch 
+            catch
             {
                 return;
             }
@@ -841,9 +843,65 @@ namespace Decrypt_Library.Views
                 }
             }
             EntityframeworkUsers.RemoveUser(user);
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
-        }   
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
+        }
 
+        private void statsPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (statsPicker.SelectedIndex == 1)
+            {
+                loanedTab.IsVisible = false;
+                userTab.IsVisible = false;
+
+                ProductTab.IsVisible = true;
+
+
+                productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
+                productInfo.IsVisible = true;
+
+                var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
+                AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
+                AmountOfBooks.IsVisible = true;
+
+
+                FavoriteCategory.IsVisible = true;
+                FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
+
+                TopFive.Text = "TOP 5 mest populära produkter:";
+                TopFive.IsVisible = true;
+
+                mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
+                mostPopular.IsVisible = true;
+
+                mediaInfo.ItemsSource = EntityframeworkStatistics.ShowMostPopMediaType();
+                FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
+                FavouriteMediaType.IsVisible = true;
+            }
+            if (statsPicker.SelectedIndex == 2)
+            {
+                ProductTab.IsVisible = false;
+                userTab.IsVisible = false;
+
+                loanedTab.IsVisible = true;
+
+
+                var loanedBooks = EntityframeworkStatistics.LoanedBooksATM().ToString();
+                AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
+                AmountOfBooksLoanedATM.IsVisible = true;
+
+                loanedInfo.ItemsSource = EntityframeworkStatistics.ShowLoansByDescOrder();
+                loanedInfo.IsVisible = true;
+
+                var statistic = EntityframeworkStatistics.TotalAmountOfBooksLoaned().ToString();
+                AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid: {statistic}";
+                AmountOfBooksLoaned.IsVisible = true;
+
+                loanedInfoStatistics.ItemsSource = EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
+                loanedInfoStatistics.IsVisible = true;
+            }
+        }
+
+        /*
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
             loanedTab.IsVisible = false;
@@ -913,7 +971,7 @@ namespace Decrypt_Library.Views
             userInfo.IsVisible = true;
 
         }
+        */
 
- 
     }
 }

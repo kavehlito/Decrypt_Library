@@ -1742,7 +1742,7 @@
                            Grid.Column="1">
 
                         <Grid>
-
+                            <!--
                             <Button Text="Produkter"
                                     BackgroundColor="Gold"
                                     TextColor="Black"
@@ -1766,6 +1766,8 @@
                                     CornerRadius="0"
                                     FontAttributes="Bold"
                                     Clicked="Button_Clicked_Loaned"/>
+                            -->
+                            <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" FontSize="15" SelectedIndexChanged="statsPicker_SelectedIndexChanged"/>
                         </Grid>
                     </Frame>
                 </Grid>
