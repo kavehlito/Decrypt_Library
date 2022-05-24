@@ -405,8 +405,13 @@
                                             <Label Text="{Binding ISBN, StringFormat= 'ISBN: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                             <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                             <Label Text="{Binding EndDate, StringFormat= 'Återlämnas senast: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                <Button x:Name="postpone" Text="Förläng lånetid" IsVisible="true" Clicked="Postpone_Clicked"
+                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
 
-                                            <BoxView BackgroundColor="White"
+                                                </Button>
+
+                                                <BoxView BackgroundColor="White"
                                                      HeightRequest="3">
                                             </BoxView>
                                         </StackLayout>

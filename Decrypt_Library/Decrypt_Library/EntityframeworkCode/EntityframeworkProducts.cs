@@ -1,4 +1,5 @@
 ﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -124,7 +125,30 @@ namespace Decrypt_Library.EntityFrameworkCode
                 db.SaveChanges();
             }
         }
-   
+
+        public static List<MyPagesProductList> LoanAgain()
+        {
+            //product.EndDate = product.EndDate.Value.AddDays(30);
+
+            if (UserLogin.thisUser == null) return null;
+
+            var books = EntityframeworkBookHistory.ShowUserLoanHistory();
+            var loanList = new List<MyPagesProductList>();
+
+            foreach (var book in books)
+            {
+                if (book.EndDate == null)
+                {
+                    book.EndDate = book.StartDate.Value.AddDays(60);
+                    loanList.Add(book);
+                }
+            }
+
+            return loanList;
+
+
+        }
+
         public static void RemoveProduct(Product product)
         {
             using (var db = new Decrypt_LibraryContext())

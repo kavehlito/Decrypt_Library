@@ -76,6 +76,7 @@ namespace Decrypt_Library
             {
                 if (book.EndDate == null)
                 {
+                    book.EndDate = book.StartDate.Value.AddDays(30);
                     loanList.Add(book);
                 }
             }
