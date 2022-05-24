@@ -252,7 +252,6 @@ namespace Decrypt_Library.Views
 
         private void ChangeProduct_Clicked(object sender, EventArgs e)
         {
-
             try
             {
                 selectedProductToChange.Title = changedTitleEntry.Text ?? selectedProductToChange.Title;
@@ -278,16 +277,11 @@ namespace Decrypt_Library.Views
                 ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
                 ProductList.IsVisible=true;
                 selectedProductToChange= new Product();
-
-
             }
             catch (Exception exception)
             {
                 DisplayAlert("Error", $"{exception.Message}", "OK");
             }
-
-      
-  
         }
 
         private void ChosenProduct_Clicked(object sender, EventArgs e)
@@ -837,8 +831,10 @@ namespace Decrypt_Library.Views
         }
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
 
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
@@ -846,7 +842,6 @@ namespace Decrypt_Library.Views
             RegisterUser_AdminClicked(sender, e);
         }
 
-        #endregion
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
@@ -900,7 +895,10 @@ namespace Decrypt_Library.Views
             }
             EntityframeworkUsers.RemoveUser(user);
             userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
-        }   
+        }
+
+        #endregion
+
 
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
@@ -917,7 +915,6 @@ namespace Decrypt_Library.Views
             AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
             AmountOfBooks.IsVisible = true;
 
-
             FavoriteCategory.IsVisible = true;
             FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
 
@@ -930,9 +927,6 @@ namespace Decrypt_Library.Views
             mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType();
             FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
             FavouriteMediaType.IsVisible = true;
-
-
-
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)

@@ -58,7 +58,6 @@ namespace Decrypt_Library.Views
 
             MakeAllBarsInvisible();
             reservations.IsVisible = true;
-
             reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
 
@@ -71,8 +70,9 @@ namespace Decrypt_Library.Views
             }
 
             MakeAllBarsInvisible();
-            loanHistoryList.IsVisible = true;
-            loanHistoryList.ItemsSource = MyPages.MyLoanHistory();
+
+            loanList.IsVisible = true;
+            loanList.ItemsSource = MyPages.MyLoanHistory();
         }
 
         private void RemoveButton_Clicked(object sender, EventArgs e)
