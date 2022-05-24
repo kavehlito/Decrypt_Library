@@ -124,6 +124,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                 db.SaveChanges();
             }
         }
+   
         public static void RemoveProduct(Product product)
         {
             using (var db = new Decrypt_LibraryContext())

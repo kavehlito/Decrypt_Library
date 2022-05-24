@@ -1,4 +1,5 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.EntityframeworkCode;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,6 +27,8 @@ namespace Decrypt_Library.Views
                 LoanOrReserveButton.IsVisible = false;
                 PlsLoginReservelbl.IsVisible = true;
                 PlsloginReviewlbl.IsVisible = true;
+                ShowOrNot.Text = "Populära produkter: ";
+                Recommendations.ItemsSource = EntityframeworkStatistics.ShowTopFiveMostRead();
             }
             else
             {
@@ -35,6 +38,8 @@ namespace Decrypt_Library.Views
                 reviewButton.IsVisible = true;
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
+                ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
+                Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();
             }
 
             if (LoanOrReserveButton.Text == "True")
@@ -108,6 +113,14 @@ namespace Decrypt_Library.Views
         private void reviewButton_Clicked(object sender, EventArgs e)
         {
             reviewEntry_Completed(sender, e);
+        }
+
+        // When tapping an item in the list user gets directed to Loan page to complete the lending of the book
+        private async void Recommendations_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItemFromList = (MyPagesProductList)e.Item;
+            await Navigation.PushAsync(new Loan());
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }

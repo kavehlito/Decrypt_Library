@@ -25,8 +25,10 @@ namespace Decrypt_Library.Views
 
         }
 
+
+
         Product product = new Product();
-        Product shelfChangeProduct = new Product();
+        Product selectedProductToChange = new Product();
         Category category = new Category();
         Event createdEvent = new Event();
         Language language = new Language();
@@ -182,10 +184,15 @@ namespace Decrypt_Library.Views
 
         private void ProductListItem_Tapped(object sender, ItemTappedEventArgs e)
         {
+            ProductList.IsVisible = false;
+            shelfChangeTab.IsVisible = true;
             changeShelf.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
-            shelfChangeProduct = e.Item as Product;
-            tappedBook.Text = shelfChangeProduct.Title;
+            changeAudiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups(); 
+            changeCategoryPicker.ItemsSource = EntityframeworkCategories.ShowAllCategoryNames();
+            selectedProductToChange = e.Item as Product;
+            tappedBook.Text = selectedProductToChange.Title;
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+
 
             if (!shelfChangeTab.IsVisible)
             {
@@ -237,10 +244,45 @@ namespace Decrypt_Library.Views
         private void ShowCreateProdctTab_ButtonClicked(object sender, EventArgs e)
         {
             ProductList.IsVisible = false;
+            shelfChangeTab.IsVisible = false;
             if (!createProductTab.IsVisible)
             {
                 createProductTab.IsVisible = true;
                 return;
+            }
+        }
+
+        private void ChangeProduct_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                selectedProductToChange.Title = changedTitleEntry.Text ?? selectedProductToChange.Title;
+                selectedProductToChange.Description = changedDescriptionEntry.Text ?? selectedProductToChange.Description;
+
+                if (changeCategoryPicker.SelectedIndex != -1)
+                    selectedProductToChange.CategoryId = EntityframeworkCategories.ShowSpecificCategoryIdByCategoriesName(changeCategoryPicker.SelectedItem.ToString());
+
+                if (changeAudiencePicker.SelectedIndex != -1)
+                    selectedProductToChange.AudienceId = EntityframeworkAudience.ShowSpecificAudienceIdByAgeGroup(changeAudiencePicker.SelectedItem.ToString());
+
+                shelfChangeTab.IsVisible = false;
+                EntityframeworkProducts.UpdateProduct(selectedProductToChange);
+                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+                ProductList.IsVisible = true;
+                selectedProductToChange = new Product();
+
+                changedTitleEntry.Text = "";
+                changedDescriptionEntry.Text = "";
+                changeAudiencePicker.SelectedIndex = -1;
+                changeAudiencePicker.SelectedIndex = -1;
+
+                ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+                ProductList.IsVisible=true;
+                selectedProductToChange= new Product();
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", $"{exception.Message}", "OK");
             }
         }
 
@@ -253,12 +295,12 @@ namespace Decrypt_Library.Views
 
             try
             {
-                shelfChangeProduct.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(changeShelf.SelectedItem.ToString());
-                EntityframeworkProducts.UpdateProduct(shelfChangeProduct);
+                selectedProductToChange.ShelfId = EntityframeworkShelf.ShowSpecificShelfIdByLetter(changeShelf.SelectedItem.ToString());
+                EntityframeworkProducts.UpdateProduct(selectedProductToChange);
                 shelfChangeTab.IsVisible = false;
                 ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
                 ProductList.IsVisible = true;
-                shelfChangeProduct = new Product();
+                selectedProductToChange = new Product();
             }
             catch (Exception)
             {
@@ -267,9 +309,18 @@ namespace Decrypt_Library.Views
         }
         private async void CancelProductButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
 
+        private async void CancelEditProductButton_Clicked(object sender, EventArgs e)
+        {
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+        }
 
         #endregion
 
@@ -389,10 +440,11 @@ namespace Decrypt_Library.Views
                     product.Status = inStock.IsChecked;
 
                     EntityframeworkProducts.CreateProduct(product);
+
                     product = new Product();
                     var tab = new MainPage();
                     tab.CurrentPage = tab.Children[5];
-
+                    
                     await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
                 }
@@ -781,8 +833,10 @@ namespace Decrypt_Library.Views
         }
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
 
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
@@ -790,7 +844,6 @@ namespace Decrypt_Library.Views
             RegisterUser_AdminClicked(sender, e);
         }
 
-        #endregion
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
@@ -843,65 +896,12 @@ namespace Decrypt_Library.Views
                 }
             }
             EntityframeworkUsers.RemoveUser(user);
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
         }
 
-        private void statsPicker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (statsPicker.SelectedIndex == 1)
-            {
-                loanedTab.IsVisible = false;
-                userTab.IsVisible = false;
-
-                ProductTab.IsVisible = true;
+        #endregion
 
 
-                productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
-                productInfo.IsVisible = true;
-
-                var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
-                AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
-                AmountOfBooks.IsVisible = true;
-
-
-                FavoriteCategory.IsVisible = true;
-                FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
-
-                TopFive.Text = "TOP 5 mest populära produkter:";
-                TopFive.IsVisible = true;
-
-                mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
-                mostPopular.IsVisible = true;
-
-                mediaInfo.ItemsSource = EntityframeworkStatistics.ShowMostPopMediaType();
-                FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
-                FavouriteMediaType.IsVisible = true;
-            }
-            if (statsPicker.SelectedIndex == 2)
-            {
-                ProductTab.IsVisible = false;
-                userTab.IsVisible = false;
-
-                loanedTab.IsVisible = true;
-
-
-                var loanedBooks = EntityframeworkStatistics.LoanedBooksATM().ToString();
-                AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
-                AmountOfBooksLoanedATM.IsVisible = true;
-
-                loanedInfo.ItemsSource = EntityframeworkStatistics.ShowLoansByDescOrder();
-                loanedInfo.IsVisible = true;
-
-                var statistic = EntityframeworkStatistics.TotalAmountOfBooksLoaned().ToString();
-                AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid: {statistic}";
-                AmountOfBooksLoaned.IsVisible = true;
-
-                loanedInfoStatistics.ItemsSource = EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
-                loanedInfoStatistics.IsVisible = true;
-            }
-        }
-
-        /*
         private void Button_Clicked_Product(object sender, EventArgs e)
         {
             loanedTab.IsVisible = false;
@@ -917,7 +917,6 @@ namespace Decrypt_Library.Views
             AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
             AmountOfBooks.IsVisible = true;
 
-
             FavoriteCategory.IsVisible = true;
             FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
 
@@ -930,9 +929,6 @@ namespace Decrypt_Library.Views
             mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType();
             FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
             FavouriteMediaType.IsVisible = true;
-
-
-
         }
 
         private void Button_Clicked_Loaned(object sender, EventArgs e)
@@ -971,7 +967,7 @@ namespace Decrypt_Library.Views
             userInfo.IsVisible = true;
 
         }
-        */
 
+  
     }
 }

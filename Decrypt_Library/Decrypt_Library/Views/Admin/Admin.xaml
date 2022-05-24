@@ -38,7 +38,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
 
                 <Label Text="Produkt Inställningar"
                        FontSize="25"
@@ -581,7 +581,7 @@
 
                                                         </Frame>
 
-                       
+
                                                     </AbsoluteLayout>
 
                                                     <AbsoluteLayout>
@@ -633,62 +633,193 @@
 
                     </StackLayout>
 
+                    <ScrollView 
+                             Margin="30,15,0,15"
+                        VerticalScrollBarVisibility="Always"
+                        
+                          x:Name="shelfChangeTab"
+                                 IsVisible="False">
+
+                        <AbsoluteLayout>
+
+                            <StackLayout 
+                            >
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label 
+                                    FontSize="15"
+                                    Text="Vald produkt:"
+                                    HorizontalOptions="Start"
+                                    FontAttributes="Bold"
+                                    TextColor="White"/>
+                                    <Label 
+                                    x:Name="tappedBook"
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    FontAttributes="Bold"
+                                    TextColor="White"/>
+
+                                </StackLayout>
+
+
+                                <Label              FontSize="15"
+                                    HorizontalOptions="Start"
+                                    FontAttributes="Bold"
+                                                Text="Ändra produktinformation"
+                                    TextColor="Gold"/>
+                                <BoxView BackgroundColor="White"
+                                     HeightRequest="1"/>
+
+                                <StackLayout Orientation="Horizontal"
+                                         Margin="0,20,0,0">
+                                    <Frame Padding="0"
+                                       WidthRequest="185"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="20">
+                                        <Picker BackgroundColor="White"
+                                                FontAttributes="Bold"
+                                            x:Name="changeCategoryPicker">
+                                        </Picker>
+
+                                    </Frame>
+
+                                    <Frame Padding="0"
+                                       WidthRequest="185"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="20">
+                                        <Picker BackgroundColor="White"
+                                                FontAttributes="Bold"
+                                            x:Name="changeAudiencePicker">
+
+                                        </Picker>
+                                    </Frame>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                         Margin="0,20,0,0">
+                                    <Frame Padding="0"
+                                       WidthRequest="185"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="20">
+                                        <Entry FontAttributes="Bold"
+                                               x:Name="changedTitleEntry"/>
+
+
+                                    </Frame>
+
+                                    <Frame Padding="0"
+                                       WidthRequest="185"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="20">
+                                        <Entry FontAttributes="Bold"
+                                               x:Name="changedDescriptionEntry"/>
+
+                                    </Frame>
+
+                                </StackLayout>
+
+
+                                <Frame Padding="0"
+                                   Margin="0,30,0,0"
+                                   BackgroundColor="Gold"
+                                   CornerRadius="20">
+                                    <Grid>
+
+                                        <Button Text="Ändra produkt"
+                                        FontAttributes="Bold"
+                                        Clicked="ChangeProduct_Clicked"
+                                        BackgroundColor="Gold"
+                                            />
+
+                                        <Button Text="Avbryt"
+                                        FontAttributes="Bold"
+                                            Grid.Column="1"
+                                                Clicked="CancelEditProductButton_Clicked"
+                                        BackgroundColor="White"/>
+
+                                    </Grid>
+                                </Frame>
+
+                                <Label 
+                                    Text="Välj ny hylla för vald produkt"
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    FontAttributes="Bold"
+                                    TextColor="Gold"/>
+                                <BoxView BackgroundColor="White"
+                                     HeightRequest="1"/>
+
+
+                                <StackLayout 
+                                Margin="0,10,0,0"
+                                      Orientation="Horizontal"
+                                         >
+
+                                    <Frame Padding="0"
+                                           IsClippedToBounds="True"
+                                       BorderColor="White"
+                                           WidthRequest="200"
+                                       CornerRadius="20">
+
+                                        <Picker x:Name="changeShelf"
+                                                BackgroundColor="White"
+                                                FontAttributes="Bold">
+                                        </Picker>
+
+                                    </Frame>
+
+                                    <Button Text="Byt hylla"
+                                            x:Name="confirmShelfChangeButton"
+                                            CornerRadius="20"
+                                            TextColor="Black"
+                                    WidthRequest="130"
+                                            Clicked="ChosenProduct_Clicked"
+                                            BackgroundColor="Gold"
+                                            FontAttributes="Bold"
+                                            />
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="10,60,300,30"
+                                   Text="Kategori"/>
+
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="200,60,300,30"
+                                   Text="Publik"/>
+
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="200,115,300,30"
+                                   Text="Ny beskrivning"/>
+
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   AbsoluteLayout.LayoutBounds="10,115,300,30"
+                                   Text="Ny Titel"/>
+
+
+
+                            <Label TextColor="White"
+                                           FontAttributes="Bold"
+                                           FontSize="8"
+                                   AbsoluteLayout.LayoutBounds="10,180,300,30"
+                                           Text="Du kan själv välja hur många fält du vill fylla i, fälten som är tomma får produktens gamla information."/>
+
+                        </AbsoluteLayout>
+                    </ScrollView>
+
                     <ListView x:Name="ProductList"
                               VerticalScrollBarVisibility="Never"
                               HasUnevenRows="False"    
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
                               >
-                        <ListView.Header>
-                            
-                                <StackLayout x:Name="shelfChangeTab"
-                                             Margin="0,15,0,15"
-                                             Orientation="Horizontal"
-                                         IsVisible="False">
-
-                                <StackLayout>
-
-                                    <Label 
-                                    Text="Välj hylla för vald produkt"
-                                    FontSize="10"
-                                    HorizontalOptions="CenterAndExpand"
-                                    FontAttributes="Bold"
-                                    TextColor="Gold"/>
-
-                                    <Label 
-                                    x:Name="tappedBook"
-                                    FontSize="10"
-                                    HorizontalOptions="CenterAndExpand"
-                                    FontAttributes="Bold"
-                                    TextColor="White"/>
-                                </StackLayout>
-
-
-                                <Frame Padding="0"
-                                           IsClippedToBounds="True"
-                                       BorderColor="White"
-                                           WidthRequest="100"
-                                       CornerRadius="20">
-
-                                    <Picker x:Name="changeShelf"
-                                                BackgroundColor="White"
-                                                FontAttributes="Bold">
-                                    </Picker>
-
-                                </Frame>
-
-                                <Button Text="Byt hylla"
-                                            x:Name="confirmShelfChangeButton"
-                                            CornerRadius="20"
-                                            TextColor="Black"
-                                            Clicked="ChosenProduct_Clicked"
-                                            BackgroundColor="Gold"
-                                            FontAttributes="Bold"
-                                            />
-
-                            </StackLayout>
-
-                        </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -720,7 +851,7 @@
                                                    FontAttributes="Bold"
                                                    TextColor="White"/>
 
-                                                <Label Text="Klicka på en produkt för att byta hylla på den"
+                                                <Label Text="Klicka på en produkt för att ändra på den"
                                                        FontAttributes="Bold"
                                                        TextColor="Gold"
                                                        FontSize="10"/>
@@ -732,14 +863,20 @@
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
 
-                                                    <Button 
+                                                    <StackLayout Grid.Column="0">
+
+
+                                                        <Button 
                                                         TextColor="Black"
                                                         CornerRadius="20"
-                                                        Grid.Column="0"
                                                         BackgroundColor="Gold"
                                                         FontAttributes="Bold"
                                                         Clicked="RemoveProduct_ButtonClicked"
                                                         Text="Ta bort"/>
+
+                                                    </StackLayout>
+
+
 
                                                 </Grid>
 
@@ -1794,15 +1931,15 @@
                            Grid.Row="1">
 
                         <ScrollView VerticalScrollBarVisibility="Never">
-                            
+
 
                             <StackLayout>
                                 <StackLayout>
-                                      <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Gold" Padding="0" TextDecorations="Underline"/>
+                                    <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Gold" Padding="0" TextDecorations="Underline"/>
                                     <ListView x:Name="productInfo" HeightRequest="200" VerticalScrollBarVisibility="Never">
                                         <ListView.Header>
                                             <StackLayout>
-                                               <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding ="0" TextDecorations="Underline"/>
+                                                <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding ="0" TextDecorations="Underline"/>
                                             </StackLayout>
                                         </ListView.Header>
                                         <ListView.ItemTemplate>
@@ -1829,21 +1966,21 @@
                                                 <Label x:Name="TopFive" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding="0" TextDecorations="Underline"/>
                                             </StackLayout>
                                         </ListView.Header>
-                                         <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        <StackLayout Margin="0,20,0,0">
-                                                            <StackLayout Orientation="Horizontal">
-                                                                <Label Text="{Binding Title, StringFormat='{0}:'}" TextColor="White" FontAttributes="Bold"/>
-                                                                <Label Text="{Binding Count, StringFormat=' {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                            </StackLayout>
-                                                            <BoxView BackgroundColor="White"
-                                                                 HeightRequest="3" >
-                                                            </BoxView>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout Margin="0,20,0,0">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="{Binding Title, StringFormat='{0}:'}" TextColor="White" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding Count, StringFormat=' {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                         </StackLayout>
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                         </ListView.ItemTemplate>
+                                                        <BoxView BackgroundColor="White"
+                                                                 HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
                                     </ListView>
 
                                     <ListView x:Name="mediaInfo" HeightRequest="200" VerticalScrollBarVisibility="Never">
@@ -1868,13 +2005,13 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                    
-                                </StackLayout>                                   
+
+                                </StackLayout>
                             </StackLayout>
                         </ScrollView>
                     </Frame>
-                    
-                    
+
+
 
                     <Frame BorderColor="Transparent"
                            Grid.Column="1"

@@ -87,5 +87,35 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
 
         }
+
+        // Recommendation list based on past loans of books and agegroup
+        
+        public static List<Product> ShowRecommendations()
+        {
+             var recoList = new List<Product>();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var product = db.Products;
+                var recommend = (from
+                                reco in db.BookHistories
+                                join prod in db.Products on reco.ProductId equals prod.Id
+                                join aud in db.Audiences on prod.AudienceId equals aud.Id
+                                join category in db.Categories on prod.CategoryId equals category.Id
+                                where reco.EventId == 2 && reco.UserId == UserLogin.thisUser.Id
+                                select new MyPagesProductList
+                                {
+                                    AgeGroupId = prod.AudienceId,
+                                    CategoryId = prod.CategoryId,
+                                    UsersID = reco.UserId,
+                                }).ToList();
+
+                foreach (var item in recommend)
+                {
+                    recoList = product.Where(p => p.CategoryId == item.CategoryId).ToList();
+                }
+
+            }
+                return recoList.ToList();
+        }
     }
 }
