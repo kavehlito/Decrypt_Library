@@ -1,7 +1,7 @@
-﻿using Decrypt_Library.EntityFrameworkCode;
+﻿using Decrypt_Library.EntityframeworkCode;
+using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,6 +21,8 @@ namespace Decrypt_Library.Views
             mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
             languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
             userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
+            statsPicker.ItemsSource = EntityframeworkStatistics.StatsValues();
+
         }
 
 
@@ -214,19 +216,19 @@ namespace Decrypt_Library.Views
                 playTimeFrame.IsVisible = false;
                 entryPlaytime.IsVisible = false;
                 entryPlaytime.IsEnabled = false;
-                
+
                 narratorLabel.IsVisible = false;
                 narratorFrame.IsVisible = false;
                 entryNarrator.IsVisible = false;
                 entryNarrator.IsEnabled = false;
             }
-            if(selectedMediaId == 3)
+            if (selectedMediaId == 3)
             {
                 playTimeLabel.IsVisible = true;
                 playTimeFrame.IsVisible = true;
                 entryPlaytime.IsVisible = true;
                 entryPlaytime.IsEnabled = true;
-                
+
                 narratorLabel.IsVisible = true;
                 narratorFrame.IsVisible = true;
                 entryNarrator.IsVisible = true;
@@ -286,7 +288,7 @@ namespace Decrypt_Library.Views
 
         private void ChosenProduct_Clicked(object sender, EventArgs e)
         {
-            if(changeShelf.SelectedIndex == -1)
+            if (changeShelf.SelectedIndex == -1)
             {
                 return;
             }
@@ -375,14 +377,14 @@ namespace Decrypt_Library.Views
                 ProductShelfIdCorrect = !string.IsNullOrEmpty(shelfPicker.SelectedItem.ToString());
                 ProductCategoryIdCorrect = !string.IsNullOrEmpty(categoryPicker.SelectedItem.ToString());
 
-                if(selectedMediaId == 1 || selectedMediaId == 2)
+                if (selectedMediaId == 1 || selectedMediaId == 2)
                 {
                     ProductPagesCorrect = Readers.Readers.IntReaderSpecifyIntRange(entryPages.Text, 1, 2000, out pagesInput);
                     ProductPlaytimeCorrect = true;
                     ProductNarratorCorrect = true;
                     ProductMediaIdCorrect = true;
                 }
-                if(selectedMediaId == 3)
+                if (selectedMediaId == 3)
                 {
                     ProductPlaytimeCorrect = Readers.Readers.DoubleReaderOutDouble(entryPlaytime.Text, out playTime);
                     ProductNarratorCorrect = Readers.Readers.StringReader(entryNarrator.Text);
@@ -450,7 +452,7 @@ namespace Decrypt_Library.Views
                     return;
 
             }
-            catch 
+            catch
             {
                 return;
             }

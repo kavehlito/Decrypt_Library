@@ -67,6 +67,26 @@
                         <Picker x:Name="starPicker" Title="Stjärnor" HeightRequest="70" IsVisible="false" TitleColor="PaleVioletRed" FontSize="20"/>
                         <Button x:Name="reviewButton" BackgroundColor="PaleVioletRed" Text="Skicka"  Clicked="reviewButton_Clicked" WidthRequest="110" CornerRadius="10" IsVisible="false"/>
                     </StackLayout>
+                    <StackLayout>
+                        <Label x:Name="ShowOrNot" IsVisible="true" TextColor="PaleVioletRed" FontSize="25"/>
+                        <ListView x:Name="Recommendations" HeightRequest="500" WidthRequest="800" SeparatorVisibility="Default" SeparatorColor="PaleVioletRed" ItemTapped="Recommendations_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout>
+                                                <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="FillAndExpand" WidthRequest="100"/>
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text="{Binding Title}" TextColor="PaleVioletRed" FontSize="15"/>
+                                                <Label Text ="{Binding AuthorName}" TextColor="PaleVioletRed" FontSize="15"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

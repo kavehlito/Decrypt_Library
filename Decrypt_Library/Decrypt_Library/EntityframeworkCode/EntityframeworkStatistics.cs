@@ -151,7 +151,17 @@ namespace Decrypt_Library.EntityframeworkCode
                                     }).OrderByDescending(c => c.Count).ToList();
                 return mostPop;
             }
+        }
+        public static List<string> StatsValues()
+        {
+            var starList = new List<string>();
+            starList.Add("Product: Populäraste Kategorin");
+            starList.Add("Utlåning: Utlånade produkter just nu");
+           // starList.Add();
+            //starList.Add(4);
+            //starList.Add(5);
 
+            return starList;
         }
 
 
