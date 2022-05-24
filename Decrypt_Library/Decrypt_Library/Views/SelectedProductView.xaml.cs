@@ -118,7 +118,7 @@ namespace Decrypt_Library.Views
         // When tapping an item in the list user gets directed to Loan page to complete the lending of the book
         private async void Recommendations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedItemFromList = (MyPagesProductList)e.Item;
+            var selectedItemFromList = (LoginPage)e.Item;          // krasch - dirigerar inte till Login Page. Och om är inloggad och klickar på bok - ska komma till LoanPage?
             await Navigation.PushAsync(new Loan());
             ((ListView)sender).SelectedItem = null;
         }
