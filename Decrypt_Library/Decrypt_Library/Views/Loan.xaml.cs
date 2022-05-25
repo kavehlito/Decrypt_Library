@@ -49,8 +49,12 @@ namespace Decrypt_Library.Views
             if (!sucess) {DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
             else
             {
+                userIdFrame.IsVisible = false;
+                Password.IsVisible = false;
+                userPasswordFrame.IsVisible = false;
                 CheckUserId.IsVisible = false;
                 checkUserButton.IsVisible = false;
+                Password.IsVisible = false;
                 Product.IsVisible = true;
                 Add.IsVisible = true;
                 User.Text = $"Lånekortsnummer: {CheckUserId.Text}, Namn: {UserName}";
@@ -103,21 +107,17 @@ namespace Decrypt_Library.Views
             CheckOut.IsVisible = false;
             StartAgain.IsVisible = true;
             Cart.cartList.Clear();
+            
         }
 
-        private void StartAgain_Clicked(object sender, EventArgs e)
+        private async void StartAgain_Clicked(object sender, EventArgs e)
         {
-            CheckUserId.IsVisible = true;
-            checkUserButton.IsVisible = true;
-            StartAgain.IsVisible=false;
-            User.Text = null;
-            User.IsVisible = true;
-            CheckUserId.Text = null;
-            Headline.IsVisible = false;
             Cart.cartList.Clear();
-            ProductList.ItemsSource = null;
-            ProductList.ItemsSource = Cart.cartList;
-            NumberOfItem.IsVisible = false;
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[7];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+
         }
 
         private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -135,6 +135,16 @@ namespace Decrypt_Library.Views
 
             ProductList.ItemsSource = Cart.cartList;
             NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
+        }
+
+        private void CheckUserId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -126,6 +126,7 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
+        /*
         public static List<MyPagesProductList> LoanAgain()
         {
             //product.EndDate = product.EndDate.Value.AddDays(30);
@@ -147,7 +148,8 @@ namespace Decrypt_Library.EntityFrameworkCode
             return loanList;
 
 
-        }
+        
+        */
 
         public static void RemoveProduct(Product product)
         {
