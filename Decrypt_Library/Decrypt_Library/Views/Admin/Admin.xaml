@@ -1843,11 +1843,8 @@
 
     </ContentPage>
 
-    <ContentPage Title="Statistik" BackgroundColor="#262223" BackgroundImageSource="Josse.png">
-
-
+    <ContentPage Title="Statistik" BackgroundColor="#262223">
         <ScrollView>
-
             <StackLayout>
                 <Label Text="Statistik"
                        FontAttributes="Bold"
@@ -1857,17 +1854,13 @@
                        Margin="0,20,0,0"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="PaleVioletRed"/>
-
-
                 <Grid>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="AUto"/>
                         <ColumnDefinition Width="*"/>
 
                     </Grid.ColumnDefinitions>
-
 
                     <Frame Padding="0" 
                            BorderColor="PaleVioletRed"
