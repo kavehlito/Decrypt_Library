@@ -938,7 +938,6 @@ namespace Decrypt_Library.Views
 
             loanedTab.IsVisible = true;
 
-
             var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
             AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
             AmountOfBooksLoanedATM.IsVisible = true;
