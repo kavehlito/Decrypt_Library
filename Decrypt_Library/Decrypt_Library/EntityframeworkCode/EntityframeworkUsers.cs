@@ -92,7 +92,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         
         public static List<Product> ShowRecommendations()
         {
-             var recoList = new List<Product>();
+            var recoList = new List<Product>();
             using (var db = new Decrypt_LibraryContext())
             {
                 var product = db.Products;
@@ -107,6 +107,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     AgeGroupId = prod.AudienceId,
                                     CategoryId = prod.CategoryId,
                                     UsersID = reco.UserId,
+
                                 }).ToList();
 
                 foreach (var item in recommend)
@@ -116,6 +117,32 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             }
                 return recoList.ToList();
+        }
+        public static List<Product> ShowTopFiveMostReadNoHistory()
+        {
+            var topfiveList = new List<Product>();
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var products = db.Products;
+
+                var mostRead = (from
+                               mostPop in db.BookHistories
+                                join product in db.Products on mostPop.ProductId equals product.Id
+                                where mostPop.EventId == 2
+                                select product).ToList().GroupBy(c => c.Id)
+                                    .Select(c => new MyPagesProductList
+                                    {
+                                        Title = c.FirstOrDefault().Title,
+                                        Count = c.Count(),
+                                    }).OrderByDescending(c => c.Count).ToList().Take(5);
+
+                foreach (var item in mostRead)
+                {
+                    topfiveList = products.Where(p => p.Id == item.ID).ToList();
+                }
+                return topfiveList.ToList();
+            }
+
         }
     }
 }
