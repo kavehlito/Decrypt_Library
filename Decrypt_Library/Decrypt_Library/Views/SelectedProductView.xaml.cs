@@ -1,10 +1,9 @@
-﻿using Decrypt_Library.EntityFrameworkCode;
-using Decrypt_Library.EntityframeworkCode;
+﻿using Decrypt_Library.EntityframeworkCode;
+using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Decrypt_Library.Models;
-using System.Linq;
 
 namespace Decrypt_Library.Views
 {
@@ -27,8 +26,8 @@ namespace Decrypt_Library.Views
                 LoanOrReserveButton.IsVisible = false;
                 PlsLoginReservelbl.IsVisible = true;
                 PlsloginReviewlbl.IsVisible = true;
-                ShowOrNot.Text = "Populära produkter: ";
-                Recommendations.ItemsSource = EntityframeworkStatistics.ShowTopFiveMostRead();
+                ShowOrNot.Text = "Populära produkter:";
+                Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
             }
             else
             {
@@ -38,8 +37,19 @@ namespace Decrypt_Library.Views
                 reviewButton.IsVisible = true;
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
-                ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
-                Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();
+
+                if (EntityframeworkUsers.ShowRecommendations() == null)
+                {
+                    ShowOrNot.Text = "Detta är populärt:";
+                    Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
+                }
+
+                else
+                {
+                    ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
+                    Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();
+                }
+
             }
 
             if (LoanOrReserveButton.Text == "True")
@@ -118,8 +128,8 @@ namespace Decrypt_Library.Views
         // When tapping an item in the list user gets directed to Loan page to complete the lending of the book
         private async void Recommendations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedItemFromList = (LoginPage)e.Item;          // krasch - dirigerar inte till Login Page. Och om är inloggad och klickar på bok - ska komma till LoanPage?
-            await Navigation.PushAsync(new Loan());
+            var selectedItemFromList = (Product)e.Item;
+            await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
         }
     }
