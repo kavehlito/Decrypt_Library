@@ -27,7 +27,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                       ISBN = product.Isbn,
                                       StartDate = bookHistory.StartDate,
                                       EndDate = bookHistory.EndDate,
-
+                                      ReservationNumber = EntityframeworkBookHistory.Reservationnumber(product.Id, UserLogin.thisUser.Id) + 1
                                   };
                 return reservation.ToList();
 
@@ -87,6 +87,21 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return true;
             }
         }
+
+        
+
+        public static int Reservationnumber(int productId, int userId)
+        {
+            using (var db = new Models.Decrypt_LibraryContext())
+            {
+                var reservations = db.BookHistories;
+                var specificProductReservation = reservations.Where(x => x.ProductId == productId && x.EventId == 3).OrderBy(x => x.StartDate).ToList();
+                var specificProductHistory = specificProductReservation.SingleOrDefault(x => x.ProductId == productId && x.UserId == userId);
+
+                return specificProductReservation.IndexOf(specificProductHistory);
+            }
+        }
+
     }
 
     public class MyPagesProductList
@@ -105,6 +120,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         public int? AgeGroupId { get; set; }
         public int? CategoryId { get; set; }
         public int? UsersID { get; set; }
+        public int? ReservationNumber { get; set; }
 
     }
 }

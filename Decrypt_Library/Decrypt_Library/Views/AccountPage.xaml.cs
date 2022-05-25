@@ -88,6 +88,21 @@ namespace Decrypt_Library.Views
             reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
 
+        private async void Postpone_Clicked(object sender, EventArgs e)
+        {
+            MakeAllBarsInvisible();
+            loanList.IsVisible = true;
+
+            Button btn = sender as Button;
+            MyPagesProductList loanAgain = btn.BindingContext as MyPagesProductList;
+            await DisplayAlert($"{loanAgain.Title} förlängd", $"Återlämnas: {loanAgain.EndDate.Value.AddDays(30)}", "OK");
+         
+            loanList.ItemsSource = EntityframeworkProducts.LoanAgain();
+
+
+
+        }
+
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
             MakeAllBarsInvisible();
@@ -183,5 +198,7 @@ namespace Decrypt_Library.Views
             }
  
         }
+
+       
     }
 }
