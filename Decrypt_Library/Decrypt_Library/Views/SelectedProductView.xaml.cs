@@ -28,7 +28,7 @@ namespace Decrypt_Library.Views
                 PlsloginReviewlbl.IsVisible = true;
 
                 ShowOrNot.Text = "Populära produkter:";
-                Recommendations.ItemsSource = EntityframeworkStatistics.ShowTopFiveMostRead();
+                Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
             }
             else 
             {
@@ -40,12 +40,11 @@ namespace Decrypt_Library.Views
                 starPicker.IsVisible = true;
             
 
-                if (UserLogin.thisUser != null && EntityframeworkUsers.ShowRecommendations() == null)
+                if (EntityframeworkUsers.ShowRecommendations().Count == 0)
                 {
                     ShowOrNot.Text = "Detta är populärt:";
                     Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
                 }
-
                 else
                 {
                     ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";

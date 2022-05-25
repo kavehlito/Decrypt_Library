@@ -155,11 +155,16 @@ namespace Decrypt_Library.EntityframeworkCode
         public static List<string> StatsValues()
         {
             var starList = new List<string>();
-            starList.Add("Product: Populäraste Kategorin");
-            starList.Add("Utlåning: Utlånade produkter just nu");
-           // starList.Add();
-            //starList.Add(4);
-            //starList.Add(5);
+            starList.Add("Produkt: Populäraste Kategorierna");
+            starList.Add("Produkt: Populäraste Mediatyper");
+            starList.Add("Produkt: Top 5 populära Produkter");
+            starList.Add("Produkt: Antal Produkter i sortimentet");
+
+            starList.Add("Utlåning: Utlånade Produkter just nu");
+            starList.Add("Utlåning: Totalt utlånade Produkter");
+
+            starList.Add("Användare: Alla Användare");
+            
 
             return starList;
         }
