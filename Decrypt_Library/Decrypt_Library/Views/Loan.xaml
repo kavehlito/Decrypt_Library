@@ -5,9 +5,9 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -19,7 +19,9 @@
 
 
             <AbsoluteLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
-                <Label Text="Utlåning!"
+
+                
+                <Label Text="Utlåningsautomat!"
                        FontSize="30"
                        FontAttributes="Bold"
                        TextColor="Black"
@@ -32,28 +34,52 @@
             <StackLayout Grid.Column="1" Grid.Row="1">
                 <Frame BackgroundColor="Black"
                    BorderColor="Black"
-                   HeightRequest="400"
+                   HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
                    Grid.Column="1"
-                   WidthRequest="410">
+                   WidthRequest="500">
 
-
+                    
                     <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1">
+                        <Image Source="decrypt6.png"
+                           Scale="0.5" Margin="0,-20,0,0"/>
+
                         <Label x:Name="User" Text="" TextColor="White" />
-            <Entry x:Name="CheckUserId" Placeholder="Lånetagar-Id" />
+                        <Frame Padding="0"
+                           x:Name="userIdFrame"
+                           CornerRadius="20">
+                            <Entry x:Name="CheckUserId" 
+                               Placeholder="Lånetagar-Id" 
+                               TextChanged="CheckUserId_TextChanged"
+                               FontAttributes="Bold"
+                                   />
+                        </Frame>
+                        <Frame Padding="0"
+                           x:Name="userPasswordFrame"
+                           CornerRadius="20">
+                            <Entry x:Name="Password" 
+                               TextChanged="Password_TextChanged"
+                               Placeholder="Lösenord" 
+                               FontAttributes="Bold"/>
+                        </Frame>
                         <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
-            
-            <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false" />
+
+
+                        
+
+                        <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false" />
                         <Button x:Name="Add" Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
                         <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold" />
                         <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold" />
 
 
-                        <Button x:Name="StartAgain" Text="Registrera nytt lån" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+                        <Button x:Name="StartAgain" Text="Logga ut" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+  
+                            <StackLayout>
+                            
 
-                        <StackLayout>
-                            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
+                                <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
             <Label x:Name="NumberOfItem" Text="" TextColor="White" IsVisible="false" />
                         </StackLayout>
 
@@ -87,6 +113,7 @@
                                                    FontAttributes="Bold"/>
 
                                     <Button Grid.Column="3"
+                                                    x:Name="DeleteButton"
                                                     TextColor="Black"
                                                     CornerRadius="10"
                                                     BackgroundColor="White"
@@ -102,10 +129,10 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-           
 
-        </StackLayout>
+                    </StackLayout>
                 </Frame>
+              
             </StackLayout>
         </Grid>
     </ContentPage.Content>
