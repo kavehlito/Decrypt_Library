@@ -1904,7 +1904,7 @@
                                     FontAttributes="Bold"
                                     Clicked="Button_Clicked_Loaned"/>
                             -->
-                            <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" FontSize="15"/>
+                            <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" BackgroundColor="Gold" FontSize="15" SelectedIndexChanged="statsPicker_SelectedIndexChanged"/>
                         </Grid>
                     </Frame>
                 </Grid>
@@ -1927,16 +1927,16 @@
                            WidthRequest="400"
                            x:Name="ProductTab"
                            IsVisible="False"
-                           HeightRequest="500"
+                           
                            Grid.Row="1">
 
-                        <ScrollView VerticalScrollBarVisibility="Never">
+                        <ScrollView>
 
 
                             <StackLayout>
                                 <StackLayout>
                                     <Label x:Name="AmountOfBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Gold" Padding="0" TextDecorations="Underline"/>
-                                    <ListView x:Name="productInfo" HeightRequest="200" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="productInfo" HeightRequest="500" >
                                         <ListView.Header>
                                             <StackLayout>
                                                 <Label x:Name="FavoriteCategory" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding ="0" TextDecorations="Underline"/>
@@ -1958,9 +1958,9 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+                                    
 
-
-                                    <ListView x:Name="mostPopular" HeightRequest="200" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="mostPopular" HeightRequest="500">
                                         <ListView.Header>
                                             <StackLayout>
                                                 <Label x:Name="TopFive" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding="0" TextDecorations="Underline"/>
@@ -1983,7 +1983,7 @@
                                         </ListView.ItemTemplate>
                                     </ListView>
 
-                                    <ListView x:Name="mediaInfo" HeightRequest="200" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="mediaInfo" HeightRequest="500" >
                                         <ListView.Header>
                                             <StackLayout>
                                                 <Label x:Name="FavouriteMediaType" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding ="0" TextDecorations="Underline"/>
@@ -2018,11 +2018,16 @@
                            WidthRequest="400"
                            x:Name="userTab"
                            IsVisible="False"
-                           HeightRequest="500"
+                           
                            Grid.Row="1">
 
                         <StackLayout>
-                            <ListView x:Name="userInfo" VerticalScrollBarVisibility="Never" HeightRequest="200" >
+                            <ListView x:Name="userInfo" HeightRequest="500" >
+                                <ListView.Header>
+                                    <StackLayout>
+                                        <Label x:Name="totalNrUsers" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="16" TextColor="Gold" Padding ="0" TextDecorations="Underline"/>
+                                    </StackLayout>
+                                </ListView.Header>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -2053,17 +2058,17 @@
                            WidthRequest="400"
                            x:Name="loanedTab"
                            IsVisible="False"
-                           HeightRequest="500"
+                           
                            Grid.Row="1">
 
-                        <ScrollView VerticalScrollBarVisibility="Never">
+                        <ScrollView>
                             <StackLayout>
 
                                 <StackLayout>
                                     <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="loanedInfo" HeightRequest="180" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="loanedInfo" HeightRequest="500">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -2087,7 +2092,7 @@
                                     <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="loanedInfoStatistics" VerticalScrollBarVisibility="Never" HeightRequest="200">
+                                    <ListView x:Name="loanedInfoStatistics" HeightRequest="500">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
