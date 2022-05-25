@@ -47,7 +47,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Image Grid.Row="0"
-                               Source="decrypt7.png"
+                               Source="decrypt8.png"
                                />
 
                                 <Frame Padding="0"
