@@ -1,7 +1,6 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System;
-using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -95,13 +94,24 @@ namespace Decrypt_Library.Views
 
             Button btn = sender as Button;
             MyPagesProductList loanAgain = btn.BindingContext as MyPagesProductList;
-            await DisplayAlert($"{loanAgain.Title} förlängd", $"Återlämnas: {loanAgain.EndDate.Value.AddDays(30)}", "OK");
-         
-            loanList.ItemsSource = EntityframeworkProducts.LoanAgain();
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var bookhistory = db.BookHistories;
+                bookhistory.Add(new BookHistory { EventId = 4, EndDate = null, ProductId = loanAgain.ID, StartDate = DateTime.Now, UserId = UserLogin.thisUser.Id });
+                db.SaveChanges();
+            }
+
+            loanList.ItemsSource = MyPages.LoanList();
+
+            await DisplayAlert($"{loanAgain.Title} förlängd", "Återlämnas om senast 30 dagar", "OK");
 
 
 
         }
+
+
+
 
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
@@ -196,9 +206,9 @@ namespace Decrypt_Library.Views
             {
                 await DisplayAlert("Error", "något gick fel", "OK");
             }
- 
+
         }
 
-       
+
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using System;
-using System.Text;
-using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Decrypt_Library
 {
@@ -48,7 +47,7 @@ namespace Decrypt_Library
             if (UserLogin.thisUser == null) return null;
 
             var loanHistory = EntityframeworkBookHistory.ShowUserLoanHistory();
-          
+
             return loanHistory;
 
             //StringBuilder myLoanHistoryList = new StringBuilder();
@@ -64,9 +63,6 @@ namespace Decrypt_Library
         public static List<MyPagesProductList> LoanList()
         {
 
-            //StringBuilder LateBooksList = new StringBuilder();
-            //LateBooksList.AppendLine($"{"TITEL",-70}{"FÖRFATTARE",-25}{"ISBN",-35}{"UTLÅNINGSDATUM"}");
-
             if (UserLogin.thisUser == null) return null;
 
             var books = EntityframeworkBookHistory.ShowUserLoanHistory();
@@ -76,27 +72,33 @@ namespace Decrypt_Library
             {
                 if (book.EndDate == null)
                 {
-                    book.EndDate = book.StartDate.Value.AddDays(30);
+                    var endDateTime = EntityframeworkBookHistory.SetEndDate(book.ID);
+
+                    if (endDateTime != null) book.EndDate = endDateTime;
+                    else
+                        book.EndDate = book.StartDate.Value.AddDays(30);
+
                     loanList.Add(book);
                 }
+
             }
 
             return loanList;
-            
 
-                //($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString(),-40}{item.EndDate.Value.ToShortDateString()}"
 
-               /* if (item.EndDate == null)
-                {
-                    item.Add(new MyPagesProductList());
+            //($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString(),-40}{item.EndDate.Value.ToShortDateString()}"
 
-                    //DateTime startdate = Convert.ToDateTime(item.StartDate);
-                    //DateTime TodayDate = DateTime.Now;
-                    //var numberOfDays = (TodayDate - startdate).TotalDays;
-                    //LateBooksList.Append($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString()}");
-                    //if (numberOfDays > 30) LateBooksList.Append(" - Boken är försenad!");
-                } */
-            
+            /* if (item.EndDate == null)
+             {
+                 item.Add(new MyPagesProductList());
+
+                 //DateTime startdate = Convert.ToDateTime(item.StartDate);
+                 //DateTime TodayDate = DateTime.Now;
+                 //var numberOfDays = (TodayDate - startdate).TotalDays;
+                 //LateBooksList.Append($"{item.Title,-60}{item.Author,-25}{item.ISBN,-35}{item.StartDate.Value.ToShortDateString()}");
+                 //if (numberOfDays > 30) LateBooksList.Append(" - Boken är försenad!");
+             } */
+
         }
 
         public static void TestMyPages()
