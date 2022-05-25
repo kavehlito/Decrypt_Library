@@ -109,7 +109,7 @@ namespace Decrypt_Library.EntityFrameworkCode
             {
                 var reservations = db.BookHistories;
                 var specificProductReservation = reservations.Where(x => x.ProductId == productId && x.EventId == 3).OrderBy(x => x.StartDate).ToList();
-                var specificProductHistory = specificProductReservation.SingleOrDefault(x => x.ProductId == productId && x.UserId == userId);
+                var specificProductHistory = specificProductReservation.FirstOrDefault(x => x.ProductId == productId && x.UserId == userId);
 
                 return specificProductReservation.IndexOf(specificProductHistory);
             }

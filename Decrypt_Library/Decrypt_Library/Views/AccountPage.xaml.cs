@@ -70,8 +70,8 @@ namespace Decrypt_Library.Views
 
             MakeAllBarsInvisible();
 
-            loanList.IsVisible = true;
-            loanList.ItemsSource = MyPages.MyLoanHistory();
+            loanHistoryList.IsVisible = true;
+            loanHistoryList.ItemsSource = MyPages.MyLoanHistory();
         }
 
         private void RemoveButton_Clicked(object sender, EventArgs e)
