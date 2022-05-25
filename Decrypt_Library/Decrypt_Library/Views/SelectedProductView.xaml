@@ -68,7 +68,7 @@
                         <Button x:Name="reviewButton" BackgroundColor="PaleVioletRed" Text="Skicka"  Clicked="reviewButton_Clicked" WidthRequest="110" CornerRadius="10" IsVisible="false"/>
                     </StackLayout>
                     <StackLayout>
-                        <Label x:Name="ShowOrNot" IsVisible="true" TextColor="PaleVioletRed" FontSize="25"/>
+                        <Label x:Name="ShowOrNot" IsVisible="true" TextColor="#DDC6B6" FontSize="25"/>
                         <ListView x:Name="Recommendations" HeightRequest="500" WidthRequest="800" SeparatorVisibility="Default" SeparatorColor="PaleVioletRed" ItemTapped="Recommendations_ItemTapped">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -78,8 +78,8 @@
                                                 <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="FillAndExpand" WidthRequest="100"/>
                                             </StackLayout>
                                             <StackLayout>
-                                                <Label Text="{Binding Title}" TextColor="PaleVioletRed" FontSize="15"/>
-                                                <Label Text ="{Binding AuthorName}" TextColor="PaleVioletRed" FontSize="15"/>
+                                                <Label Text="{Binding Title}" TextColor="#DDC6B6" FontSize="15"/>
+                                                <Label Text ="{Binding AuthorName}" TextColor="#DDC6B6" FontSize="15"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
