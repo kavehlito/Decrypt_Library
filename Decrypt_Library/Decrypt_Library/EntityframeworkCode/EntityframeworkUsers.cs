@@ -108,11 +108,11 @@ namespace Decrypt_Library.EntityFrameworkCode
                                      CategoryId = prod.CategoryId,
                                      UsersID = reco.UserId,
 
-                                 }).ToList();
+                                 }).ToList().Take(1);
 
                 foreach (var item in recommend)
                 {
-                    recoList = product.Where(p => p.CategoryId == item.CategoryId).ToList();
+                    recoList.AddRange(product.Where(p => p.CategoryId == item.CategoryId).ToList());
                 }
 
             }
@@ -131,13 +131,14 @@ namespace Decrypt_Library.EntityFrameworkCode
                                 select product).ToList().GroupBy(c => c.Id)
                                    .Select(c => new MyPagesProductList
                                    {
+                                       ID = c.FirstOrDefault().Id,
                                        Title = c.FirstOrDefault().Title,
                                        Count = c.Count(),
-                                   }).OrderByDescending(c => c.Count).ToList();
+                                   }).OrderByDescending(c => c.Count).ToList().ToList().Take(5);
 
                 foreach (var item in mostRead)
                 {
-                    topfiveList = products.Where(p => p.Id == item.ID).ToList();
+                    topfiveList.AddRange(products.Where(p => p.Id == item.ID).ToList());
                 }
 
                 return topfiveList.ToList();

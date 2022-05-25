@@ -39,7 +39,6 @@ namespace Decrypt_Library.Views
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
             
-
                 if (EntityframeworkUsers.ShowRecommendations().Count == 0)
                 {
                     ShowOrNot.Text = "Detta är populärt:";
@@ -50,7 +49,6 @@ namespace Decrypt_Library.Views
                     ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
                     Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();   
                 }
-
             }
 
             if (LoanOrReserveButton.Text == "True")
