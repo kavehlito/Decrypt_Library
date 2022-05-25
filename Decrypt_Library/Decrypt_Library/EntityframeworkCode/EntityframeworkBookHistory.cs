@@ -39,6 +39,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         public static List<MyPagesProductList> ShowUserLoanHistory()
         {
 
+
             using (var db = new Decrypt_LibraryContext())
             {
                 var loanHistory = from
@@ -48,6 +49,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                   where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 2
                                   select new MyPagesProductList
                                   {
+                                      ID = product.Id,
                                       Title = product.Title,
                                       Author = product.AuthorName,
                                       ISBN = product.Isbn,
@@ -58,6 +60,17 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return loanHistory.ToList();
             }
         }
+        public static DateTime? SetEndDate(int productId)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var loanHistory = db.BookHistories;
+                var specificProduct = loanHistory.Where(x => x.EventId == 4 && x.ProductId == productId && x.UserId == UserLogin.thisUser.Id).OrderByDescending(x => x.StartDate);
+                if (specificProduct.Count() < 1) return null;
+                return specificProduct.First().StartDate.Value.AddDays(30);
+            }
+        }
+
         public static bool ReserveProduct(string productTitle)
         {
             using (var db = new Decrypt_LibraryContext())
@@ -88,7 +101,7 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-        
+
 
         public static int Reservationnumber(int productId, int userId)
         {
