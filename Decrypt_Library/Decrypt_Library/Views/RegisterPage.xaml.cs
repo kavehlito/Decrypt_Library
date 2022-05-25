@@ -42,14 +42,6 @@ namespace Decrypt_Library.Views
                     Readers.Readers.LongReaderOutLong(Phone.Text, out convertedPhoneNumber);
                     Readers.Readers.LongReaderOutLong(SSN.Text, out convertedSSN);
 
-                    foreach (var item in EntityframeworkUsers.ShowAllUsers())
-                    {
-                        if (item.UserName.Contains(Username.Text))
-                        {
-                            await DisplayAlert("Error!", "Det finns redan en användare med samma användarnamn", "Gå vidare");
-                            return;
-                        }
-                    }
 
                     foreach (var item in EntityframeworkUsers.ShowAllUsers())
                     {
@@ -65,15 +57,6 @@ namespace Decrypt_Library.Views
                         if (item.Phonenumber == convertedPhoneNumber)
                         {
                             await DisplayAlert("Error!", "Det finns redan en användare med samma telefonummer", "Gå vidare");
-                            return;
-                        }
-                    }
-
-                    foreach (var item in EntityframeworkUsers.ShowAllUsers())
-                    {
-                        if (item.Email.Contains(Email.Text))
-                        {
-                            await DisplayAlert("Error!", "Det finns redan en användare med samma Email", "Gå vidare");
                             return;
                         }
                     }
