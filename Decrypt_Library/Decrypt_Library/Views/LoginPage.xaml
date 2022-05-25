@@ -89,8 +89,6 @@
                                             CornerRadius="10"
                                             BackgroundColor="MediumPurple"
                                             TextColor="Black"/>
-
-                                    
                       
                                 </Grid>
                             </Grid>

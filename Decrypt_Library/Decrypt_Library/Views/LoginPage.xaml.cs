@@ -20,6 +20,11 @@ namespace Decrypt_Library.Views
             InitializeComponent();
         }
 
+        protected override void OnDisappearing()
+        {
+            Error.IsVisible = false;
+        }
+
         private void LogIn_Clicked(object sender, EventArgs e)
         {
 
@@ -46,7 +51,6 @@ namespace Decrypt_Library.Views
                 alternativeOptions.IsVisible = false;
                 borderHide.IsVisible = false;
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
-
 
                 //if (UserLogin.thisUser.UserTypeId == 3)
                 //{
