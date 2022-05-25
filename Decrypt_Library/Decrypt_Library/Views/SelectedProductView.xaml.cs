@@ -26,10 +26,11 @@ namespace Decrypt_Library.Views
                 LoanOrReserveButton.IsVisible = false;
                 PlsLoginReservelbl.IsVisible = true;
                 PlsloginReviewlbl.IsVisible = true;
+
                 ShowOrNot.Text = "Populära produkter:";
-                Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
+                Recommendations.ItemsSource = EntityframeworkStatistics.ShowTopFiveMostRead();
             }
-            else
+            else 
             {
                 LoanOrReserveButton.IsVisible = true;
                 PlsLoginReservelbl.IsVisible = false;
@@ -37,8 +38,9 @@ namespace Decrypt_Library.Views
                 reviewButton.IsVisible = true;
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
+            
 
-                if (EntityframeworkUsers.ShowRecommendations() == null)
+                if (UserLogin.thisUser != null && EntityframeworkUsers.ShowRecommendations() == null)
                 {
                     ShowOrNot.Text = "Detta är populärt:";
                     Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
@@ -47,7 +49,7 @@ namespace Decrypt_Library.Views
                 else
                 {
                     ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
-                    Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();
+                    Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();   
                 }
 
             }

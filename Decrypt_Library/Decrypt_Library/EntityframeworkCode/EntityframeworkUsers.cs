@@ -101,7 +101,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                 join prod in db.Products on reco.ProductId equals prod.Id
                                 join aud in db.Audiences on prod.AudienceId equals aud.Id
                                 join category in db.Categories on prod.CategoryId equals category.Id
-                                where reco.EventId == 2 && reco.UserId == UserLogin.thisUser.Id
+                                where reco.UserId == UserLogin.thisUser.Id
                                 select new MyPagesProductList
                                 {
                                     AgeGroupId = prod.AudienceId,
@@ -118,29 +118,30 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
                 return recoList.ToList();
         }
-        public static List<Product> ShowTopFiveMostReadNoHistory()
+        public static List<MyPagesProductList> ShowTopFiveMostReadNoHistory()
         {
-            var topfiveList = new List<Product>();
+           // var topfiveList = new List<Product>();
             using (var db = new Decrypt_LibraryContext())
             {
-                var products = db.Products;
+               // var products = db.Products;
 
                 var mostRead = (from
-                               mostPop in db.BookHistories
+                              mostPop in db.BookHistories
                                 join product in db.Products on mostPop.ProductId equals product.Id
-                                where mostPop.EventId == 2
+                                where mostPop.EventId == 2 && mostPop.UserId == UserLogin.thisUser.Id
                                 select product).ToList().GroupBy(c => c.Id)
-                                    .Select(c => new MyPagesProductList
-                                    {
-                                        Title = c.FirstOrDefault().Title,
-                                        Count = c.Count(),
-                                    }).OrderByDescending(c => c.Count).ToList().Take(5);
-
+                                   .Select(c => new MyPagesProductList
+                                   {
+                                       Title = c.FirstOrDefault().Title,
+                                       Count = c.Count(),
+                                   }).OrderByDescending(c => c.Count).ToList().Take(5);
+                /*
                 foreach (var item in mostRead)
                 {
                     topfiveList = products.Where(p => p.Id == item.ID).ToList();
                 }
-                return topfiveList.ToList();
+                */
+                return mostRead.ToList();
             }
 
         }
