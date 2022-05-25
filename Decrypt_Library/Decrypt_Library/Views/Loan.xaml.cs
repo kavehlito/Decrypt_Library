@@ -34,6 +34,8 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = null;
             NumberOfItem.IsVisible = false;
             Headline.IsVisible = false;
+            CancelButton.IsVisible = false;
+
         }
 
         public Loan()
@@ -54,6 +56,7 @@ namespace Decrypt_Library.Views
                 userPasswordFrame.IsVisible = false;
                 CheckUserId.IsVisible = false;
                 checkUserButton.IsVisible = false;
+                CancelButton.IsVisible = true;
                 Password.IsVisible = false;
                 Product.IsVisible = true;
                 Add.IsVisible = true;
@@ -120,11 +123,7 @@ namespace Decrypt_Library.Views
 
         }
 
-        private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            
-        }
-
+    
         private void Button_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -144,6 +143,28 @@ namespace Decrypt_Library.Views
 
         private void Password_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+        }
+
+        private async void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(CheckUserId.Text))
+                {
+                    int.TryParse(CheckUserId.Text.ToString(), out int userId);
+                    Cart.DeleteCart(userId);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Cart.cartList.Clear();
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[7];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
         }
     }

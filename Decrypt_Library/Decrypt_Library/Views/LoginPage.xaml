@@ -23,7 +23,7 @@
                     <Label x:Name="Headline"
                            Text="Logga in"
                            FontAttributes="Bold"
-                           TextColor="Gold"
+                           TextColor="MediumPurple"
                            AbsoluteLayout.LayoutBounds="25,195,120,40"
                            FontSize="20"/>
 
@@ -87,7 +87,7 @@
                                             Clicked="LogIn_Clicked" 
                                             FontAttributes="Bold"
                                             CornerRadius="10"
-                                            BackgroundColor="Gold"
+                                            BackgroundColor="MediumPurple"
                                             TextColor="Black"/>
 
                                     
@@ -134,13 +134,13 @@
                                 FontSize="10"
                                 Clicked="Button_Clicked"
                                 BackgroundColor="Transparent"
-                                TextColor="Gold"/>
+                                TextColor="MediumPurple"/>
 
                         <Button Text="Glömt lösenord?"
                                 FontAttributes="Bold"
                                 FontSize="10"
                                 BackgroundColor="Transparent"
-                                TextColor="Gold"/>
+                                TextColor="MediumPurple"/>
 
                     </StackLayout>
 
