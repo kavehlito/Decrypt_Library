@@ -1904,7 +1904,7 @@
                                     FontAttributes="Bold"
                                     Clicked="Button_Clicked_Loaned"/>
                             -->
-                            <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" FontSize="15" SelectedIndexChanged="statsPicker_SelectedIndexChanged"/>
+                            <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" FontSize="15"/>
                         </Grid>
                     </Frame>
                 </Grid>

@@ -20,7 +20,7 @@ namespace Decrypt_Library.Views
             InitializeComponent();
         }
 
-        private async void LogIn_Clicked(object sender, EventArgs e)
+        private void LogIn_Clicked(object sender, EventArgs e)
         {
 
             if (Password.Text == null || SSN.Text == null) { Password.Text = "0"; SSN.Text = "0"; }  
