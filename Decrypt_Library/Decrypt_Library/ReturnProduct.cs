@@ -16,15 +16,32 @@ namespace Decrypt_Library
             {
                 var produkcHistory = db.BookHistories;
                 var history = produkcHistory.SingleOrDefault(h => h.ProductId == productId && h.EventId == 2 && h.EndDate == null);
-
+                
                 if (history == null) return false;
 
                 
-                history.EndDate = DateTime.Now;                
+                history.EndDate = DateTime.Now;
+                var loanAgainList = produkcHistory.Where(h => h.ProductId == productId && h.EventId == 4);
+
+                try
+                {
+                    foreach (var item in loanAgainList)
+                    {
+                        produkcHistory.Remove(item);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
+
                 db.SaveChanges();
                 
             }
             UpdateProductStatus(productId, out productName);
+            Cart.cartList.Add(new CartList { Id = productId, Title = productName, ReturnDate = $"Återlämnad: {DateTime.Now}" });
             return true;
         }
 
