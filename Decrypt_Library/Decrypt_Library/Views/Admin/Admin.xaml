@@ -1638,9 +1638,6 @@
                                                    />
                                             </Grid>
 
-
-
-
                                         </StackLayout>
 
                                         <Frame Padding="0"
@@ -1675,8 +1672,6 @@
 
                                         </Frame>
 
-
-
                                     </StackLayout>
                                 </StackLayout>
 
@@ -1684,15 +1679,9 @@
 
                         </ScrollView >
 
-
-
-
                     </StackLayout>
 
-
                 </Frame>
-
-
 
             </Grid>
 

@@ -184,7 +184,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             using (var db = new Decrypt_LibraryContext())
             {
-                var reservation = from
+                var favorites = from
                 bookHistory in db.BookHistories
                                   join
                                   product in db.Products on bookHistory.ProductId equals product.Id
@@ -198,23 +198,36 @@ namespace Decrypt_Library.EntityFrameworkCode
                                       StartDate = bookHistory.StartDate,
                                       EndDate = bookHistory.EndDate
                                   };
-                return reservation.ToList();
+                return favorites.ToList();
 
             }
         }
         // Remove book from favoritelist
-        /*
-        public void List <MyPagesProductList> DeleteFromFavoriteList()
-        {
-            if(UserLogin.thisUser == null) return null;
 
-            using(var db = new Decrypt_LibraryContext())
+        public static void DeleteFavorite(int selectedId)
+        {
+            using (var db = new Decrypt_LibraryContext())
             {
-                product = db.Products.Where(x => x.Id == product.Id).SingleOrDefault();
-                db.Remove(product);
+                var book = db.BookHistories.Where(b => b.Id == selectedId).SingleOrDefault();
+                db.Remove(book);
                 db.SaveChanges();
+
+                //var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
+
+                /* if (book != null)
+                 {
+                     book.Remove(updateQuantityProduct);
+                 }
+                */
+
+                /* if (updateQuantityProduct == null)
+                 {
+                     Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
+                 }
+                 else updateQuantityProduct.StockUnit -= Quantity; 
+                */
+
             }
         }
-        */
     }
 }
