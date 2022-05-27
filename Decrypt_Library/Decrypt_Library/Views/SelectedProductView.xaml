@@ -34,8 +34,12 @@
                     <AbsoluteLayout HorizontalOptions="Start" >
                         <Label x:Name="PlsLoginReservelbl" Text="Du måste vara inloggad för att låna/reservera en bok!" FontSize="25" TextColor="PaleVioletRed" IsVisible="false"
                        AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.8,0.5" FontAttributes="Bold"/>
-                        <Button x:Name="LoanOrReserveButton" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="Center" Clicked="LoanOrReserveButton_Clicked"
-                        Text="{Binding Status}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5,150,50"/>
+                        <StackLayout Orientation="Horizontal" WidthRequest="800" HeightRequest="50">
+                            <Button x:Name="LoanOrReserveButton" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="StartAndExpand" Clicked="LoanOrReserveButton_Clicked"
+                                        Text="{Binding Status}"/>
+                            <Button x:Name="favoriteButton" Text="Lägg till i Favoriter, ändra text om du vill" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="EndAndExpand"/>
+                            
+                        </StackLayout>
                     </AbsoluteLayout>
 
                     <StackLayout>

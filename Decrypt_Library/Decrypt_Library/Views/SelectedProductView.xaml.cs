@@ -26,6 +26,7 @@ namespace Decrypt_Library.Views
                 LoanOrReserveButton.IsVisible = false;
                 PlsLoginReservelbl.IsVisible = true;
                 PlsloginReviewlbl.IsVisible = true;
+                favoriteButton.IsVisible = false;
 
                 ShowOrNot.Text = "Populära produkter:";
                 Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
@@ -38,6 +39,7 @@ namespace Decrypt_Library.Views
                 reviewButton.IsVisible = true;
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
+                favoriteButton.IsVisible = true;
             
                 if (EntityframeworkUsers.ShowRecommendations().Count == 0)
                 {
