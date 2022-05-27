@@ -38,8 +38,6 @@ namespace Decrypt_Library.EntityFrameworkCode
 
         public static List<MyPagesProductList> ShowUserLoanHistory()
         {
-
-
             using (var db = new Decrypt_LibraryContext())
             {
                 var loanHistory = from
@@ -47,6 +45,28 @@ namespace Decrypt_Library.EntityFrameworkCode
                                   join
                                   product in db.Products on bookHistory.ProductId equals product.Id
                                   where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 2
+                                  select new MyPagesProductList
+                                  {
+                                      ID = product.Id,
+                                      Title = product.Title,
+                                      Author = product.AuthorName,
+                                      ISBN = product.Isbn,
+                                      StartDate = bookHistory.StartDate,
+                                      EndDate = bookHistory.EndDate,
+
+                                  };
+                return loanHistory.ToList();
+            }
+        }
+        public static List<MyPagesProductList> ShowUserLoanHistoryForAll()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var loanHistory = from
+                                  bookHistory in db.BookHistories
+                                  join
+                                  product in db.Products on bookHistory.ProductId equals product.Id
+                                  where bookHistory.EventId == 2
                                   select new MyPagesProductList
                                   {
                                       ID = product.Id,

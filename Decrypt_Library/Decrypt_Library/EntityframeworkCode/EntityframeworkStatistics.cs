@@ -1,7 +1,9 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Decrypt_Library.EntityframeworkCode
 {
@@ -139,10 +141,10 @@ namespace Decrypt_Library.EntityframeworkCode
             {
                 var mostPop = (from
                                 pop in db.BookHistories
-                                join product in db.Products on pop.ProductId equals product.Id
-                                join mediatype in db.MediaTypes on product.MediaId equals mediatype.Id
-                                where pop.EventId == 2
-                                select mediatype).ToList().GroupBy(c => c.Id)
+                               join product in db.Products on pop.ProductId equals product.Id
+                               join mediatype in db.MediaTypes on product.MediaId equals mediatype.Id
+                               where pop.EventId == 2
+                               select mediatype).ToList().GroupBy(c => c.Id)
                                     .Select(c => new MyPagesProductList
                                     {
                                         //MediaType = c.FirstOrDefault().,
@@ -157,13 +159,48 @@ namespace Decrypt_Library.EntityframeworkCode
             var starList = new List<string>();
             starList.Add("Product: Populäraste Kategorin");
             starList.Add("Utlåning: Utlånade produkter just nu");
-           // starList.Add();
+            // starList.Add();
             //starList.Add(4);
             //starList.Add(5);
 
             return starList;
         }
 
+        public static int Reminder()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {            
+                var lateBooks = MyPages.LateReturnList();
+                var reminder = new List<MyPagesProductList>();
+
+                foreach (var book in lateBooks)
+                {
+                    if (book.EndDate < DateTime.Now)
+                    {
+                        reminder.Add(book);
+                    }                  
+                }
+                return reminder.Count();
+            }
+        }
+
+        public static List<MyPagesProductList> Delayes()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var lateBooks = MyPages.LateReturnList();
+                var reminder = new List<MyPagesProductList>();
+
+                foreach (var book in lateBooks)
+                {
+                    if (book.EndDate < DateTime.Now)
+                    {
+                        reminder.Add(book);
+                    }
+                }
+                return reminder.ToList();
+            }
+        }
 
         // Hur många förseningar
         // Funktion för mest populära event - går ej att testa än

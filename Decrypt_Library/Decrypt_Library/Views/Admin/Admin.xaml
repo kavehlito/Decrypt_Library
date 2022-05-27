@@ -1879,7 +1879,7 @@
                            Grid.Column="1">
 
                         <Grid>
-                            <!--
+                            
                             <Button Text="Produkter"
                                     BackgroundColor="Gold"
                                     TextColor="Black"
@@ -1903,8 +1903,8 @@
                                     CornerRadius="0"
                                     FontAttributes="Bold"
                                     Clicked="Button_Clicked_Loaned"/>
-                            -->
-                            <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" FontSize="15"/>
+
+                            <!-- <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" FontSize="15"/>-->
                         </Grid>
                     </Frame>
                 </Grid>
@@ -2058,7 +2058,35 @@
 
                         <ScrollView VerticalScrollBarVisibility="Never">
                             <StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="DelayedBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
+                                       TextDecorations="Underline" Padding="0"/>
 
+                                    <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Never">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
+                                                        <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                        <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                        <Label Text="{Binding EndDate, StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+
+                                                        <Button Text="Påminn kund" IsVisible="true" Clicked="Button_Click_Reminder"
+                                                                 BackgroundColor="IndianRed" TextColor="Black" FontAttributes="Bold"
+                                                                 CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
+
+                                                        </Button>
+                                                        <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                                
                                 <StackLayout>
                                     <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
@@ -2083,6 +2111,7 @@
                                     </ListView>
                                 </StackLayout>
 
+                               
                                 <StackLayout>
                                     <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>

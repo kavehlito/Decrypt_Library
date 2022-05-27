@@ -21,7 +21,7 @@ namespace Decrypt_Library.Views
             mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
             languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
             userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
-            statsPicker.ItemsSource = EntityframeworkStatistics.StatsValues();
+          //  statsPicker.ItemsSource = EntityframeworkStatistics.StatsValues();
 
         }
 
@@ -938,6 +938,12 @@ namespace Decrypt_Library.Views
 
             loanedTab.IsVisible = true;
 
+            var reminder = EntityframeworkCode.EntityframeworkStatistics.Reminder();
+            DelayedBooks.Text = $"Antal försenade produkter just nu: {reminder}";
+            DelayedBooks.IsVisible = true;
+
+            reminders.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.Delayes(); ;
+            reminders.IsVisible = true;
 
             var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
             AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
@@ -953,8 +959,13 @@ namespace Decrypt_Library.Views
             loanedInfoStatistics.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
             loanedInfoStatistics.IsVisible = true;
 
+        }      
+        private async void Button_Click_Reminder(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            MyPagesProductList book = btn.BindingContext as MyPagesProductList;
+            await DisplayAlert($"{book.Title} är försenad", "En påminnelse har skickats till mina sidor", "OK");
         }
-
         private void Button_Clicked_User(object sender, EventArgs e)
         {
             loanedTab.IsVisible = false;

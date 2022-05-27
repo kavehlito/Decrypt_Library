@@ -13,9 +13,11 @@ namespace Decrypt_Library.Views
         public AccountPage()
         {
             InitializeComponent();
+           
         }
 
         User user = new User();
+        
 
         private void MyProfile_Clicked(object sender, EventArgs e)
         {
@@ -36,6 +38,7 @@ namespace Decrypt_Library.Views
         }
         private void MyLoan_Clicked(object sender, EventArgs e)
         {
+            
             if (UserLogin.thisUser == null)
             {
                 profile.IsVisible = true;
