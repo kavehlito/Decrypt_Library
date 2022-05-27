@@ -102,7 +102,7 @@ namespace Decrypt_Library
         }
         public static List<MyPagesProductList> LateReturnList()
         {
-            if (UserLogin.thisUser == null) return null;
+          
             var books = EntityframeworkBookHistory.ShowUserLoanHistoryForAll();
             var loanList = new List<MyPagesProductList>();
 
@@ -110,7 +110,7 @@ namespace Decrypt_Library
             {
                 if (book.EndDate == null)
                 {
-                    var endDateTime = EntityframeworkBookHistory.SetEndDate(book.ID);
+                    var endDateTime = EntityframeworkBookHistory.SetEndDateForDelayes(book.ID);
 
                     if (endDateTime != null) book.EndDate = endDateTime;
                     else

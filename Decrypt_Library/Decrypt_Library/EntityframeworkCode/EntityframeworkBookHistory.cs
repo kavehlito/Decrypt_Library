@@ -88,7 +88,16 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return specificProduct.First().StartDate.Value.AddDays(30);
             }
         }
-
+        public static DateTime? SetEndDateForDelayes(int productId)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var loanHistory = db.BookHistories;
+                var specificProduct = loanHistory.Where(x => x.EventId == 4 && x.ProductId == productId).OrderByDescending(x => x.StartDate);
+                if (specificProduct.Count() < 1) return null;
+                return specificProduct.First().StartDate.Value.AddDays(30);
+            }
+        }
         public static bool ReserveProduct(string productTitle)
         {
             using (var db = new Decrypt_LibraryContext())
