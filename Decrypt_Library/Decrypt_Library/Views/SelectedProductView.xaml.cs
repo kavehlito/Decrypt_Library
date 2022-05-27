@@ -26,9 +26,10 @@ namespace Decrypt_Library.Views
                 LoanOrReserveButton.IsVisible = false;
                 PlsLoginReservelbl.IsVisible = true;
                 PlsloginReviewlbl.IsVisible = true;
+                favoriteButton.IsVisible = false;
 
                 ShowOrNot.Text = "Populära produkter:";
-                Recommendations.ItemsSource = EntityframeworkStatistics.ShowTopFiveMostRead();
+                Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
             }
             else 
             {
@@ -38,20 +39,18 @@ namespace Decrypt_Library.Views
                 reviewButton.IsVisible = true;
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
+                favoriteButton.IsVisible = true;
             
-
-                if (UserLogin.thisUser != null && EntityframeworkUsers.ShowRecommendations() == null)
+                if (EntityframeworkUsers.ShowRecommendations().Count == 0)
                 {
                     ShowOrNot.Text = "Detta är populärt:";
                     Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
                 }
-
                 else
                 {
                     ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
                     Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();   
                 }
-
             }
 
             if (LoanOrReserveButton.Text == "True")
@@ -133,6 +132,18 @@ namespace Decrypt_Library.Views
             var selectedItemFromList = (Product)e.Item;
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private async void favoriteButton_Clicked(object sender, EventArgs e)
+        {
+            if (favoriteButton.Text == "Lägg till i Favoriter")
+            {
+                EntityframeworkUsers.SetProductAsFavorite(Title);
+
+                    await DisplayAlert("Sådär", "Nu är produkten tillagd! Du hittar den i listan \"Favoriter\" i min profil", "Tack!");
+            }   
+        else 
+                    await DisplayAlert("Ojdå!", "Något gick fel, försök igen senare", "OK");
         }
     }
 }

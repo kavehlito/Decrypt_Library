@@ -23,7 +23,7 @@
                     <Label x:Name="Headline"
                            Text="Logga in"
                            FontAttributes="Bold"
-                           TextColor="Gold"
+                           TextColor="MediumPurple"
                            AbsoluteLayout.LayoutBounds="25,195,120,40"
                            FontSize="20"/>
 
@@ -47,7 +47,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Image Grid.Row="0"
-                               Source="decrypt6.png"
+                               Source="decrypt8.png"
                                />
 
                                 <Frame Padding="0"
@@ -87,10 +87,8 @@
                                             Clicked="LogIn_Clicked" 
                                             FontAttributes="Bold"
                                             CornerRadius="10"
-                                            BackgroundColor="Gold"
+                                            BackgroundColor="MediumPurple"
                                             TextColor="Black"/>
-
-                                    
                       
                                 </Grid>
                             </Grid>
@@ -119,7 +117,7 @@
 
                     <Label x:Name="Error" 
                            Text="Felaktigt personnummer eller lösenord. Försök igen!" 
-                           TextColor="Red" 
+                           TextColor="IndianRed" 
                            FontAttributes="Bold"
                            AbsoluteLayout.LayoutBounds="20,375,400,30"
                            HorizontalOptions="Center" 
@@ -134,13 +132,13 @@
                                 FontSize="10"
                                 Clicked="Button_Clicked"
                                 BackgroundColor="Transparent"
-                                TextColor="Gold"/>
+                                TextColor="MediumPurple"/>
 
                         <Button Text="Glömt lösenord?"
                                 FontAttributes="Bold"
                                 FontSize="10"
                                 BackgroundColor="Transparent"
-                                TextColor="Gold"/>
+                                TextColor="MediumPurple"/>
 
                     </StackLayout>
 

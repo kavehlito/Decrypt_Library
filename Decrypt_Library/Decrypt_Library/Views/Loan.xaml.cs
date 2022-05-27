@@ -34,6 +34,8 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = null;
             NumberOfItem.IsVisible = false;
             Headline.IsVisible = false;
+            CancelButton.IsVisible = false;
+
         }
 
         public Loan()
@@ -43,17 +45,33 @@ namespace Decrypt_Library.Views
 
         private void checkUserButton_Clicked(object sender, EventArgs e)
         {
-            if (CheckUserId.Text == null) CheckUserId.Text = "0";
+            bool success = false;
+            Models.User user = new Models.User();
+            if (string.IsNullOrEmpty(CheckUserId.Text) || string.IsNullOrEmpty(Password.Text)) return;
+
+
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
-            var sucess = Cart.CheckUserId(userId, out string UserName);
-            if (!sucess) {DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
+
+            var allUserList = EntityframeworkUsers.ShowAllUsers();
+            
+            foreach (var item in allUserList)
+            {
+                if (item.Id == userId && item.Password == Password.Text) { success = true; user = item; } 
+            }
+
+            if (!success) {DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
             else
             {
+                userIdFrame.IsVisible = false;
+                Password.IsVisible = false;
+                userPasswordFrame.IsVisible = false;
                 CheckUserId.IsVisible = false;
                 checkUserButton.IsVisible = false;
+                CancelButton.IsVisible = true;
+                Password.IsVisible = false;
                 Product.IsVisible = true;
                 Add.IsVisible = true;
-                User.Text = $"Lånekortsnummer: {CheckUserId.Text}, Namn: {UserName}";
+                User.Text = $"Lånekortsnummer: {user.Id}, Namn: {user.UserName}";
             }
 
         }
@@ -103,30 +121,23 @@ namespace Decrypt_Library.Views
             CheckOut.IsVisible = false;
             StartAgain.IsVisible = true;
             Cart.cartList.Clear();
-        }
-
-        private void StartAgain_Clicked(object sender, EventArgs e)
-        {
-            CheckUserId.IsVisible = true;
-            checkUserButton.IsVisible = true;
-            StartAgain.IsVisible=false;
-            User.Text = null;
-            User.IsVisible = true;
-            CheckUserId.Text = null;
-            Headline.IsVisible = false;
-            Cart.cartList.Clear();
-            ProductList.ItemsSource = null;
-            ProductList.ItemsSource = Cart.cartList;
-            NumberOfItem.IsVisible = false;
-        }
-
-        private void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
             
         }
 
+        private async void StartAgain_Clicked(object sender, EventArgs e)
+        {
+            Cart.cartList.Clear();
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[7];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+
+        }
+
+    
         private void Button_Clicked(object sender, EventArgs e)
         {
+            if (StartAgain.IsVisible) { DisplayAlert("Felmeddelande", "Utlåningsprocessen är redan klar, går ej att avbryta", "Ok"); return; }
             Button btn = sender as Button;
             CartList loanList = btn.BindingContext as CartList;
             Cart.DeleteItemInCart(loanList.Id);
@@ -135,6 +146,38 @@ namespace Decrypt_Library.Views
 
             ProductList.ItemsSource = Cart.cartList;
             NumberOfItem.Text = $"Antal lånade produkter: {Cart.cartList.Count()}";
+        }
+
+        private void CheckUserId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private async void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(CheckUserId.Text))
+                {
+                    int.TryParse(CheckUserId.Text.ToString(), out int userId);
+                    Cart.DeleteCart(userId);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Cart.cartList.Clear();
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[7];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+
         }
     }
 }

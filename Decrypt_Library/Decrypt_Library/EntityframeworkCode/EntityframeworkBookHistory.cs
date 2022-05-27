@@ -32,8 +32,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return reservation.ToList();
 
             }
-
-
         }
 
         public static List<MyPagesProductList> ShowUserLoanHistory()
@@ -121,15 +119,13 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-
-
         public static int Reservationnumber(int productId, int userId)
         {
             using (var db = new Models.Decrypt_LibraryContext())
             {
                 var reservations = db.BookHistories;
                 var specificProductReservation = reservations.Where(x => x.ProductId == productId && x.EventId == 3).OrderBy(x => x.StartDate).ToList();
-                var specificProductHistory = specificProductReservation.SingleOrDefault(x => x.ProductId == productId && x.UserId == userId);
+                var specificProductHistory = specificProductReservation.FirstOrDefault(x => x.ProductId == productId && x.UserId == userId);
 
                 return specificProductReservation.IndexOf(specificProductHistory);
             }
