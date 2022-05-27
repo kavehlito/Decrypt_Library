@@ -1861,31 +1861,6 @@
                            Grid.Column="1">
 
                         <Grid>
-                            
-                            <Button Text="Produkter"
-                                    BackgroundColor="Gold"
-                                    TextColor="Black"
-                                    Grid.Column="0"
-                                    CornerRadius="0"
-                                    FontAttributes="Bold"
-                                    Clicked="Button_Clicked_Product"/>
-
-                            <Button Text="Användare"
-                                    BackgroundColor="White"
-                                    TextColor="Black"
-                                    Grid.Column="1"
-                                    CornerRadius="0"
-                                    FontAttributes="Bold"
-                                    Clicked="Button_Clicked_User"/>
-
-                            <Button Text="Utlåning"
-                                    BackgroundColor="Gold"
-                                    TextColor="Black"
-                                    Grid.Column="2"
-                                    CornerRadius="0"
-                                    FontAttributes="Bold"
-                                    Clicked="Button_Clicked_Loaned"/>
-                            -->
                             <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" BackgroundColor="PaleVioletRed" FontSize="15" SelectedIndexChanged="statsPicker_SelectedIndexChanged"/>
                         </Grid>
                     </Frame>
@@ -2035,7 +2010,7 @@
                                                         <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
                                                         <Label Text="{Binding EndDate, StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
 
-                                                        <Button Text="Påminn kund" IsVisible="true" Clicked="Button_Click_Reminder"
+                                                        <Button x:Name="reminderButton" Text="Påminn kund" IsVisible="true" Clicked="Button_Click_Reminder"
                                                                  BackgroundColor="IndianRed" TextColor="Black" FontAttributes="Bold"
                                                                  CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
 
