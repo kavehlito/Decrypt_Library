@@ -421,6 +421,31 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
+                        <ListView x:Name="favoriteList" 
+                              VerticalScrollBarVisibility="Never"
+                                  Margin="0,10,0,0"
+                              IsVisible="false">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                <Button x:Name="removeButton" Text="Ta bort från lista" IsVisible="true" Clicked="RemoveButton_Clicked"
+                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
+                                                </Button>
+
+                                                <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                </BoxView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                          </ListView>
+
                         </Grid>
 
 

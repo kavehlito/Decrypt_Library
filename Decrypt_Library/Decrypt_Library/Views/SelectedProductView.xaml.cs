@@ -140,7 +140,7 @@ namespace Decrypt_Library.Views
             {
                 EntityframeworkUsers.SetProductAsFavorite(Title);
 
-                    await DisplayAlert("Sådär", "Nu är produkten tillagd i dina favoriter!", "Tack!");
+                    await DisplayAlert("Sådär", "Nu är produkten tillagd! Du hittar den i listan \"Favoriter\" i min profil", "Tack!");
             }   
         else 
                     await DisplayAlert("Ojdå!", "Något gick fel, försök igen senare", "OK");

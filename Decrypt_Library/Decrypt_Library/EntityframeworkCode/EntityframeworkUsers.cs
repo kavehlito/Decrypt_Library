@@ -204,7 +204,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         }
         // Remove book from favoritelist
         /*
-        public void List <MyPagesProductList> RemoveFromFavoriteList()
+        public void List <MyPagesProductList> DeleteFromFavoriteList()
         {
             if(UserLogin.thisUser == null) return null;
 
