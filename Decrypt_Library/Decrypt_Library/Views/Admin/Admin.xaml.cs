@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Windows;
 
 namespace Decrypt_Library.Views
 {
@@ -898,7 +899,9 @@ namespace Decrypt_Library.Views
             EntityframeworkUsers.RemoveUser(user);
             userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
         }
+        #endregion Employee Options 
 
+        #region Statistics Page
         private void statsPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var showStatList = statsPicker.SelectedIndex;
@@ -1077,75 +1080,7 @@ namespace Decrypt_Library.Views
             }
 
         }
-
         #endregion
 
-
-        /*
-        private void Button_Clicked_Product(object sender, EventArgs e)
-        {
-            loanedTab.IsVisible = false;
-            userTab.IsVisible = false;
-
-            ProductTab.IsVisible = true;
-
-
-            productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
-            productInfo.IsVisible = true;
-
-            var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
-            AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
-            AmountOfBooks.IsVisible = true;
-
-            FavoriteCategory.IsVisible = true;
-            FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
-
-            TopFive.Text = "TOP 5 mest populära produkter:";
-            TopFive.IsVisible = true;
-
-            mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
-            mostPopular.IsVisible = true;
-
-            mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType();
-            FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
-            FavouriteMediaType.IsVisible = true;
-        }
-
-        private void Button_Clicked_Loaned(object sender, EventArgs e)
-        {
-            ProductTab.IsVisible = false;
-            userTab.IsVisible = false;
-
-            loanedTab.IsVisible = true;
-
-            var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
-            AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
-            AmountOfBooksLoanedATM.IsVisible = true;
-           
-            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
-            loanedInfo.IsVisible = true;
-
-            var statistic = EntityframeworkCode.EntityframeworkStatistics.TotalAmountOfBooksLoaned().ToString();
-            AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid: {statistic}";
-            AmountOfBooksLoaned.IsVisible = true;
-
-            loanedInfoStatistics.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
-            loanedInfoStatistics.IsVisible = true;
-
-        }
-
-        private void Button_Clicked_User(object sender, EventArgs e)
-        {
-            loanedTab.IsVisible = false;
-            ProductTab.IsVisible = false;
-
-            userTab.IsVisible = true;
-         
-
-            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.Id >= 2);
-            userInfo.IsVisible = true;
-
-        }
-        */
     }
 }
