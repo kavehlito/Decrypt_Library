@@ -899,7 +899,7 @@ namespace Decrypt_Library.Views
             EntityframeworkUsers.RemoveUser(user);
             userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
         }
-        #endregion Statistik 
+        #endregion Employee Options 
 
         #region Statistics Page
         private void statsPicker_SelectedIndexChanged(object sender, EventArgs e)
