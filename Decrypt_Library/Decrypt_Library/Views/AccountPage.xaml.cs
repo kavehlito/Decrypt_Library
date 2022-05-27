@@ -128,7 +128,7 @@ namespace Decrypt_Library.Views
             loanCard.IsVisible = true;
         }
 
-        private void FavoriteButton_Pressed(object sender, EventArgs e)
+        private void FavoriteButton_Pressed(object sender, EventArgs e)         // longer list
         {
             favoriteList.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
 
@@ -137,7 +137,7 @@ namespace Decrypt_Library.Views
             profileBar.IsVisible = true;
             FavoriteTab.IsVisible = true;
         }
-        private void RemoveButton_ClickedFavorite(object sender, EventArgs e)
+        private void RemoveButton_ClickedFavorite(object sender, EventArgs e)       // New refreshed page after removing book
         {
           //  MakeAllBarsInvisible();
             reservations.IsVisible = true;
