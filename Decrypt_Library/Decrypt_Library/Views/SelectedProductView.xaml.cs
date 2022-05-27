@@ -133,5 +133,17 @@ namespace Decrypt_Library.Views
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
         }
+
+        private async void favoriteButton_Clicked(object sender, EventArgs e)
+        {
+            if (favoriteButton.Text == "Lägg till i Favoriter")
+            {
+                EntityframeworkUsers.SetProductAsFavorite(Title);
+
+                    await DisplayAlert("Sådär", "Nu är produkten tillagd! Du hittar den i listan \"Favoriter\" i min profil", "Tack!");
+            }   
+        else 
+                    await DisplayAlert("Ojdå!", "Något gick fel, försök igen senare", "OK");
+        }
     }
 }

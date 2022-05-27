@@ -110,9 +110,6 @@ namespace Decrypt_Library.Views
 
         }
 
-
-
-
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
             MakeAllBarsInvisible();
@@ -135,6 +132,7 @@ namespace Decrypt_Library.Views
 
         private void FavoriteButton_Pressed(object sender, EventArgs e)
         {
+            favoriteList.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
             MakeAllBarsInvisible();
             profile.IsVisible = true;
             profileBar.IsVisible = true;
