@@ -32,13 +32,10 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return reservation.ToList();
 
             }
-
-
         }
 
         public static List<MyPagesProductList> ShowUserLoanHistory()
         {
-
 
             using (var db = new Decrypt_LibraryContext())
             {
@@ -100,8 +97,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return true;
             }
         }
-
-
 
         public static int Reservationnumber(int productId, int userId)
         {

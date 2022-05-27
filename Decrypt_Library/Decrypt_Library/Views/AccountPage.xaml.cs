@@ -139,6 +139,7 @@ namespace Decrypt_Library.Views
             profile.IsVisible = true;
             profileBar.IsVisible = true;
             FavoriteTab.IsVisible = true;
+            EntityframeworkUsers.ShowUserFavoriteList();
         }
 
         private void Button_Clicked_3(object sender, EventArgs e)
