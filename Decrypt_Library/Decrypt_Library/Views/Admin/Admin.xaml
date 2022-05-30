@@ -872,7 +872,7 @@
                                                         BackgroundColor="Gold"
                                                         FontAttributes="Bold"
                                                         Clicked="RemoveProduct_ButtonClicked"
-                                                        Text="Ta bort"/>
+                                                        Text="Göm produkt"/>
 
                                                     </StackLayout>
 

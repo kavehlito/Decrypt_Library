@@ -29,6 +29,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
                                     Isbn = prod.Isbn,
+                                    HiddenProduct = prod.HiddenProduct, 
 
                                 }).ToList();
 
@@ -43,7 +44,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                 foreach (var item in returnList)
                 {
                     var checkList = returnList.Where(p => p.Isbn == item.Isbn);
-                    if (checkList.Count() > 1) { returnList.Remove(item); break; }
+                    if (checkList.Count() > 1 || item.HiddenProduct == true) { returnList.Remove(item); break; }
                 };
 
                 return returnList;
@@ -212,12 +213,16 @@ namespace Decrypt_Library.EntityFrameworkCode
         
         */
 
-        public static void RemoveProduct(Product product)
+        public static void HideProduct(Product product)
         {
             using (var db = new Decrypt_LibraryContext())
             {
                 product = db.Products.Where(x => x.Id == product.Id).SingleOrDefault();
-                db.Remove(product);
+                if (product.HiddenProduct == false)
+                {
+                    product.HiddenProduct = true;
+                }
+                //db.Remove(product);
                 db.SaveChanges();
             }
         }
