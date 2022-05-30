@@ -19,6 +19,13 @@ namespace Decrypt_Library.Views
         public LoginPage()
         {
             InitializeComponent();
+
+            if (UserLogin.thisUser != null)
+                Title = "Logga ut";
+            else
+            {
+                Title = "Logga in";
+            }
         }
         protected override void OnAppearing()
         {
