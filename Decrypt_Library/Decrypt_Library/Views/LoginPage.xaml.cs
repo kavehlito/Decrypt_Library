@@ -89,6 +89,12 @@ namespace Decrypt_Library.Views
 
                 DelayedProduct();
 
+                if(UserLogin.thisUser.UserTypeId == 3)
+                {
+                    var homePage = new MainPage();
+                    await Navigation.PushModalAsync(homePage);
+                }
+
                 if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
                 {
                     Page adminPage = new AdminPage();
