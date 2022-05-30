@@ -47,6 +47,7 @@ namespace Decrypt_Library.Views
 
             MakeAllBarsInvisible();
             loanList.IsVisible = true;
+            listGrid.IsVisible = true;
             loanList.ItemsSource = MyPages.LoanList();
         }
 
@@ -59,6 +60,7 @@ namespace Decrypt_Library.Views
             }
 
             MakeAllBarsInvisible();
+            listGrid.IsVisible = true;
             reservations.IsVisible = true;
             reservations.ItemsSource = EntityframeworkBookHistory.ShowUserReservations();
         }
@@ -73,6 +75,7 @@ namespace Decrypt_Library.Views
 
             MakeAllBarsInvisible();
 
+            listGrid.IsVisible = true;
             loanHistoryList.IsVisible = true;
             loanHistoryList.ItemsSource = MyPages.MyLoanHistory();
         }
@@ -93,6 +96,7 @@ namespace Decrypt_Library.Views
         private async void Postpone_Clicked(object sender, EventArgs e)
         {
             MakeAllBarsInvisible();
+            listGrid.IsVisible = true;
             loanList.IsVisible = true;
 
             Button btn = sender as Button;
@@ -153,7 +157,7 @@ namespace Decrypt_Library.Views
             reservations.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
         }
 
-        private void Button_Clicked_3(object sender, EventArgs e)
+        private void ChangePassword_Clicked(object sender, EventArgs e)
         {
             password.Text = "";
             confirmPassword.Text = "";
@@ -168,6 +172,7 @@ namespace Decrypt_Library.Views
         {
             profileBar.IsVisible = false;
             loanCard.IsVisible = false;
+            listGrid.IsVisible = false;
             loanList.IsVisible = false;
             profile.IsVisible = false;
             profileText.IsVisible = false;
