@@ -63,7 +63,7 @@
                    x:Name="registerFrame"
                    WidthRequest="410">
 
-                <ScrollView VerticalScrollBarVisibility="Never"
+                <ScrollView VerticalScrollBarVisibility="Always"
                             >
 
                     <Grid>

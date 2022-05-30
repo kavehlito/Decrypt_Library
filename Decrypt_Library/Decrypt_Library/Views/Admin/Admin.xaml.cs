@@ -26,12 +26,12 @@ namespace Decrypt_Library.Views
         }
         protected override void OnAppearing()
         {
-            if(UserLogin.thisUser.UserTypeId == 1)
+            if (UserLogin.thisUser.UserTypeId == 1)
                 userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
 
             if (UserLogin.thisUser.UserTypeId == 2)
             {
-                List <string> stringList = new List<string>();
+                List<string> stringList = new List<string>();
                 stringList.Add("User");
                 userIDpicker.ItemsSource = stringList;
             }
@@ -197,7 +197,7 @@ namespace Decrypt_Library.Views
             ProductList.IsVisible = false;
             shelfChangeTab.IsVisible = true;
             changeShelf.ItemsSource = EntityframeworkShelf.ShowAllShelfNames();
-            changeAudiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups(); 
+            changeAudiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups();
             changeCategoryPicker.ItemsSource = EntityframeworkCategories.ShowAllCategoryNames();
             selectedProductToChange = e.Item as Product;
             tappedBook.Text = selectedProductToChange.Title;
@@ -287,8 +287,8 @@ namespace Decrypt_Library.Views
                 changeAudiencePicker.SelectedIndex = -1;
 
                 ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
-                ProductList.IsVisible=true;
-                selectedProductToChange= new Product();
+                ProductList.IsVisible = true;
+                selectedProductToChange = new Product();
             }
             catch (Exception exception)
             {
@@ -454,7 +454,7 @@ namespace Decrypt_Library.Views
                     product = new Product();
                     var tab = new MainPage();
                     tab.CurrentPage = tab.Children[5];
-                    
+
                     await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
                 }
@@ -475,7 +475,7 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
 
-  
+
 
         #endregion
 
@@ -908,7 +908,7 @@ namespace Decrypt_Library.Views
                 }
             }
             EntityframeworkUsers.RemoveUser(user);
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId == 1 || x.UserTypeId == 2);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 1 || x.UserTypeId == 2);
         }
 
         #endregion

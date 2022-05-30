@@ -143,9 +143,7 @@ namespace Decrypt_Library.Views
             else
             {
                 await DisplayAlert("Sådär", "Nu är produkten tillagd! Du hittar den i listan \"Favoriter\" i min profil", "Tack!");
-
             }
-
         }
     }
 }

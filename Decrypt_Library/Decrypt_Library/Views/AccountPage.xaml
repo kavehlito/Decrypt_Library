@@ -356,7 +356,7 @@
      
 
                         <ListView x:Name="reservations" 
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                                   Margin="0,10,0,0"
                               IsVisible="false">
                             <ListView.ItemTemplate>
@@ -387,7 +387,7 @@
 
                         <ListView x:Name="loanHistoryList" 
                                   Margin="0,10,0,0"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               IsVisible="false">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -411,7 +411,7 @@
                         
                         <ListView x:Name="loanList" 
                                   Margin="0,10,0,0"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               IsVisible="False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>

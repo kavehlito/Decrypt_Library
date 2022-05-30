@@ -44,7 +44,7 @@ namespace Decrypt_Library.Views
             if (checkbox4.IsChecked)
                 category.Add(4);
             if (checkbox5.IsChecked)
-                category.Add(5);           
+                category.Add(5);
             if (checkbox6.IsChecked)
                 category.Add(6);
             if (checkbox7.IsChecked)
@@ -70,7 +70,7 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = EntityframeworkCategories.Checkboxes(category, age, media);
 
             var alternative = EntityframeworkCategories.Checkboxes(category, age, media);
-            
+
             /*   if (alternative.Count == 0 || )
                 {   
                     mySearch.Text = "Din sökning gav inget resultat...";
@@ -80,7 +80,7 @@ namespace Decrypt_Library.Views
                 {
                     mySearch.Opacity = 0;
                     ProductList.ItemsSource = alternative;
-                }  */    
+                }  */
         }
     }
 }
