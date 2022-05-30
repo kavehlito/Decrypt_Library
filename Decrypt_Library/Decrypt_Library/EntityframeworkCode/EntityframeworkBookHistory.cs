@@ -109,7 +109,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
                 foreach (var reserv in reservationExists)
                 {
-                    if (reserv.ProductId == choosenProduct.Id && reserv.UserId == UserLogin.thisUser.Id)
+                    if (reserv.ProductId == choosenProduct.Id && reserv.UserId == UserLogin.thisUser.Id && reserv.EventId == 3)
                     {
                         return false;
                     }
