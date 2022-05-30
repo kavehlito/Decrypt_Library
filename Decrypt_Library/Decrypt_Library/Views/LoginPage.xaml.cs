@@ -52,7 +52,7 @@ namespace Decrypt_Library.Views
                 borderHide.IsVisible = false;
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
 
-                //if (UserLogin.thisUser.UserTypeId == 3)
+                //if (UserLogin.thisUser.UserTypeId == 1)
                 //{
                 //    Page pageToAdd = new AdminPage();
                 //    var homePage = new MainPage();
