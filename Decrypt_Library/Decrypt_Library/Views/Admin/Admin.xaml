@@ -138,7 +138,7 @@
                                            AbsoluteLayout.LayoutBounds="30,0,100,35"
                                                TextColor="White"/>
 
-                                        <Label Text="ISBN 10 siffror"
+                                        <Label Text="ISBN 10-13 siffror"
                                                FontAttributes="Bold"
                                            AbsoluteLayout.LayoutBounds="225,0,300,50"
                                                TextColor="White"/>
