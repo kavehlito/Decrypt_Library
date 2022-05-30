@@ -1131,7 +1131,7 @@ namespace Decrypt_Library.Views
         {
             Button btn = sender as Button;
             MyPagesProductList book = btn.BindingContext as MyPagesProductList;
-            await DisplayAlert($"{book.Title} är försenad", "En påminnelse har skickats till mina sidor", "OK");
+            await DisplayAlert($"{book.Title} är försenad", "En påminnelse har skickats till kund", "OK");
         }
     }
 }

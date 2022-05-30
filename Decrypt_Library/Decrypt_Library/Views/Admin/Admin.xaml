@@ -1997,7 +1997,7 @@
                         <ScrollView>
                             <StackLayout>
                                 <StackLayout>
-                                    <Label x:Name="DelayedBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
+                                    <Label x:Name="DelayedBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
                                     <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Never">
@@ -2026,7 +2026,7 @@
                                 </StackLayout>
                                 
                                 <StackLayout>
-                                    <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Gold" FontSize="16"
+                                    <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
                                     <ListView x:Name="loanedInfo" HeightRequest="500">
                                         <ListView.ItemTemplate>

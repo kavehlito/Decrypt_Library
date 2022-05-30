@@ -140,16 +140,16 @@ namespace Decrypt_Library.Views
             profileBar.IsVisible = true;
             FavoriteTab.IsVisible = true;
         }
-        private void RemoveButton_ClickedFavorite(object sender, EventArgs e)       // New refreshed page after removing book
+        private void RemoveButton_ClickedFavorite(object sender, EventArgs e) 
         {
-          //  MakeAllBarsInvisible();
+            MakeAllBarsInvisible();
             reservations.IsVisible = true;
 
             Button btn = sender as Button;
             MyPagesProductList favoriteList = btn.BindingContext as MyPagesProductList;
             EntityframeworkUsers.DeleteFavorite(favoriteList.ID);
 
-            reservations.ItemsSource = null;
+            
             reservations.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
         }
 

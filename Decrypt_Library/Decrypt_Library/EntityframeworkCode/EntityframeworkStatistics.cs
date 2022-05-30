@@ -70,7 +70,7 @@ namespace Decrypt_Library.EntityframeworkCode
                                mostPop in db.BookHistories
                                 join product in db.Products on mostPop.ProductId equals product.Id
                                 where mostPop.EventId == 2
-                                select product).ToList().GroupBy(c => c.Id)
+                                select product).ToList().GroupBy(c => c.Isbn)
                                     .Select(c => new MyPagesProductList
                                     {
                                         Title = c.FirstOrDefault().Title,
