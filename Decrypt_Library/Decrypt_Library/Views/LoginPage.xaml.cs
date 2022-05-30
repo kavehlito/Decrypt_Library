@@ -98,7 +98,9 @@ namespace Decrypt_Library.Views
                     homePage.Children.Add(adminPage);
                     homePage.Children.Add(loanPage);
                     homePage.Children.Add(returnProductPage);
-                    await Navigation.PushModalAsync(homePage);
+
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(homePage));
+
                 }
             }
         }

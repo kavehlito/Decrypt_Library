@@ -1270,7 +1270,7 @@
 
     </ContentPage>
 
-    <ContentPage Title="Anställda"
+    <ContentPage Title="Användare"
                  xmlns:behaviors="clr-namespace:Decrypt_Library.Readers"
                  >
 
@@ -1323,7 +1323,7 @@
 
                         <Grid>
 
-                            <Button Text="Lägg till anställd"
+                            <Button Text="Lägg till användare"
                             BackgroundColor="Gold"
                                 Grid.Column="0"
                             CornerRadius="0"
@@ -1332,7 +1332,7 @@
                             >
                             </Button>
 
-                            <Button Text="Visa anställda"
+                            <Button Text="Visa användare"
                             BackgroundColor="White"
                                 Grid.Column="1"
                             CornerRadius="0"

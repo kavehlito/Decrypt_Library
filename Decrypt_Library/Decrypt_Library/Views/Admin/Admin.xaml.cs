@@ -460,7 +460,6 @@ namespace Decrypt_Library.Views
                 }
                 else
                     return;
-
             }
             catch
             {
@@ -473,7 +472,6 @@ namespace Decrypt_Library.Views
             Button btn = sender as Button;
             Product selectedProduct = btn.BindingContext as Product;
             EntityframeworkProducts.HideProduct(selectedProduct);
-
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
 

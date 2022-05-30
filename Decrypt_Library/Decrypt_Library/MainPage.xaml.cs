@@ -14,6 +14,12 @@ namespace Decrypt_Library
         public MainPage()
         {
             InitializeComponent();
+            if (UserLogin.thisUser != null)
+                loginPage.Title = "Logga ut";
+            else
+            {
+                loginPage.Title = "Logga in";
+            }
         }
     }
 }
