@@ -460,7 +460,6 @@ namespace Decrypt_Library.Views
                 }
                 else
                     return;
-
             }
             catch
             {
