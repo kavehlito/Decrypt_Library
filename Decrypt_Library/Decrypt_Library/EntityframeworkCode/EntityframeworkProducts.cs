@@ -28,15 +28,28 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Id = prod.Id,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
+                                    Isbn = prod.Isbn,
 
                                 }).ToList();
+
+
 
                 var findProduct = products.Where(p => p.Title.ToLower().Contains(selectedTitle.ToLower()) ||
                 p.AuthorName.ToLower().Contains(selectedTitle.ToLower())).ToList();
 
-                return findProduct;
+
+                var returnList = new List<Product>(findProduct);
+
+                foreach (var item in returnList)
+                {
+                    var checkList = returnList.Where(p => p.Isbn == item.Isbn);
+                    if (checkList.Count() > 1) { returnList.Remove(item); break; }
+                };
+
+                return returnList;
             }
         }
+
         public static SelectedProduct ShowProductInformation(int productId)
         {
             using (var db = new Decrypt_LibraryContext())
@@ -65,7 +78,9 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Pages = prod.Pages,
                                     Playtime = prod.Playtime,
                                     PublishDate = prod.PublishDate,
-                                    Status = prod.Status
+                                    Status = SetProductStatus(prod.Id),
+                                    NumberInStock = SetNumberInStock(prod.Id),
+                                    NumberInAvailable = SetNumberInStockAvailable(prod.Id),
                                 });
 
                 var selectProduct = products.SingleOrDefault(sp => sp.Id == productId);
@@ -95,6 +110,52 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return products;
             }
         }
+
+        public static int SetNumberInStock(int productId)
+        {
+            int numberInStock = 0;
+            var productList = EntityframeworkProducts.ShowAllProducts();
+            var specificProduct = productList.SingleOrDefault(p => p.Id == productId);
+            var isbn = specificProduct.Isbn;
+
+            foreach (var product in productList)
+            {
+                if (product.Isbn == isbn) numberInStock++;
+            }
+
+            return numberInStock;
+        }
+
+        public static int SetNumberInStockAvailable(int productId)
+        {
+            int numberInStockAvailable = 0;
+            var productList = EntityframeworkProducts.ShowAllProducts();
+            var specificProduct = productList.SingleOrDefault(p => p.Id == productId);
+            var isbn = specificProduct.Isbn;
+
+            foreach (var product in productList)
+            {
+                if (product.Isbn == isbn && product.Status == true) numberInStockAvailable++;
+            }
+
+            return numberInStockAvailable;
+        }
+
+        public static bool SetProductStatus(int productId)
+        {
+            var productList = EntityframeworkProducts.ShowAllProducts();
+            var specificProduct = productList.SingleOrDefault(p => p.Id == productId);
+            var isbn = specificProduct.Isbn;
+
+            foreach (var product in productList)
+            {
+                if (product.Isbn == isbn && product.Status == true) return true;
+
+            }
+
+            return false;
+        }
+
         public static List<Product> ShowAllProductsOnSpecificShelf(int shelfId)
         {
             var products = ShowAllProducts();

@@ -20,5 +20,7 @@ namespace Decrypt_Library.Models
         public double? Playtime { get; set; }
         public DateTime? PublishDate { get; set; }
         public bool? Status { get; set; }
+        public int? NumberInStock { get; set; }
+        public int? NumberInAvailable { get; set; }
     }
 }

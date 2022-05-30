@@ -228,12 +228,12 @@
 
                             <Frame IsVisible="False"
                                    BackgroundColor="Transparent"
-                                   HeightRequest="500"
+                                   HeightRequest="900"
                                    Grid.Row="1"
                                    x:Name="FavoriteTab">
 
                                 <StackLayout Orientation="Horizontal">
-                                    <ListView x:Name="favoriteList" HeightRequest="500" 
+                                    <ListView x:Name="favoriteList" 
                               VerticalScrollBarVisibility="Never"
                                   Margin="0,10,0,0"
                               IsVisible="true">

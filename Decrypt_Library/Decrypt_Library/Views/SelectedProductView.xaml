@@ -27,6 +27,8 @@
                         <Label x:Name="narratorlbl" Text="{Binding Narrator, StringFormat='Uppläsare: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
                         <Label x:Name="playtimelbl" Text="{Binding Playtime, StringFormat='Speltid: {0}'}" IsVisible="false" TextColor="#DDC6B6" FontSize="20"/>
                         <Label x:Name="Descriptionlbl" Text="{Binding Description, StringFormat='Beskrivning: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="numberinstock" Text="{Binding NumberInStock, StringFormat='Antal exemplar: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
+                        <Label x:Name="numberAvailable" Text="{Binding NumberInAvailable, StringFormat='Antal exemplar inne: {0}'}" TextColor="#DDC6B6" FontSize="20"/>
                         <Label x:Name="statuslbl" Text="{Binding Status}" TextColor="PaleVioletRed" FontSize="20"/>
                     </StackLayout>
                     <AbsoluteLayout HorizontalOptions="Start" >
