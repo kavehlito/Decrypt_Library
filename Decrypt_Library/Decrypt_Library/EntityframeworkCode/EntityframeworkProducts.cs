@@ -236,7 +236,7 @@ namespace Decrypt_Library.EntityFrameworkCode
             }
         }
 
-        public static void DeleteReservation(int selectedId)
+        public static void DeleteReservation(int? selectedId)
         {
             using (var db = new Decrypt_LibraryContext())
             {
