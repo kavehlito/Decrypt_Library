@@ -919,6 +919,11 @@
                    HorizontalOptions="CenterAndExpand"
                    Text="Kategori Inställningar"/>
 
+            <Label Text="Tryck på lägg till kategori för att lägga till den inskrivna kategorin"
+                   TextColor="White"
+                   Grid.Column="1"
+                   FontAttributes="Bold"/>
+
 
             <StackLayout Grid.Column="1"
                          Grid.Row="1"
@@ -2071,7 +2076,5 @@
             </StackLayout>
         </ScrollView>
     </ContentPage>
-    <ContentPage Title="Låna">
-        <Label Text="7"/>
-    </ContentPage>
+
 </TabbedPage>

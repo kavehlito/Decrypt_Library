@@ -81,14 +81,6 @@
                                         BackgroundColor="Gold"
                                         FontAttributes="Bold"/>
 
-                                <Button 
-                                        Text="Klagomål"
-                                    FontSize="12"
-                                    BorderColor="Transparent"
-                                    Grid.Column="3"    
-                                    Clicked="Button_Clicked_3"
-                                        BackgroundColor="Gold"
-                                        FontAttributes="Bold"/>
 
                             </Grid>
                         </Frame>
@@ -120,7 +112,7 @@
                                            TextColor="Gold"
                                            HorizontalOptions="Start"/>
 
-                                    <Label Text="Decrypt startades 2001 av Gertrud Örnpung som kommer från Island där hennes familj hade bott i gamla kvarlämnade aluminumbaracker från andra världskriget. Tillsammans bodde hon i aluminuimbarracken med sin gravt handikappade familj och 10 gravt handikappade höns. Hon flyttade till Sverige efter 80-talet."
+                                    <Label Text="Decrypt startades 2001 av Gertrud Örnpung som kommer från Island där hennes familj hade bott i gamla kvarlämnade aluminumbaracker från andra världskriget. Tillsammans bodde hon i aluminuimbarracken med sin familj och 10 höns. Hon flyttade till Sverige efter 80-talet."
                                            
                                FontAttributes="Bold"
                                TextColor="White"
@@ -129,7 +121,7 @@
                                     <Label FontAttributes="Bold"
                                            TextColor="White"
                                            FontSize="12"
-                                           Text="När Gertrud Örnpung kom till Sverige så bodde först i den lilla intellektuella staden Lund tills hon insåg att hon inte var så intellektuell och flyttade därefter till Stockholm där alla andra är lika dumma som hon är."
+                                           Text="När Gertrud Örnpung kom till Sverige så bodde först i den lilla intellektuella staden Lund tills hon insåg att hon inte var så intellektuell och flyttade därefter till Stockholm."
                                            />
 
                           
