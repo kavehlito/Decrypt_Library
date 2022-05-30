@@ -600,7 +600,7 @@ namespace Decrypt_Library.Views
             try
             {
                 EventEventNameCorrect = Readers.Readers.StringReader(entryEventNametab2.Text);
-                EventEventTimeCorrect = Readers.Readers.ReadDateTime(entryEventTimetab2.Text, out date);
+                EventEventTimeCorrect = Readers.Readers.ReadDateTime2(entryEventTimetab2.Text, out date);
                 if (!string.IsNullOrEmpty(entryEventDescriptiontab2.Text))
                     EventEventDescrptionCorrect = true;
             }

@@ -1175,7 +1175,7 @@
                                                Padding="0">
 
                                             <Entry x:Name="entryEventTimetab2"
-                                                   Placeholder="yyyy/mm/dd"
+                                                   Placeholder="yyyy/mm/dd/ hh:mm PM"
                                                    TextChanged="entryEventTimetab2_TextChanged">
                                             </Entry>
                                         </Frame>
