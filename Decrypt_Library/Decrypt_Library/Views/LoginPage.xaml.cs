@@ -1,4 +1,5 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
+using Decrypt_Library.Models;
 using Decrypt_Library.Views.Admin;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,25 @@ namespace Decrypt_Library.Views
     {
         public LoginPage()
         {
-            InitializeComponent();
+            InitializeComponent();      
         }
-
-        protected override void OnDisappearing()
+        public async void DelayedProduct()
         {
-            Error.IsVisible = false;
+            if (UserLogin.thisUser != null)
+            {
+                using (var db = new Decrypt_LibraryContext())
+                {
+                    var lateBooks = MyPages.LateReturnListPopUpForUser();
+                    foreach (var book in lateBooks)
+                    {
+                        if (book.EndDate < DateTime.Now)
+                        {
+                            await DisplayAlert($"{book.Title} är försenad", "Lämna genast tillbaka ditt lån!", "OK");
+                        }
+                    }
+                }
+            }
         }
-
         private void LogIn_Clicked(object sender, EventArgs e)
         {
 
@@ -52,7 +64,9 @@ namespace Decrypt_Library.Views
                 borderHide.IsVisible = false;
                 var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
 
-                //if (UserLogin.thisUser.UserTypeId == 1)
+                DelayedProduct();
+
+                //if (UserLogin.thisUser.UserTypeId == 3)
                 //{
                 //    Page pageToAdd = new AdminPage();
                 //    var homePage = new MainPage();

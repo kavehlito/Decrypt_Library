@@ -32,14 +32,10 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return reservation.ToList();
 
             }
-
-
         }
 
         public static List<MyPagesProductList> ShowUserLoanHistory()
         {
-
-
             using (var db = new Decrypt_LibraryContext())
             {
                 var loanHistory = from
@@ -47,6 +43,28 @@ namespace Decrypt_Library.EntityFrameworkCode
                                   join
                                   product in db.Products on bookHistory.ProductId equals product.Id
                                   where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 2
+                                  select new MyPagesProductList
+                                  {
+                                      ID = product.Id,
+                                      Title = product.Title,
+                                      Author = product.AuthorName,
+                                      ISBN = product.Isbn,
+                                      StartDate = bookHistory.StartDate,
+                                      EndDate = bookHistory.EndDate,
+
+                                  };
+                return loanHistory.ToList();
+            }
+        }
+        public static List<MyPagesProductList> ShowUserLoanHistoryForAll()
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var loanHistory = from
+                                  bookHistory in db.BookHistories
+                                  join
+                                  product in db.Products on bookHistory.ProductId equals product.Id
+                                  where bookHistory.EventId == 2
                                   select new MyPagesProductList
                                   {
                                       ID = product.Id,
@@ -70,7 +88,16 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return specificProduct.First().StartDate.Value.AddDays(30);
             }
         }
-
+        public static DateTime? SetEndDateForDelayes(int productId)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var loanHistory = db.BookHistories;
+                var specificProduct = loanHistory.Where(x => x.EventId == 4 && x.ProductId == productId).OrderByDescending(x => x.StartDate);
+                if (specificProduct.Count() < 1) return null;
+                return specificProduct.First().StartDate.Value.AddDays(30);
+            }
+        }
         public static bool ReserveProduct(string productTitle)
         {
             using (var db = new Decrypt_LibraryContext())
@@ -100,8 +127,6 @@ namespace Decrypt_Library.EntityFrameworkCode
                 return true;
             }
         }
-
-
 
         public static int Reservationnumber(int productId, int userId)
         {

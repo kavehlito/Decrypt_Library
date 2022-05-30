@@ -216,8 +216,6 @@
                                                AbsoluteLayout.LayoutBounds="20,155,100,30"
                                                FontAttributes="bold"/>
 
-                             
-
 
                                             </AbsoluteLayout>
                                         </Grid>
@@ -230,21 +228,40 @@
 
                             <Frame IsVisible="False"
                                    BackgroundColor="Transparent"
-                                   HeightRequest="50"
+                                   HeightRequest="500"
+                                   Grid.Row="1"
                                    x:Name="FavoriteTab">
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label TextColor="White"
-                                           Text="Betala genom swish på nummer
-                                           07358585858"
-                                           FontAttributes="Bold"
-                                           />
+                                    <ListView x:Name="favoriteList" HeightRequest="500" 
+                              VerticalScrollBarVisibility="Never"
+                                  Margin="0,10,0,0"
+                              IsVisible="true">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout Orientation="Vertical">
+                                                        <StackLayout>
+                                                            <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="Start" WidthRequest="100"/>
+                                                        </StackLayout>
+                                                        <StackLayout>
+                                                            <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" IsVisible="false" />
+                                                            <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                            <Button x:Name="removeButton" Text="Ta bort från listan" IsVisible="true" Clicked="RemoveButton_Clicked"
+                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
+                                                            </Button>
+                                                        </StackLayout>
 
-                                    <Image Source="swish.png"
-                                       Scale="2"
-                                           Margin="0,0,10,0"
-                                       HorizontalOptions="End"/>
-
+                                                        <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
                                 </StackLayout>
 
                             </Frame>
@@ -333,10 +350,7 @@
 
 
                         <Grid>
-                            
-                            
-                            
-
+     
 
                         <ListView x:Name="reservations" 
                               VerticalScrollBarVisibility="Never"

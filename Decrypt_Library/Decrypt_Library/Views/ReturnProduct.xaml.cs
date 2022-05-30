@@ -13,7 +13,6 @@ namespace Decrypt_Library.Views
     public partial class ReturnProduct : ContentPage
     {
 
-        StringBuilder receipt = new StringBuilder($"{"STRECKKOD",-20}{"TITEL",-70}{"ÅTERLÄMNINGSDATUM",-40}");
         public ReturnProduct()
         {
             InitializeComponent();
@@ -28,44 +27,31 @@ namespace Decrypt_Library.Views
             else
             {
                 Product.Text = null;
-                Product.IsVisible = false;
-                ReturnProductId.IsVisible = false;
-                ReturnNewProduct.IsVisible = true;
+                Headline.IsVisible = true;
                 CheckOut.IsVisible = true;
-                receipt.AppendLine($"\n{productId,-27}{title,-64}{DateTime.Now:g}");
+                ProductList.ItemsSource = Cart.cartList;
+                ProductList.ItemsSource = null;
+                ProductList.ItemsSource = Cart.cartList;
             }
         }
 
-        private void ReturnNewProduct_Clicked(object sender, EventArgs e)
-        {
-            Product.IsVisible = true;
-            ReturnProductId.IsVisible = true;
-            ReturnNewProduct.IsVisible = false;
-            CheckOut.IsVisible = false;
-        }
 
         private void CheckOut_Clicked(object sender, EventArgs e)
         {
             Product.IsVisible = false;
             ReturnProductId.IsVisible = false;
-            ReturnNewProduct.IsVisible = false;
             CheckOut.IsVisible = false;
             Headline.IsVisible = true;
-            Receipt.Text = receipt.ToString();
-            Receipt.IsVisible = true;
             StartAgain.IsVisible = true;
         }
 
-        private void StartAgain_Clicked(object sender, EventArgs e)
+        private async void StartAgain_Clicked(object sender, EventArgs e)
         {
-            Product.IsVisible = true;
-            ReturnProductId.IsVisible = true;
-            ReturnNewProduct.IsVisible = false;
-            CheckOut.IsVisible = false;
-            Headline.IsVisible = false;
-            Receipt.IsVisible = false;
-            StartAgain.IsVisible = false;
-            Receipt = null;
+            Cart.cartList.Clear();
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[8];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
         }
     }

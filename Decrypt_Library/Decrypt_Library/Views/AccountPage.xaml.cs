@@ -13,9 +13,11 @@ namespace Decrypt_Library.Views
         public AccountPage()
         {
             InitializeComponent();
+           
         }
 
         User user = new User();
+        
 
         private void MyProfile_Clicked(object sender, EventArgs e)
         {
@@ -36,6 +38,7 @@ namespace Decrypt_Library.Views
         }
         private void MyLoan_Clicked(object sender, EventArgs e)
         {
+            
             if (UserLogin.thisUser == null)
             {
                 profile.IsVisible = true;
@@ -106,12 +109,7 @@ namespace Decrypt_Library.Views
 
             await DisplayAlert($"{loanAgain.Title} förlängd", "Återlämnas om senast 30 dagar", "OK");
 
-
-
         }
-
-
-
 
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
@@ -133,12 +131,26 @@ namespace Decrypt_Library.Views
             loanCard.IsVisible = true;
         }
 
-        private void FavoriteButton_Pressed(object sender, EventArgs e)
+        private void FavoriteButton_Pressed(object sender, EventArgs e)         // longer list
         {
+            favoriteList.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
+
             MakeAllBarsInvisible();
             profile.IsVisible = true;
             profileBar.IsVisible = true;
             FavoriteTab.IsVisible = true;
+        }
+        private void RemoveButton_ClickedFavorite(object sender, EventArgs e)       // New refreshed page after removing book
+        {
+          //  MakeAllBarsInvisible();
+            reservations.IsVisible = true;
+
+            Button btn = sender as Button;
+            MyPagesProductList favoriteList = btn.BindingContext as MyPagesProductList;
+            EntityframeworkUsers.DeleteFavorite(favoriteList.ID);
+
+            reservations.ItemsSource = null;
+            reservations.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
         }
 
         private void Button_Clicked_3(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using Decrypt_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -142,6 +143,90 @@ namespace Decrypt_Library.EntityFrameworkCode
                 }
 
                 return topfiveList.ToList();
+            }
+        }
+
+        // Function for setting a book into favoritelist
+        public static bool SetProductAsFavorite(string productTitle)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                Product choosenProduct = db.Products.Where(ch => ch.Title == productTitle).FirstOrDefault();
+                BookHistory bookHistory = new BookHistory();
+
+                var FavoriteExists = db.BookHistories;
+
+                foreach (var favorite in FavoriteExists)
+                {
+                    if (favorite.ProductId == choosenProduct.Id && favorite.UserId == UserLogin.thisUser.Id && favorite.EventId == 4)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                bookHistory.ProductId = choosenProduct.Id;
+                bookHistory.EventId = 1;
+                bookHistory.UserId = UserLogin.thisUser.Id;
+                bookHistory.StartDate = DateTime.UtcNow;
+                db.BookHistories.Update(bookHistory);
+                db.SaveChanges();
+                return true;
+            }
+        }
+
+        // Show users favoritelist
+        public static List<MyPagesProductList> ShowUserFavoriteList()
+        {
+            if (UserLogin.thisUser == null) return null;
+
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var favorites = from
+                bookHistory in db.BookHistories
+                                  join
+                                  product in db.Products on bookHistory.ProductId equals product.Id
+                                  where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 1
+                                  select new MyPagesProductList
+                                  {
+                                      ID = bookHistory.Id,
+                                      Title = product.Title,
+                                      Author = product.AuthorName,
+                                      ISBN = product.Isbn,
+                                      StartDate = bookHistory.StartDate,
+                                      EndDate = bookHistory.EndDate
+                                  };
+                return favorites.ToList();
+
+            }
+        }
+        // Remove book from favoritelist
+
+        public static void DeleteFavorite(int selectedId)
+        {
+            using (var db = new Decrypt_LibraryContext())
+            {
+                var book = db.BookHistories.Where(b => b.Id == selectedId).SingleOrDefault();
+                db.Remove(book);
+                db.SaveChanges();
+
+                //var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
+
+                /* if (book != null)
+                 {
+                     book.Remove(updateQuantityProduct);
+                 }
+                */
+
+                /* if (updateQuantityProduct == null)
+                 {
+                     Console.WriteLine("Finns ingen produkt med det artikelnumret och därför tas inget bort.");
+                 }
+                 else updateQuantityProduct.StockUnit -= Quantity; 
+                */
+
             }
         }
     }

@@ -1638,9 +1638,6 @@
                                                    />
                                             </Grid>
 
-
-
-
                                         </StackLayout>
 
                                         <Frame Padding="0"
@@ -1675,8 +1672,6 @@
 
                                         </Frame>
 
-
-
                                     </StackLayout>
                                 </StackLayout>
 
@@ -1684,15 +1679,9 @@
 
                         </ScrollView >
 
-
-
-
                     </StackLayout>
 
-
                 </Frame>
-
-
 
             </Grid>
 
@@ -1843,11 +1832,8 @@
 
     </ContentPage>
 
-    <ContentPage Title="Statistik" BackgroundColor="#262223" BackgroundImageSource="Josse.png">
-
-
+    <ContentPage Title="Statistik" BackgroundColor="#262223">
         <ScrollView>
-
             <StackLayout>
                 <Label Text="Statistik"
                        FontAttributes="Bold"
@@ -1857,17 +1843,13 @@
                        Margin="0,20,0,0"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="PaleVioletRed"/>
-
-
                 <Grid>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="AUto"/>
                         <ColumnDefinition Width="*"/>
 
                     </Grid.ColumnDefinitions>
-
 
                     <Frame Padding="0" 
                            BorderColor="PaleVioletRed"
@@ -1879,31 +1861,6 @@
                            Grid.Column="1">
 
                         <Grid>
-                            <!--
-                            <Button Text="Produkter"
-                                    BackgroundColor="Gold"
-                                    TextColor="Black"
-                                    Grid.Column="0"
-                                    CornerRadius="0"
-                                    FontAttributes="Bold"
-                                    Clicked="Button_Clicked_Product"/>
-
-                            <Button Text="Användare"
-                                    BackgroundColor="White"
-                                    TextColor="Black"
-                                    Grid.Column="1"
-                                    CornerRadius="0"
-                                    FontAttributes="Bold"
-                                    Clicked="Button_Clicked_User"/>
-
-                            <Button Text="Utlåning"
-                                    BackgroundColor="Gold"
-                                    TextColor="Black"
-                                    Grid.Column="2"
-                                    CornerRadius="0"
-                                    FontAttributes="Bold"
-                                    Clicked="Button_Clicked_Loaned"/>
-                            -->
                             <Picker x:Name="statsPicker" HorizontalTextAlignment="Center" BackgroundColor="PaleVioletRed" FontSize="15" SelectedIndexChanged="statsPicker_SelectedIndexChanged"/>
                         </Grid>
                     </Frame>
@@ -2039,7 +1996,35 @@
 
                         <ScrollView>
                             <StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="DelayedBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
+                                       TextDecorations="Underline" Padding="0"/>
 
+                                    <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Never">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" Grid.Column="0" BindingContext="{Binding Title}"/>
+                                                        <Label Text="{Binding Title, StringFormat= '{0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                                                        <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="2"/>
+                                                        <Label Text="{Binding EndDate, StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold" Grid.Column="3"/>
+
+                                                        <Button x:Name="reminderButton" Text="Påminn kund" IsVisible="true" Clicked="Button_Click_Reminder"
+                                                                 BackgroundColor="IndianRed" TextColor="Black" FontAttributes="Bold"
+                                                                 CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
+
+                                                        </Button>
+                                                        <BoxView BackgroundColor="White"
+                                                     HeightRequest="3" >
+                                                        </BoxView>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                                
                                 <StackLayout>
                                     <Label x:Name="AmountOfBooksLoanedATM" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
@@ -2059,6 +2044,7 @@
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </StackLayout>
+
                                 <StackLayout>
                                     <Label x:Name="AmountOfBooksLoaned" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>

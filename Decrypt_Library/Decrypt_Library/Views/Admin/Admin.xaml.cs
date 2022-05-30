@@ -899,6 +899,9 @@ namespace Decrypt_Library.Views
             userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
         }
 
+        #endregion
+
+        #region Statistics Page
         private void statsPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var showStatList = statsPicker.SelectedIndex;
@@ -921,6 +924,8 @@ namespace Decrypt_Library.Views
                     loanedInfoStatistics.IsVisible = false;
                     userInfo.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
                     productInfo.ItemsSource = EntityframeworkStatistics.MostReadCategory();
                     productInfo.IsVisible = true;
@@ -945,6 +950,8 @@ namespace Decrypt_Library.Views
                     loanedInfoStatistics.IsVisible = false;
                     userInfo.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
                     mediaInfo.ItemsSource = EntityframeworkStatistics.ShowMostPopMediaType();
                     FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
@@ -969,6 +976,8 @@ namespace Decrypt_Library.Views
                     loanedInfoStatistics.IsVisible = false;
                     userInfo.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
                     TopFive.Text = "TOP 5 mest populära produkter:";
                     mostPopular.ItemsSource = EntityframeworkStatistics.ShowTopFiveMostRead();
@@ -994,6 +1003,8 @@ namespace Decrypt_Library.Views
                     loanedInfoStatistics.IsVisible = false;
                     userInfo.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
                     var bookNr = EntityframeworkStatistics.AmountOfBooks().ToString();
                     AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
@@ -1016,6 +1027,8 @@ namespace Decrypt_Library.Views
                     loanedInfoStatistics.IsVisible = false;
                     userInfo.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
                     var loanedBooks = EntityframeworkStatistics.LoanedBooksATM().ToString();
                     AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
@@ -1040,6 +1053,8 @@ namespace Decrypt_Library.Views
                     loanedInfo.IsVisible = false;
                     userInfo.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
                     var statistic = EntityframeworkStatistics.TotalAmountOfBooksLoaned().ToString();
                     AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid: {statistic}";
@@ -1050,6 +1065,38 @@ namespace Decrypt_Library.Views
                     break;
 
                 case 6:
+
+
+                    ProductTab.IsVisible = false;
+                    userTab.IsVisible = false;
+                    loanedTab.IsVisible = true;
+
+                    productInfo.IsVisible = false;
+                    FavoriteCategory.IsVisible = false;
+                    mediaInfo.IsVisible = false;
+                    FavouriteMediaType.IsVisible = false;
+                    TopFive.IsVisible = false;
+                    mostPopular.IsVisible = false;
+                    AmountOfBooks.IsVisible = false;
+                    AmountOfBooksLoanedATM.IsVisible = false;
+                    loanedInfo.IsVisible = false;
+                    AmountOfBooksLoaned.IsVisible = false;
+                    loanedInfoStatistics.IsVisible = false;
+                    totalNrUsers.IsVisible = false;
+                    totalNrUsers.IsVisible = false;
+                    userInfo.IsVisible = false;
+
+                    var reminder = EntityframeworkStatistics.Reminder();
+                    DelayedBooks.Text = $"Antal försenade produkter just nu: {reminder}";
+                    reminders.ItemsSource = EntityframeworkStatistics.Delayes(); ;
+
+                    DelayedBooks.IsVisible = true;
+                    reminders.IsVisible = true;
+
+
+                    break;
+
+                case 7:
                     loanedTab.IsVisible = false;
                     ProductTab.IsVisible = false;
                     userTab.IsVisible = true;
@@ -1066,6 +1113,8 @@ namespace Decrypt_Library.Views
                     AmountOfBooksLoaned.IsVisible = false;
                     loanedInfoStatistics.IsVisible = false;
                     totalNrUsers.IsVisible = false;
+                    DelayedBooks.IsVisible = false;
+                    reminders.IsVisible = false;
 
 
                     userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.Id >= 2);
@@ -1077,75 +1126,12 @@ namespace Decrypt_Library.Views
             }
 
         }
-
         #endregion
-
-
-        /*
-        private void Button_Clicked_Product(object sender, EventArgs e)
+        private async void Button_Click_Reminder(object sender, EventArgs e)
         {
-            loanedTab.IsVisible = false;
-            userTab.IsVisible = false;
-
-            ProductTab.IsVisible = true;
-
-
-            productInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.MostReadCategory();
-            productInfo.IsVisible = true;
-
-            var bookNr = EntityframeworkCode.EntityframeworkStatistics.AmountOfBooks().ToString();
-            AmountOfBooks.Text = $"Totalt antal produkter i vårt sortiment: {bookNr}";
-            AmountOfBooks.IsVisible = true;
-
-            FavoriteCategory.IsVisible = true;
-            FavoriteCategory.Text = "Mest populära kategorier i rangordning:";
-
-            TopFive.Text = "TOP 5 mest populära produkter:";
-            TopFive.IsVisible = true;
-
-            mostPopular.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowTopFiveMostRead();
-            mostPopular.IsVisible = true;
-
-            mediaInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowMostPopMediaType();
-            FavouriteMediaType.Text = "Populära mediatyper i rangordning: ";
-            FavouriteMediaType.IsVisible = true;
+            Button btn = sender as Button;
+            MyPagesProductList book = btn.BindingContext as MyPagesProductList;
+            await DisplayAlert($"{book.Title} är försenad", "En påminnelse har skickats till kund", "OK");
         }
-
-        private void Button_Clicked_Loaned(object sender, EventArgs e)
-        {
-            ProductTab.IsVisible = false;
-            userTab.IsVisible = false;
-
-            loanedTab.IsVisible = true;
-
-            var loanedBooks = EntityframeworkCode.EntityframeworkStatistics.LoanedBooksATM().ToString();
-            AmountOfBooksLoanedATM.Text = $"Antal utlånade produkter just nu: {loanedBooks}";
-            AmountOfBooksLoanedATM.IsVisible = true;
-           
-            loanedInfo.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrder();
-            loanedInfo.IsVisible = true;
-
-            var statistic = EntityframeworkCode.EntityframeworkStatistics.TotalAmountOfBooksLoaned().ToString();
-            AmountOfBooksLoaned.Text = $"Alla utlånade böcker över tid: {statistic}";
-            AmountOfBooksLoaned.IsVisible = true;
-
-            loanedInfoStatistics.ItemsSource = EntityframeworkCode.EntityframeworkStatistics.ShowLoansByDescOrderGeneral();
-            loanedInfoStatistics.IsVisible = true;
-
-        }
-
-        private void Button_Clicked_User(object sender, EventArgs e)
-        {
-            loanedTab.IsVisible = false;
-            ProductTab.IsVisible = false;
-
-            userTab.IsVisible = true;
-         
-
-            userInfo.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.Id >= 2);
-            userInfo.IsVisible = true;
-
-        }
-        */
     }
 }

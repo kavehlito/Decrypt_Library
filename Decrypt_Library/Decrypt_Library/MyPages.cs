@@ -100,6 +100,47 @@ namespace Decrypt_Library
              } */
 
         }
+        public static List<MyPagesProductList> LateReturnList()
+        {
+          
+            var books = EntityframeworkBookHistory.ShowUserLoanHistoryForAll();
+            var loanList = new List<MyPagesProductList>();
+
+            foreach (var book in books)
+            {
+                if (book.EndDate == null)
+                {
+                    var endDateTime = EntityframeworkBookHistory.SetEndDateForDelayes(book.ID);
+
+                    if (endDateTime != null) book.EndDate = endDateTime;
+                    else
+                        book.EndDate = book.StartDate.Value.AddDays(30);
+
+                    loanList.Add(book);
+                }
+            }
+            return loanList;
+        }
+        public static List<MyPagesProductList> LateReturnListPopUpForUser()
+        {         
+            var books = EntityframeworkBookHistory.ShowUserLoanHistory();
+            var loanList = new List<MyPagesProductList>();
+
+            foreach (var book in books)
+            {
+                if (book.EndDate == null)
+                {
+                    var endDateTime = EntityframeworkBookHistory.SetEndDate(book.ID);
+
+                    if (endDateTime != null) book.EndDate = endDateTime;
+                    else
+                        book.EndDate = book.StartDate.Value.AddDays(30);
+
+                    loanList.Add(book);
+                }
+            }
+            return loanList;
+        }
 
         public static void TestMyPages()
         {
