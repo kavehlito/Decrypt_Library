@@ -1,5 +1,4 @@
-﻿using Decrypt_Library.EntityframeworkCode;
-using Decrypt_Library.EntityFrameworkCode;
+﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System;
 using Xamarin.Forms;
@@ -24,14 +23,14 @@ namespace Decrypt_Library.Views
             if (UserLogin.thisUser == null)
             {
                 LoanOrReserveButton.IsVisible = false;
+                favoriteButton.IsVisible = false;
                 PlsLoginReservelbl.IsVisible = true;
                 PlsloginReviewlbl.IsVisible = true;
-                favoriteButton.IsVisible = false;
 
                 ShowOrNot.Text = "Populära produkter:";
                 Recommendations.ItemsSource = EntityframeworkUsers.ShowTopFiveMostReadNoHistory();
             }
-            else 
+            else
             {
                 LoanOrReserveButton.IsVisible = true;
                 PlsLoginReservelbl.IsVisible = false;
@@ -40,7 +39,7 @@ namespace Decrypt_Library.Views
                 reviewEntry.IsVisible = true;
                 starPicker.IsVisible = true;
                 favoriteButton.IsVisible = true;
-            
+
                 if (EntityframeworkUsers.ShowRecommendations().Count == 0)
                 {
                     ShowOrNot.Text = "Detta är populärt:";
@@ -49,7 +48,7 @@ namespace Decrypt_Library.Views
                 else
                 {
                     ShowOrNot.Text = "Baserat på vad du har lånat tidigare:";
-                    Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();   
+                    Recommendations.ItemsSource = EntityframeworkUsers.ShowRecommendations();
                 }
             }
 
@@ -136,14 +135,17 @@ namespace Decrypt_Library.Views
 
         private async void favoriteButton_Clicked(object sender, EventArgs e)
         {
-            if (favoriteButton.Text == "Lägg till i Favoriter")
+            var favoriteCheck = EntityframeworkUsers.SetProductAsFavorite(Title);
+            if (favoriteCheck == false)
             {
-                EntityframeworkUsers.SetProductAsFavorite(Title);
+                await DisplayAlert("Error!", "Du har redan denna bland dina favoriter", "Oki");
+            }
+            else
+            {
+                await DisplayAlert("Sådär", "Nu är produkten tillagd! Du hittar den i listan \"Favoriter\" i min profil", "Tack!");
 
-                    await DisplayAlert("Sådär", "Nu är produkten tillagd! Du hittar den i listan \"Favoriter\" i min profil", "Tack!");
-            }   
-        else 
-                    await DisplayAlert("Ojdå!", "Något gick fel, försök igen senare", "OK");
+            }
+
         }
     }
 }

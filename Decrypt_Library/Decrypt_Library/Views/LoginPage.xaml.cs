@@ -19,6 +19,13 @@ namespace Decrypt_Library.Views
         public LoginPage()
         {
             InitializeComponent();
+
+            if (UserLogin.thisUser != null)
+                Title = "Logga ut";
+            else
+            {
+                Title = "Logga in";
+            }
         }
         protected override void OnAppearing()
         {
@@ -81,6 +88,12 @@ namespace Decrypt_Library.Views
                 borderHide.IsVisible = false;
 
                 DelayedProduct();
+
+                if(UserLogin.thisUser.UserTypeId == 3)
+                {
+                    var homePage = new MainPage();
+                    await Navigation.PushModalAsync(homePage);
+                }
 
                 if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
                 {
