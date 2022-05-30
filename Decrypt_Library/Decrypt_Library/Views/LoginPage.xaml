@@ -97,7 +97,7 @@
 
                     </Frame>
 
-                    <Label TextColor="Gold"
+                    <Label TextColor="MediumPurple"
                            FontAttributes="Bold"
                            x:Name="Test"
                            FontSize="15"
@@ -109,7 +109,7 @@
                             IsVisible="False"
                             CornerRadius="10"
                             AbsoluteLayout.LayoutBounds="100,220,260,35"
-                            BackgroundColor="Gold"
+                            BackgroundColor="MediumPurple"
                             FontAttributes="Bold"
                             TextColor="Black"/>
 
@@ -137,6 +137,7 @@
                         <Button Text="Glömt lösenord?"
                                 FontAttributes="Bold"
                                 FontSize="10"
+                                Clicked="ForgotPassword_Clicked"
                                 BackgroundColor="Transparent"
                                 TextColor="MediumPurple"/>
 

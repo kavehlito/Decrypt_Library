@@ -2,6 +2,7 @@
 using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,12 +21,21 @@ namespace Decrypt_Library.Views
             audiencePicker.ItemsSource = EntityframeworkAudience.ShowAllAudienceGroups();
             mediaPicker.ItemsSource = EntityframeworkMediaTypes.ShowAllMediaNames();
             languagePicker.ItemsSource = EntityframeworkLanguages.ShowAllLanguageNames();
-            userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
             statsPicker.ItemsSource = EntityframeworkStatistics.StatsValues();
-
+            userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
         }
+        protected override void OnAppearing()
+        {
+            if(UserLogin.thisUser.UserTypeId == 1)
+                userIDpicker.ItemsSource = EntityframeworkUsers.ShowAllUserTypeNames();
 
-
+            if (UserLogin.thisUser.UserTypeId == 2)
+            {
+                List <string> stringList = new List<string>();
+                stringList.Add("User");
+                userIDpicker.ItemsSource = stringList;
+            }
+        }
 
         Product product = new Product();
         Product selectedProductToChange = new Product();
@@ -824,7 +834,7 @@ namespace Decrypt_Library.Views
                 }
 
                 EntityframeworkUsers.CreateUser(user);
-                userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId >= 2);
+                userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 1 || x.UserTypeId == 2);
             }
             else
             {
@@ -847,7 +857,7 @@ namespace Decrypt_Library.Views
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 2 || x.UserTypeId == 3);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 1 || x.UserTypeId == 2);
             register.IsVisible = false;
             endLabel.IsVisible = false;
             startLabel.IsVisible = true;
@@ -896,7 +906,7 @@ namespace Decrypt_Library.Views
                 }
             }
             EntityframeworkUsers.RemoveUser(user);
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId >= 2);
+            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x=>x.UserTypeId == 1 || x.UserTypeId == 2);
         }
 
         #endregion

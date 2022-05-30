@@ -18,8 +18,25 @@ namespace Decrypt_Library.Views
     {
         public LoginPage()
         {
-            InitializeComponent();      
+            InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            if(UserLogin.thisUser != null)
+            {
+                Headline.IsVisible = false;
+                loginFrame.IsVisible = false;
+                LogIn.IsVisible = false;
+                alternativeOptions.IsVisible = false;
+
+                Test.IsVisible = true;
+                Test.Text = $"{UserLogin.thisUser.UserName} är nu inloggad";
+                LogOut.IsVisible = true;
+                Error.IsVisible = false;
+            }
+
+        }
+
         public async void DelayedProduct()
         {
             if (UserLogin.thisUser != null)
@@ -37,7 +54,7 @@ namespace Decrypt_Library.Views
                 }
             }
         }
-        private void LogIn_Clicked(object sender, EventArgs e)
+        private async void LogIn_Clicked(object sender, EventArgs e)
         {
 
             if (Password.Text == null || SSN.Text == null) { Password.Text = "0"; SSN.Text = "0"; }  
@@ -62,18 +79,27 @@ namespace Decrypt_Library.Views
                 Headline.IsVisible = false;
                 alternativeOptions.IsVisible = false;
                 borderHide.IsVisible = false;
-                var user = EntityframeworkUsers.ShowSpecificUserByUserName(ssn);
 
                 DelayedProduct();
 
-                //if (UserLogin.thisUser.UserTypeId == 3)
-                //{
-                //    Page pageToAdd = new AdminPage();
-                //    var homePage = new MainPage();
-                //    pageToAdd.Title = "Admin";
-                //    homePage.Children.Add(pageToAdd);
-                //    await Navigation.PushAsync(homePage);
-                //}
+                if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
+                {
+                    Page adminPage = new AdminPage();
+                    Page loanPage = new Loan();
+                    Page returnProductPage = new ReturnProduct();
+                    var homePage = new MainPage();
+
+                    returnProductPage.Title = "Lämna tillbaka";
+                    returnProductPage.TabIndex = 8;
+                    adminPage.Title = "Bibliotekarie";
+                    adminPage.TabIndex = 5;
+                    loanPage.Title = "Låna";
+                    loanPage.TabIndex = 7;
+                    homePage.Children.Add(adminPage);
+                    homePage.Children.Add(loanPage);
+                    homePage.Children.Add(returnProductPage);
+                    await Navigation.PushModalAsync(homePage);
+                }
             }
         }
         private async void LogOut_Clicked(object sender, EventArgs e)
@@ -98,11 +124,12 @@ namespace Decrypt_Library.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            UserLogin.LogOutUsers();
-            var tab = new MainPage();
-            tab.CurrentPage = tab.Children[6];
+            await Navigation.PushAsync(new RegisterPage());
+        }
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+        private async void ForgotPassword_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Återställning av lösenord","Konatakta administratör eller prata med bibliotekarie", "OK");
         }
     }
 }
