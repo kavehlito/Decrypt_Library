@@ -103,7 +103,7 @@
 
                         <StackLayout
                                     >
-                            <ScrollView VerticalScrollBarVisibility="Never"
+                            <ScrollView VerticalScrollBarVisibility="Always"
                                     Margin="0,0,0,0">
 
                                 <AbsoluteLayout>
@@ -815,7 +815,7 @@
                     </ScrollView>
 
                     <ListView x:Name="ProductList"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               HasUnevenRows="False"    
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
@@ -1001,7 +1001,7 @@
                             <ListView x:Name="categoryList"
                               IsVisible="true"
                                       ItemTapped="CategoryList_ItemTapped"
-                                      VerticalScrollBarVisibility="Never"
+                                      VerticalScrollBarVisibility="Always"
                               >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -1201,7 +1201,7 @@
                     <ListView x:Name="eventList"
                               HasUnevenRows="False"
                               ItemTapped="EventList_ItemTapped"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               
                               >
                         <ListView.ItemTemplate>
@@ -1354,7 +1354,7 @@
                         <ListView x:Name="userList"
                                   HasUnevenRows="False"
                                   ItemTapped="UserList_ItemTapped"
-                                  VerticalScrollBarVisibility="Never"
+                                  VerticalScrollBarVisibility="Always"
                                   IsVisible="True">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -1404,7 +1404,7 @@
                         </ListView>
 
                         <ScrollView x:Name="register" 
-                                    VerticalScrollBarVisibility="Never"
+                                    VerticalScrollBarVisibility="Always"
                                     IsVisible="False">
 
                             <Grid>
@@ -2000,7 +2000,7 @@
                                     <Label x:Name="DelayedBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Always">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
