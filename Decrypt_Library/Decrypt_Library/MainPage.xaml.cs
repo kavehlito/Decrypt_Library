@@ -20,6 +20,14 @@ namespace Decrypt_Library
             {
                 loginPage.Title = "Logga in";
             }
+
+            if(UserLogin.thisUser != null)
+            {
+                this.Children.Remove(registerPage);
+            }
+            else
+                this.Children.Add(registerPage);
+
         }
     }
 }

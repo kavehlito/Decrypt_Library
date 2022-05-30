@@ -13,7 +13,7 @@ namespace Decrypt_Library.Views
         public AccountPage()
         {
             InitializeComponent();
-           
+
         }
 
         User user = new User();
