@@ -857,7 +857,9 @@ namespace Decrypt_Library.Views
 
         private void ShowAllUsers_Clicked(object sender, EventArgs e)
         {
-            userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 1 || x.UserTypeId == 2);
+            if (UserLogin.thisUser.UserTypeId == 2)
+                userList.ItemsSource = EntityframeworkUsers.ShowAllUsers().Where(x => x.UserTypeId == 3);
+            else userList.ItemsSource = EntityframeworkUsers.ShowAllUsers();
             register.IsVisible = false;
             endLabel.IsVisible = false;
             startLabel.IsVisible = true;
