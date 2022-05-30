@@ -472,8 +472,8 @@ namespace Decrypt_Library.Views
         {
             Button btn = sender as Button;
             Product selectedProduct = btn.BindingContext as Product;
-            EntityframeworkProducts.RemoveProduct(selectedProduct);
 
+            EntityframeworkProducts.RemoveProduct(selectedProduct);
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
 
