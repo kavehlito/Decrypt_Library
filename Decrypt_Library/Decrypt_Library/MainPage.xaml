@@ -12,13 +12,10 @@
 
         <Views:AboutPage Title="Om oss" Padding="0" TabIndex="0"></Views:AboutPage>
         <Views:AccountPage Title="Mina Sidor" TabIndex="1"></Views:AccountPage>
-        <Views:LoginPage Title="Logga in" TabIndex="2"></Views:LoginPage>
+        <Views:LoginPage Title="Logga in" TabIndex="2" x:Name="loginPage"></Views:LoginPage>
         <Views:SearchPage Title="Sök" TabIndex="3"></Views:SearchPage>
         <Views:Events Title="Evenemang" TabIndex="4"></Views:Events>
-        <Views:AdminPage Title="Admin" TabIndex="5"></Views:AdminPage>
         <Views:RegisterPage Title="Registrera" TabIndex="6"></Views:RegisterPage>
-        <Views:Loan Title="Låna" TabIndex="7"></Views:Loan>
-        <Views:ReturnProduct Title="Lämna tillbaka" TabIndex="8"></Views:ReturnProduct>
 
 
     </TabbedPage.Children>

@@ -103,7 +103,7 @@
 
                         <StackLayout
                                     >
-                            <ScrollView VerticalScrollBarVisibility="Never"
+                            <ScrollView VerticalScrollBarVisibility="Always"
                                     Margin="0,0,0,0">
 
                                 <AbsoluteLayout>
@@ -815,7 +815,7 @@
                     </ScrollView>
 
                     <ListView x:Name="ProductList"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               HasUnevenRows="False"    
                               ItemTapped="ProductListItem_Tapped"
                               IsVisible="false"
@@ -919,6 +919,11 @@
                    HorizontalOptions="CenterAndExpand"
                    Text="Kategori Inställningar"/>
 
+            <Label Text="Tryck på lägg till kategori för att lägga till den inskrivna kategorin"
+                   TextColor="White"
+                   Grid.Column="1"
+                   FontAttributes="Bold"/>
+
 
             <StackLayout Grid.Column="1"
                          Grid.Row="1"
@@ -1001,7 +1006,7 @@
                             <ListView x:Name="categoryList"
                               IsVisible="true"
                                       ItemTapped="CategoryList_ItemTapped"
-                                      VerticalScrollBarVisibility="Never"
+                                      VerticalScrollBarVisibility="Always"
                               >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -1201,7 +1206,7 @@
                     <ListView x:Name="eventList"
                               HasUnevenRows="False"
                               ItemTapped="EventList_ItemTapped"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               
                               >
                         <ListView.ItemTemplate>
@@ -1265,7 +1270,7 @@
 
     </ContentPage>
 
-    <ContentPage Title="Anställda"
+    <ContentPage Title="Användare"
                  xmlns:behaviors="clr-namespace:Decrypt_Library.Readers"
                  >
 
@@ -1318,7 +1323,7 @@
 
                         <Grid>
 
-                            <Button Text="Lägg till anställd"
+                            <Button Text="Lägg till användare"
                             BackgroundColor="Gold"
                                 Grid.Column="0"
                             CornerRadius="0"
@@ -1327,7 +1332,7 @@
                             >
                             </Button>
 
-                            <Button Text="Visa anställda"
+                            <Button Text="Visa användare"
                             BackgroundColor="White"
                                 Grid.Column="1"
                             CornerRadius="0"
@@ -1354,7 +1359,7 @@
                         <ListView x:Name="userList"
                                   HasUnevenRows="False"
                                   ItemTapped="UserList_ItemTapped"
-                                  VerticalScrollBarVisibility="Never"
+                                  VerticalScrollBarVisibility="Always"
                                   IsVisible="True">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -1404,7 +1409,7 @@
                         </ListView>
 
                         <ScrollView x:Name="register" 
-                                    VerticalScrollBarVisibility="Never"
+                                    VerticalScrollBarVisibility="Always"
                                     IsVisible="False">
 
                             <Grid>
@@ -2000,7 +2005,7 @@
                                     <Label x:Name="DelayedBooks" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="PaleVioletRed" FontSize="16"
                                        TextDecorations="Underline" Padding="0"/>
 
-                                    <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Never">
+                                    <ListView x:Name="reminders" HeightRequest="180" VerticalScrollBarVisibility="Always">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -2071,7 +2076,5 @@
             </StackLayout>
         </ScrollView>
     </ContentPage>
-    <ContentPage Title="Låna">
-        <Label Text="7"/>
-    </ContentPage>
+
 </TabbedPage>

@@ -25,7 +25,7 @@ namespace Decrypt_Library.Readers
 
         private void BindAbleOnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var IdPattern = "^[0-9]{10}$";
+            var IdPattern = "^[0-9]{10,13}$";
             var userEntry = sender as Entry;
 
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
