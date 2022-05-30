@@ -37,7 +37,7 @@
                         <StackLayout Orientation="Horizontal" WidthRequest="800" HeightRequest="50">
                             <Button x:Name="LoanOrReserveButton" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="StartAndExpand" Clicked="LoanOrReserveButton_Clicked"
                                         Text="{Binding Status}"/>
-                            <Button x:Name="favoriteButton" Text="Lägg till i Favoriter" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="EndAndExpand" Clicked="favoriteButton_Clicked"/>
+                            <Button x:Name="favoriteButton" Text="Lägg till i favoriter" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="EndAndExpand" Clicked="favoriteButton_Clicked"/>
                         </StackLayout>
                     </AbsoluteLayout>
                     <StackLayout>

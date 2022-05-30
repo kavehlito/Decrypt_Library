@@ -158,9 +158,10 @@ namespace Decrypt_Library.EntityFrameworkCode
 
                 foreach (var favorite in FavoriteExists)
                 {
-                    if (favorite.ProductId == choosenProduct.Id && favorite.UserId == UserLogin.thisUser.Id && favorite.EventId == 4)
+                    if (favorite.ProductId == choosenProduct.Id && favorite.UserId == UserLogin.thisUser.Id && favorite.EventId == 1)
                     {
                         return false;
+                        
                     }
                     else
                     {
