@@ -169,11 +169,13 @@ namespace Decrypt_Library.EntityFrameworkCode
         }
         public static void CreateProduct(Product product)
         {
+            var newProduct = new Product() { MediaId = product.MediaId, Status = product.Status, Isbn = product.Isbn, Title = product.Title, Description = product.Description, Pages = product.Pages, Playtime = product.Playtime, Publisher = product.Publisher, LanguageId = product.LanguageId, AuthorName = product.AuthorName, PublishDate = product.PublishDate, CategoryId = product.CategoryId, ShelfId = product.ShelfId, Narrator = product.Narrator, NewProduct = product.NewProduct, AudienceId = product.AudienceId, HiddenProduct = product.HiddenProduct };
+
             using (var db = new Decrypt_LibraryContext())
             {
                 var productList = db.Products;
 
-                productList.Add(product);
+                productList.Add(newProduct);
                 db.SaveChanges();
             }
         }
