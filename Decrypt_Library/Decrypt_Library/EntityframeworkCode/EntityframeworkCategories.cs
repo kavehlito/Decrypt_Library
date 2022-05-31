@@ -72,21 +72,22 @@ namespace Decrypt_Library.EntityFrameworkCode
             {
                 if (category.Count() > 0 && age.Count() == 0 && media.Count() == 0)
                 {
-                    products = db.Products.Where(c => category.Contains((int)c.CategoryId)).ToList();
+                    products = db.Products.Where(c => category.Contains((int)c.CategoryId)).Where(c => c.HiddenProduct == false).ToList();
                 }
                 else if (category.Count() == 0 && age.Count() > 0 && media.Count() == 0)
                 {
-                    products = db.Products.Where(a => age.Contains((int)a.AudienceId)).ToList();
+                    products = db.Products.Where(a => age.Contains((int)a.AudienceId)).Where(c => c.HiddenProduct == false).ToList();
                 }
                 else if (category.Count() == 0 && age.Count() == 0 && media.Count() > 0)
                 {
-                    products = db.Products.Where(m => media.Contains((int)m.MediaId)).ToList();
+                    products = db.Products.Where(m => media.Contains((int)m.MediaId)).Where(c => c.HiddenProduct == false).ToList();
                 }
                 else if (category.Count() > 0 && age.Count() > 0 && media.Count() == 0)
                 {
                     products = db.Products
                     .Where(c => category.Contains((int)c.CategoryId))
                     .Where(a => age.Contains((int)a.AudienceId))
+                    .Where(c => c.HiddenProduct == false)
                     .ToList();
                 }
                 else if (category.Count() == 0 && age.Count() > 0 && media.Count() > 0)
@@ -94,6 +95,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                     products = db.Products
                     .Where(a => age.Contains((int)a.AudienceId))
                     .Where(m => media.Contains((int)m.MediaId))
+                    .Where(c => c.HiddenProduct == false)
                     .ToList();
                 }
                 else if (category.Count() > 0 && age.Count() == 0 && media.Count() > 0)
@@ -101,6 +103,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                     products = db.Products
                     .Where(c => category.Contains((int)c.CategoryId))
                     .Where(m => media.Contains((int)m.MediaId))
+                    .Where(c => c.HiddenProduct == false)
                     .ToList();
                 }
                 else if (category.Count() > 0 && age.Count() > 0 && media.Count() > 0)
@@ -109,6 +112,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                     .Where(c => category.Contains((int)c.CategoryId))
                     .Where(a => age.Contains((int)a.AudienceId))
                     .Where(m => media.Contains((int)m.MediaId))
+                    .Where(c => c.HiddenProduct == false)
                     .ToList();
                 }
                 return products;
