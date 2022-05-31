@@ -493,6 +493,7 @@ namespace Decrypt_Library.Views
                     {
                         EntityframeworkProducts.CreateProduct(product);
                     }
+                    DisplayAlert("Information", $"Produkt tillagd: {product.Title}\nAntal produkter: {numberOfProducts.Text}", "OK");
 
                     ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
 

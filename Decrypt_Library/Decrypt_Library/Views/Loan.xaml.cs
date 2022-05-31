@@ -121,7 +121,6 @@ namespace Decrypt_Library.Views
             CheckOut.IsVisible = false;
             StartAgain.IsVisible = true;
             Cart.cartList.Clear();
-            
         }
 
         private async void StartAgain_Clicked(object sender, EventArgs e)
@@ -131,9 +130,7 @@ namespace Decrypt_Library.Views
             tab.CurrentPage = tab.Children[7];
 
             await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
-
         }
-
     
         private void Button_Clicked(object sender, EventArgs e)
         {
@@ -174,8 +171,7 @@ namespace Decrypt_Library.Views
             }
             Cart.cartList.Clear();
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new MainPage());
-
+            await Application.Current.MainPage.Navigation.PushModalAsync(new Loan());
         }
     }
 }

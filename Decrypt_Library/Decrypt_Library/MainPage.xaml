@@ -17,6 +17,5 @@
         <Views:Events Title="Evenemang" TabIndex="4"></Views:Events>
             <Views:RegisterPage Title="Registrera" TabIndex="6" x:Name="registerPage"></Views:RegisterPage>
 
-
     </TabbedPage.Children>
 </TabbedPage>

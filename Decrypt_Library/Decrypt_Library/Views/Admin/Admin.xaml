@@ -938,13 +938,6 @@
                    HorizontalOptions="CenterAndExpand"
                    Text="Kategori Inställningar"/>
 
-            <Label Text="Tryck på lägg till kategori för att lägga till den inskrivna kategorin"
-                   TextColor="White"
-                   Grid.Column="1"
-                   FontSize="10"
-                   HorizontalOptions="CenterAndExpand"
-                   FontAttributes="Bold"/>
-
 
             <StackLayout Grid.Column="1"
                          Grid.Row="1"
@@ -996,10 +989,20 @@
                    Grid.Row="2">
 
                 <StackLayout>
+
+      
                     <StackLayout Orientation="Vertical">
 
                         <StackLayout x:Name="createCategoryBar"
                                  IsVisible="false">
+
+                            <Label Text="Tryck på lägg till kategori för att lägga till den inskrivna kategorin"
+                                   TextColor="White"
+                                   Grid.Column="1"
+                                   FontSize="10"
+                                   Margin="20,0,0,0"
+                                   HorizontalOptions="Start"
+                                   FontAttributes="Bold"/>
 
                             <Label TextColor="White"
                            FontAttributes="Bold"
@@ -1095,12 +1098,7 @@
                            Text="Event Inställningar"/>
 
 
-            <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
-                   TextColor="White"      
-                   FontSize="10"
-                   HorizontalOptions="CenterAndExpand"
-                   Grid.Column="1"
-                   FontAttributes="Bold"/>
+   
 
 
             <StackLayout Grid.Column="1"
@@ -1152,7 +1150,15 @@
 
                     <StackLayout x:Name="createEventBar"
                                  IsVisible="false">
+
+                        <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
+                   TextColor="White"      
+                   FontSize="10"
+                   HorizontalOptions="CenterAndExpand"
+                   Grid.Column="1"
+                   FontAttributes="Bold"/>
                         <AbsoluteLayout>
+                            
 
                             <Label TextColor="White"
                                    FontAttributes="Bold"
@@ -1304,13 +1310,9 @@
                  >
 
 
-        <StackLayout>
+        <StackLayout Margin="0,20,0,0">
 
-            <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
-                   TextColor="White"
-                   FontSize="10"
-                   HorizontalOptions="Center"
-                   FontAttributes="Bold"/>
+       
             <Label x:Name="startLabel" Text="Information om anställda" IsVisible="true"
                            FontSize="25"
                            TextColor="Gold"
@@ -1322,7 +1324,6 @@
 
 
             <Label x:Name="endLabel" Text="Registrera en ny anställd" IsVisible="false"
-                   Margin="0,20,0,0"
                            FontSize="25"
                            TextColor="Gold"
                            FontAttributes="Bold"
@@ -1755,12 +1756,7 @@
                            Text="Språk Inställningar"/>
 
 
-            <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
-                   TextColor="White"
-                   FontSize="10"
-                   HorizontalOptions="Center"
-                   Grid.Column="1"
-                   FontAttributes="Bold"/>
+       
 
 
 
@@ -1806,6 +1802,14 @@
 
                     <StackLayout x:Name="createLanguageBar"
                                  IsVisible="false">
+
+                        <Label Text="Tryck på lägg till språk för att lägga till det inskrivna språket"
+                   TextColor="White"
+                   FontSize="10"
+                                   Margin="20,0,0,0"
+                   HorizontalOptions="Start"
+                   Grid.Column="1"
+                   FontAttributes="Bold"/>
 
                         <Label TextColor="White"
                            FontAttributes="Bold"

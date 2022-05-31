@@ -14,6 +14,8 @@ namespace Decrypt_Library
         public MainPage()
         {
             InitializeComponent();
+            
+            
             if (UserLogin.thisUser != null)
             {
                 loginPage.Title = "Logga ut";
@@ -30,8 +32,9 @@ namespace Decrypt_Library
             else
                 this.Children.Add(registerPage);
 
+
+
+
         }
-
-
     }
 }
