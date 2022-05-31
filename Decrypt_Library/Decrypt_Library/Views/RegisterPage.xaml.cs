@@ -77,7 +77,7 @@ namespace Decrypt_Library.Views
                     user.Phonenumber = convertedPhoneNumber;
                     user.Email = Email.Text;
                     user.Ssn = convertedSSN;
-                    user.UserTypeId = 1;
+                    user.UserTypeId = 3;
 
                     EntityframeworkUsers.CreateUser(user);
                     registerFrame.IsVisible = false;
