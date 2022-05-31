@@ -9,7 +9,7 @@
             xmlns:s="clr-namespace:Decrypt_Library.Views.Admin"
             windows:Page.ToolbarPlacement="Bottom"
             BarBackground="Black"
-            BackgroundColor="Black"
+            BackgroundColor="#262223"
              x:Class="Decrypt_Library.Views.AdminPage">
 
     <ContentPage Title="Produkter"
@@ -84,12 +84,12 @@
                 </Grid>
 
             </Frame>
-            <Frame BackgroundColor="Black" 
+            <Frame BackgroundColor="#262223" 
                    Grid.Column="1"
                    HeightRequest="500"
                    Padding="0"
                    Margin="10,0,0,0"
-                   BorderColor="Black"
+                   BorderColor="#262223"
                    WidthRequest="410"
                    CornerRadius="10"
                    Grid.Row="3">
@@ -212,24 +212,24 @@
 
                                         <Label Text="Finns i lager"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="30,388,300,50"
+                                           AbsoluteLayout.LayoutBounds="30,380,300,50"
                                                TextColor="White"/>
 
                                         <Label Text="Ny produkt"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="155,388,300,50"
+                                           AbsoluteLayout.LayoutBounds="155,380,300,50"
                                                TextColor="White"/>
 
                                         <Label Text="Gömd produkt"
                                                FontAttributes="Bold"
-                                           AbsoluteLayout.LayoutBounds="265,388,300,50"
+                                           AbsoluteLayout.LayoutBounds="265,380,300,50"
                                                TextColor="White"/>
 
 
 
 
                                         <StackLayout>
-                                            <Frame BorderColor="Black"
+                                            <Frame BorderColor="#262223"
                                            HeightRequest="550">
                                                 <StackLayout>
 
@@ -458,7 +458,7 @@
 
                                                     <StackLayout Orientation="Horizontal" 
                                                              Margin="0,15,0,0">
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="Transparent"
                                                        CornerRadius="15"
                                                                x:Name="playTimeFrame"
                                                        WidthRequest="185"
@@ -481,7 +481,7 @@
 
                                                         </Frame>
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="Transparent"
                                                        CornerRadius="15"
                                                                x:Name="pageFrame"
                                                        WidthRequest="175"
@@ -503,7 +503,7 @@
 
                                                             </Entry>
                                                         </Frame>
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="Transparent"
                                                        CornerRadius="15"
                                                                x:Name="narratorFrame"
                                                        WidthRequest="185"
@@ -531,15 +531,7 @@
                                                     </StackLayout>
 
 
-
-
-                                                    <StackLayout Orientation="Horizontal" 
-                                                             Margin="0,15,0,0">
-
-
-
-
-                                                    </StackLayout>
+                     
                                                     <AbsoluteLayout>
 
                                                         <Frame AbsoluteLayout.LayoutBounds="100,-10,20,20"
@@ -548,7 +540,7 @@
                                                                CornerRadius="100">
                                                             <CheckBox 
                                                                 Margin="0,-6,0,0"
-                                                                Color="Black"
+                                                                Color="#262223"
                                                                   BackgroundColor="White"
                                                                   x:Name="inStock"/>
 
@@ -561,7 +553,7 @@
                                                                CornerRadius="100">
                                                             <CheckBox 
                                                                 Margin="0,-6,0,0"
-                                                                Color="Black"
+                                                                Color="#262223"
                                                                 BackgroundColor="White"
                                                                 x:Name="newProduct"/>
 
@@ -574,7 +566,7 @@
                                                                CornerRadius="100">
                                                             <CheckBox 
                                                                 Margin="0,-6,0,0"
-                                                                Color="Black"
+                                                                Color="#262223"
                                                                 BackgroundColor="White"
                                                                 x:Name="hiddenProduct"/>
 
@@ -590,7 +582,7 @@
                                                            BackgroundColor="Gold"
                                                            CornerRadius="20"
                                                            IsClippedToBounds="True"
-                                                           Margin="0,10,0,0">
+                                                           Margin="0,15,0,0">
 
                                                             <Grid>
                                                                 <Grid.ColumnDefinitions>
@@ -618,6 +610,32 @@
                                                             </Grid>
 
                                                         </Frame>
+                                                        
+
+                                                        <Label TextColor="White"
+                                                               FontSize="10"
+                                                               FontAttributes="Bold"
+                                                               AbsoluteLayout.LayoutBounds="25,65,200,30"
+                                                               Text="Ange antal produkter:"/>
+
+                                                        <Frame BorderColor="Black"
+                                                       CornerRadius="15"
+                                                           Margin="15,0,0,0"
+                                                               AbsoluteLayout.LayoutBounds="130,60,130,30"
+                                                   Padding="0">
+
+                                                            <Entry
+                                                    PlaceholderColor="Gray"
+                                                    BackgroundColor="White"
+                                                    FontSize="12"
+                                                                Placeholder="Kan lämnas tom"
+                                                                TextChanged="numberOfProducts_TextChanged_1"
+                                                    x:Name="numberOfProducts"
+                                                    FontAttributes="Bold"
+                                                    TextColor="BLack"/>
+
+                                                        </Frame>
+
 
                                                     </AbsoluteLayout>
 
@@ -922,6 +940,8 @@
             <Label Text="Tryck på lägg till kategori för att lägga till den inskrivna kategorin"
                    TextColor="White"
                    Grid.Column="1"
+                   FontSize="10"
+                   HorizontalOptions="CenterAndExpand"
                    FontAttributes="Bold"/>
 
 
@@ -967,7 +987,7 @@
             </StackLayout>
 
 
-            <Frame BackgroundColor="Black" 
+            <Frame BackgroundColor="#262223" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
@@ -1074,6 +1094,14 @@
                            Text="Event Inställningar"/>
 
 
+            <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
+                   TextColor="White"      
+                   FontSize="10"
+                   HorizontalOptions="CenterAndExpand"
+                   Grid.Column="1"
+                   FontAttributes="Bold"/>
+
+
             <StackLayout Grid.Column="1"
                          Grid.Row="1">
 
@@ -1112,7 +1140,7 @@
 
                 </Frame>
             </StackLayout>
-            <Frame BackgroundColor="Black"
+            <Frame BackgroundColor="#262223"
                    BorderColor="Transparent"
                    Grid.Column="1"
                    HeightRequest="400"
@@ -1276,14 +1304,21 @@
 
 
         <StackLayout>
+
+            <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
+                   TextColor="White"
+                   FontSize="10"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
             <Label x:Name="startLabel" Text="Information om anställda" IsVisible="true"
                            FontSize="25"
                            TextColor="Gold"
-                   Margin="0,20,0,0"
                            FontAttributes="Bold"
                    HorizontalOptions="Center"
                            >
             </Label>
+
+
 
             <Label x:Name="endLabel" Text="Registrera en ny anställd" IsVisible="false"
                    Margin="0,20,0,0"
@@ -1346,11 +1381,11 @@
                     </Frame>
                 </StackLayout>
 
-                <Frame BackgroundColor="Black" 
+                <Frame BackgroundColor="#262223" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
-                   BorderColor="Black"
+                   BorderColor="#262223"
                    WidthRequest="410"
                    Grid.Row="2">
                     <StackLayout>
@@ -1719,6 +1754,14 @@
                            Text="Språk Inställningar"/>
 
 
+            <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
+                   TextColor="White"
+                   FontSize="10"
+                   HorizontalOptions="Center"
+                   Grid.Column="1"
+                   FontAttributes="Bold"/>
+
+
 
             <Frame BorderColor="Gold"
                    Grid.Column="1"
@@ -1750,7 +1793,7 @@
                 </Grid>
 
             </Frame>
-            <Frame BackgroundColor="Black" 
+            <Frame BackgroundColor="#262223" 
                    Grid.Column="1"
                    HeightRequest="400"
                    CornerRadius="10"
