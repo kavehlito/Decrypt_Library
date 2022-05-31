@@ -1,7 +1,6 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System.Collections.Generic;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +25,7 @@ namespace Decrypt_Library.Views
         private async void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItemFromList = (Product)e.Item;
+
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
         }
