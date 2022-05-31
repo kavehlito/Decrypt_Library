@@ -72,7 +72,7 @@ namespace Decrypt_Library
             {
                 if (book.EndDate == null)
                 {
-                    var endDateTime = EntityframeworkBookHistory.SetEndDate(book.ID);
+                    var endDateTime = EntityframeworkBookHistory.SetEndDate((int)book.ID);
 
                     if (endDateTime != null) book.EndDate = endDateTime;
                     else

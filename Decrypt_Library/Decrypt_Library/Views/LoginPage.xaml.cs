@@ -101,6 +101,7 @@ namespace Decrypt_Library.Views
                     Page loanPage = new Loan();
                     Page returnProductPage = new ReturnProduct();
                     var homePage = new MainPage();
+                    
 
                     returnProductPage.Title = "Lämna tillbaka";
                     returnProductPage.TabIndex = 8;
@@ -111,6 +112,7 @@ namespace Decrypt_Library.Views
                     homePage.Children.Add(adminPage);
                     homePage.Children.Add(loanPage);
                     homePage.Children.Add(returnProductPage);
+                    
 
                     await Navigation.PushModalAsync(homePage);
                 }

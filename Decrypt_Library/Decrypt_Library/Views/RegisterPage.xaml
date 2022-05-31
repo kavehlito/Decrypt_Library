@@ -62,7 +62,7 @@
                    x:Name="registerFrame"
                    WidthRequest="410">
 
-                <ScrollView VerticalScrollBarVisibility="Never"
+                <ScrollView VerticalScrollBarVisibility="Always"
                             >
 
                     <Grid>
@@ -319,7 +319,7 @@
                                        FontAttributes="Bold"
                                        FontSize="8"
                                        AbsoluteLayout.LayoutBounds="40,-5,300,20"
-                                       Text="Genom att checka i boxen så accepterar du att Littecke bestämmer allting alltid"/>
+                                       Text="Genom att checka i boxen så godkänner du att personuppgifter sparas enligt Datainspektionens regler om GDPR"/>
 
                             </AbsoluteLayout>
 

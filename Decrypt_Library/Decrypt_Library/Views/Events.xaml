@@ -57,7 +57,7 @@
                             <ListView x:Name="eventList"
                               HasUnevenRows="False"
                             
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               ItemTapped="eventList_ItemTapped"
                               >
                                 <ListView.ItemTemplate>

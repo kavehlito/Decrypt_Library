@@ -41,7 +41,7 @@
                    Margin="0,20,0,0"
                    Grid.Column="1">
 
-                <ScrollView VerticalScrollBarVisibility="Never">
+                <ScrollView VerticalScrollBarVisibility="Always">
 
                     <StackLayout>
 

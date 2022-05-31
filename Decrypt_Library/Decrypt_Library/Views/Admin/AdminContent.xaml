@@ -162,7 +162,7 @@
                                BackgroundColor="Black"
                                >
                             <ListView x:Name="groupedList"
-                                      VerticalScrollBarVisibility="Never"
+                                      VerticalScrollBarVisibility="Always"
                                       HasUnevenRows="False"
                                       RefreshControlColor="Black"
                                       SeparatorVisibility="None"

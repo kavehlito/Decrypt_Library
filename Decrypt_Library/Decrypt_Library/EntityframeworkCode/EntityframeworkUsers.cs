@@ -205,7 +205,7 @@ namespace Decrypt_Library.EntityFrameworkCode
         }
         // Remove book from favoritelist
 
-        public static void DeleteFavorite(int selectedId)
+        public static void DeleteFavorite(int? selectedId)
         {
             using (var db = new Decrypt_LibraryContext())
             {

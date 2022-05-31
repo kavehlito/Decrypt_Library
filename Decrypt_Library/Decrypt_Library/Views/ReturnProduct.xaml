@@ -66,7 +66,7 @@
                         </StackLayout>
 
                         <ListView x:Name="ProductList"
-                              VerticalScrollBarVisibility="Never"
+                              VerticalScrollBarVisibility="Always"
                               IsVisible="true"
                               >
                             <ListView.ItemTemplate>

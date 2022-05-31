@@ -317,6 +317,14 @@ namespace Decrypt_Library.Readers
             return true;
         }
 
+        public static bool ReadDateTime2(string userInput, out DateTime date)
+        {
+            if (!DateTime.TryParseExact(userInput, "yyyy/MM/dd hh:mm tt", null, DateTimeStyles.None, out date))
+                return false;
+
+            return true;
+        }
+
     }
 }
 
