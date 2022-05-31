@@ -139,7 +139,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
                 foreach (var item in mostRead)
                 {
-                    topfiveList.AddRange(products.Where(p => p.Id == item.ID).ToList());
+                    topfiveList.AddRange(products.Where(p => p.Id == item.ID).Where(c => c.HiddenProduct == false).ToList());
                 }
 
                 return topfiveList.ToList();
