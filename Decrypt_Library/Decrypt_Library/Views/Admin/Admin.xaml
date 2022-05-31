@@ -234,7 +234,7 @@
                                                 <StackLayout>
 
                                                     <StackLayout Orientation="Horizontal">
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        WidthRequest="175"
                                                    Padding="0">
@@ -256,7 +256,7 @@
                                                             </Entry>
                                                         </Frame>
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        Margin="15,0,0,0"
                                                        WidthRequest="175"
@@ -282,7 +282,7 @@
                                                     <StackLayout Orientation="Horizontal" 
                                                              Margin="0,15,0,0">
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                            WidthRequest="175"
                                                    Padding="0">
@@ -307,7 +307,7 @@
                                                         </Frame>
 
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        Margin="15,0,0,0"
                                                            
@@ -333,7 +333,7 @@
 
                                                     <StackLayout Orientation="Horizontal" 
                                                              Margin="0,15,0,0">
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        WidthRequest="175"
                                                    Padding="0">
@@ -354,7 +354,7 @@
 
                                                         </Frame>
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        Margin="15,0,0,0"
                                                        CornerRadius="15"
                                                        WidthRequest="175"
@@ -378,7 +378,7 @@
 
                                                     <StackLayout Orientation="Horizontal" 
                                                              Margin="0,70,0,0">
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        WidthRequest="120"
                                                    Padding="0">
@@ -393,7 +393,7 @@
 
                                                         </Frame>
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        WidthRequest="120"
                                                    Padding="0">
@@ -409,7 +409,7 @@
 
 
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        WidthRequest="120"
                                                    Padding="0">
@@ -426,7 +426,7 @@
 
                                                     <StackLayout Orientation="Horizontal" 
                                                              Margin="0,15,0,0">
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                        WidthRequest="175"
                                                    Padding="0">
@@ -439,7 +439,7 @@
                                                         </Frame>
 
 
-                                                        <Frame BorderColor="Black"
+                                                        <Frame BorderColor="#262223"
                                                        CornerRadius="15"
                                                            Margin="15,0,0,0"
                                                        WidthRequest="175"
@@ -534,7 +534,7 @@
                      
                                                     <AbsoluteLayout>
 
-                                                        <Frame AbsoluteLayout.LayoutBounds="100,-10,20,20"
+                                                        <Frame AbsoluteLayout.LayoutBounds="100,0,20,20"
                                                                Padding="0"
                                                                BackgroundColor="White"
                                                                CornerRadius="100">
@@ -547,7 +547,7 @@
 
                                                         </Frame>
 
-                                                        <Frame AbsoluteLayout.LayoutBounds="215,-10,20,20"
+                                                        <Frame AbsoluteLayout.LayoutBounds="215,0,20,20"
                                                                Padding="0"
                                                                BackgroundColor="White"
                                                                CornerRadius="100">
@@ -560,7 +560,7 @@
 
                                                         </Frame>
 
-                                                        <Frame AbsoluteLayout.LayoutBounds="345,-10,20,20"
+                                                        <Frame AbsoluteLayout.LayoutBounds="345,0,20,20"
                                                                Padding="0"
                                                                BackgroundColor="White"
                                                                CornerRadius="100">
