@@ -1,12 +1,5 @@
-﻿using Decrypt_Library.EntityFrameworkCode;
-using Decrypt_Library.Models;
-using Decrypt_Library.Views.Admin;
+﻿using Decrypt_Library.Models;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -29,7 +22,7 @@ namespace Decrypt_Library.Views
         }
         protected override void OnAppearing()
         {
-            if(UserLogin.thisUser != null)
+            if (UserLogin.thisUser != null)
             {
                 Headline.IsVisible = false;
                 loginFrame.IsVisible = false;
@@ -64,18 +57,18 @@ namespace Decrypt_Library.Views
         private async void LogIn_Clicked(object sender, EventArgs e)
         {
 
-            if (Password.Text == null || SSN.Text == null) { Password.Text = "0"; SSN.Text = "0"; }  
+            if (Password.Text == null || SSN.Text == null) { Password.Text = "0"; SSN.Text = "0"; }
             Int64.TryParse(SSN.Text.ToString(), out long ssn);
-            var password = Password.Text.ToString(); 
+            var password = Password.Text.ToString();
 
             var sucess = UserLogin.CheckUserNameAndPassword(ssn, password);
             if (!sucess) Error.IsVisible = true;
-            
+
             SSN.Text = null;
             Password.Text = null;
 
-            if (sucess) 
-            { 
+            if (sucess)
+            {
                 Test.IsVisible = true;
                 Test.Text = $"{UserLogin.thisUser.UserName} är nu inloggad";
                 SSN.IsVisible = false;
@@ -89,19 +82,20 @@ namespace Decrypt_Library.Views
 
                 DelayedProduct();
 
-                if(UserLogin.thisUser.UserTypeId == 3)
+                if (UserLogin.thisUser.UserTypeId == 3)
                 {
-                    var homePage = new MainPage();
+                    var mainPage = new MainPage();
+                    var homePage = new NavigationPage(mainPage);
                     await Navigation.PushModalAsync(homePage);
                 }
 
                 if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
                 {
+                    var mainPage = new MainPage();
                     Page adminPage = new AdminPage();
                     Page loanPage = new Loan();
                     Page returnProductPage = new ReturnProduct();
-                    var homePage = new MainPage();
-                    
+                    var homePage = new NavigationPage(mainPage);
 
                     returnProductPage.Title = "Lämna tillbaka";
                     returnProductPage.TabIndex = 8;
@@ -109,10 +103,9 @@ namespace Decrypt_Library.Views
                     adminPage.TabIndex = 5;
                     loanPage.Title = "Låna";
                     loanPage.TabIndex = 7;
-                    homePage.Children.Add(adminPage);
-                    homePage.Children.Add(loanPage);
-                    homePage.Children.Add(returnProductPage);
-                    
+                    mainPage.Children.Add(adminPage);
+                    mainPage.Children.Add(loanPage);
+                    mainPage.Children.Add(returnProductPage);
 
                     await Navigation.PushModalAsync(homePage);
                 }
@@ -144,7 +137,7 @@ namespace Decrypt_Library.Views
 
         private async void ForgotPassword_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Återställning av lösenord","Konatakta administratör eller prata med bibliotekarie", "OK");
+            await DisplayAlert("Återställning av lösenord", "Konatakta administratör eller prata med bibliotekarie", "OK");
         }
     }
 }

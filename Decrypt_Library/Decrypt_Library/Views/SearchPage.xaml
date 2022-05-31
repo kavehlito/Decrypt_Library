@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Decrypt_Library.Views.SearchPage"
-              BackgroundImageSource="darkbackground.jpg">
+             BackgroundImageSource="darkbackground.jpg">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>

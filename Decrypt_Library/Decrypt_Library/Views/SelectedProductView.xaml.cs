@@ -125,7 +125,6 @@ namespace Decrypt_Library.Views
             reviewEntry_Completed(sender, e);
         }
 
-        // When tapping an item in the list user gets directed to Loan page to complete the lending of the book
         private async void Recommendations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItemFromList = (Product)e.Item;

@@ -135,7 +135,7 @@ namespace Decrypt_Library.Views
             loanCard.IsVisible = true;
         }
 
-        private void FavoriteButton_Pressed(object sender, EventArgs e)         // longer list
+        private void FavoriteButton_Pressed(object sender, EventArgs e)
         {
             favoriteList.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
 

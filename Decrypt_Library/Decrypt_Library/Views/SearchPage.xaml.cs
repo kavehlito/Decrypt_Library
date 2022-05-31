@@ -1,9 +1,9 @@
 ﻿using Decrypt_Library.EntityFrameworkCode;
 using Decrypt_Library.Models;
 using System.Collections.Generic;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
 
 namespace Decrypt_Library.Views
 {
@@ -11,21 +11,51 @@ namespace Decrypt_Library.Views
 
     public partial class SearchPage : ContentPage
     {
+        private List<Product> _currentList = new List<Product>();
+
         public SearchPage()
         {
             InitializeComponent();
-            //ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+            SetList(EntityframeworkProducts.ShowAllProducts());
             this.BindingContext = this;
+        }
+
+        private void SetList(List<Product> value)
+        {
+            _currentList = value;
+            ProductList.ItemsSource = value;
+            NoResultCheck();
+        }
+        private void NoResultCheck()
+        {
+          if (_currentList.Count == 0)
+            {
+                mySearch.Text = "Din sökning gav inget resultat...";
+            }
+            else
+            {
+                mySearch.Text = string.Empty;
+            }
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ProductList.ItemsSource = EntityframeworkProducts.ShowSearchedProduct(e.NewTextValue);
+            if (e.NewTextValue.Length == 0)
+            {
+                SetList(EntityframeworkProducts.ShowAllProducts());
+            }
+            else
+            {
+                var result = _currentList.Where(p => p.Title.ToLower().Contains(e.NewTextValue.ToLower()) || p.AuthorName.ToLower().Contains(e.NewTextValue.ToLower())).ToList();
+                SetList(result);
+            }
+            NoResultCheck();
         }
 
         private async void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItemFromList = (Product)e.Item;
+
             await Navigation.PushAsync(new SelectedProductView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
         }
@@ -67,20 +97,15 @@ namespace Decrypt_Library.Views
                 media.Add(2);
             if (checkbox15.IsChecked)
                 media.Add(3);
-            ProductList.ItemsSource = EntityframeworkCategories.Checkboxes(category, age, media);
 
-            var alternative = EntityframeworkCategories.Checkboxes(category, age, media);
-
-            /*   if (alternative.Count == 0 || )
-                {   
-                    mySearch.Text = "Din sökning gav inget resultat...";
-                    mySearch.Opacity = 1;
-                }
-                else
-                {
-                    mySearch.Opacity = 0;
-                    ProductList.ItemsSource = alternative;
-                }  */
+            if(category.Count == 0 && age.Count == 0 && media.Count == 0)
+            {
+                SetList(EntityframeworkProducts.ShowAllProducts());
+            }
+            else
+            {
+                SetList(EntityframeworkCategories.Checkboxes(category, age, media));
+            }
         }
     }
 }
