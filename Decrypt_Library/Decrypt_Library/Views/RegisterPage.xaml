@@ -242,7 +242,7 @@
                                            IsPassword="True"
                                        x:Name="confirmPassword">
                                         <Entry.Behaviors>
-                                            <behaviors:PasswordValidationBehavior/>
+                                            <behaviors:ConfirmPasswordValidationBehavior/>
                                         </Entry.Behaviors>
                                     </Entry>
                                 </Frame>

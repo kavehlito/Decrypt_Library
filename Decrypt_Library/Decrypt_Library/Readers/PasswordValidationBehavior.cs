@@ -31,6 +31,7 @@ namespace Decrypt_Library.Readers
             if (Regex.IsMatch(e.NewTextValue, IdPattern))
             {
                 userEntry.Text = e.NewTextValue;
+                ConfirmPasswordValidationBehavior._oldpassword = e.NewTextValue;
                 userEntry.BackgroundColor = Color.White;
                 AdminPage.correctPassword = true;
                 RegisterPage._correctPassword = true;
