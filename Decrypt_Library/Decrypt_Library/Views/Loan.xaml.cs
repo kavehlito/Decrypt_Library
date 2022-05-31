@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Decrypt_Library.EntityFrameworkCode;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Decrypt_Library.EntityFrameworkCode;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -53,13 +49,13 @@ namespace Decrypt_Library.Views
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
 
             var allUserList = EntityframeworkUsers.ShowAllUsers();
-            
+
             foreach (var item in allUserList)
             {
-                if (item.Id == userId && item.Password == Password.Text) { success = true; user = item; } 
+                if (item.Id == userId && item.Password == Password.Text) { success = true; user = item; }
             }
 
-            if (!success) {DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
+            if (!success) { DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
             else
             {
                 userIdFrame.IsVisible = false;
@@ -110,7 +106,7 @@ namespace Decrypt_Library.Views
             Add.IsVisible = true;
             AddNewProduct.IsVisible = false;
             CheckOut.IsVisible = false;
-            
+
         }
 
         private void CheckOut_Clicked(object sender, EventArgs e)
@@ -121,24 +117,44 @@ namespace Decrypt_Library.Views
             CheckOut.IsVisible = false;
             StartAgain.IsVisible = true;
             Cart.cartList.Clear();
+
         }
 
         private async void StartAgain_Clicked(object sender, EventArgs e)
         {
             Cart.cartList.Clear();
-            var tab = new MainPage();
-            tab.CurrentPage = tab.Children[7];
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+            if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
+            {
+                var mainPage = new MainPage();
+                Page adminPage = new AdminPage();
+                Page loanPage = new Loan();
+                Page returnProductPage = new ReturnProduct();
+                var homePage = new NavigationPage(mainPage);
+
+                returnProductPage.Title = "Lämna tillbaka";
+                returnProductPage.TabIndex = 8;
+                adminPage.Title = "Bibliotekarie";
+                adminPage.TabIndex = 5;
+                loanPage.Title = "Låna";
+                loanPage.TabIndex = 7;
+                mainPage.Children.Add(adminPage);
+                mainPage.Children.Add(loanPage);
+                mainPage.Children.Add(returnProductPage);
+
+                await Navigation.PushModalAsync(homePage);
+            }
+
         }
-    
+
+
         private void Button_Clicked(object sender, EventArgs e)
         {
             if (StartAgain.IsVisible) { DisplayAlert("Felmeddelande", "Utlåningsprocessen är redan klar, går ej att avbryta", "Ok"); return; }
             Button btn = sender as Button;
             CartList loanList = btn.BindingContext as CartList;
             Cart.DeleteItemInCart(loanList.Id);
-            
+
             ProductList.ItemsSource = null;
 
             ProductList.ItemsSource = Cart.cartList;
@@ -190,7 +206,6 @@ namespace Decrypt_Library.Views
                 mainPage.Children.Add(returnProductPage);
 
                 await Navigation.PushModalAsync(homePage);
-                
             }
 
         }
