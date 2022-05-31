@@ -120,7 +120,6 @@ namespace Decrypt_Library.Views
         }
         private async void LogOut_Clicked(object sender, EventArgs e)
         {
- 
             UserLogin.LogOutUsers();
             var tab = new MainPage();
             tab.CurrentPage = tab.Children[2];

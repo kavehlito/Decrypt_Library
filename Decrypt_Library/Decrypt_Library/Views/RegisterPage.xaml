@@ -18,7 +18,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-
             </Grid.ColumnDefinitions>
 
             <AbsoluteLayout Grid.Column="1"

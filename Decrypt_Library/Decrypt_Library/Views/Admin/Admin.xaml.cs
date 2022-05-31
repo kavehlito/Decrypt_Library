@@ -203,7 +203,6 @@ namespace Decrypt_Library.Views
             tappedBook.Text = selectedProductToChange.Title;
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
 
-
             if (!shelfChangeTab.IsVisible)
             {
                 shelfChangeTab.IsVisible = true;
@@ -452,10 +451,8 @@ namespace Decrypt_Library.Views
                     EntityframeworkProducts.CreateProduct(product);
 
                     product = new Product();
-                    var tab = new MainPage();
-                    tab.CurrentPage = tab.Children[5];
-
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+                    
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new AdminPage());
 
                 }
                 else
@@ -1144,6 +1141,16 @@ namespace Decrypt_Library.Views
             Button btn = sender as Button;
             MyPagesProductList book = btn.BindingContext as MyPagesProductList;
             await DisplayAlert($"{book.Title} är försenad", "En påminnelse har skickats till kund", "OK");
+        }
+
+        private void NumberOfProducts_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void numberOfProducts_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

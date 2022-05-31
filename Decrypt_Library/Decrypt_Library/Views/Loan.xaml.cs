@@ -173,10 +173,8 @@ namespace Decrypt_Library.Views
                 return;
             }
             Cart.cartList.Clear();
-            var tab = new MainPage();
-            tab.CurrentPage = tab.Children[7];
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new MainPage());
 
         }
     }

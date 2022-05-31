@@ -32,10 +32,10 @@
 
                 <StackLayout>
                     <StackLayout>
-                        <Image Source="decrypt6.png"
+                        <Image Source="decrypt8.png"
                                Scale="0.7"/>
 
-                        <Label TextColor="Gold"
+                        <Label TextColor="MediumPurple"
                            FontSize="15"
                            FontAttributes="Bold"
                            Margin="15,0,0,0"
@@ -44,7 +44,7 @@
                         <Frame
                         Padding="0"
                         CornerRadius="20"
-                        BackgroundColor="Gold"
+                        BackgroundColor="MediumPurple"
                          HorizontalOptions="Center">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -53,7 +53,7 @@
                                 <Button x:Name="MyProfile"
                                         Text="Profil"
                                         Clicked="MyProfile_Clicked"
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                     FontSize="12"
                                     Grid.Column="0"
                                     BorderColor="Transparent"
@@ -65,7 +65,7 @@
                                     FontSize="12"
                                         Clicked="MyLoan_Clicked"
                                     Grid.Column="1"    
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                         FontAttributes="Bold"/>
 
                                 <Button x:Name="MyReservation"
@@ -74,7 +74,7 @@
                                     FontSize="12"
                                     BorderColor="Transparent"
                                     Grid.Column="2"    
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                         FontAttributes="Bold"/>
 
                                 <Button x:Name="MyLoanHistory"
@@ -83,7 +83,7 @@
                                     FontSize="12"
                                     BorderColor="Transparent"
                                     Grid.Column="3"    
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                         FontAttributes="Bold"/>
 
                             </Grid>
@@ -247,7 +247,7 @@
                                                             <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                             <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                             <Button x:Name="removeButton" Text="Ta bort från listan" IsVisible="true" Clicked="RemoveButton_Clicked"
-                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
                                                     CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
                                                             </Button>
                                                         <BoxView BackgroundColor="White"
@@ -292,7 +292,7 @@
                                                 AbsoluteLayout.LayoutBounds="0,60,355,30"
                                                 Text="Bekräfta ditt val"
                                             Clicked="NewPasswordConfirmed"
-                                                BackgroundColor="Gold"/>
+                                                BackgroundColor="MediumPurple"/>
 
 
 
@@ -371,7 +371,7 @@
                                             <Label Text="{Binding EndDate,StringFormat= 'Återlämnas: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                 <Label Text="{Binding ReservationNumber,StringFormat= 'Köplats: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                 <Button x:Name="removeButton" Text="Radera" IsVisible="true" Clicked="RemoveButton_Clicked"
-                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
                                                     CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
 
                                             </Button>
@@ -424,7 +424,7 @@
                                             <Label Text="{Binding StartDate, StringFormat= 'Utlånad: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                             <Label Text="{Binding EndDate, StringFormat= 'Återlämnas senast: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                 <Button x:Name="postpone" Text="Förläng lånetid" IsVisible="true" Clicked="Postpone_Clicked"
-                                                    BackgroundColor="Gold" TextColor="Black" FontAttributes="Bold"
+                                                    BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
                                                     CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
 
                                                 </Button>
