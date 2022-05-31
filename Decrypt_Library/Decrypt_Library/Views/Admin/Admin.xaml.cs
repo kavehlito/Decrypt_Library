@@ -319,7 +319,7 @@ namespace Decrypt_Library.Views
         private async void CancelProductButton_Clicked(object sender, EventArgs e)
         {
             var tab = new MainPage();
-            tab.CurrentPage = tab.Children[5];
+            tab.CurrentPage = tab.Children[this.CurrentPage.TabIndex];
 
             await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
@@ -451,8 +451,12 @@ namespace Decrypt_Library.Views
                     EntityframeworkProducts.CreateProduct(product);
 
                     product = new Product();
-                    
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new AdminPage());
+
+
+                      var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
 
                 }
                 else

@@ -132,7 +132,10 @@ namespace Decrypt_Library.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage());
+            var tab = new MainPage();
+            tab.CurrentPage = tab.Children[5];
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
         }
 
         private async void ForgotPassword_Clicked(object sender, EventArgs e)
