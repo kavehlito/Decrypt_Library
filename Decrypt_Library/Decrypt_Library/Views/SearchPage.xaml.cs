@@ -3,6 +3,7 @@ using Decrypt_Library.Models;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
 
 namespace Decrypt_Library.Views
 {
