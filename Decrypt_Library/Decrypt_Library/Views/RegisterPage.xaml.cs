@@ -32,7 +32,9 @@ namespace Decrypt_Library.Views
                                             && _correctPassword
                                             && _correctEmail
                                             && _correctPhone
-                                            && _correctSSN;
+                                            && _correctSSN
+                                            && _correctConfirmPassword;
+
 
                 if (completeRegistration && Terms.IsChecked)
                 {
