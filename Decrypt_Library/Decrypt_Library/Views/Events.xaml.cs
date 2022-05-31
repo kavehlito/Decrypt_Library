@@ -23,7 +23,6 @@ namespace Decrypt_Library.Views
             var selectedItemFromList = (Models.Event)e.Item;
             await Navigation.PushAsync(new SelectedEventView(selectedItemFromList.Id));
             ((ListView)sender).SelectedItem = null;
-
         }
     }
 }

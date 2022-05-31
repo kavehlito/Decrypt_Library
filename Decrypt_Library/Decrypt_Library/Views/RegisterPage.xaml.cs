@@ -63,6 +63,17 @@ namespace Decrypt_Library.Views
                         }
                     }
 
+          
+
+                    foreach (var item in EntityframeworkUsers.ShowAllUsers())
+                    {
+                        if (item.UserName.ToLower() == user.UserName.ToLower())
+                        {
+                            await DisplayAlert("Error", $"Användare med Email: {user.Email} finns redan i databasen", "OK");
+                            return;
+                        }
+                    }
+
                     user.Phonenumber = convertedPhoneNumber;
                     user.Email = Email.Text;
                     user.Ssn = convertedSSN;
