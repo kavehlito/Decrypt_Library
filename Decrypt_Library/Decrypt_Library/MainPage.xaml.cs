@@ -29,6 +29,9 @@ namespace Decrypt_Library
             }
             else
                 this.Children.Add(registerPage);
+
         }
+
+
     }
 }

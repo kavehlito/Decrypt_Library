@@ -316,12 +316,50 @@ namespace Decrypt_Library.Views
                 return;
             }
         }
-        private async void CancelProductButton_Clicked(object sender, EventArgs e)
+        private void ResetAllFields()
         {
-            var tab = new MainPage();
-            tab.CurrentPage = tab.Children[this.CurrentPage.TabIndex];
+            entryTitle.Text = "";
+            entryTitle.BackgroundColor = Color.White;
+            
+            entryISBN.Text = "";
+            entryISBN.BackgroundColor = Color.White;
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+            entryAuthor.Text = "";
+            entryAuthor.BackgroundColor = Color.White;
+
+            changedTitleEntry.Text = "";
+            changedTitleEntry.BackgroundColor = Color.White;
+
+            entryDescription.Text = "";
+            entryDescription.BackgroundColor = Color.White;
+
+            entryPublisher.Text = "";
+            entryPublisher.BackgroundColor = Color.White;
+
+            entryDate.Text = "";
+            entryDate.BackgroundColor = Color.White;
+
+            numberOfProducts.Text = "";
+
+            entryPages.Text = "";
+            entryPages.BackgroundColor = Color.White;
+
+            entryNarrator.Text = "";
+            entryNarrator.BackgroundColor = Color.White;
+
+            entryPlaytime.Text = "";
+            entryPlaytime.BackgroundColor = Color.White;
+
+            shelfPicker.SelectedIndex = -1;
+            categoryPicker.SelectedIndex = -1;
+            languagePicker.SelectedIndex = -1;
+            audiencePicker.SelectedIndex = -1;
+            mediaPicker.SelectedIndex = -1;
+
+        }
+        private void CancelProductButton_Clicked(object sender, EventArgs e)
+        {
+            ResetAllFields();
         }
 
         private async void CancelEditProductButton_Clicked(object sender, EventArgs e)
@@ -339,7 +377,7 @@ namespace Decrypt_Library.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region Complete product add
-        private async void CompleteProduct_Pressed(object sender, EventArgs e)
+        private void CompleteProduct_Pressed(object sender, EventArgs e)
         {
 
             int pagesInput = 0;
@@ -348,27 +386,27 @@ namespace Decrypt_Library.Views
             DateTime date = DateTime.Now;
 
             if (shelfPicker.SelectedIndex != -1)
-                shelfPicker.BackgroundColor = Color.YellowGreen;
+                shelfPicker.BackgroundColor = Color.White;
             else
                 shelfPicker.BackgroundColor = Color.IndianRed;
 
             if (categoryPicker.SelectedIndex != -1)
-                categoryPicker.BackgroundColor = Color.YellowGreen;
+                categoryPicker.BackgroundColor = Color.White;
             else
                 categoryPicker.BackgroundColor = Color.IndianRed;
 
             if (languagePicker.SelectedIndex != -1)
-                languagePicker.BackgroundColor = Color.YellowGreen;
+                languagePicker.BackgroundColor = Color.White;
             else
                 languagePicker.BackgroundColor = Color.IndianRed;
 
             if (audiencePicker.SelectedIndex != -1)
-                audiencePicker.BackgroundColor = Color.YellowGreen;
+                audiencePicker.BackgroundColor = Color.White;
             else
                 audiencePicker.BackgroundColor = Color.IndianRed;
 
             if (mediaPicker.SelectedIndex != -1)
-                mediaPicker.BackgroundColor = Color.YellowGreen;
+                mediaPicker.BackgroundColor = Color.White;
             else
                 mediaPicker.BackgroundColor = Color.IndianRed;
 
@@ -450,20 +488,19 @@ namespace Decrypt_Library.Views
 
                     EntityframeworkProducts.CreateProduct(product);
 
+                    ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
+
                     product = new Product();
 
-
-                      var tab = new MainPage();
-            tab.CurrentPage = tab.Children[5];
-
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+                    ResetAllFields();
 
                 }
                 else
                     return;
             }
-            catch
+            catch (Exception exx)
             {
+                DisplayAlert("Error", $"{exx.Message}", "OK");
                 return;
             }
         }
