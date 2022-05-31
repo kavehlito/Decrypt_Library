@@ -621,7 +621,7 @@
                                                         <Frame BorderColor="Black"
                                                        CornerRadius="15"
                                                            Margin="15,0,0,0"
-                                                               AbsoluteLayout.LayoutBounds="130,60,130,30"
+                                                               AbsoluteLayout.LayoutBounds="125,60,180,30"
                                                    Padding="0">
 
                                                             <Entry

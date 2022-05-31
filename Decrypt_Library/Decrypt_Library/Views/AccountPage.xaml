@@ -97,9 +97,12 @@
                                Padding="0"
                                IsVisible="False"
                                x:Name="profileBar"
-                                   HeightRequest="30">
+                                   HeightRequest="70">
 
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
                                 <Button Text="Se din profil"
                                             BackgroundColor="White"
