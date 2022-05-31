@@ -658,11 +658,11 @@ namespace Decrypt_Library.Views
 
                 if (Readers.Readers.StringReader(entryLanguageCreatetab3.Text))
                 {
+                    language = new Language();
                     language.Languages = entryLanguageCreatetab3.Text;
                     EntityFrameworkCode.EntityframeworkLanguages.CreateLanguage(language);
-                    languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
                     createLanguageBar.IsVisible = false;
-                    language = new Language();
+                    languageList.ItemsSource = EntityFrameworkCode.EntityframeworkLanguages.ShowAllLanguages();
                 }
             }
             catch (Exception exception)
