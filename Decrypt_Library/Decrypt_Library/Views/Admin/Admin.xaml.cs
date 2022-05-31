@@ -486,7 +486,13 @@ namespace Decrypt_Library.Views
                     product.HiddenProduct = hiddenProduct.IsChecked;
                     product.Status = inStock.IsChecked;
 
-                    EntityframeworkProducts.CreateProduct(product);
+                    var test = int.TryParse(numberOfProducts.Text, out int numberOfProductsInt);
+                    if (numberOfProductsInt == 0) numberOfProductsInt = 1;
+
+                    for (int i = 0; i < numberOfProductsInt; i++)
+                    {
+                        EntityframeworkProducts.CreateProduct(product);
+                    }
 
                     ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
 

@@ -137,7 +137,8 @@
 
                         <StackLayout x:Name="profile" 
                                  Margin="10,0,0,0"
-                                 IsVisible="True">
+                                 IsVisible="True"
+                                     HeightRequest="400">
 
                             <Label x:Name="profileText" 
                                    IsVisible="False"
@@ -156,8 +157,8 @@
 
                                         <Grid>
                                             <Image Source="card2.jpg"
-                                       Aspect="AspectFill"
-                                       />
+                                                   Aspect="AspectFill"
+                                                                     />
 
                                             <AbsoluteLayout>
                                                 <Label Text="Decryptbiblioteket"
@@ -229,40 +230,37 @@
                             <Frame IsVisible="False"
                                    BackgroundColor="Transparent"
                                    Padding="0"
-                                   x:Name="FavoriteTab">
+                                   x:Name="FavoriteTab"
+                                  
+                                   >
 
-                                    <ListView x:Name="favoriteList" 
-                                  Margin="0,10,0,0"
-                              IsVisible="true">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-
-                                                <StackLayout Padding="0">
-                                                    
-                                                    <StackLayout Orientation="Horizontal">
-                                                            <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="Start" WidthRequest="100"/>
-                                                        <StackLayout>
-                                                            <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" IsVisible="false" />
-                                                            <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                            <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                            <Button x:Name="removeButton" Text="Ta bort från listan" IsVisible="true" Clicked="RemoveButton_Clicked"
-                                                    BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
-                                                    CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
-                                                            </Button>
+                                <ListView x:Name="favoriteList" 
+                                              IsVisible="true"
+                                              Margin="0,10,0,0"
+                                              VerticalScrollBarVisibility="Always"
+                                              >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="Start" WidthRequest="100"/>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" IsVisible="false" />
+                                                        <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                        <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
+                                                        <Button x:Name="removeButton" Text="Ta bort från listan" IsVisible="true" Clicked="RemoveButton_Clicked"
+                                                                    BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
+                                                                    CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
+                                                        </Button>
                                                         <BoxView BackgroundColor="White"
-                                                     HeightRequest="3" >
+                                                                 HeightRequest="3" >
                                                         </BoxView>
                                                     </StackLayout>
-                                            
-                                                    </StackLayout>
                                                 </StackLayout>
-
                                             </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </Frame>
 
                             <Frame x:Name="changePassword"

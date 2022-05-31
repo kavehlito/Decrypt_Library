@@ -841,6 +841,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    
                                     <Frame Margin="0,10,0,0">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
