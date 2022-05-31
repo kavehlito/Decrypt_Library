@@ -13,7 +13,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             using (var db = new Decrypt_LibraryContext())
             {
-                products = db.Products.ToList();
+                products = db.Products.Where(x => x.HiddenProduct == false).ToList();
                 return products;
             }
         }
@@ -28,8 +28,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                     Id = prod.Id,
                                     Title = prod.Title,
                                     AuthorName = prod.AuthorName,
-                                    Isbn = prod.Isbn,
-                                    HiddenProduct = prod.HiddenProduct, 
+                                    Isbn = prod.Isbn
 
                                 }).ToList();
 

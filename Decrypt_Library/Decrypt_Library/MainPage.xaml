@@ -15,7 +15,7 @@
         <Views:LoginPage Title="Logga in" TabIndex="2" x:Name="loginPage"></Views:LoginPage>
         <Views:SearchPage Title="Sök" TabIndex="3"></Views:SearchPage>
         <Views:Events Title="Evenemang" TabIndex="4"></Views:Events>
-        <Views:RegisterPage Title="Registrera" TabIndex="6" x:Name="registerPage"></Views:RegisterPage>
+            <Views:RegisterPage Title="Registrera" TabIndex="6" x:Name="registerPage"></Views:RegisterPage>
 
 
     </TabbedPage.Children>
