@@ -24,23 +24,23 @@
                             IsVisible="false"
                             x:Name="registrationDoneFrame">
 
-                <Image Source="decrypt6.png"
+                <Image Source="decrypt8.png"
                    Grid.Column="1"
                                    Margin="0,-20,0,0"
                                Scale="0.4"/>
 
-                <Label TextColor="Gold"
+                <Label TextColor="MediumPurple"
                        FontAttributes="Bold"
                        AbsoluteLayout.LayoutBounds="290,150,200,30"
                        Text="Registreringen är nu klar!"/>
 
-                <Label TextColor="Gold"
+                <Label TextColor="MediumPurple"
                        FontAttributes="Bold"
                        AbsoluteLayout.LayoutBounds="285,170,200,30"
                        Text="Du skickas nu inloggningen"/>
 
                 <ProgressBar x:Name="refreshProgress"
-                             ProgressColor="Gold"
+                             ProgressColor="MediumPurple"
                        AbsoluteLayout.LayoutBounds="230,220,320,5"
                              
                              >
@@ -75,7 +75,7 @@
                                 />
 
                             <Label Text="Fyll i dina uppgifter"
-                               TextColor="Gold"
+                               TextColor="MediumPurple"
                                    FontSize="15"
                            AbsoluteLayout.LayoutBounds="20,105,200,30"
                                FontAttributes="Bold"
@@ -128,7 +128,7 @@
                         </AbsoluteLayout>
                         <StackLayout>
                             
-                            <Image Source="decrypt6.png"
+                            <Image Source="decrypt8.png"
                                    Margin="0,-20,0,0"
                                Scale="0.7"/>
 
@@ -324,14 +324,14 @@
                             </AbsoluteLayout>
 
                             <Frame Padding="0"
-                                   BackgroundColor="Gold"
+                                   BackgroundColor="MediumPurple"
                                    CornerRadius="20"
                                    IsClippedToBounds="True">
 
                                 <Grid>
                                     <Button Text="Registrera"
                                             FontSize="15"
-                                            BackgroundColor="Gold"
+                                            BackgroundColor="MediumPurple"
                                             FontAttributes="Bold"
                                             Grid.Column="0"
                                             Clicked="Entry_Completed"

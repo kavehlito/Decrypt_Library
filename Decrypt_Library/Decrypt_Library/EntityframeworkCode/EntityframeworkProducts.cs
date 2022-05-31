@@ -13,7 +13,7 @@ namespace Decrypt_Library.EntityFrameworkCode
 
             using (var db = new Decrypt_LibraryContext())
             {
-                products = db.Products.Where(x => x.HiddenProduct == false).ToList();
+                products = db.Products.ToList();
                 return products;
             }
         }
