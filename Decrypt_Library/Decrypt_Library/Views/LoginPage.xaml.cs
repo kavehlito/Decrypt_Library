@@ -89,6 +89,23 @@ namespace Decrypt_Library.Views
                     await Navigation.PushModalAsync(homePage);
                 }
 
+                if (UserLogin.thisUser.UserTypeId == 6)
+                {
+                    var mainPage = new MainPage();
+                    Page loanPage = new Loan();
+                    Page returnProductPage = new ReturnProduct();
+                    var homePage = new NavigationPage(mainPage);
+
+                    MainPage.userLogin = 6;
+
+                    returnProductPage.Title = "Lämna tillbaka";
+                    loanPage.Title = "Låna";
+                    mainPage.Children.Add(loanPage);
+                    mainPage.Children.Add(returnProductPage);
+
+                    await Navigation.PushModalAsync(homePage);
+                }
+
                 if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
                 {
                     var mainPage = new MainPage();
@@ -109,6 +126,8 @@ namespace Decrypt_Library.Views
 
                     await Navigation.PushModalAsync(homePage);
                 }
+
+
             }
         }
         private async void LogOut_Clicked(object sender, EventArgs e)

@@ -10,12 +10,14 @@
 
     <TabbedPage.Children>
 
-        <Views:AboutPage Title="Om oss" Padding="0" TabIndex="0"></Views:AboutPage>
-        <Views:AccountPage Title="Mina Sidor" TabIndex="1"></Views:AccountPage>
+        <Views:AboutPage Title="Om oss" Padding="0" TabIndex="0" x:Name="aboutpage"></Views:AboutPage>
+        <Views:AccountPage Title="Mina Sidor" TabIndex="1" x:Name="accountpage"></Views:AccountPage>
         <Views:LoginPage Title="Logga in" TabIndex="2" x:Name="loginPage"></Views:LoginPage>
-        <Views:SearchPage Title="Sök" TabIndex="3"></Views:SearchPage>
-        <Views:Events Title="Evenemang" TabIndex="4"></Views:Events>
-            <Views:RegisterPage Title="Registrera" TabIndex="6" x:Name="registerPage"></Views:RegisterPage>
+        <Views:SearchPage Title="Sök" TabIndex="3" x:Name="searchpage"></Views:SearchPage>
+        <Views:Events Title="Evenemang" TabIndex="4" x:Name="eventpage"></Views:Events>
+        <Views:RegisterPage Title="Registrera" TabIndex="6" x:Name="registerPage"></Views:RegisterPage>
+        
+        
 
     </TabbedPage.Children>
 </TabbedPage>

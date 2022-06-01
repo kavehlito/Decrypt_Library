@@ -30,7 +30,11 @@ namespace Decrypt_Library.Views
             ProductList.ItemsSource = null;
             NumberOfItem.IsVisible = false;
             Headline.IsVisible = false;
-            CancelButton.IsVisible = false;
+
+        }
+
+        protected override void OnAppearing()
+        {
 
         }
 
@@ -54,6 +58,9 @@ namespace Decrypt_Library.Views
             {
                 if (item.Id == userId && item.Password == Password.Text) { success = true; user = item; }
             }
+            
+    
+
 
             if (!success) { DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
             else
@@ -133,12 +140,24 @@ namespace Decrypt_Library.Views
                 var homePage = new NavigationPage(mainPage);
 
                 returnProductPage.Title = "Lämna tillbaka";
-                returnProductPage.TabIndex = 8;
                 adminPage.Title = "Bibliotekarie";
-                adminPage.TabIndex = 5;
                 loanPage.Title = "Låna";
-                loanPage.TabIndex = 7;
                 mainPage.Children.Add(adminPage);
+                mainPage.Children.Add(loanPage);
+                mainPage.Children.Add(returnProductPage);
+
+                await Navigation.PushModalAsync(homePage);
+            }
+
+            if(UserLogin.thisUser.UserTypeId == 6)
+            {
+                var mainPage = new MainPage();
+                Page loanPage = new Loan();
+                Page returnProductPage = new ReturnProduct();
+                var homePage = new NavigationPage(mainPage);
+
+                returnProductPage.Title = "Lämna tillbaka";
+                loanPage.Title = "Låna";
                 mainPage.Children.Add(loanPage);
                 mainPage.Children.Add(returnProductPage);
 
@@ -186,6 +205,22 @@ namespace Decrypt_Library.Views
                 return;
             }
             Cart.cartList.Clear();
+
+
+            if (UserLogin.thisUser.UserTypeId == 6)
+            {
+                var mainPage = new MainPage();
+                Page loanPage = new Loan();
+                Page returnProductPage = new ReturnProduct();
+                var homePage = new NavigationPage(mainPage);
+
+                returnProductPage.Title = "Lämna tillbaka";
+                loanPage.Title = "Låna";
+                mainPage.Children.Add(loanPage);
+                mainPage.Children.Add(returnProductPage);
+
+                await Navigation.PushModalAsync(homePage);
+            }
 
             if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
             {

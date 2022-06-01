@@ -48,6 +48,22 @@ namespace Decrypt_Library.Views
         private async void StartAgain_Clicked(object sender, EventArgs e)
         {
             Cart.cartList.Clear();
+
+            if (UserLogin.thisUser.UserTypeId == 6)
+            {
+                var mainPage = new MainPage();
+                Page loanPage = new Loan();
+                Page returnProductPage = new ReturnProduct();
+                var homePage = new NavigationPage(mainPage);
+
+                returnProductPage.Title = "Lämna tillbaka";
+                loanPage.Title = "Låna";
+                mainPage.Children.Add(loanPage);
+                mainPage.Children.Add(returnProductPage);
+
+                await Navigation.PushModalAsync(homePage);
+            }
+
             if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
             {
                 var mainPage = new MainPage();
