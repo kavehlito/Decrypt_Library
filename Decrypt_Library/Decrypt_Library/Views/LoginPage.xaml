@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
              x:Class="Decrypt_Library.Views.LoginPage"
              IconImageSource="login.png"
-             BackgroundColor="Black">
+             BackgroundColor="#262223">
     <ContentPage.Content>
         <StackLayout>
 
@@ -55,7 +55,7 @@
                                        CornerRadius="10"
                                        Grid.Row="2"
                                        Margin="0,50,0,0"
-                                       BorderColor="Black">
+                                       BorderColor="#262223">
 
                                     <StackLayout Padding="0" x:Name="loginFrame">
                                         <Frame Padding="0"
@@ -143,7 +143,7 @@
 
                     </StackLayout>
 
-                    <BoxView BackgroundColor="Black"
+                    <BoxView BackgroundColor="#262223"
                              x:Name="borderHide"
                              AbsoluteLayout.LayoutBounds="20,264,400,9"/>
 

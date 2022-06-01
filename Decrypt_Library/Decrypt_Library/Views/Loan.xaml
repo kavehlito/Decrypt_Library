@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="Black"
+             BackgroundColor="#262223"
              IconImageSource="book.png"
              x:Class="Decrypt_Library.Views.Loan">
     <ContentPage.Content>
@@ -23,8 +23,7 @@
 
 
             <StackLayout Grid.Column="1" Grid.Row="1">
-                <Frame BackgroundColor="Black"
-                   BorderColor="Black"
+                <Frame 
                    HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
@@ -32,7 +31,7 @@
                    WidthRequest="500">
 
 
-                    <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1"
+                    <StackLayout Grid.Column="1" Grid.Row="1"
                                  Margin="0,-40,0,0">
 
 
@@ -82,6 +81,7 @@
                            CornerRadius="20">
                             <Entry x:Name="Password" 
                                TextChanged="Password_TextChanged"
+                                   IsPassword="true"
                                Placeholder="Lösenord" 
                                FontAttributes="Bold"/>
                         </Frame>

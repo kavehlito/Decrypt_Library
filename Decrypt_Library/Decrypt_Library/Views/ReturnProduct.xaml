@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              IconImageSource="book.png"
+             BackgroundColor="#262223"
              x:Class="Decrypt_Library.Views.ReturnProduct">
     <ContentPage.Content>
 
-        <Grid BackgroundColor="black">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -23,8 +24,8 @@
 
 
             <StackLayout Grid.Column="1" Grid.Row="1">
-                <Frame BackgroundColor="Black"
-                   BorderColor="Black"
+                <Frame BackgroundColor="#262223"
+                   BorderColor="#262223"
                    HeightRequest="500"
                    Grid.Row="1"
                    CornerRadius="10"
@@ -32,7 +33,7 @@
                    WidthRequest="500">
 
 
-                    <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1"
+                    <StackLayout Grid.Column="1" Grid.Row="1"
                                  Margin="0,-40,0,0">
 
 
