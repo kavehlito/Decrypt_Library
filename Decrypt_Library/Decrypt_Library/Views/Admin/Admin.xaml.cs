@@ -668,6 +668,9 @@ namespace Decrypt_Library.Views
                 DisplayAlert("Error wrong input", "one of tha values were wrong", "ok");
             }
 
+            if (!EventEventTimeCorrect)
+                DisplayAlert("Error", "Tiden du mata in är inte giltig, glöm inte AM/PM på slutet!", "OK");
+
             EventEventInputsCorrect = EventEventNameCorrect
                                            && EventEventTimeCorrect
                                            && EventEventDescrptionCorrect;

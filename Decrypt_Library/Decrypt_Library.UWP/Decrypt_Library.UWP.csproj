@@ -135,7 +135,9 @@
     <Content Include="Berätta tre saker.jpg" />
     <Content Include="Björnen sover.jpg" />
     <Content Include="bluegradient.png" />
+    <Content Include="book.png" />
     <Content Include="card2.jpg" />
+    <Content Include="contact.png" />
     <Content Include="darkbackground.jpg" />
     <Content Include="decrypt6.png" />
     <Content Include="decrypt7.png" />
@@ -146,6 +148,7 @@
     <Content Include="Det blåser på månen.jpg" />
     <Content Include="Där kräftorna sjunger.jpg" />
     <Content Include="En vacker dag lämnar jag honom.jpg" />
+    <Content Include="Event.png" />
     <Content Include="Frost - En saga om två systrar Lätt att läsa.jpg" />
     <Content Include="gradient1.png" />
     <Content Include="Halva Malmö består av killar som dumpat mig.jpg" />
@@ -155,9 +158,14 @@
     <Content Include="Legenden om Sally Jones.jpg" />
     <Content Include="Ljudboken som inte ville ta slut  %28del 1%29.jpg" />
     <Content Include="Ljudboken som inte ville ta slut  %28del 2%29.jpg" />
+    <Content Include="login.png" />
+    <Content Include="minasidor.png" />
     <Content Include="Norrsken i skallen.jpg" />
+    <Content Include="Options2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="purplegradient.jpg" />
+    <Content Include="register.png" />
+    <Content Include="search.png" />
     <Content Include="Spegelmannen.jpg" />
     <Content Include="Svansar runt i djungeln.jpg" />
     <Content Include="swish.png" />

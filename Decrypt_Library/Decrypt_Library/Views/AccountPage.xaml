@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Name="accountPage"
+             IconImageSource="minasidor.png"
              BackgroundColor="Black"
              xmlns:behaviors="clr-namespace:Decrypt_Library.Readers"
              x:Class="Decrypt_Library.Views.AccountPage">

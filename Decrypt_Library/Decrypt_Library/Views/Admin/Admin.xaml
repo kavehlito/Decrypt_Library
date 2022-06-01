@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              Title="Admin Options"
             BarTextColor="White"
-            SelectedTabColor="Gold"
+            SelectedTabColor="MediumPurple"
             UnselectedTabColor="White"
+            IconImageSource="Options2.png"
             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
             xmlns:s="clr-namespace:Decrypt_Library.Views.Admin"
             windows:Page.ToolbarPlacement="Bottom"
@@ -928,7 +929,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <Label TextColor="Gold"
+            <Label TextColor="MediumPurple"
                    FontSize="25"
                    FontAttributes="Bold"
                    Grid.Row="0"
@@ -943,12 +944,12 @@
                          Grid.Row="1"
                          >
 
-                <Frame BorderColor="Gold"
+                <Frame BorderColor="MediumPurple"
                        Padding="0"
                        Grid.Column="1"
                        Grid.Row="2"
                        HorizontalOptions="CenterAndExpand"
-                       BackgroundColor="Gold"
+                       BackgroundColor="MediumPurple"
                        CornerRadius="20"
                        WidthRequest="350"
                        Margin="0,10,0,0"
@@ -960,7 +961,7 @@
                     <Grid>
 
                         <Button Text="Lägg till kategori"
-                            BackgroundColor="Gold"
+                            BackgroundColor="MediumPurple"
                             Grid.Column="0"
                                 Clicked="AddCategoryButton_Pressed"
                             FontAttributes="Bold"
@@ -1014,6 +1015,7 @@
                                    Padding="0"
                                    CornerRadius="20">
                                 <Entry x:Name="entryCategoryNametab2"
+                                       FontAttributes="Bold"
                                    TextChanged="EntryCategoryNametab2_TextChanged"
                            >
                                 </Entry>
@@ -1057,7 +1059,7 @@
                                                     TextColor="Black"
                                                     CornerRadius="20"
                                                             Clicked="RemoveCategory_ButtonClicked"
-                                                    BackgroundColor="Gold"
+                                                    BackgroundColor="MediumPurple"
                                                     FontAttributes="Bold"
                                                     Text="Ta bort"/>
 
@@ -1088,7 +1090,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label TextColor="Gold"
+            <Label TextColor="MediumPurple"
                            FontSize="25"
                            FontAttributes="Bold"
                    Grid.Row="0"
@@ -1106,8 +1108,8 @@
 
 
                 <Frame Padding="0"
-                       BorderColor="Gold"
-                       BackgroundColor="Gold"
+                       BorderColor="MediumPurple"
+                       BackgroundColor="MediumPurple"
                        Grid.Row="1"
                        HorizontalOptions="Center"
                        Grid.Column="1"
@@ -1118,7 +1120,7 @@
                     <Grid>
 
                         <Button Text="Lägg till Event"
-                            BackgroundColor="Gold"
+                            BackgroundColor="MediumPurple"
                                      Clicked="AddEventButton_Pressed"
                                 Grid.Column="0"
                             CornerRadius="0"
@@ -1154,8 +1156,9 @@
                         <Label Text="Tryck på lägg till event för att lägga till den inskrivna eventet"
                    TextColor="White"      
                    FontSize="10"
-                   HorizontalOptions="CenterAndExpand"
+                   HorizontalOptions="Start"
                    Grid.Column="1"
+                               Margin="30,-10,0,0"
                    FontAttributes="Bold"/>
                         <AbsoluteLayout>
                             
@@ -1197,6 +1200,7 @@
                                                Padding="0">
 
                                             <Entry x:Name="entryEventNametab2"
+                                                   FontAttributes="Bold"
                                                    TextChanged="entryEventNametab2_TextChanged"
                                                    >
                                             </Entry>
@@ -1210,6 +1214,7 @@
                                                Padding="0">
 
                                             <Entry x:Name="entryEventTimetab2"
+                                                   FontAttributes="Bold"
                                                    Placeholder="yyyy/mm/dd/ hh:mm PM"
                                                    TextChanged="entryEventTimetab2_TextChanged">
                                             </Entry>
@@ -1224,6 +1229,7 @@
                                Padding="0">
 
                                     <Entry x:Name="entryEventDescriptiontab2"
+                                                   FontAttributes="Bold"
                            TextChanged="entryEventDescriptiontab2_TextChanged"
                            >
                                     </Entry>
@@ -1282,7 +1288,7 @@
                                                     <Button Grid.Column="0"
                                                     TextColor="Black"
                                                     CornerRadius="20"
-                                                    BackgroundColor="Gold"
+                                                    BackgroundColor="MediumPurple"
                                                     FontAttributes="Bold"
                                                             Clicked="RemoveEvent_ButtonClicked"
                                                     Text="Ta bort"/>
@@ -1315,7 +1321,7 @@
        
             <Label x:Name="startLabel" Text="Information om anställda" IsVisible="true"
                            FontSize="25"
-                           TextColor="Gold"
+                           TextColor="MediumPurple"
                            FontAttributes="Bold"
                    HorizontalOptions="Center"
                            >
@@ -1325,7 +1331,7 @@
 
             <Label x:Name="endLabel" Text="Registrera en ny anställd" IsVisible="false"
                            FontSize="25"
-                           TextColor="Gold"
+                           TextColor="MediumPurple"
                            FontAttributes="Bold"
                    HorizontalOptions="CenterAndExpand"
                            >
@@ -1349,8 +1355,8 @@
                          Grid.Row="1">
 
                     <Frame Padding="0"
-                       BorderColor="Gold"
-                       BackgroundColor="Gold"
+                       BorderColor="MediumPurple"
+                       BackgroundColor="MediumPurple"
                        Grid.Row="1"
                        HorizontalOptions="Center"
                        Grid.Column="1"
@@ -1361,7 +1367,7 @@
                         <Grid>
 
                             <Button Text="Lägg till användare"
-                            BackgroundColor="Gold"
+                            BackgroundColor="MediumPurple"
                                 Grid.Column="0"
                             CornerRadius="0"
                                     Clicked="AddUser_ButtonClicked"
@@ -1402,6 +1408,7 @@
                                 <DataTemplate>
                                     <ViewCell>
 
+                                            <StackLayout>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
@@ -1409,6 +1416,7 @@
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
+                                                
                                             <StackLayout Orientation="Vertical" Grid.Column="0">
 
                                                 <Label Text="{Binding UserName, StringFormat= 'Användarnamn: {0}'}" TextColor="White" FontAttributes="Bold"/>
@@ -1417,11 +1425,10 @@
                                                 <Label Text="{Binding Password, StringFormat= 'Lösenord: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                 <Label Text="{Binding Ssn, StringFormat= 'Personnummer: {0}'}" TextColor="White" FontAttributes="Bold"/>
 
-                                                <BoxView BackgroundColor="White"
-                                                 HeightRequest="3"
-                                                 >
-                                                </BoxView>
+                                
                                             </StackLayout>
+                                       
+
 
                                             <Grid Grid.Column="2">
                                                 <Grid.RowDefinitions>
@@ -1433,12 +1440,17 @@
                                                     FontAttributes="Bold"
                                                         Grid.Row="1"
                                                         Clicked="Remove_UserClicked"
-                                                    BackgroundColor="Gold"
+                                                    BackgroundColor="MediumPurple"
                                                     CornerRadius="10"/>
                                             </Grid>
 
 
                                         </Grid>
+                                            <BoxView BackgroundColor="White"
+                                                 HeightRequest="3"
+                                                 >
+                                            </BoxView>
+                                        </StackLayout>
 
                                     </ViewCell>
                                 </DataTemplate>
@@ -1507,7 +1519,7 @@
                                 <StackLayout >
 
                                     <Label Text="Fyll i uppgifterna"
-                                           TextColor="Gold"
+                                           TextColor="MediumPurple"
                                    Margin="20,0,0,0"
                                            HorizontalOptions="Start"
                                            FontSize="17"
@@ -1639,7 +1651,7 @@
                                         </StackLayout>
                                         <StackLayout Margin="0,20,0,0">
                                             <Label Text="Kryssa i behörighet"
-                                                   TextColor="Gold"
+                                                   TextColor="MediumPurple"
                                                    Margin="10,0,0,0"
                                                    FontAttributes="Bold"
                                                    FontSize="17"/>
@@ -1665,14 +1677,14 @@
 
                                             <Grid>
                                                 <Label Text="Välj behörighet och klicka på registrera"
-                                                   TextColor="Gold"
+                                                   TextColor="MediumPurple"
                                                    Margin="5,0,0,0"
                                                    FontSize="10"
                                                    FontAttributes="Bold"
                                                    />
 
                                                 <Label Text="Klicka avbryt för att återgå till startsidan"
-                                                   TextColor="Gold"
+                                                   TextColor="MediumPurple"
                                                    Margin="5,-5,0,0"
                                                        Grid.Row="1"
                                                    FontSize="10"
@@ -1683,8 +1695,8 @@
                                         </StackLayout>
 
                                         <Frame Padding="0"
-                                               BackgroundColor="Gold"
-                                               BorderColor="Gold"
+                                               BackgroundColor="MediumPurple"
+                                               BorderColor="MediumPurple"
                                                Margin="0,15,0,0"
                                                CornerRadius="25">
 
@@ -1692,7 +1704,7 @@
                                                 <Button Text="Registrera"
                                                         FontSize="15"
                                                         AbsoluteLayout.LayoutBounds="230,0,150,50"
-                                                        BackgroundColor="Gold"
+                                                        BackgroundColor="MediumPurple"
                                                         FontAttributes="Bold"
                                                         TextColor="Black"
                                                         Clicked="Button_Clicked_2"
@@ -1746,7 +1758,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label TextColor="Gold"
+            <Label TextColor="MediumPurple"
                            FontSize="25"
                            FontAttributes="Bold"
                    Grid.Column="1"
@@ -1756,14 +1768,14 @@
                            Text="Språk Inställningar"/>
 
 
-       
 
 
 
-            <Frame BorderColor="Gold"
+
+            <Frame BorderColor="MediumPurple"
                    Grid.Column="1"
                    Grid.Row="1"
-                   BackgroundColor="Gold"
+                   BackgroundColor="MediumPurple"
                    CornerRadius="20"
                    WidthRequest="350"
                    HorizontalOptions="Center"
@@ -1771,7 +1783,7 @@
                 <Grid>
 
                     <Button Text="Lägg till Språk"
-                            BackgroundColor="Gold"
+                            BackgroundColor="MediumPurple"
                                     Clicked="AddLanguageButton_Pressed"
                             Grid.Column="0"
                             CornerRadius="0"
@@ -1820,6 +1832,7 @@
                                CornerRadius="20"
                                IsClippedToBounds="True">
                             <Entry x:Name="entryLanguageCreatetab3"
+                                                   FontAttributes="Bold"
                                TextChanged="entryLanguageCreatetab3_TextChanged"
                            >
                             </Entry>
@@ -1868,7 +1881,7 @@
                                                         TextColor="Black"
                                                         CornerRadius="20"
                                                         Grid.Column="1"
-                                                        BackgroundColor="Gold"
+                                                        BackgroundColor="MediumPurple"
                                                     Clicked="Remove_LanguageButton"
                                                         FontAttributes="Bold"
                                                         Text="Ta bort"/>
