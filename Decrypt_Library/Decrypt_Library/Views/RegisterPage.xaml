@@ -89,7 +89,7 @@
 
                             <Label TextColor="White"
                                    AbsoluteLayout.LayoutBounds="215,145,120,30"
-                                   Text="Personummer"
+                                   Text="Personnummer"
                                    FontAttributes="Bold"
                                    />
 
@@ -101,7 +101,7 @@
 
                             <Label TextColor="White"
                                    AbsoluteLayout.LayoutBounds="215,205,120,30"
-                                   Text="Telefonummer"
+                                   Text="Telefonnummer"
                                    FontAttributes="Bold"
                                    />
 
