@@ -31,11 +31,15 @@ namespace Decrypt_Library.Views
             NumberOfItem.IsVisible = false;
             Headline.IsVisible = false;
 
+
         }
 
         protected override void OnAppearing()
         {
-
+            if (UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
+            {
+                userPasswordFrame.IsVisible = false;
+            }
         }
 
         public Loan()
@@ -45,9 +49,18 @@ namespace Decrypt_Library.Views
 
         private void checkUserButton_Clicked(object sender, EventArgs e)
         {
+            bool admin = false;
+            if(UserLogin.thisUser.UserTypeId == 1 || UserLogin.thisUser.UserTypeId == 2)
+            {
+                userPasswordFrame.IsVisible = false;
+                admin = true;
+            }
+
             bool success = false;
             Models.User user = new Models.User();
-            if (string.IsNullOrEmpty(CheckUserId.Text) || string.IsNullOrEmpty(Password.Text)) return;
+            if (string.IsNullOrEmpty(CheckUserId.Text) || string.IsNullOrEmpty(Password.Text) && !admin) return;
+
+            if(string.IsNullOrEmpty(CheckUserId.Text) && admin) { return; }
 
 
             int.TryParse(CheckUserId.Text.ToString(), out int userId);
@@ -56,12 +69,20 @@ namespace Decrypt_Library.Views
 
             foreach (var item in allUserList)
             {
-                if (item.Id == userId && item.Password == Password.Text) { success = true; user = item; }
+                if (admin == true)
+                {
+                    item.Id = userId;
+                    user = item;
+                    success = true;
+                }
+                if (item.Id == userId && item.Password == Password.Text && !admin) 
+                { 
+                    success = true; 
+                    user = item; 
+                }
+
             }
             
-    
-
-
             if (!success) { DisplayAlert("Felmeddelande", "Användaren finns inte i systemet.", "OK"); CheckUserId.Text = null; }
             else
             {
