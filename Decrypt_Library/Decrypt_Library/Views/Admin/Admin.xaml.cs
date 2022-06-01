@@ -364,9 +364,23 @@ namespace Decrypt_Library.Views
 
         private async void CancelEditProductButton_Clicked(object sender, EventArgs e)
         {
-            var tab = new MainPage();
-            tab.CurrentPage = tab.Children[5];
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(tab));
+            var mainPage = new MainPage();
+            Page adminPage = new AdminPage();
+            Page loanPage = new Loan();
+            Page returnProductPage = new ReturnProduct();
+            var homePage = new NavigationPage(mainPage);
+
+            returnProductPage.Title = "Lämna tillbaka";
+            returnProductPage.TabIndex = 8;
+            adminPage.Title = "Bibliotekarie";
+            adminPage.TabIndex = 5;
+            loanPage.Title = "Låna";
+            loanPage.TabIndex = 7;
+            mainPage.Children.Add(adminPage);
+            mainPage.Children.Add(loanPage);
+            mainPage.Children.Add(returnProductPage);
+
+            await Navigation.PushModalAsync(homePage);
         }
 
         #endregion

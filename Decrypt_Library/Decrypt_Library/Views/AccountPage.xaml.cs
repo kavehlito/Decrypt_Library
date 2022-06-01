@@ -10,6 +10,11 @@ namespace Decrypt_Library.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
+        protected override void OnAppearing()
+        {
+            password.BackgroundColor = Color.White;
+            confirmPassword.BackgroundColor = Color.White;
+        }
         public AccountPage()
         {
             InitializeComponent();
@@ -29,6 +34,8 @@ namespace Decrypt_Library.Views
                 profile.IsVisible = true;
                 return;
             }
+
+ 
 
             MakeAllBarsInvisible();
             profile.IsVisible = true;
@@ -158,6 +165,8 @@ namespace Decrypt_Library.Views
 
         private void ChangePassword_Clicked(object sender, EventArgs e)
         {
+            password.BackgroundColor = Color.White;
+            confirmPassword.BackgroundColor = Color.White;
             password.Text = "";
             confirmPassword.Text = "";
             updatePasswordButton.Text = "Bekräfta ditt val";

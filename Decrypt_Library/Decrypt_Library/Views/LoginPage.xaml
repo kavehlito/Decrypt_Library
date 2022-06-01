@@ -97,23 +97,21 @@
 
                     </Frame>
 
-                    <Label TextColor="MediumPurple"
+                    <Label TextColor="White"
                            FontAttributes="Bold"
                            x:Name="Test"
                            FontSize="15"
-                           AbsoluteLayout.LayoutBounds="120,190,260,35"/>
+                           AbsoluteLayout.LayoutBounds="140,190,260,35"/>
 
                     <Button x:Name="LogOut" 
                             Text="Logga ut" 
                             Clicked="LogOut_Clicked" 
                             IsVisible="False"
                             CornerRadius="10"
-                            AbsoluteLayout.LayoutBounds="100,220,260,35"
+                            AbsoluteLayout.LayoutBounds="90,220,270,35"
                             BackgroundColor="MediumPurple"
                             FontAttributes="Bold"
                             TextColor="Black"/>
-
-
 
                     <Label x:Name="Error" 
                            Text="Felaktigt personnummer eller lösenord. Försök igen!" 
@@ -126,7 +124,8 @@
                     <StackLayout Orientation="Horizontal"
                                  x:Name="alternativeOptions"
                                  HorizontalOptions="CenterAndExpand"
-                                 AbsoluteLayout.LayoutBounds="20,350,400,30">
+                                 AbsoluteLayout.LayoutBounds="5,350,400,30">
+                        
                         <Button Text="Inget konto? Registrera dig här!"
                                 FontAttributes="Bold"
                                 FontSize="10"

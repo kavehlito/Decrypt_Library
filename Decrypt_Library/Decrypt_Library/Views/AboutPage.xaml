@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="decrypt6.png"
+            <Image Source="decrypt8.png"
                    Grid.Column="1"
                    Grid.Row="1"
                                />
@@ -27,8 +27,8 @@
                             Grid.Row="1">
                 <Label Text="Välkommen till decrypt biblioteket"
                        FontAttributes="Bold"
-                       AbsoluteLayout.LayoutBounds="105,115,300,20"
-                       TextColor="Gold"/>
+                       AbsoluteLayout.LayoutBounds="30,115,300,20"
+                       TextColor="White"/>
 
 
             </AbsoluteLayout>
@@ -48,7 +48,7 @@
                         <Frame
                         Padding="0"
                         CornerRadius="20"
-                        BackgroundColor="Gold"
+                        BackgroundColor="MediumPurple"
                          HorizontalOptions="Center">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -56,7 +56,7 @@
                                 </Grid.RowDefinitions>
                                 <Button 
                                         Text="Om oss"
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                     FontSize="12"
                                     Clicked="Button_Clicked"
                                     Grid.Column="0"
@@ -69,7 +69,7 @@
                                     FontSize="12"
                                     Clicked="Button_Clicked_1"
                                     Grid.Column="1"    
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                         FontAttributes="Bold"/>
 
                                 <Button 
@@ -78,7 +78,7 @@
                                     BorderColor="Transparent"
                                     Grid.Column="2"    
                                     Clicked="Button_Clicked_2"
-                                        BackgroundColor="Gold"
+                                        BackgroundColor="MediumPurple"
                                         FontAttributes="Bold"/>
 
 
@@ -95,7 +95,7 @@
                                     <Label Text="Om oss"
                            FontSize="15" 
                            FontAttributes="Bold"
-                           TextColor="Gold"
+                           TextColor="MediumPurple"
                            HorizontalOptions="Start"/>
 
                                     <Label Text="Har du frågor om dina lån, våra arrangemang, e-böcker eller 
@@ -109,7 +109,7 @@
                                     <Label Text="The Lore"
                                            FontSize="15" 
                                            FontAttributes="Bold"
-                                           TextColor="Gold"
+                                           TextColor="MediumPurple"
                                            HorizontalOptions="Start"/>
 
                                     <Label Text="Decrypt startades 2001 av Gertrud Örnpung som kommer från Island där hennes familj hade bott i gamla kvarlämnade aluminumbaracker från andra världskriget. Tillsammans bodde hon i aluminuimbarracken med sin familj och 10 höns. Hon flyttade till Sverige efter 80-talet."
@@ -200,7 +200,7 @@
                                     <Label Text="Öppettider"
                                            FontSize="15" 
                                            FontAttributes="Bold"
-                                           TextColor="Gold"
+                                           TextColor="MediumPurple"
                                            HorizontalOptions="Start"/>
 
                                     <StackLayout Spacing="0">
@@ -230,7 +230,7 @@
                                     <Label Text="Kontakta oss"
                                            FontSize="15" 
                                            FontAttributes="Bold"
-                                           TextColor="Gold"
+                                           TextColor="MediumPurple"
                                            HorizontalOptions="Start"/>
 
 

@@ -35,7 +35,7 @@
                         <Image Source="decrypt8.png"
                                Scale="0.7"/>
 
-                        <Label TextColor="MediumPurple"
+                        <Label TextColor="White"
                            FontSize="15"
                            FontAttributes="Bold"
                            Margin="15,0,0,0"
@@ -97,7 +97,7 @@
                                Padding="0"
                                IsVisible="False"
                                x:Name="profileBar"
-                                   HeightRequest="70">
+                                   HeightRequest="30">
 
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -141,7 +141,7 @@
                         <StackLayout x:Name="profile" 
                                  Margin="10,0,0,0"
                                  IsVisible="True"
-                                     HeightRequest="400">
+                                     HeightRequest="200">
 
                             <Label x:Name="profileText" 
                                    IsVisible="False"
@@ -245,6 +245,9 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
+
+                                                <StackLayout>
+                                                    
                                                 <StackLayout Orientation="Horizontal">
                                                     <Image Source="{Binding Title, StringFormat='{0}.jpg'}" HorizontalOptions="Start" WidthRequest="100"/>
                                                     <StackLayout>
@@ -255,10 +258,12 @@
                                                                     BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
                                                                     CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
                                                         </Button>
-                                                        <BoxView BackgroundColor="White"
-                                                                 HeightRequest="3" >
-                                                        </BoxView>
+                                         
                                                     </StackLayout>
+                                                </StackLayout>
+                                                    <BoxView BackgroundColor="White"
+                                                                 HeightRequest="3" >
+                                                    </BoxView>
                                                 </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
@@ -308,6 +313,7 @@
                                                 <Entry FontAttributes="Bold"
                                                    TextChanged="Entry_TextChanged"
                                                        x:Name="password"
+                                                       BackgroundColor="White"
                                                    IsPassword="True">
 
                                                     <Entry.Behaviors>
@@ -322,6 +328,7 @@
                                                 <Entry
                                                 IsPassword="True"
                                                     TextChanged="Entry_TextChanged_1"
+                                                    BackgroundColor="White"
                                                        x:Name="confirmPassword"
                                                 FontAttributes="Bold">
 
