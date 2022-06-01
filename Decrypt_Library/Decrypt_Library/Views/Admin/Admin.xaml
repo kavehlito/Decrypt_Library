@@ -1520,7 +1520,7 @@
 
                                     <Label Text="Fyll i uppgifterna"
                                            TextColor="MediumPurple"
-                                   Margin="20,0,0,0"
+                                   Margin="10,0,0,0"
                                            HorizontalOptions="Start"
                                            FontSize="17"
                                            FontAttributes="Bold"/>
