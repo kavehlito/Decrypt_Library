@@ -400,29 +400,57 @@ namespace Decrypt_Library.Views
             DateTime date = DateTime.Now;
 
             if (shelfPicker.SelectedIndex != -1)
+            {
                 shelfPicker.BackgroundColor = Color.White;
+                ProductShelfIdCorrect = true;
+            }
             else
+            {
+                ProductShelfIdCorrect = false;
                 shelfPicker.BackgroundColor = Color.IndianRed;
+            }
 
             if (categoryPicker.SelectedIndex != -1)
+            {
+                ProductCategoryIdCorrect = true;
                 categoryPicker.BackgroundColor = Color.White;
+            }
             else
+            {
                 categoryPicker.BackgroundColor = Color.IndianRed;
+                ProductCategoryIdCorrect = false;
+            }
 
             if (languagePicker.SelectedIndex != -1)
+            {
                 languagePicker.BackgroundColor = Color.White;
+                ProductLanguageIdCorrect = true;
+            }
             else
+            {
                 languagePicker.BackgroundColor = Color.IndianRed;
+                ProductLanguageIdCorrect = false;
+            }
 
             if (audiencePicker.SelectedIndex != -1)
+            {
                 audiencePicker.BackgroundColor = Color.White;
+                ProductLanguageIdCorrect = true;
+            }
             else
+            {
                 audiencePicker.BackgroundColor = Color.IndianRed;
+                ProductLanguageIdCorrect = false;
+            }
 
             if (mediaPicker.SelectedIndex != -1)
+            {
                 mediaPicker.BackgroundColor = Color.White;
+            }
             else
+            {
                 mediaPicker.BackgroundColor = Color.IndianRed;
+            }
 
             try
             {
@@ -432,11 +460,6 @@ namespace Decrypt_Library.Views
                 ProductAuthorNameCorrect = Readers.Readers.StringReader(entryAuthor.Text);
                 ProductPublishDateCorrect = Readers.Readers.ReadDateTime(entryDate.Text, out date);
                 ProductDescriptionCorrect = Readers.Readers.StringReader(entryDescription.Text);
-
-                ProductAudienceIdCorrect = !string.IsNullOrEmpty(audiencePicker.SelectedItem.ToString());
-                ProductLanguageIdCorrect = !string.IsNullOrEmpty(languagePicker.SelectedItem.ToString());
-                ProductShelfIdCorrect = !string.IsNullOrEmpty(shelfPicker.SelectedItem.ToString());
-                ProductCategoryIdCorrect = !string.IsNullOrEmpty(categoryPicker.SelectedItem.ToString());
 
                 if (selectedMediaId == 1 || selectedMediaId == 2)
                 {
@@ -507,6 +530,7 @@ namespace Decrypt_Library.Views
                     {
                         EntityframeworkProducts.CreateProduct(product);
                     }
+
                     DisplayAlert("Information", $"Produkt tillagd: {product.Title}\nAntal produkter: {numberOfProducts.Text}", "OK");
 
                     ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
@@ -533,8 +557,6 @@ namespace Decrypt_Library.Views
             EntityframeworkProducts.HideProduct(selectedProduct);
             ProductList.ItemsSource = EntityframeworkProducts.ShowAllProducts();
         }
-
-
 
         #endregion
 
@@ -584,7 +606,7 @@ namespace Decrypt_Library.Views
 
             catch (Exception exception)
             {
-                DisplayAlert("Error", $"{exception}", "ok");
+                DisplayAlert("Error", $"Ett av värdena var fel", "ok");
             }
         }
 
@@ -597,7 +619,7 @@ namespace Decrypt_Library.Views
             {
                 if (selectedCategory.Id == item.CategoryId)
                 {
-                    DisplayAlert("Error", "Can't remove a language with products associated to it", "OK");
+                    DisplayAlert("Error", "Kan inte ta bort ett språk med böcker accossierade till det", "OK");
                     return;
                 }
             }
@@ -665,11 +687,15 @@ namespace Decrypt_Library.Views
             }
             catch
             {
-                DisplayAlert("Error wrong input", "one of tha values were wrong", "ok");
+                DisplayAlert("Error", "Ett av värdena var fel", "ok");
+                return;
             }
 
             if (!EventEventTimeCorrect)
+            {
                 DisplayAlert("Error", "Tiden du mata in är inte giltig, glöm inte AM/PM på slutet!", "OK");
+                return;
+            }
 
             EventEventInputsCorrect = EventEventNameCorrect
                                            && EventEventTimeCorrect
@@ -689,7 +715,7 @@ namespace Decrypt_Library.Views
                 }
                 catch (Exception exception)
                 {
-                    DisplayAlert("Error", $"{exception}", "OK");
+                    DisplayAlert("Error", "Ett av värdena var fel", "OK");
                 }
             }
         }
