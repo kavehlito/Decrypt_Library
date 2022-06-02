@@ -32,7 +32,7 @@
                         <Label x:Name="statuslbl" Text="{Binding Status}" TextColor="PaleVioletRed" FontSize="20"/>
                     </StackLayout>
                     <AbsoluteLayout HorizontalOptions="Start" >
-                        <Label x:Name="PlsLoginReservelbl" Text="Du måste vara inloggad för att låna/reservera en bok!" FontSize="25" TextColor="PaleVioletRed" IsVisible="false"
+                        <Label x:Name="PlsLoginReservelbl" Text="Du måste vara inloggad för att reservera en bok!" FontSize="25" TextColor="PaleVioletRed" IsVisible="false"
                        AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.8,0.5" FontAttributes="Bold"/>
                         <StackLayout Orientation="Horizontal" WidthRequest="800" HeightRequest="50">
                             <Button x:Name="LoanOrReserveButton" BackgroundColor="PaleVioletRed" CornerRadius="10" WidthRequest="150" HorizontalOptions="StartAndExpand" Clicked="LoanOrReserveButton_Clicked"
