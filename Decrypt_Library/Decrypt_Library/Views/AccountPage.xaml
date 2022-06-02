@@ -255,7 +255,7 @@
                                                         <Label Text="{Binding ID}" TextColor="White" FontAttributes="Bold" IsVisible="false" />
                                                         <Label Text="{Binding Title, StringFormat= 'Titel: {0}'}" TextColor="White" FontAttributes="Bold"/>
                                                         <Label Text="{Binding Author, StringFormat= 'Författare: {0}'}" TextColor="White" FontAttributes="Bold"/>
-                                                        <Button x:Name="removeButton" Text="Ta bort från listan" IsVisible="true" Clicked="RemoveButton_Clicked"
+                                                        <Button x:Name="removeButton" Text="Ta bort från listan" IsVisible="true" Clicked="RemoveButton_ClickedFavorite"
                                                                     BackgroundColor="MediumPurple" TextColor="Black" FontAttributes="Bold"
                                                                     CornerRadius="10" BorderColor="Transparent" HorizontalOptions="End">
                                                         </Button>

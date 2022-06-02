@@ -153,14 +153,15 @@ namespace Decrypt_Library.Views
         private void RemoveButton_ClickedFavorite(object sender, EventArgs e) 
         {
             MakeAllBarsInvisible();
-            reservations.IsVisible = true;
+            favoriteList.IsVisible = true;
 
             Button btn = sender as Button;
-            MyPagesProductList favoriteList = btn.BindingContext as MyPagesProductList;
-            EntityframeworkUsers.DeleteFavorite(favoriteList.ID);
+            MyPagesProductList favorites = btn.BindingContext as MyPagesProductList;
+            EntityframeworkUsers.DeleteFavorite(favorites.ID);
 
-            
-            reservations.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
+            favoriteList.ItemsSource = null;
+            favoriteList.ItemsSource = EntityframeworkUsers.ShowUserFavoriteList();
+
         }
 
         private void ChangePassword_Clicked(object sender, EventArgs e)
