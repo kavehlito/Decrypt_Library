@@ -109,7 +109,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                                      CategoryId = prod.CategoryId,
                                      UsersID = reco.UserId,
 
-                                 }).ToList().Take(1);
+                                 }).ToList().Take(2);
 
                 foreach (var item in recommend)
                 {
@@ -161,7 +161,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                     if (favorite.ProductId == choosenProduct.Id && favorite.UserId == UserLogin.thisUser.Id && favorite.EventId == 1)
                     {
                         return false;
-                        
+
                     }
                     else
                     {
@@ -172,7 +172,7 @@ namespace Decrypt_Library.EntityFrameworkCode
                 bookHistory.EventId = 1;
                 bookHistory.UserId = UserLogin.thisUser.Id;
                 bookHistory.StartDate = DateTime.UtcNow;
-                db.BookHistories.Update(bookHistory);
+                db.BookHistories.Add(bookHistory);
                 db.SaveChanges();
                 return true;
             }
@@ -186,31 +186,32 @@ namespace Decrypt_Library.EntityFrameworkCode
             using (var db = new Decrypt_LibraryContext())
             {
                 var favorites = from
-                bookHistory in db.BookHistories
-                                  join
-                                  product in db.Products on bookHistory.ProductId equals product.Id
-                                  where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 1
-                                  select new MyPagesProductList
-                                  {
-                                      ID = bookHistory.Id,
-                                      Title = product.Title,
-                                      Author = product.AuthorName,
-                                      ISBN = product.Isbn,
-                                      StartDate = bookHistory.StartDate,
-                                      EndDate = bookHistory.EndDate
-                                  };
+                                bookHistory in db.BookHistories
+                                join
+                                product in db.Products on bookHistory.ProductId equals product.Id
+                                where bookHistory.UserId == UserLogin.thisUser.Id && bookHistory.EventId == 1
+                                select new MyPagesProductList
+                                {
+                                    ID = (int)bookHistory.ProductId,
+                                    Title = product.Title,
+                                    Author = product.AuthorName,
+                                    ISBN = product.Isbn,
+                                    StartDate = bookHistory.StartDate,
+                                    EndDate = bookHistory.EndDate
+                                };
                 return favorites.ToList();
 
             }
         }
         // Remove book from favoritelist
 
-        public static void DeleteFavorite(int? selectedId)
+        public static void DeleteFavorite(int selectedId)
         {
             using (var db = new Decrypt_LibraryContext())
             {
-                var book = db.BookHistories.Where(b => b.Id == selectedId).SingleOrDefault();
-                db.Remove(book);
+                var book = db.BookHistories.Where(b => b.ProductId == selectedId)
+                    .Where(u => u.UserId == UserLogin.thisUser.Id).Where(e => e.EventId == 1).FirstOrDefault();
+                db.BookHistories.Remove(book);
                 db.SaveChanges();
 
                 //var updateQuantityProduct = book.SingleOrDefault(p => p.Id == selectedId);
