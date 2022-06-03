@@ -29,7 +29,6 @@ namespace Decrypt_Library
                 }
             }
 
-
             if (UserLogin.thisUser != null)
             {
                 loginPage.Title = "Logga ut";
