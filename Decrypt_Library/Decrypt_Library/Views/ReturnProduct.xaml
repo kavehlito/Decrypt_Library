@@ -21,8 +21,6 @@
             </Grid.ColumnDefinitions>
 
 
-
-
             <StackLayout Grid.Column="1" Grid.Row="1">
                 <Frame BackgroundColor="#262223"
                    BorderColor="#262223"

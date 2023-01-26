@@ -8,7 +8,6 @@ namespace Decrypt_Library
 {
     public class ReturnProduct
     {
-
         public static bool UpdateProductHistory(int productId, out string productName)
         {
             productName = null;
@@ -18,7 +17,6 @@ namespace Decrypt_Library
                 var history = produkcHistory.SingleOrDefault(h => h.ProductId == productId && h.EventId == 2 && h.EndDate == null);
                 
                 if (history == null) return false;
-
                 
                 history.EndDate = DateTime.Now;
                 var loanAgainList = produkcHistory.Where(h => h.ProductId == productId && h.EventId == 4);
